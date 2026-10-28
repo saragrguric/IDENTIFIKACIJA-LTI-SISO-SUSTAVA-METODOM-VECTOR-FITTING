@@ -98,3 +98,16 @@ ni znanstvenu točnost.
   postojanju skripte.
 - GitHub identiteti, dostupnost zaštite grane, aktivacija dnevne provjere na GitHubu, primjena,
   podaci, inačica metode i numeričko okruženje ostaju izričito navedeni naknadni zadaci.
+
+## Dodatak 2026-10-28: izričito odobreno spajanje početnog načina rada
+
+Tijekom postavljanja Lovro je u razgovoru izričito zatražio commit, push, PR i spajanje u
+`main` nakon dovršetka rada. Time je odobrio objavu i spajanje početnog PR-a #1 za način rada s
+grane `codex/seminar-workflow` bez čekanja Sarina pregleda. To ne bilježi niti podrazumijeva
+Sarino odobrenje i ne mijenja pravilo pregleda za kasnije PR-ove; Sara treba naknadno
+pregledati spojena pravila i plan.
+
+Dnevna provjera prepoznaje samo taj broj PR-a i tu granu kao iznimku od pregleda. CI i dalje
+mora proći; izravni commitovi i druga spajanja bez pregleda ostaju nalazi. Stvaranje oznaka
+nalaza potrebnih objavljenoj dnevnoj provjeri dio je njezine aktivacije. Ova uputa ne odobrava
+nepovezane prijave problema, poruke ni promjene pristupa repozitoriju.

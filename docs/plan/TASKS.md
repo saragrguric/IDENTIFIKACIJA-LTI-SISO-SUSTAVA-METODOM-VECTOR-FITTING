@@ -8,7 +8,7 @@ zadaci zajednički; privremenog nositelja i osobu za pregled moguće je zabilje�
 
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
-| T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Pripremljeno lokalno na grani `codex/seminar-workflow`; nije commitano ni objavljeno, čeka Sarin pregled |
+| T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Spremno za početak |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Otvoreno; može teći usporedno s T1 |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Otvoreno |
@@ -28,19 +28,24 @@ nonneg-matrix-fact-clustering. Provjeriti lokalno. Razlikovati pripremljenu konf
 pouzdanih i aktivnih hookova te tijekova rada omogućenih na udaljenom repozitoriju. Ne raditi
 commit, push ni objavljivati sadržaj na GitHubu bez ovlaštenja.
 
-Lokalna provjera 2026-10-28: provjera dokumentacije prijavila je 0 upozorenja i prošla su sva
+Lokalna provjera 2026-10-28: provjera dokumentacije prijavila je 0 upozorenja i prošlo je svih
 45 testova alata za tijek rada. Završna provjera pokrenuta je iz korijena repozitorija u CLI i
-`--hook` načinu: valjan JSON, uz izričitu oznaku NOT RUN za numeričke provjere. To ne dokazuje
-povjerenje na računalu ni automatsko pokretanje hookova.
+`--hook` načinu, a Claude i Codex naredbe hookova i iz podmape: valjan JSON, uz izričitu oznaku
+NOT RUN za numeričke provjere. To ne dokazuje povjerenje na računalu ni automatsko pokretanje
+hookova.
 
 Snimka stanja GitHuba 2026-10-28 (samo čitanje, prije objave): privatni repozitorij pod računom
 `saragrguric` sa zadanom granom main i početnim commitom `a21a894` (README), suradnici
 `saragrguric` i `LRazum` (ovlast pisanja), bez tijekova rada, prijava, PR-ova i oznaka
 finding; postoje samo zadane GitHub oznake. Stanje zaštite grane nije bilo moguće pročitati s
-ovlašću pisanja (HTTP 404), pa ga treba provjeriti vlasnik repozitorija. Commit, push, PR i
-spajanje postavljanja nisu odobreni. Prema pravilu pregleda PR za postavljanje odobrava Sara,
-osim ako korisnik izričito odobri iznimku za točan PR. Preduvjeti objave i aktivacije navedeni
-su u [uputama za tijek rada](PIPELINE.md).
+ovlašću pisanja (HTTP 404), pa ga treba provjeriti vlasnik repozitorija.
+
+Lovro je zatim izričito zatražio commit, push, PR i spajanje u `main`. Početni PR #1 s grane
+`codex/seminar-workflow` koristi tu dokumentiranu iznimku od pregleda (dodatak zapisa ADR-0002);
+ne tvrdi se da ga je odobrila Sara, koja ga treba naknadno pregledati. PR i izvršavanja GitHub
+Actions bilježe objavu i udaljenu provjeru. Preduvjeti objave i aktivacije navedeni su u
+[uputama za tijek rada](PIPELINE.md); povjerenje hookovima na pojedinom računalu ostaje zasebno
+provjeriti.
 
 ## T1: matematičko razumijevanje
 

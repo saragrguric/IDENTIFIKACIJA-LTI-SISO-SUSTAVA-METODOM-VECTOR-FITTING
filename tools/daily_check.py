@@ -37,9 +37,11 @@ APPROVAL_REQUIRED_FROM = datetime(2026, 10, 28, 19, 19, 16, tzinfo=timezone.utc)
 LOOKBACK_HOURS = 48
 SEVERITY_LABELS = ("severity:high", "severity:medium", "severity:low")
 BASE_LABELS = ("finding", "source:daily-check")
-# Explicit per-PR merge instructions, each recorded as a dated ADR-0002 addendum; none yet.
+# Explicit per-PR merge instructions, each recorded as a dated ADR-0002 addendum.
 # Entries are exact (PR number, head branch) pairs and are not human approvals.
-AUTHORIZED_REVIEW_EXCEPTIONS: frozenset[tuple[int, str]] = frozenset()
+AUTHORIZED_REVIEW_EXCEPTIONS: frozenset[tuple[int, str]] = frozenset({
+    (1, "codex/seminar-workflow"),
+})
 
 
 @dataclass(frozen=True)

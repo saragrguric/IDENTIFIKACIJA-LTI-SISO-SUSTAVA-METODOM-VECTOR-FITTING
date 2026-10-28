@@ -124,8 +124,8 @@ u sklopu ovog postavljanja repozitorija.
 ## Aktivacija na GitHubu
 
 Sama prisutnost datoteka ne stvara commit, push, PR, prijavu, oznaku ni postavku repozitorija.
-Lokalno postavljanje od 2026-10-28 nije commitano ni objavljeno; za commit, push, PR i spajanje
-potrebno je izričito korisnikovo ovlaštenje, a za spajanje i Sarin pregled. Kad datoteke stignu
+Lovro je 2026-10-28 izričito odobrio commit, push, PR i spajanje početnog tijeka rada;
+jednokratna iznimka od pregleda za PR #1 zabilježena je u ADR-u 0002. Kad datoteke stignu
 na zadanu granu, provjerite jesu li Actions/Issues uključeni, stvorite oznake nalaza opisane u
 `docs/plan/AI_REVIEW.md` te pregledajte jedno CI izvođenje i probni pregled dnevne provjere bez
 pisanja prije oslanjanja na dnevni izvještaj. Repozitorij je privatan i pod računom

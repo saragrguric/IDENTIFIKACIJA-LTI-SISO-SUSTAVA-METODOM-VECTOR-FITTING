@@ -81,12 +81,18 @@ class FindingsTests(unittest.TestCase):
         problems = daily.unapproved_merge_problems(prs, NOW)
         self.assertEqual([p.pr.split()[0] for p in problems], ["#2", "#3", "#4"])
 
-    def test_no_review_exceptions_are_recorded_and_unreviewed_setup_is_reported(self) -> None:
-        # Adding an exception requires a dated ADR-0002 addendum; update this test with it.
-        self.assertEqual(daily.AUTHORIZED_REVIEW_EXCEPTIONS, frozenset())
+    def test_only_the_recorded_setup_pr_is_exempt_from_review(self) -> None:
+        # Each exception needs a dated ADR-0002 addendum; update this test with it.
+        self.assertEqual(daily.AUTHORIZED_REVIEW_EXCEPTIONS, frozenset({(1, "codex/seminar-workflow")}))
         setup = merged(1, [])
         setup["headRefName"] = "codex/seminar-workflow"
-        self.assertEqual(len(daily.unapproved_merge_problems([setup], NOW)), 1)
+        self.assertEqual(daily.unapproved_merge_problems([setup], NOW), [])
+        self.assertEqual(daily.human_approvers(setup), set())
+        for number, branch in ((2, "codex/seminar-workflow"), (1, "lovro/seminar-workflow")):
+            with self.subTest(number=number, branch=branch):
+                other = merged(number, [])
+                other["headRefName"] = branch
+                self.assertEqual(len(daily.unapproved_merge_problems([other], NOW)), 1)
 
     def test_authorized_review_exceptions_require_exact_pr_and_branch(self) -> None:
         exceptions = frozenset({(1, "codex/approved-task"), (2, "lovro/approved-task")})

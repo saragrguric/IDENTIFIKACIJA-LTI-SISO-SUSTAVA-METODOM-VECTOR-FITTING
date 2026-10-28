@@ -67,11 +67,11 @@ osobe koja nije autor provjerava samo taj ograničeni uvjet; sudionici PR-a i da
 pregleda. Dnevna provjera ne može potvrditi da pregledavatelji razumiju matematiku, da su oba
 člana naučila gradivo ni da su rezultati znanstveno utemeljeni.
 
-Zasad nema korisnički odobrenih iznimki od pregleda; `AUTHORIZED_REVIEW_EXCEPTIONS` u
-`tools/daily_check.py` je prazan. Iznimka bi vrijedila samo za točan par broja PR-a i grane
-koji korisnik izričito odobri i koji je zabilježen u datiranom dodatku zapisa ADR-0002; ne bi
-značila ljudsko odobrenje niti obuhvaćala pad CI-ja ili izravne commitove. Iznimke referentnog
-projekta ne vrijede ovdje.
+Lovro je 2026-10-28 izričito odobrio spajanje bez Sarina pregleda za početni PR #1 iz
+`codex/seminar-workflow`. Dodatak zapisa ADR-0002 bilježi tu uputu, a
+`AUTHORIZED_REVIEW_EXCEPTIONS` u `tools/daily_check.py` prepoznaje samo taj točan par broja i
+grane, bez tvrdnje da je postojalo ljudsko odobrenje. Iznimka ne obuhvaća druge PR-ove, pad
+CI-ja ni izravne commitove. Iznimke referentnog projekta ne vrijede ovdje.
 
 Kada otkrije probleme, dnevna provjera održava jednu prijavu s naslovom
 „Dnevna provjera: main ili otvoreni PR-ovi zahtijevaju pozornost”, oznakama `finding`,
