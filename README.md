@@ -1,7 +1,7 @@
 # Seminar: identifikacija LTI SISO sustava metodom vector fitting
 
-Seminar izrađuju **Sara i Lovro**; naziv kolegija još nije zabilježen u repozitoriju. Cilj je
-detaljno razumjeti matematiku metode vector fitting (VF) i njezine inačice temeljene na
+Seminar iz kolegija **Matematičko modeliranje i znanstveno računanje** izrađuju **Sara i Lovro**.
+Cilj je detaljno razumjeti matematiku metode vector fitting (VF) i njezine inačice temeljene na
 kvadraturi, implementirati metodu u Pythonu i primijeniti je na nov konkretan problem i skup
 podataka. Oboje trebaju razumjeti cijeli projekt.
 
@@ -14,8 +14,8 @@ Fitting for Discretized H2 Approximation* (SIAM J. Sci. Comput., 2015).
 Repozitorij sadrži pravila rada, istraživački plan i automatizirane provjere preuzete iz
 projekta nonneg-matrix-fact-clustering i prilagođene ovoj temi. Primjena, podaci, inačica
 metode, red aproksimacije, uzorkovanje i znanstveno Python okruženje još nisu odabrani.
-Implementacija i eksperimentalni rezultati još ne postoje. Otvoreni su i naziv kolegija, rok,
-formati predaje te pojedinačna zaduženja.
+Implementacija i eksperimentalni rezultati još ne postoje. Otvoreni su i rok, formati
+predaje te pojedinačna zaduženja.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),
