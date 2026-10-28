@@ -86,7 +86,7 @@ za predaju već postoje. Njihovo je trenutačno stanje zabilježeno u `docs/plan
    ponovno.
 8. Koristite predložak PR-a. Prije spajanja pribavite odobrenje drugog člana dvočlanog tima,
    osim za konkretne PR-ove s izričito zabilježenim korisničkim iznimkama u dodacima zapisa
-   ADR-0002; zasad je zabilježena samo iznimka za početni PR #1. Riješite nalaze i ponovno
+   ADR-0002; zasad su zabilježene iznimke za PR #1 i PR #2. Riješite nalaze i ponovno
    pokrenite samo provjere pogođene naknadnim izmjenama.
 
 ## 5. Završna provjera

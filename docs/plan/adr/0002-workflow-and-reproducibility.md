@@ -111,3 +111,13 @@ Dnevna provjera prepoznaje samo taj broj PR-a i tu granu kao iznimku od pregleda
 mora proći; izravni commitovi i druga spajanja bez pregleda ostaju nalazi. Stvaranje oznaka
 nalaza potrebnih objavljenoj dnevnoj provjeri dio je njezine aktivacije. Ova uputa ne odobrava
 nepovezane prijave problema, poruke ni promjene pristupa repozitoriju.
+
+## Dodatak 2026-10-28: odobreno spajanje naziva kolegija bez pregleda
+
+Nakon spajanja PR-a #1 Lovro je naveo naziv kolegija i izričito zatražio commit, push, PR i
+spajanje te promjene u `main` bez Sarina pregleda. Iznimka vrijedi samo za PR #2 s grane
+`codex/course-name`; ne bilježi Sarino odobrenje i ne mijenja pravilo pregleda budućih PR-ova.
+CI i ostale provjere moraju proći.
+
+Pravila, protokol, PR predložak i dnevna provjera bilježe tu konkretnu iznimku. Prethodna
+iznimka za PR #1 ostaje dio povijesti; drugi PR-ovi nisu izuzeti iz provjere odobrenja.

@@ -50,3 +50,10 @@ Opseg je prenesen u `AGENTS.md`, `README.md`, `docs/plan/PROJECT.md`, `docs/plan
 `docs/plan/METHODOLOGY.md` i `docs/research/LITERATURE.md`. Buduće odluke moraju zadržati
 zajedničko učenje cijelog projekta i povezati matematiku, kod i interpretaciju eksperimenata.
 Kada se utvrdi naziv kolegija, upisuje se u iste dokumente kao datirani dodatak ovog zapisa.
+
+## Dodatak 2026-10-28: naziv kolegija
+
+Nakon postavljanja tijeka rada Lovro je naveo da se kolegij zove Matematičko modeliranje i
+znanstveno računanje. Naziv je upisan u `README.md`, `AGENTS.md` i `docs/plan/PROJECT.md`.
+Time se ne mijenjaju opseg, materijali za predaju ni otvorene znanstvene odluke iz ovog zapisa;
+rok, formati predaje i kriteriji ocjenjivanja ostaju otvoreni.

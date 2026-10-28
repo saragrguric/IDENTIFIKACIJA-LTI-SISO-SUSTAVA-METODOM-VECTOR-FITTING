@@ -2,8 +2,8 @@
 
 ## Dogovoreni cilj
 
-Tema: **identifikacija LTI SISO sustava metodom vector fitting**. Kolegij: naziv još nije
-zabilježen. Tim: **Sara i Lovro**. Svaki član mora razumjeti cijeli projekt.
+Tema: **identifikacija LTI SISO sustava metodom vector fitting**. Kolegij:
+**Matematičko modeliranje i znanstveno računanje**. Tim: **Sara i Lovro**. Svaki član mora razumjeti cijeli projekt.
 
 Proučiti vector fitting (VF) za linearne vremenski nepromjenjive sustave s jednim ulazom i
 jednim izlazom uz rad Z. Drmača, S. Gugercina i C. Beattieja, *Quadrature-Based Vector Fitting
@@ -15,7 +15,8 @@ domena; istraživačka novost algoritma nije uvjet.
 
 Lovro je 2026-10-28 naveo da seminar ima ista pravila i strukturu kao projekt
 nonneg-matrix-fact-clustering, uz drugu temu i kolegij, da je priloženi rad jedini izvor i da
-ovaj put rade samo Sara i on. Vidjeti
+ovaj put rade samo Sara i on. Naziv kolegija naveo je isti dan, nakon postavljanja tijeka rada.
+Vidjeti
 [ADR-0001](adr/0001-seminar-scope-and-shared-understanding.md). Ne pretpostavljati da je Sara
 odobrila određeni skup podataka, inačicu metode ili pregled tijeka rada.
 
@@ -55,7 +56,7 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
 
 ## Još otvorene odluke
 
-- Naziv kolegija, format seminara i prezentacije, opseg i trajanje, kriteriji ocjenjivanja i rok.
+- Format seminara i prezentacije, opseg i trajanje, kriteriji ocjenjivanja i rok.
 - Konkretna primjena, istraživačko pitanje, sustav i skup podataka te uvjeti pristupa i daljnje
   distribucije; mogu li se vrijednosti prijenosne funkcije računati u proizvoljnim točkama ili
   postoje samo zadana mjerenja; postoji li referentni model za računanje globalne pogreške.

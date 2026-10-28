@@ -6,8 +6,8 @@ a ne uputa AI alatu.
 
 ## 1. Svrha i dogovoreni opseg
 
-Projekt je seminar na temu **identifikacije LTI SISO sustava metodom vector fitting**. Naziv
-kolegija još nije zabilježen u repozitoriju. Tim čine **Sara i Lovro**. Proučavamo vector
+Projekt je seminar iz kolegija **Matematičko modeliranje i znanstveno računanje** na temu
+**identifikacije LTI SISO sustava metodom vector fitting**. Tim čine **Sara i Lovro**. Proučavamo vector
 fitting (VF) i njegovu inačicu temeljenu na kvadraturi, detaljno objašnjavamo matematiku,
 implementiramo metodu u Pythonu i primjenjujemo je na nov konkretan problem i skup podataka.
 Dopušten je novi problem/skup podataka u području spomenutom u radu, a moguće je i novo
@@ -25,7 +25,7 @@ zadataka dogovorit ćemo kasnije. Pogledaj
 [ADR-0001](docs/plan/adr/0001-seminar-scope-and-shared-understanding.md).
 
 Primjena, podaci, inačica metode (VF, QuadVF ili druga), red aproksimacije, uzorkovanje,
-Python ovisnosti, formati predaje, rok, naziv kolegija i pojedinačna zaduženja **nisu odlučeni**.
+Python ovisnosti, formati predaje, rok i pojedinačna zaduženja **nisu odlučeni**.
 Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži
 postavljen tijek rada, bez implementacije metode.
 
@@ -87,14 +87,15 @@ postavljen tijek rada, bez implementacije metode.
   neke prekršaje otkriva naknadno. Iznimka vrijedi samo za točan par broja PR-a i grane koji
   korisnik izričito odobri; bilježi se kao datirani dodatak zapisa ADR-0002 i u
   `tools/daily_check.py`, a ne kao tuđe odobrenje. Lovro je 2026-10-28 izričito odobrio
-  spajanje bez Sarina pregleda samo za početni PR #1 s grane `codex/seminar-workflow`.
-  Ostali PR-ovi slijede redovno pravilo.
+  spajanje bez Sarina pregleda za početni PR #1 s grane `codex/seminar-workflow` i za upis
+  naziva kolegija u PR-u #2 s grane `codex/course-name`. To su iznimke samo za navedene parove
+  broja i grane; ostali PR-ovi slijede redovno pravilo.
 - AI alati rade commit/push, otvaraju PR-ove/issuee, objavljuju preglede/komentare ili šalju
   poruke samo uz korisnikovo ovlaštenje za tu radnju. Ovlaštenje ostaje valjano unutar
   dogovorenog opsega; ne traži ga ponovno za već odobrenu radnju. Lokalne promjene koje se mogu
   poništiti i provjere obavljaju se u opsegu zadatka. Poštuj aktualno ovlaštenje: samo početno
   lokalno postavljanje nije ovlastilo objavu, dok je kasnija Lovrova uputa od 2026-10-28
-  odobrila commit, push, otvaranje i spajanje PR-a #1.
+  odobrila commit, push, otvaranje i spajanje PR-ova #1 i #2.
 - Prije traženja odluke tima o otvorenom znanstvenom pitanju pripremi konkretan prijedlog.
   Rutinski ispravci i već dogovoren rad ne trebaju dodatni postupak odobravanja.
 - Paralelni agenti mogu dijeliti ovu radnu kopiju samo uz odvojene datoteke i jasno određenog
