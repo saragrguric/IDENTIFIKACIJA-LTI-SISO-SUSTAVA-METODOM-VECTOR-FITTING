@@ -41,6 +41,7 @@ BASE_LABELS = ("finding", "source:daily-check")
 # Entries are exact (PR number, head branch) pairs and are not human approvals.
 AUTHORIZED_REVIEW_EXCEPTIONS: frozenset[tuple[int, str]] = frozenset({
     (1, "codex/seminar-workflow"),
+    (2, "codex/course-name"),
 })
 
 

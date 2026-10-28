@@ -28,8 +28,8 @@
 <!-- Prije spajanja promjenu pregledava drugi član tima (Sara ili Lovro, ovisno o autoru).
      Zabilježite stvarni zajednički prolaz ako je održan i neriješena pitanja.
      Nemojte unaprijed upisivati ničije odobrenje ili razumijevanje. Konkretne korisnički
-     odobrene iznimke dokumentiraju se u dodacima zapisa ADR-0002; zabilježena je samo
-     iznimka za početni PR #1, a svi ostali PR-ovi slijede uobičajeno pravilo. -->
+     odobrene iznimke dokumentiraju se u dodacima zapisa ADR-0002; zabilježene su samo
+     iznimke za PR #1 i PR #2, a svi ostali PR-ovi slijede uobičajeno pravilo. -->
 
 - Član tima koji pregledava:
 - Pitanja / naknadni zadaci:

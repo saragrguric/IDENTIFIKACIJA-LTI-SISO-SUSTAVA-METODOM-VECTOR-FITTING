@@ -68,9 +68,9 @@ pregleda. Dnevna provjera ne može potvrditi da pregledavatelji razumiju matemat
 člana naučila gradivo ni da su rezultati znanstveno utemeljeni.
 
 Lovro je 2026-10-28 izričito odobrio spajanje bez Sarina pregleda za početni PR #1 iz
-`codex/seminar-workflow`. Dodatak zapisa ADR-0002 bilježi tu uputu, a
-`AUTHORIZED_REVIEW_EXCEPTIONS` u `tools/daily_check.py` prepoznaje samo taj točan par broja i
-grane, bez tvrdnje da je postojalo ljudsko odobrenje. Iznimka ne obuhvaća druge PR-ove, pad
+`codex/seminar-workflow` i za upis naziva kolegija u PR-u #2 iz `codex/course-name`. Dodaci
+zapisa ADR-0002 bilježe te upute, a `AUTHORIZED_REVIEW_EXCEPTIONS` u `tools/daily_check.py`
+prepoznaje samo ta dva točna para broja i grane, bez tvrdnje da je postojalo ljudsko odobrenje. Iznimka ne obuhvaća druge PR-ove, pad
 CI-ja ni izravne commitove. Iznimke referentnog projekta ne vrijede ovdje.
 
 Kada otkrije probleme, dnevna provjera održava jednu prijavu s naslovom
