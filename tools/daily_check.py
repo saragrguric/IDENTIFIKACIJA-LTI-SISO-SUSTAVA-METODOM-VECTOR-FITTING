@@ -42,6 +42,7 @@ BASE_LABELS = ("finding", "source:daily-check")
 AUTHORIZED_REVIEW_EXCEPTIONS: frozenset[tuple[int, str]] = frozenset({
     (1, "codex/seminar-workflow"),
     (2, "codex/course-name"),
+    (3, "lovro/ai-attribution"),
 })
 
 

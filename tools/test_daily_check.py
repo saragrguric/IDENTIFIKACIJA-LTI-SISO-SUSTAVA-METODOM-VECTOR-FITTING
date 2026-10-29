@@ -83,7 +83,9 @@ class FindingsTests(unittest.TestCase):
 
     def test_only_the_recorded_prs_are_exempt_from_review(self) -> None:
         # Each exception needs a dated ADR-0002 addendum; update this test with it.
-        recorded = frozenset({(1, "codex/seminar-workflow"), (2, "codex/course-name")})
+        recorded = frozenset({
+            (1, "codex/seminar-workflow"), (2, "codex/course-name"), (3, "lovro/ai-attribution"),
+        })
         self.assertEqual(daily.AUTHORIZED_REVIEW_EXCEPTIONS, recorded)
         for number, branch in sorted(recorded):
             with self.subTest(number=number, branch=branch):

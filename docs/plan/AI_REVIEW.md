@@ -1,8 +1,8 @@
 # AI pregled, nalazi i dnevna provjera
 
 Ovaj postupak osigurava da Sara i Lovro mogu pratiti probleme i primopredaje. Korijenski
-`AGENTS.md` i `docs/CHANGE_PROTOCOL.md` ostaju mjerodavna pravila; AI alat suradnik je, a ne
-ljudski pregledavatelj niti dokaz da tim razumije neki rezultat.
+`AGENTS.md` i `docs/CHANGE_PROTOCOL.md` ostaju mjerodavna pravila; AI je alat osobe koja ga
+koristi, a ne autor, ljudski pregledavatelj niti dokaz da tim razumije neki rezultat.
 
 ## Nalazi kao zajednička memorija
 
@@ -68,9 +68,10 @@ pregleda. Dnevna provjera ne može potvrditi da pregledavatelji razumiju matemat
 člana naučila gradivo ni da su rezultati znanstveno utemeljeni.
 
 Lovro je 2026-10-28 izričito odobrio spajanje bez Sarina pregleda za početni PR #1 iz
-`codex/seminar-workflow` i za upis naziva kolegija u PR-u #2 iz `codex/course-name`. Dodaci
-zapisa ADR-0002 bilježe te upute, a `AUTHORIZED_REVIEW_EXCEPTIONS` u `tools/daily_check.py`
-prepoznaje samo ta dva točna para broja i grane, bez tvrdnje da je postojalo ljudsko odobrenje. Iznimka ne obuhvaća druge PR-ove, pad
+`codex/seminar-workflow` i za upis naziva kolegija u PR-u #2 iz `codex/course-name`, a
+2026-10-29 za pravilo autorstva u PR-u #3 iz `lovro/ai-attribution`. Dodaci zapisa ADR-0002
+bilježe te upute, a `AUTHORIZED_REVIEW_EXCEPTIONS` u `tools/daily_check.py` prepoznaje samo te
+točne parove broja i grane, bez tvrdnje da je postojalo ljudsko odobrenje. Iznimka ne obuhvaća druge PR-ove, pad
 CI-ja ni izravne commitove. Iznimke referentnog projekta ne vrijede ovdje.
 
 Kada otkrije probleme, dnevna provjera održava jednu prijavu s naslovom

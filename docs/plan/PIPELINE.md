@@ -39,7 +39,7 @@ tools/
     ci.yml
     daily-check.yml
 .claude/
-  settings.json                      konfiguracija Claude Stop hooka
+  settings.json                      Claude Stop hook i isključeno AI pripisivanje (ADR-0003)
   hooks/check_before_stop.py         omotač oko zajedničke završne provjere
 .codex/
   hooks.json                         konfiguracija Codex Stop hooka; povjerenje je lokalno

@@ -21,3 +21,4 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Format zapisa odluka](plan/adr/README.md).
 - [ADR-0001](plan/adr/0001-seminar-scope-and-shared-understanding.md): opseg i razumijevanje cijelog projekta.
 - [ADR-0002](plan/adr/0002-workflow-and-reproducibility.md): suradnja, tijek rada i ponovljivost rezultata.
+- [ADR-0003](plan/adr/0003-human-authorship-of-ai-assisted-work.md): autorstvo rada uz AI alat.
