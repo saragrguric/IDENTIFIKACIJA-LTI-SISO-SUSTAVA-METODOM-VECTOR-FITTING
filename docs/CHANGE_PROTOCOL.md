@@ -65,8 +65,8 @@ za predaju već postoje. Njihovo je trenutačno stanje zabilježeno u `docs/plan
    umjesto da ga tumačite kao prazan rezultat.
 2. Pregledajte radno stablo prije promjene grane. Sačuvajte tuđi rad; nikad ga ne odbacujte da
    biste dobili čisto stablo. Ažurirajte osnovu samo kada je to sigurno, a zatim koristite jednu
-   granu za jedan zadatak. Ljudske grane koriste `sara/<topic>` i `lovro/<topic>`; grane koje
-   stvara AI koriste `codex/<topic>`.
+   granu za jedan zadatak. Grane nose prefiks osobe koja vodi rad, `sara/<topic>` ili
+   `lovro/<topic>`, i kada se koristi AI alat (ADR-0003).
    Nikad ne radite commit izravno na `main`, prisilni push niti prepisujte tuđu granu.
 3. Navedite konkretan ishod, pogođene retke odjeljka 3 i način provjere. Za otvorene znanstvene
    izbore, primjerice skup podataka, inačicu metode, uzorkovanje ili evaluaciju, pripremite
@@ -80,13 +80,14 @@ za predaju već postoje. Njihovo je trenutačno stanje zabilježeno u `docs/plan
 6. Pokrenite relevantne provjere, pregledajte razlike i zabilježite točne ishode. Izričito
    označite nedostupne, preskočene i nepokrenute provjere.
 7. Pripremite male opisne commitove, primjerice `docs: objasni premještanje polova u VF-u` ili
-   `vf: provjeri konjugiranu simetriju uzoraka`. AI radi commit, push, otvara PR-ove te
-   objavljuje prijave, preglede ili komentare samo uz izričito odobrenje koje u trenutačnoj
-   sesiji pokriva tu radnju. Postojeće odobrenje vrijedi unutar navedenog opsega; ne tražite ga
+   `vf: provjeri konjugiranu simetriju uzoraka`. Autor commita i PR-a isključivo je osoba koja
+   vodi rad; bez `Co-Authored-By` AI alata i AI potpisa (ADR-0003). AI radi commit, push,
+   otvara PR-ove te objavljuje prijave, preglede ili komentare samo uz izričito odobrenje koje
+   u trenutačnoj sesiji pokriva tu radnju. Postojeće odobrenje vrijedi unutar navedenog opsega; ne tražite ga
    ponovno.
 8. Koristite predložak PR-a. Prije spajanja pribavite odobrenje drugog člana dvočlanog tima,
    osim za konkretne PR-ove s izričito zabilježenim korisničkim iznimkama u dodacima zapisa
-   ADR-0002; zasad su zabilježene iznimke za PR #1 i PR #2. Riješite nalaze i ponovno
+   ADR-0002; zasad su zabilježene iznimke za PR #1, PR #2 i PR #3. Riješite nalaze i ponovno
    pokrenite samo provjere pogođene naknadnim izmjenama.
 
 ## 5. Završna provjera

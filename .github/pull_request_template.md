@@ -1,5 +1,6 @@
 ## Što se mijenja i zašto
 
+<!-- Autor PR-a je osoba koja je vodila rad (ADR-0003); ne dodajte AI oznake autorstva ni potpise. -->
 <!-- Navedite problem i promjenu koja ga rješava. Povežite zadatak i relevantni ADR ili nalaz. -->
 
 ## Utjecaj na matematiku i eksperimente
@@ -29,7 +30,7 @@
      Zabilježite stvarni zajednički prolaz ako je održan i neriješena pitanja.
      Nemojte unaprijed upisivati ničije odobrenje ili razumijevanje. Konkretne korisnički
      odobrene iznimke dokumentiraju se u dodacima zapisa ADR-0002; zabilježene su samo
-     iznimke za PR #1 i PR #2, a svi ostali PR-ovi slijede uobičajeno pravilo. -->
+     iznimke za PR #1, PR #2 i PR #3, a svi ostali PR-ovi slijede uobičajeno pravilo. -->
 
 - Član tima koji pregledava:
 - Pitanja / naknadni zadaci:

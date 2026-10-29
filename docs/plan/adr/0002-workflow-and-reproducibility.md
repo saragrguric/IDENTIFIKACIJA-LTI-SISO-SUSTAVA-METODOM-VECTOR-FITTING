@@ -121,3 +121,16 @@ CI i ostale provjere moraju proći.
 
 Pravila, protokol, PR predložak i dnevna provjera bilježe tu konkretnu iznimku. Prethodna
 iznimka za PR #1 ostaje dio povijesti; drugi PR-ovi nisu izuzeti iz provjere odobrenja.
+
+## Dodatak 2026-10-29: autorstvo i prefiks grana
+
+Prefiks `codex/<topic>` za grane koje stvara AI iz točke 1 zamijenjen je zapisom
+[ADR-0003](0003-human-authorship-of-ai-assisted-work.md): grane nose prefiks osobe koja vodi
+rad, a autor commita i PR-a isključivo je ta osoba. Ostale točke ove odluke ne mijenjaju se.
+
+## Dodatak 2026-10-29: odobreno spajanje pravila autorstva bez pregleda
+
+Lovro je u razgovoru izričito zatražio commit, push, PR i spajanje pravila autorstva iz
+ADR-0003 u `main` bez Sarina pregleda. Iznimka vrijedi samo za PR #3 s grane
+`lovro/ai-attribution`; ne bilježi Sarino odobrenje i ne mijenja pravilo pregleda budućih
+PR-ova. CI i ostale provjere moraju proći.

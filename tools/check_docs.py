@@ -28,6 +28,8 @@ FILE_EXTENSIONS = {
     "md", "npy", "npz", "pdf", "png", "py", "sh", "svg", "tex", "toml",
     "tsv", "txt", "yaml", "yml",
 }
+# Branch names in inline code look like paths; current and historical prefixes.
+BRANCH_PREFIXES = ("sara/", "lovro/", "codex/")
 ADR_DIR = "docs/plan/adr"
 ADR_SECTIONS = ("Kontekst", "Odluka", "Obrazloženje", "Odbačene mogućnosti", "Posljedice")
 LINK_RE = re.compile(r'!?\[[^\]\n]*\]\(\s*(<[^>\n]+>|[^\s)]+)(?:\s+"[^"\n]*")?\s*\)')
@@ -148,7 +150,7 @@ def extract_mentions(repo: Repo, path: str) -> list[Mention]:
             token = re.sub(r":\d+(?:-\d+)?$", "", match.group(1))
             if not re.fullmatch(r"[A-Za-z0-9_./-]+", token) or set(token) <= {".", "/"}:
                 continue
-            if token.startswith("codex/"):
+            if token.startswith(BRANCH_PREFIXES):
                 continue
             name = token.rsplit("/", 1)[-1]
             hidden_file = len(name) > 1 and name.startswith(".") and name[1].isalpha()

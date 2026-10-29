@@ -75,8 +75,15 @@ postavljen tijek rada, bez implementacije metode.
 - Sva su područja repozitorija zajednička. Uzmi malen, jasno omeđen zadatak i zabilježi njegove
   ovisnosti u [popisu zadataka](docs/plan/TASKS.md). Svaki član treba moći objasniti cijeli
   postupak; bilježi stvarne zajedničke prolaze, pitanja i nastavke rada.
-- Jedan zadatak, jedna grana. Ljudske grane: `sara/<topic>`, `lovro/<topic>`; zadani AI
-  prefiks: `codex/<topic>`. Prefiks označava suradnika, ne isključivo vlasništvo teme.
+- Jedan zadatak, jedna grana. Grane nose prefiks osobe koja vodi rad, i kada koristi AI alat:
+  `sara/<topic>` ili `lovro/<topic>`. Prefiks označava odgovornu osobu, ne isključivo
+  vlasništvo teme. `codex/` ostaje samo u povijesnim zapisima PR-ova #1 i #2.
+- **Autorstvo.** AI je alat osobe koja ga koristi. Autor svakog commita, PR-a, retka koda i
+  teksta isključivo je osoba koja zadaje upute, s vlastitim Git identitetom. AI alati ne dodaju
+  `Co-Authored-By` ni druge oznake autorstva, potpise poput „Generated with …” ni poveznice na
+  sesiju u commitove, PR-ove, komentare koda ili dokumente. Autor pregledava sadržaj prije
+  commita i odgovara za njega. Pogledaj
+  [ADR-0003](docs/plan/adr/0003-human-authorship-of-ai-assisted-work.md).
 - Na početku provjeri otvorene nalaze ako postoji pristup GitHubu. Ako ga nema, to navedi i
   nastavi neovisan lokalni rad; ne tvrdi da je popis pregledan.
 - Male opisne commit poruke: `dio: što je promijenjeno`, primjerice
@@ -88,8 +95,9 @@ postavljen tijek rada, bez implementacije metode.
   korisnik izričito odobri; bilježi se kao datirani dodatak zapisa ADR-0002 i u
   `tools/daily_check.py`, a ne kao tuđe odobrenje. Lovro je 2026-10-28 izričito odobrio
   spajanje bez Sarina pregleda za početni PR #1 s grane `codex/seminar-workflow` i za upis
-  naziva kolegija u PR-u #2 s grane `codex/course-name`. To su iznimke samo za navedene parove
-  broja i grane; ostali PR-ovi slijede redovno pravilo.
+  naziva kolegija u PR-u #2 s grane `codex/course-name`, a 2026-10-29 za pravilo autorstva u
+  PR-u #3 s grane `lovro/ai-attribution`. To su iznimke samo za navedene parove broja i grane;
+  ostali PR-ovi slijede redovno pravilo.
 - AI alati rade commit/push, otvaraju PR-ove/issuee, objavljuju preglede/komentare ili šalju
   poruke samo uz korisnikovo ovlaštenje za tu radnju. Ovlaštenje ostaje valjano unutar
   dogovorenog opsega; ne traži ga ponovno za već odobrenu radnju. Lokalne promjene koje se mogu
