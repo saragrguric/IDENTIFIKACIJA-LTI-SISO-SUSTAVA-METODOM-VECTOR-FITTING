@@ -57,3 +57,11 @@ Nakon postavljanja tijeka rada Lovro je naveo da se kolegij zove Matematičko mo
 znanstveno računanje. Naziv je upisan u `README.md`, `AGENTS.md` i `docs/plan/PROJECT.md`.
 Time se ne mijenjaju opseg, materijali za predaju ni otvorene znanstvene odluke iz ovog zapisa;
 rok, formati predaje i kriteriji ocjenjivanja ostaju otvoreni.
+
+## Dodatak 2026-11-01: uloga AI alata u izradi
+
+Lovro je naveo da je na seminaru uporaba AI alata dopuštena u svim dijelovima rada i da je
+zadatak tima rad na kraju obraniti. Zato kod, testove i nacrte piše AI alat, a članovi tima vode
+rad, pregledavaju ga i moraju ga moći objasniti. Točka 4 ove odluke ostaje: oba člana razumiju
+cijeli projekt, a generirani sadržaj nije dokaz razumijevanja. Autorstvo slijedi ADR-0003.
+Ovaj zapis ne bilježi Sarino odobrenje, a dopuštenje kolegija navodi se kako ga je prenio Lovro.
