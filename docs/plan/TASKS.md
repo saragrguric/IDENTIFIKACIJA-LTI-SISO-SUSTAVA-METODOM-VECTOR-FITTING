@@ -1,8 +1,8 @@
 # Zadaci i ključne točke
 
 Status se temelji na dokazima: plan nije implementacija, uspješne provjere alata nisu numerički
-rezultati, a AI sažetak nije ljudsko odobrenje. Pojedinačna zaduženja još nisu potvrđena;
-predloženi način podjele opisan je u nastavku. Svi su zadaci zajednički.
+rezultati, a AI sažetak nije ljudsko odobrenje. Podjela tema između članova opisana je u
+nastavku i vrijedi nakon Sarina odobrenja PR-a #5. Svi su zadaci zajednički.
 
 ## Pregled
 
@@ -20,10 +20,11 @@ predloženi način podjele opisan je u nastavku. Svi su zadaci zajednički.
 Rok projekta nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski raspored ili podjela
 pojedinih područja među članovima.
 
-## Predložena podjela rada
+## Podjela rada
 
-Prijedlog od 2026-11-01: Lovro ga je prihvatio, a Sarina potvrda i izbor tko je osoba A, a tko
-osoba B još nisu zabilježeni. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001).
+Prijedlog od 2026-11-01 Lovro je prihvatio. Na zajedničkom sastanku 2026-11-03 Lovro je naveo
+raspodjelu uloga: osoba A je Lovro, a osoba B Sara. Sarina potvrda podjele je njezino odobrenje
+PR-a #5; ovaj zapis ga ne zamjenjuje. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001).
 Jedan član provjerava izvod teme i testove prema tom izvodu, a drugi vodi AI alat pri
 implementaciji, pregledava kod i autor je commita (ADR-0003). Testovi se temelje na izvodu i
 analitičkim primjerima, a ne na kodu koji provjeravaju. Nositelj teme nije jedina osoba koja je
@@ -31,10 +32,10 @@ razumije. Rad nije dovršen dok ga oba člana ne mogu objasniti i obraniti.
 
 | Tema | Dio rada L1 | Provjera izvoda i testova | Vodi i pregledava kod |
 |---|---|---|---|
-| Problem, Levyjeva linearizacija, SK iteracija, baricentrični prikaz | §1, §2.1 | A | B |
-| Premještanje polova, reziduali, zrcaljenje | §2.2, §4.1 | B | A |
-| $\mathcal{H}_2$ norma, kvadratura, QuadVF | §3.1–§3.3 | A | B |
-| Konvergencija, zaustavljanje, uvjetovanost | §4.2, §4.3 | B | A |
+| Problem, Levyjeva linearizacija, SK iteracija, baricentrični prikaz | §1, §2.1 | Lovro (A) | Sara (B) |
+| Premještanje polova, reziduali, zrcaljenje | §2.2, §4.1 | Sara (B) | Lovro (A) |
+| $\mathcal{H}_2$ norma, kvadratura, QuadVF | §3.1–§3.3 | Lovro (A) | Sara (B) |
+| Konvergencija, zaustavljanje, uvjetovanost | §4.2, §4.3 | Sara (B) | Lovro (A) |
 
 Implementacija teme ovisi o odlukama iz T3; inačica metode ovom podjelom nije odabrana. Prije
 izvoda zajedno ručno proći primjer reda 1 ili 2. U T2 svatko donosi kandidata, a odluke u T3

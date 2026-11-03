@@ -14,8 +14,8 @@ Fitting for Discretized H2 Approximation* (SIAM J. Sci. Comput., 2015).
 Repozitorij sadrži pravila rada, istraživački plan i automatizirane provjere preuzete iz
 projekta nonneg-matrix-fact-clustering i prilagođene ovoj temi. Primjena, podaci, inačica
 metode, red aproksimacije, uzorkovanje i znanstveno Python okruženje još nisu odabrani.
-Implementacija i eksperimentalni rezultati još ne postoje. Otvoreni su i rok, formati
-predaje te pojedinačna zaduženja.
+Implementacija i eksperimentalni rezultati još ne postoje. Otvoreni su i rok i formati
+predaje. Podjela tema između članova zapisana je u [popisu zadataka](docs/plan/TASKS.md).
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),

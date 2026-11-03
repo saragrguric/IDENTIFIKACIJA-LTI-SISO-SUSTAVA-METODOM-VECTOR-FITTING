@@ -65,3 +65,11 @@ zadatak tima rad na kraju obraniti. Zato kod, testove i nacrte piše AI alat, a 
 rad, pregledavaju ga i moraju ga moći objasniti. Točka 4 ove odluke ostaje: oba člana razumiju
 cijeli projekt, a generirani sadržaj nije dokaz razumijevanja. Autorstvo slijedi ADR-0003.
 Ovaj zapis ne bilježi Sarino odobrenje, a dopuštenje kolegija navodi se kako ga je prenio Lovro.
+
+## Dodatak 2026-11-03: podjela tema
+
+Točka 4 ostavila je podjelu zadataka za kasnije. Na zajedničkom sastanku 2026-11-03 Lovro je
+naveo raspodjelu uloga iz popisa zadataka: osoba A je Lovro, a osoba B Sara. Podjela određuje
+tko u pojedinoj temi provjerava izvod i testove, a tko vodi AI alat pri implementaciji i
+pregledava kod. Ne mijenja točku 4: oba člana razumiju cijeli projekt. Vrijedi nakon Sarina
+odobrenja PR-a #5 kojim je upisana; ovaj zapis to odobrenje ne zamjenjuje.

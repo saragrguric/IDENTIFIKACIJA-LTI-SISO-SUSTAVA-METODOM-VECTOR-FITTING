@@ -20,12 +20,12 @@ Radove koje on citira nemamo; oni nisu izvori projekta dok ih tim ne doda. Pogle
 
 Predajemo pisani seminar, prezentaciju, Python kod i eksperimentalne rezultate. Oboje moraju
 razumjeti cijeli projekt: matematiku, algoritam, podatke, kod i rezultate. Ne dodjeljuj
-jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Podjelu
-zadataka dogovorit ćemo kasnije. Pogledaj
+jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Podjela tema
+između članova zapisana je u [popisu zadataka](docs/plan/TASKS.md). Pogledaj
 [ADR-0001](docs/plan/adr/0001-seminar-scope-and-shared-understanding.md).
 
 Primjena, podaci, inačica metode (VF, QuadVF ili druga), red aproksimacije, uzorkovanje,
-Python ovisnosti, formati predaje, rok i pojedinačna zaduženja **nisu odlučeni**.
+Python ovisnosti, formati predaje i rok **nisu odlučeni**.
 Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži
 postavljen tijek rada, bez implementacije metode.
 

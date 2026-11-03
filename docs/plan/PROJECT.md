@@ -33,8 +33,8 @@ odobrila određeni skup podataka, inačicu metode ili pregled tijeka rada.
 
 Zadatak može imati privremenog nositelja i drugu osobu koja ga pregledava. Time se ne smije
 stvoriti matematički stručnjak koji jedini razumije izvod ili programerski stručnjak koji
-jedini zna pokrenuti projekt. Pojedinačna zaduženja i način izmjene uloga dogovorit će se
-kasnije.
+jedini zna pokrenuti projekt. Podjela tema i izmjena uloga zapisane su u
+[popisu zadataka](TASKS.md).
 
 Na ključnim točkama zajednički proći matematiku, algoritam, podatke, kod i interpretaciju.
 Oba člana trebaju moći objasniti:
@@ -66,8 +66,8 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
   pravi oblik modela.
 - Znanstvene Python ovisnosti, podržana verzija, okruženje i referentna bibliotečna implementacija.
 - Prikladna referentna metoda, metrike domene i opseg eksperimenata.
-- Pojedinačna zaduženja i potvrda GitHub identiteta: repozitorij je pod računom `saragrguric`,
-  a Lovro radi kao `LRazum`.
+- Potvrda GitHub identiteta: repozitorij je pod računom `saragrguric`, a Lovro radi kao
+  `LRazum`.
 - Dostupnost zaštite grana na GitHubu te povjerenje i aktivacija hookova na pojedinom računalu.
 
 Za važne izbore pripremiti argumente i prijedlog, zatim dogovor zabilježiti u ADR-u i ažurirati
