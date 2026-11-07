@@ -3,8 +3,8 @@
 Tema je odabrana u [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md), a podjela na
 niti predložena je u [ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md). Ova stranica je
 zajednički plan; detaljni koraci za svaku osobu nalaze se u osobnim planovima. Sadržaj planova je
-prijedlog koji je napisao Lovro uz pomoć AI alata. Sara ga potvrđuje ili mijenja na sastanku Z0
-ili u pregledu PR-a. Rok nije poznat, pa faze nemaju datume.
+prijedlog koji je napisao Lovro uz pomoć AI alata. PR #6 spojen je bez Sarina pregleda (ADR-0002,
+dodatak 2026-11-07), pa Sara planove potvrđuje ili mijenja na sastanku Z0 ili novim PR-om. Rok nije poznat, pa faze nemaju datume.
 
 ## Tko je tko
 

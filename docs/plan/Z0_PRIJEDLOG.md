@@ -28,8 +28,9 @@ rezultati projekta; ovdje služe samo kao polazište.
 - Sara potvrđuje [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md),
   [ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md) i [plan B](podjela/b-sara.md) ili
   traži izmjene. Lovro potvrđuje [plan A](podjela/a-lovro.md).
-- PR #5 ostaje otvoren dok se ne odluči o nitima. Ako niti prođu, njegova tablica zamijenjena je
-  poveznicom na podjelu rada, a ostali zapisi iz njega ostaju.
+- PR-ovi #5 i #6 spojeni su bez Sarina pregleda (ADR-0002, dodatak 2026-11-07). Sara potvrđuje
+  njihov sadržaj ovdje. Ako niti ne prođu, novi zapis zamjenjuje ADR-0005 i vraća podjelu po
+  temama iz dodatka ADR-0001 od 2026-11-03.
 - Sve izmjene sa sastanka unose se u jedan PR, koji pregledava drugi član.
 
 ## 2. Zajednička sučelja

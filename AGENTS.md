@@ -98,8 +98,10 @@ odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metod
   `tools/daily_check.py`, a ne kao tuđe odobrenje. Lovro je 2026-10-28 izričito odobrio
   spajanje bez Sarina pregleda za početni PR #1 s grane `codex/seminar-workflow` i za upis
   naziva kolegija u PR-u #2 s grane `codex/course-name`, a 2026-10-29 za pravilo autorstva u
-  PR-u #3 s grane `lovro/ai-attribution`. To su iznimke samo za navedene parove broja i grane;
-  ostali PR-ovi slijede redovno pravilo.
+  PR-u #3 s grane `lovro/ai-attribution`. Lovro je 2026-11-07 izričito odobrio spajanje bez
+  Sarina pregleda za izbor teme i podjelu na niti u PR-u #6 s grane `lovro/tema-i-podjela` i za
+  podjelu rada u PR-u #5 s grane `lovro/podjela-zadataka`, čije commitove PR #6 sadrži. To su
+  iznimke samo za navedene parove broja i grane; ostali PR-ovi slijede redovno pravilo.
 - AI alati rade commit/push, otvaraju PR-ove/issuee, objavljuju preglede/komentare ili šalju
   poruke samo uz korisnikovo ovlaštenje za tu radnju. Ovlaštenje ostaje valjano unutar
   dogovorenog opsega; ne traži ga ponovno za već odobrenu radnju. Lokalne promjene koje se mogu

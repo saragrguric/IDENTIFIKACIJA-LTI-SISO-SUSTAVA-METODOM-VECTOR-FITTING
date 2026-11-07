@@ -26,8 +26,9 @@ Prijedlog od 2026-11-01 Lovro je prihvatio, a na sastanku 2026-11-03 naveo je ul
 Lovro, a osoba B Sara. Nakon izbora teme rad je 2026-11-07 predloženo podijeliti na dvije niti od
 matematike do rezultata, uz međusobni pregled
 ([ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md)). Niti, sučelja, faze i zadaci
-nalaze se u [podjeli rada](PODJELA.md), a koraci u osobnim planovima. Sara potvrđuje podjelu na
-sastanku Z0 ili odobrenjem PR-a koji je uvodi; ovaj zapis to ne zamjenjuje.
+nalaze se u [podjeli rada](PODJELA.md), a koraci u osobnim planovima. PR-ovi #5 i #6 spojeni su
+bez Sarina pregleda (ADR-0002, dodatak 2026-11-07), pa Sara podjelu potvrđuje na sastanku Z0;
+ovaj zapis to ne zamjenjuje.
 
 Načela ostaju ista. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001), a autor commita
 je član koji vodi rad (ADR-0003). Testovi se temelje na izvodu i analitičkim primjerima, a ne na

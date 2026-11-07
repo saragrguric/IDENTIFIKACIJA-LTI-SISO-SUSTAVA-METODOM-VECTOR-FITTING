@@ -15,8 +15,9 @@ Sara je za temu tkiva napravila probni pokus vlastitim kodom na krvi i mišiću 
 dokumentu „Prijedlog teme projekta: Debyejevi modeli ljudskih tkiva”. Dokument, kod i rezultati
 nisu u repozitoriju, pa njihovi brojevi nisu rezultati projekta. Lovro je 2026-11-07 prenio
 Sarinu poruku u kojoj temu ocjenjuje dobrom, uz uvjet da se tablica parametara može nabaviti, i
-naveo da se oboje slažu s temom. Sara zapis potvrđuje odobrenjem PR-a koji ga uvodi ili traži
-izmjenu.
+naveo da se oboje slažu s temom. PR #6, koji uvodi ovaj zapis, spojen je bez Sarina pregleda
+(ADR-0002, dodatak 2026-11-07). Sara zapis potvrđuje na sastanku Z0 ili traži izmjenu novim
+PR-om.
 
 Isti je dan provjerena tablica parametara na stranici WebNIR (CNR-IFAC). Ona prenosi izvješće
 C. Gabriel i S. Gabriel, *Compilation of the dielectric properties of body tissues at RF and

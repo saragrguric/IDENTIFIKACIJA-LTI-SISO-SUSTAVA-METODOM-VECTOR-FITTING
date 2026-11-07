@@ -73,3 +73,11 @@ naveo raspodjelu uloga iz popisa zadataka: osoba A je Lovro, a osoba B Sara. Pod
 tko u pojedinoj temi provjerava izvod i testove, a tko vodi AI alat pri implementaciji i
 pregledava kod. Ne mijenja točku 4: oba člana razumiju cijeli projekt. Vrijedi nakon Sarina
 odobrenja PR-a #5 kojim je upisana; ovaj zapis to odobrenje ne zamjenjuje.
+
+## Dodatak 2026-11-07: podjela tema zamijenjena prijedlogom niti
+
+Podjela tema iz dodatka od 2026-11-03 spojena je u `main` u sklopu PR-a #6 bez Sarina odobrenja
+(ADR-0002, dodatak 2026-11-07). Nakon izbora teme
+([ADR-0004](0004-choose-debye-models-of-human-tissues.md)) zamjenjuje je prijedlog podjele na
+dvije niti iz [ADR-0005](0005-divide-work-into-end-to-end-threads.md), uz iste uloge: osoba A je
+Lovro, a osoba B Sara. Sara podjelu potvrđuje na sastanku Z0. Točka 4 se ne mijenja.
