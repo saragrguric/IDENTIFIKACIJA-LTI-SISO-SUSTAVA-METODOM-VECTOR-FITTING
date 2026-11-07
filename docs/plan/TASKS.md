@@ -1,8 +1,8 @@
 # Zadaci i ključne točke
 
 Status se temelji na dokazima: plan nije implementacija, uspješne provjere alata nisu numerički
-rezultati, a AI sažetak nije ljudsko odobrenje. Podjela tema između članova opisana je u
-nastavku i vrijedi nakon Sarina odobrenja PR-a #5. Svi su zadaci zajednički.
+rezultati, a AI sažetak nije ljudsko odobrenje. Predložena podjela na niti opisana je u
+[podjeli rada](PODJELA.md); Sara je potvrđuje na sastanku Z0. Svi su zadaci zajednički.
 
 ## Pregled
 
@@ -10,8 +10,8 @@ nastavku i vrijedi nakon Sarina odobrenja PR-a #5. Svi su zadaci zajednički.
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Spremno za početak |
-| T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Otvoreno; može teći usporedno s T1 |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Otvoreno |
+| T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode i mjere u ADR-0004; ostatak u Z2 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Odgođeno do dogovora tima o implementaciji |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
@@ -22,26 +22,22 @@ pojedinih područja među članovima.
 
 ## Podjela rada
 
-Prijedlog od 2026-11-01 Lovro je prihvatio. Na zajedničkom sastanku 2026-11-03 Lovro je naveo
-raspodjelu uloga: osoba A je Lovro, a osoba B Sara. Sarina potvrda podjele je njezino odobrenje
-PR-a #5; ovaj zapis ga ne zamjenjuje. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001).
-Jedan član provjerava izvod teme i testove prema tom izvodu, a drugi vodi AI alat pri
-implementaciji, pregledava kod i autor je commita (ADR-0003). Testovi se temelje na izvodu i
-analitičkim primjerima, a ne na kodu koji provjeravaju. Nositelj teme nije jedina osoba koja je
-razumije. Rad nije dovršen dok ga oba člana ne mogu objasniti i obraniti.
+Prijedlog od 2026-11-01 Lovro je prihvatio, a na sastanku 2026-11-03 naveo je uloge: osoba A je
+Lovro, a osoba B Sara. Nakon izbora teme rad je 2026-11-07 predloženo podijeliti na dvije niti od
+matematike do rezultata, uz međusobni pregled
+([ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md)). Niti, sučelja, faze i zadaci
+nalaze se u [podjeli rada](PODJELA.md), a koraci u osobnim planovima. Sara potvrđuje podjelu na
+sastanku Z0 ili odobrenjem PR-a koji je uvodi; ovaj zapis to ne zamjenjuje.
 
-| Tema | Dio rada L1 | Provjera izvoda i testova | Vodi i pregledava kod |
-|---|---|---|---|
-| Problem, Levyjeva linearizacija, SK iteracija, baricentrični prikaz | §1, §2.1 | Lovro (A) | Sara (B) |
-| Premještanje polova, reziduali, zrcaljenje | §2.2, §4.1 | Sara (B) | Lovro (A) |
-| $\mathcal{H}_2$ norma, kvadratura, QuadVF | §3.1–§3.3 | Lovro (A) | Sara (B) |
-| Konvergencija, zaustavljanje, uvjetovanost | §4.2, §4.3 | Sara (B) | Lovro (A) |
+Načela ostaju ista. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001), a autor commita
+je član koji vodi rad (ADR-0003). Testovi se temelje na izvodu i analitičkim primjerima, a ne na
+kodu koji provjeravaju. Nositelj niti nije jedina osoba koja je razumije: recenzent neovisno
+provjerava izvode i reproducira eksperimente. Rad nije dovršen dok ga oba člana ne mogu objasniti
+i obraniti.
 
-Implementacija teme ovisi o odlukama iz T3; inačica metode ovom podjelom nije odabrana. Prije
-izvoda zajedno ručno proći primjer reda 1 ili 2. U T2 svatko donosi kandidata, a odluke u T3
-donose se zajedno. U T5 svatko reproducira tuđe pokretanje iz zapisa. U T6 nacrt poglavlja vodi
-član koji je provjeravao izvod, a drugi ga provjerava prema kodu; na prezentaciji svatko izlaže
-dio koji nije vodio. T7 je zajednički.
+Zadaci T0–T7 ostaju pregled ovisnosti. Zadaci iz podjele rada razrađuju ih: T1 obuhvaća A3, A5 i
+B2; T3 obuhvaća Z2; T4 obuhvaća A1, A2, A4, A6, B1, B3 i B4; T5 obuhvaća A7, B5, B6 i B7; T6
+obuhvaća A8, A10, B8, B10 i Z5; T7 obuhvaća Z4 i Z6.
 
 ## T0: postavljanje tijeka rada
 
@@ -92,7 +88,16 @@ frekvencijskog odziva (mjerenje, simulacija ili model), mogućnosti računanja v
 proizvoljnim točkama, postojanju referentnog modela za globalnu pogrešku, šumu, dostupnosti i
 licenci, izvedivoj veličini, interpretaciji i evaluaciji. Objasniti po čemu se konkretni problem
 i podaci razlikuju od primjera korištenih u radu (modeli iz zbirke NICONET i modul ISS 1R). Tim odabire kandidata i
-bilježi odluku. Skup podataka još nije odabran.
+bilježi odluku.
+
+[Prijedlog tema](prijedlog-tema/prijedlog-tema-vf.pdf) (2026-11-07) uspoređuje tri kandidata:
+HRTF-ove iz skupa HUTUBS, impedancijske spektre litij-ionskih ćelija i FRF-ove kompozitne ploče.
+Isti su dan razmotreni i toplinski model zida te Debyejevi modeli ljudskih tkiva.
+
+**Dovršeno 2026-11-07.** Tim je odabrao Debyejeve modele tkiva
+([ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md)). Pitanje je koliko je realnih
+polova najmanje potrebno za zadanu točnost i štede li VF i QuadVF polove. Podaci su parametri
+Gabrielova modela za 44 tipa tkiva; tablica još nije preuzeta u repozitorij (zadatak A2).
 
 Zadatak završava dogovorenim istraživačkim pitanjem, opisom izvora i podataka, planom
 predobrade, predviđenim značenjem modela i izvedivom evaluacijom.

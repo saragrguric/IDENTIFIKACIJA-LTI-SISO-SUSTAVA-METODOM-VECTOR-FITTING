@@ -1,0 +1,34 @@
+# Međusobni pregled niti iz ADR-0005, a ne vlasništvo koda.
+# GitHub automatski traži pregled od recenzenta niti: Sara (B) pregledava nit A,
+# a Lovro (A) pregledava nit B. Za spajanje vrijedi odobrenje drugog člana tima.
+# Vidi docs/plan/PODJELA.md. Kasnije pravilo ima prednost pred ranijim.
+
+# Zadano: cijeli tim.
+*                                   @LRazum @saragrguric
+
+# Nit A (Lovro): pregledava Sara.
+/src/vfdebye/gabriel.py             @saragrguric
+/src/vfdebye/vf.py                  @saragrguric
+/src/vfdebye/provenance.py          @saragrguric
+/tests/test_gabriel.py              @saragrguric
+/tests/test_vf.py                   @saragrguric
+/tests/test_provenance.py           @saragrguric
+/experiments/data_checks.py         @saragrguric
+/experiments/convergence.py         @saragrguric
+/data/                              @saragrguric
+/pyproject.toml                     @saragrguric
+/uv.lock                            @saragrguric
+/tools/check_project.py             @saragrguric
+/docs/plan/podjela/a-lovro.md       @saragrguric
+
+# Nit B (Sara): pregledava Lovro.
+/src/vfdebye/quadrature.py          @LRazum
+/src/vfdebye/baseline.py            @LRazum
+/src/vfdebye/metrics.py             @LRazum
+/tests/test_quadrature.py           @LRazum
+/tests/test_baseline.py             @LRazum
+/tests/test_metrics.py              @LRazum
+/experiments/pilot.py               @LRazum
+/experiments/min_order.py           @LRazum
+/experiments/sensitivity.py         @LRazum
+/docs/plan/podjela/b-sara.md        @LRazum

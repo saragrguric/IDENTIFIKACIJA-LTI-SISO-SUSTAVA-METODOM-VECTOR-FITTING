@@ -3,8 +3,9 @@
 Ovo je okvir potrebne dubine obrade i donošenja odluka, a ne dovršeno teorijsko poglavlje ili
 prihvaćena specifikacija implementacije. Jedini izvor je rad L1 (Drmač, Gugercin i Beattie,
 2015) iz [vodiča kroz literaturu](../research/LITERATURE.md); oznake jednadžbi i odjeljaka u
-nastavku odnose se na taj rad. Inačica metode, uzorkovanje, red aproksimacije i primjena još
-nisu odabrani.
+nastavku odnose se na taj rad. Primjena je odabrana u
+[ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md) i opisana u odjeljku 6; postavke
+metode, uzorkovanje i red još nisu odabrani.
 
 ## 1. Oznake i model
 
@@ -149,6 +150,49 @@ frekvencija samo da bi metoda radila.
 Modeli korišteni u L1 (toplinski model, FOM, zgrada i greda iz zbirke NICONET te modul
 ISS 1R) mogu služiti za razumijevanje i provjeru implementacije. Nov konkretan problem mora se od njih
 razlikovati; objasniti po čemu.
+
+### 6.1 Odabrana primjena: Debyejevi modeli tkiva
+
+Prema [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md) prijenosna funkcija je
+relativna permitivnost tkiva u Gabrielovu modelu s četiri Cole–Coleove disperzije,
+
+$$
+\varepsilon(s)=\varepsilon_\infty+\sum_{n=1}^{4}\frac{\Delta\varepsilon_n}{1+(s\tau_n)^{1-\alpha_n}}
++\frac{\sigma_i}{s\,\varepsilon_0},\qquad s=\imath\,2\pi f .
+$$
+
+Članovi $\varepsilon_\infty$ i $\sigma_i/(s\varepsilon_0)$ poznati su točno i ne aproksimiraju se.
+Aproksimira se strogo pravi dio $H(s)=\varepsilon(s)-\varepsilon_\infty-\sigma_i/(s\varepsilon_0)$
+oblikom $H_r$ iz odjeljka 1. Debyejev član $\Delta\varepsilon/(1+s\tau)$ ima jedan realan pol
+$-1/\tau$, pa je zbroj Debyejevih članova upravo $H_r$ s realnim polovima. Za $\alpha_n>0$
+Cole–Coleov član nije racionalan, pa točan konačan red ne postoji i pitanje glasi koliko je
+polova potrebno za zadanu točnost.
+
+Treba izvesti i obrazložiti:
+
+- **Realnost.** $H(\overline{s})=\overline{H(s)}$ uz glavnu granu potencije. Model je realan ako su
+  polovi realni s realnim rezidualima ili dolaze u konjugiranim parovima.
+- **Konačnost $\mathcal{H}_2$ norme.** Za $0\le\alpha_n\le0{,}3$, što vrijedi za sva tkiva u
+  tablici osim zraka i vakuuma, Cole–Coleov član pada barem kao $\omega^{-0{,}7}$, pa je
+  $\int\lvert H(\imath\omega)\rvert^2d\omega$ konačan. Na cijeloj osi tu normu određuju
+  niskofrekvencijske disperzije s velikim $\Delta\varepsilon_n$, pa se pogreška mjeri na pojasu
+  $[\omega_1,\omega_2]$. To je odmak od L1.
+- **QuadVF na pojasu.** Formula (3.4)–(3.5) integrira po cijeloj osi i koristi redak s
+  $M_+[H]=\lim_{s\to\infty}sH(s)$. Za $\alpha_n>0$ ta granica nije konačna, pa se redak izostavlja,
+  a kvadratura prilagođava pojasu. Oba odmaka treba izvesti i opravdati.
+- **Mjere.** Najveća relativna pogreška $\max_k\lvert\varepsilon_r(\imath\omega_k)-\varepsilon(\imath\omega_k)\rvert/\lvert\varepsilon(\imath\omega_k)\rvert$
+  na gustoj kontrolnoj mreži, koja nije skup čvorova prilagodbe, i relativna $\mathcal{H}_2$
+  pogreška na pojasu. Mjera na logaritamskoj mreži pogoduje logaritamskim čvorovima i relativnim
+  težinama, pa se poredak metoda prijavljuje u obje mjere.
+- **Referentna metoda.** Polovi $-1/\tau_j$ fiksni su i logaritamski raspoređeni po pojasu, a
+  reziduali se dobivaju linearnim problemom najmanjih kvadrata. Tako se izolira učinak
+  premještanja polova.
+- **Realnost polova i pozitivnost reziduala** prijavljuju se kao provjereno svojstvo svakog
+  rezultata. L1 ih ne jamči; tvrdnja da ih ima najbolja aproksimacija traži izvor koji tim još
+  nije dodao.
+
+Testovi s točnim konačnim redom koriste umjetne modele s tabličnim $\Delta\varepsilon_n$ i
+$\tau_n$ uz sve $\alpha_n=0$, jer nijedno tkivo u tablici nema sve $\alpha_n=0$.
 
 ## 7. Provjera implementacije
 

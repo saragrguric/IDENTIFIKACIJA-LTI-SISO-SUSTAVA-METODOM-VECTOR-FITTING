@@ -19,10 +19,14 @@ docs/
   plan/
     PROJECT.md                      opseg, materijali za predaju i otvorene odluke
     TASKS.md                        mali zadaci i njihove ovisnosti
+    PODJELA.md                      niti, međusobni pregled, sučelja, faze i zajednički zadaci
+    Z0_PRIJEDLOG.md                 prijedlozi odluka za sastanak Z0
+    podjela/                        osobni planovi niti A i B
     METHODOLOGY.md                  matematički i eksperimentalni plan
     PIPELINE.md                     ova datoteka
     AI_REVIEW.md                    nalazi, dnevna provjera i postupak pregleda
     adr/                            zapisi odluka
+    prijedlog-tema/                 izvještaj s prijedlogom tema i načina rada (LaTeX i PDF)
   research/
     LITERATURE.md                   bibliografski podaci, odjeljci izvora i bilješke uz čitanje
 tools/
@@ -34,6 +38,8 @@ tools/
   test_check_before_stop.py
   check_project.py                   planirano: dogovorene numeričke provjere
 .github/
+  CODEOWNERS                         automatski zahtjev za pregled od recenzenta niti
+  ISSUE_TEMPLATE/                    predlošci issuea „Zadatak” i „Nalaz”
   pull_request_template.md
   workflows/
     ci.yml

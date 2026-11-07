@@ -1,0 +1,53 @@
+name: Zadatak
+description: Malen, jasno omeđen zadatak iz podjele rada (docs/plan/PODJELA.md).
+title: "X0: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Naslov počni kodom zadatka iz osobnog plana (npr. `A2:`). Dodaj oznaku niti
+        (`nit:A`, `nit:B` ili `nit:zajedničko`), oznake područja i milestone faze.
+        Jedan zadatak, jedna grana; PR ga zatvara s `Closes #N`.
+  - type: dropdown
+    id: nit
+    attributes:
+      label: Nit
+      options:
+        - "A: Lovro, od tablice do polova"
+        - "B: Sara, od polova do odgovora"
+        - "Zajedničko"
+    validations:
+      required: true
+  - type: textarea
+    id: cilj
+    attributes:
+      label: Cilj
+      description: Što zadatak isporučuje i zašto.
+    validations:
+      required: true
+  - type: textarea
+    id: koraci
+    attributes:
+      label: Koraci
+      description: Popis s kvačicama; ažuriraj ga usput.
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: gotovo
+    attributes:
+      label: Gotovo kada
+      description: Provjerljiv uvjet dovršenosti (testovi, pregled, zapis pokretanja).
+    validations:
+      required: true
+  - type: input
+    id: ovisi
+    attributes:
+      label: Ovisi o
+      description: Kodovi zadataka ili brojevi issuea, npr. "A1, #7".
+  - type: textarea
+    id: izvori
+    attributes:
+      label: Izvori
+      description: Odjeljci rada L1, zapisi odluka i odjeljak osobnog plana.

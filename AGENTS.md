@@ -20,14 +20,16 @@ Radove koje on citira nemamo; oni nisu izvori projekta dok ih tim ne doda. Pogle
 
 Predajemo pisani seminar, prezentaciju, Python kod i eksperimentalne rezultate. Oboje moraju
 razumjeti cijeli projekt: matematiku, algoritam, podatke, kod i rezultate. Ne dodjeljuj
-jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Podjela tema
-između članova zapisana je u [popisu zadataka](docs/plan/TASKS.md). Pogledaj
+jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Predložena
+podjela na niti zapisana je u [podjeli rada](docs/plan/PODJELA.md). Pogledaj
 [ADR-0001](docs/plan/adr/0001-seminar-scope-and-shared-understanding.md).
 
-Primjena, podaci, inačica metode (VF, QuadVF ili druga), red aproksimacije, uzorkovanje,
-Python ovisnosti, formati predaje i rok **nisu odlučeni**.
-Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži
-postavljen tijek rada, bez implementacije metode.
+**Primjena je odlučena** u [ADR-0004](docs/plan/adr/0004-choose-debye-models-of-human-tissues.md):
+VF i QuadVF aproksimiraju Gabrielov Cole–Coleov model permitivnosti ljudskih tkiva Debyejevim
+članovima (realnim polovima), a pitanje je koliko je polova najmanje potrebno za zadanu točnost.
+Frekvencijski pojas, razine točnosti, čvorovi i težine, red, početni polovi, Python ovisnosti,
+formati predaje i rok **nisu odlučeni**. Primjer ili prijedlog metode ne pretvaraj u prihvaćenu
+odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metode.
 
 ## 2. Znanstvena i numerička pravila
 
