@@ -20,14 +20,16 @@ Radove koje on citira nemamo; oni nisu izvori projekta dok ih tim ne doda. Pogle
 
 Predajemo pisani seminar, prezentaciju, Python kod i eksperimentalne rezultate. Oboje moraju
 razumjeti cijeli projekt: matematiku, algoritam, podatke, kod i rezultate. Ne dodjeljuj
-jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Podjelu
-zadataka dogovorit ćemo kasnije. Pogledaj
+jednom članu trajno isključivo poznavanje matematike, koda ili eksperimenata. Predložena
+podjela na niti zapisana je u [podjeli rada](docs/plan/PODJELA.md). Pogledaj
 [ADR-0001](docs/plan/adr/0001-seminar-scope-and-shared-understanding.md).
 
-Primjena, podaci, inačica metode (VF, QuadVF ili druga), red aproksimacije, uzorkovanje,
-Python ovisnosti, formati predaje, rok i pojedinačna zaduženja **nisu odlučeni**.
-Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži
-postavljen tijek rada, bez implementacije metode.
+**Primjena je odlučena** u [ADR-0004](docs/plan/adr/0004-choose-debye-models-of-human-tissues.md):
+VF i QuadVF aproksimiraju Gabrielov Cole–Coleov model permitivnosti ljudskih tkiva Debyejevim
+članovima (realnim polovima), a pitanje je koliko je polova najmanje potrebno za zadanu točnost.
+Frekvencijski pojas, razine točnosti, čvorovi i težine, red, početni polovi, Python ovisnosti,
+formati predaje i rok **nisu odlučeni**. Primjer ili prijedlog metode ne pretvaraj u prihvaćenu
+odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metode.
 
 ## 2. Znanstvena i numerička pravila
 
@@ -96,8 +98,10 @@ postavljen tijek rada, bez implementacije metode.
   `tools/daily_check.py`, a ne kao tuđe odobrenje. Lovro je 2026-10-28 izričito odobrio
   spajanje bez Sarina pregleda za početni PR #1 s grane `codex/seminar-workflow` i za upis
   naziva kolegija u PR-u #2 s grane `codex/course-name`, a 2026-10-29 za pravilo autorstva u
-  PR-u #3 s grane `lovro/ai-attribution`. To su iznimke samo za navedene parove broja i grane;
-  ostali PR-ovi slijede redovno pravilo.
+  PR-u #3 s grane `lovro/ai-attribution`. Lovro je 2026-11-07 izričito odobrio spajanje bez
+  Sarina pregleda za izbor teme i podjelu na niti u PR-u #6 s grane `lovro/tema-i-podjela` i za
+  podjelu rada u PR-u #5 s grane `lovro/podjela-zadataka`, čije commitove PR #6 sadrži. To su
+  iznimke samo za navedene parove broja i grane; ostali PR-ovi slijede redovno pravilo.
 - AI alati rade commit/push, otvaraju PR-ove/issuee, objavljuju preglede/komentare ili šalju
   poruke samo uz korisnikovo ovlaštenje za tu radnju. Ovlaštenje ostaje valjano unutar
   dogovorenog opsega; ne traži ga ponovno za već odobrenu radnju. Lokalne promjene koje se mogu

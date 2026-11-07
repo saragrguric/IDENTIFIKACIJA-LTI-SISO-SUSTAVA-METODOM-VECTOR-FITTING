@@ -134,3 +134,14 @@ Lovro je u razgovoru izričito zatražio commit, push, PR i spajanje pravila aut
 ADR-0003 u `main` bez Sarina pregleda. Iznimka vrijedi samo za PR #3 s grane
 `lovro/ai-attribution`; ne bilježi Sarino odobrenje i ne mijenja pravilo pregleda budućih
 PR-ova. CI i ostale provjere moraju proći.
+
+## Dodatak 2026-11-07: odobreno spajanje izbora teme i podjele rada bez pregleda
+
+Lovro je u razgovoru izričito zatražio spajanje PR-a #6 s grane `lovro/tema-i-podjela` u
+`main` bez Sarina pregleda. PR #6 sadrži commitove PR-a #5 s grane `lovro/podjela-zadataka`,
+pa spajanjem u `main` ulazi i sadržaj PR-a #5, koji se zatim zatvara bez zasebnog spajanja.
+Lovro je izričito odobrio iznimku za oba para. Iznimka ne
+bilježi Sarino odobrenje i ne mijenja pravilo pregleda budućih PR-ova; CI i ostale provjere
+moraju proći. Sara sadržaj obaju PR-ova (ADR-0004, ADR-0005, podjelu rada, osobne planove i
+dodatke ADR-0001 od 2026-11-01 i 2026-11-03) potvrđuje na sastanku Z0 ili traži izmjene novim
+PR-om.

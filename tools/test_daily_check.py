@@ -85,6 +85,7 @@ class FindingsTests(unittest.TestCase):
         # Each exception needs a dated ADR-0002 addendum; update this test with it.
         recorded = frozenset({
             (1, "codex/seminar-workflow"), (2, "codex/course-name"), (3, "lovro/ai-attribution"),
+            (5, "lovro/podjela-zadataka"), (6, "lovro/tema-i-podjela"),
         })
         self.assertEqual(daily.AUTHORIZED_REVIEW_EXCEPTIONS, recorded)
         for number, branch in sorted(recorded):

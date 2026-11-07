@@ -57,3 +57,27 @@ Nakon postavljanja tijeka rada Lovro je naveo da se kolegij zove Matematičko mo
 znanstveno računanje. Naziv je upisan u `README.md`, `AGENTS.md` i `docs/plan/PROJECT.md`.
 Time se ne mijenjaju opseg, materijali za predaju ni otvorene znanstvene odluke iz ovog zapisa;
 rok, formati predaje i kriteriji ocjenjivanja ostaju otvoreni.
+
+## Dodatak 2026-11-01: uloga AI alata u izradi
+
+Lovro je naveo da je na seminaru uporaba AI alata dopuštena u svim dijelovima rada i da je
+zadatak tima rad na kraju obraniti. Zato kod, testove i nacrte piše AI alat, a članovi tima vode
+rad, pregledavaju ga i moraju ga moći objasniti. Točka 4 ove odluke ostaje: oba člana razumiju
+cijeli projekt, a generirani sadržaj nije dokaz razumijevanja. Autorstvo slijedi ADR-0003.
+Ovaj zapis ne bilježi Sarino odobrenje, a dopuštenje kolegija navodi se kako ga je prenio Lovro.
+
+## Dodatak 2026-11-03: podjela tema
+
+Točka 4 ostavila je podjelu zadataka za kasnije. Na zajedničkom sastanku 2026-11-03 Lovro je
+naveo raspodjelu uloga iz popisa zadataka: osoba A je Lovro, a osoba B Sara. Podjela određuje
+tko u pojedinoj temi provjerava izvod i testove, a tko vodi AI alat pri implementaciji i
+pregledava kod. Ne mijenja točku 4: oba člana razumiju cijeli projekt. Vrijedi nakon Sarina
+odobrenja PR-a #5 kojim je upisana; ovaj zapis to odobrenje ne zamjenjuje.
+
+## Dodatak 2026-11-07: podjela tema zamijenjena prijedlogom niti
+
+Podjela tema iz dodatka od 2026-11-03 spojena je u `main` u sklopu PR-a #6 bez Sarina odobrenja
+(ADR-0002, dodatak 2026-11-07). Nakon izbora teme
+([ADR-0004](0004-choose-debye-models-of-human-tissues.md)) zamjenjuje je prijedlog podjele na
+dvije niti iz [ADR-0005](0005-divide-work-into-end-to-end-threads.md), uz iste uloge: osoba A je
+Lovro, a osoba B Sara. Sara podjelu potvrđuje na sastanku Z0. Točka 4 se ne mijenja.

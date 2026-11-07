@@ -20,6 +20,23 @@ Rad citira izvorne radove, primjerice Levyja, Sanathanana i Koernera, Gustavsena
 Oni nisu dostavljeni i nisu izvori ovog projekta dok ih tim ne doda i ne zabilježi ovdje.
 Tvrdnje iz tih radova u seminaru navoditi kao tvrdnje kako ih prenosi L1.
 
+## Izvor podataka
+
+Prema [ADR-0004](../plan/adr/0004-choose-debye-models-of-human-tissues.md) projekt koristi i izvor
+podataka. On nije izvor matematike metode.
+
+| ID | Izvor | Pristup i uvjeti | Uloga |
+|---|---|---|---|
+| D1 | C. Gabriel i S. Gabriel, *Compilation of the dielectric properties of body tissues at RF and microwave frequencies*, Armstrong Laboratory, AL/OE-TR-1996-0037, 1996 (DTIC AD-A305826). | Izvješće je označeno „Approved for public release, distribution unlimited”. Prijepis s tablicom parametara objavljuje WebNIR (CNR-IFAC) na <https://webnir.eu/04-Dosimetry/04-Gabriel.php?lang=gb>, pod CC BY-NC-SA 4.0. Provjereno 2026-11-07. | Parametri Cole–Coleova modela s četiri disperzije za 44 tipa tkiva; referentni model $H(s)$ |
+
+Tablica se ne verzionira; upute za preuzimanje i kontrolni zbroj idu u opis podataka (zadatak A2).
+Baza IT'IS Foundation (v4.1) temelji se na istim parametrima, ali njezine uvjete uporabe nismo
+provjerili i zasad je ne koristimo.
+
+Za tvrdnju da najbolja racionalna aproksimacija takvih funkcija ima realne negativne polove i
+pozitivne reziduale treba izvor koji tim još nema. Do tada se to navodi samo kao opažanje iz
+eksperimenata.
+
 ## Struktura izvora
 
 | Odjeljak L1 | Sadržaj | Uloga u seminaru |

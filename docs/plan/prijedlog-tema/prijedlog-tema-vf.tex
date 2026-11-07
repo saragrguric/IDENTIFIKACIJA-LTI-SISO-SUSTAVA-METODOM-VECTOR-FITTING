@@ -1,0 +1,177 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,margin=2.3cm,top=2.1cm,bottom=2.1cm]{geometry}
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{texgyrepagella}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=0.92]
+\setmathfont{texgyrepagella-math.otf}
+\usepackage[croatian]{babel}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{0F5E63}
+\definecolor{muted}{HTML}{55606A}
+
+\titleformat{\section}{\sffamily\large\bfseries\color{accent}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\sffamily\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.3em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.25em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlist{nosep,leftmargin=1.3em,topsep=0.2em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.25}
+\emergencystretch=1em
+\widowpenalty=10000
+\clubpenalty=10000
+
+\newcommand{\Htwo}{\mathcal{H}_2}
+\newcommand{\Hinf}{\mathcal{H}_\infty}
+
+\hypersetup{pdftitle={VF seminar: prijedlog tema i način rada},pdfauthor={Lovro}}
+
+\begin{document}
+
+{\sffamily\LARGE\bfseries\color{accent} VF seminar: prijedlog tema i način rada\par}
+\vspace{0.3em}
+{\small\color{muted} Matematičko modeliranje i znanstveno računanje \quad·\quad Lovro, za Saru \quad·\quad 7.~studenoga 2026.\par}
+\vspace{0.6em}
+
+Moramo detaljno obraditi vector fitting (VF) i njegovu inačicu temeljenu na kvadraturi (QuadVF),
+implementirati ih u Pythonu i primijeniti na nov konkretan problem. Ovdje su tri moguće izvedbe.
+Svaka ima drugi sustav i druge podatke, pa izbor teme određuje i koliko dijelova rada L1 možemo
+stvarno primijeniti, a ne samo opisati. \textbf{Predlažem temu~1, a temu~3 kao rezervu.} Ništa još
+nije odlučeno.
+
+Podaci i licence provjereni su 7.~studenoga 2026. na stranicama repozitorija podataka. Nijedna
+datoteka još nije preuzeta ni otvorena i nijedna metoda nije pokrenuta, pa su očekivani rezultati
+zasad samo pretpostavke. Svuda tražimo stabilan racionalni model $H_r$ reda $r$ koji u čvorovima
+$\xi_j$ s težinama $\rho_j$ aproksimira prijenosnu funkciju $H$ realnog LTI SISO sustava
+(L1, (1.1)). Iz istog izvora L1, §3.2 (Primjer~3.1) znamo da mali rezidual u čvorovima ne jamči
+malu $\Htwo$ ni $\Hinf$ pogrešku, pa svaka tema mora reći kako mjerimo pogrešku izvan čvorova.
+
+\section{Tri teme}
+
+\subsection*{Tema 1: Kompaktni filtri za prostorni zvuk iz izmjerenih HRTF-ova}
+Prijenosna funkcija glave (HRTF) opisuje kako zvuk iz smjera $(\varphi,\vartheta)$ stiže do ulaza u
+uho. Binauralni prikaz zvuka u slušalicama filtrira svaki izvor s dva takva filtra, obično dugim FIR
+filtrima. Pitanje je koliki je najmanji red $r$ stabilnog racionalnog (IIR) filtra koji zamjenjuje
+izmjereni HRIR tako da spektralna pogreška u čujnom pojasu ostane ispod zadanog praga, te koliko se
+time štedi računanja po uzorku. Izmjereni HRIR duljine $N$ je FIR filtar, dakle racionalna funkcija
+od $z$ s $N-1$ polova u nuli. Zato $H$ znamo izračunati u \emph{bilo kojoj} točki jedinične kružnice.
+To je kod stvarnih podataka rijetko: možemo birati kvadraturne čvorove za QuadVF (L1, §3.3) i točno
+izračunati globalnu $\Htwo$ i $\Hinf$ pogrešku, pa Primjer~3.1 možemo ponoviti na stvarnim podacima.
+Cijena je prijelaz u diskretno vrijeme, koji L1 ne obrađuje. Čvorovi su na jediničnoj kružnici,
+stabilnost znači $\lvert\lambda\rvert<1$, zrcaljenje (L1, §4.1) postaje $\lambda\mapsto1/\overline{\lambda}$,
+a $\Htwo$ norma integral je po kružnici, pa je trapezno pravilo prirodan analog kvadrature iz §3.3.
+Taj izvod moramo napraviti sami; druga je mogućnost bilinearno preslikavanje na imaginarnu os i
+rad točno kao u L1. Početno kašnjenje izdvajamo prije prilagodbe, jer čisto kašnjenje troši red.
+Skup HUTUBS (TU Berlin, CC~BY~4.0) ima HRTF-ove 96 osoba: izmjerene u 440 smjerova i simulirane u
+1730 smjerova, u formatu SOFA; arhiva HRIR-ova ima 1,27~GB. Frekvenciju uzorkovanja i duljinu HRIR-a
+treba očitati iz datoteka. Red biramo na dijelu osoba, a provjeravamo na ostalima. Mjere su
+spektralna distorzija u dB u odabranom pojasu, relativna $\Htwo$ i $\Hinf$ pogreška te broj množenja
+po uzorku. Referentne metode su skraćeni FIR s prozorom i uravnoteženo odsijecanje FIR modela.
+Rizik je što oštri usjeci koje stvara ušna školjka mogu tražiti visok red, a perceptivna mjera nije
+$\Htwo$ norma, pa vezu treba obrazložiti.
+
+\subsection*{Tema 2: Procjena istrošenosti litij-ionskih ćelija iz impedancijskog spektra}
+Elektrokemijska impedancijska spektroskopija (EIS) mjeri impedanciju $Z(\mathrm{i}\omega)=U/I$
+ćelije na nizu frekvencija. Pitanje je mogu li polovi i reziduali racionalnog modela impedancije,
+dobiveni VF-om, procijeniti preostali kapacitet ćelije koju model nije vidio, i to bolje od
+regresije na sirovom spektru. Realni negativni polovi odgovaraju vremenskim konstantama
+relaksacije, pa imaju fizikalno značenje. Impedancija nije strogo prava: ima serijski otpor i
+induktivni član na visokim frekvencijama, a difuzija se ponaša kao $1/\sqrt{s}$, što nije
+racionalno. Treba provjeriti pokriva li oblik iz L1 konstantu i linearni član ili ga proširujemo.
+Skup Zhang i sur. (Nature Communications 2020; Zenodo, CC~BY~4.0) ima više od 20\,000 spektara
+12 ćelija LR2032 (LiCoO$_2$/grafit) na 25, 35 i 45~°C, u pojasu 0,02~Hz--20~kHz; arhive imaju
+27~MB (EIS) i 92~MB (kapacitet). Rad navodi i 60 i 120 frekvencija po spektru, pa broj treba
+provjeriti iz datoteka. Čvorove određuje mjerenje, pa QuadVF možemo primijeniti samo težinama na
+zadanoj logaritamskoj mreži, a globalnu pogrešku ne možemo izmjeriti jer nema referentnog modela.
+Vrednujemo unakrsnom provjerom s izostavljenom ćelijom; mjera je pogreška procjene kapaciteta.
+Referentne metode su regresija na sirovom spektru i objavljeni rezultat autora. Rizici su samo
+12 ćelija, uparivanje polova kroz cikluse (nejedinstven poredak) i to što regresija može preuzeti
+seminar umjesto VF-a.
+
+\subsection*{Tema 3: Otkrivanje dodane mase na kompozitnoj ploči iz izmjerenih FRF-ova}
+Frekvencijska prijenosna funkcija (FRF) od udarnog čekića (sila u N) do akcelerometra (ubrzanje
+u $g$) opisuje vibracije konstrukcije. Pitanje je mogu li se iz polova dobivenih VF-om iz jedne
+izmjerene FRF otkriti promjene na ploči (dodane mase kao zamjena za oštećenje) te koje su promjene
+premale da bi se razlikovale od mjerne nesigurnosti. Polovi su ovdje modovi
+$\lambda=-\zeta\omega_n\pm\mathrm{i}\omega_n\sqrt{1-\zeta^2}$, pa vlastite frekvencije i prigušenja
+izravno čitamo iz modela. Ubrzanje u odnosu na silu nije strogo prava funkcija, pa treba odlučiti
+radimo li s konstantnim članom ili s pomakom, dijeljenjem s $(\mathrm{i}\omega)^2$. Skup LMSD 2021
+(KU Leuven; Dwek i sur., Data in Brief 2025; Zenodo, CC~BY~4.0) mjeri slobodno ovješenu ploču
+od ugljičnih vlakana $600\times600\times4$~mm sa 7 akcelerometara. Za osnovno stanje postoje FRF-ovi iz
+144 točke pobude, a za šest scenarija (1, 3, 4, 5 i 6 masa od 55~g te izdužena masa od 315~g)
+matrice $7\times7$ FRF-ova. Svaki FRF ima 8192 linije od 0 do 1600~Hz (korak 0,195~Hz) i prosjek
+je pet udaraca; podaci imaju oko 0,2~GB. Čvorovi su zadana gusta jednolika mreža, pa QuadVF opet
+primjenjujemo samo težinama, a pogrešku izvan čvorova mjerimo na izdvojenim linijama. U pojasu ima
+mnogo modova, pa je red visok, a uvjetovanost (L1, §4.3) bit će stvarna tema. Mjernu nesigurnost
+procjenjujemo iz recipročnosti ($H_{ij}\approx H_{ji}$) i ponovljenih parova u osnovnom stanju.
+Referentna metoda je odabir vrhova s polusnagom. Rizik je što je svaki scenarij izmjeren samo
+jednom, nema koherencije ni vremenskih signala, a scenarij~2 ima šiljak oko 1588~Hz na
+akcelerometru~1.
+
+\section{Usporedba}
+
+{\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.0cm}YYY>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+\textbf{Tema} & \textbf{Odziv i čvorovi} & \textbf{Dijelovi L1 koje primjenjujemo} & \textbf{Vrednovanje} & \textbf{Licenca podataka}\\
+\midrule
+1. HRTF & FIR, računljiv u bilo kojoj točki kružnice; čvorove biramo & §1--§4 cijeli, uključujući QuadVF i Primjer~3.1; diskretno vrijeme izvodimo sami & Spektralna distorzija, $\Htwo$ i $\Hinf$ pogreška, cijena filtra na novim osobama & CC BY 4.0\\
+2. EIS baterija & Mjerenje u zadanim log.\ čvorovima, šum & §1, §2, §4.1, §5; QuadVF samo težinama; bez globalne pogreške & Pogreška procjene kapaciteta na izostavljenoj ćeliji & CC BY 4.0\\
+3. Ploča & Mjerenje na gustoj jednolikoj mreži, šum & §1, §2, §4.1, §4.3, §5; QuadVF samo težinama & Pomak modova prema mjernoj nesigurnosti; odabir vrhova & CC BY 4.0\\
+\bottomrule
+\end{tabularx}
+}
+
+\textbf{Preporuka.} Tema~1 jedina dopušta da sami biramo čvorove i točno izmjerimo globalnu
+pogrešku, pa jedina primjenjuje cijeli L1, uključujući $\Htwo$ aproksimaciju i QuadVF, a ima i
+jasnu odluku: koji red filtra koristiti. Traži dodatan izvod za diskretno vrijeme. Tema~3 je
+rezerva: polovi imaju izravno fizikalno značenje, podaci su mali i uredni, a VF se tako i koristi u
+praksi, ali QuadVF primjenjujemo samo djelomično. Tema~2 je najbliža praktičnoj primjeni, ali najviše rada
+odlazi na regresiju, a najmanje na matematiku VF-a.
+
+\section{Način rada nakon izbora teme}
+
+Nakon izbora teme repozitorij slažemo kao NMF projekt: odluku o temi bilježimo u ADR-u, rad dijelimo
+na niti od matematike preko koda i eksperimenata do dijela seminara i prezentacije, svatko dobiva
+osobni plan, a pregled teče u krug. Uz to dolaze zajednička sučelja modula, \texttt{CODEOWNERS},
+predlošci issuea „Zadatak” i „Nalaz” te faze s milestoneima. Sve to ovisi o temi, pa ga pišemo
+tek nakon izbora.
+
+Podjela tema iz PR-a~\#5 (Lovro~A, Sara~B) i dalje čeka Sarino odobrenje. Možemo je zadržati i
+nitima samo dodati kod i eksperimente ili prijeći na dvije niti kao u NMF projektu, npr.
+\emph{od podataka do polova} (problem, predobrada, linearizacija, SK iteracija, premještanje polova,
+zrcaljenje) i \emph{od polova do odgovora} ($\Htwo$ norma, kvadratura, QuadVF, zaustavljanje,
+uvjetovanost, vrednovanje). U oba slučaja svatko mora moći objasniti cijeli projekt.
+
+\textbf{Trebamo odlučiti:} koju temu biramo, zadržavamo li podjelu iz PR-a~\#5 ili prelazimo na niti
+te koji su rok i format predaje.
+
+\section*{Izvori}
+{\footnotesize\raggedright
+\textbf{Literatura seminara.}
+L1: Z.~Drmač, S.~Gugercin, C.~Beattie, \emph{Quadrature-Based Vector Fitting for Discretized
+$\mathcal{H}_2$ Approximation}, SIAM J. Sci. Comput. 37(2), A625--A652, 2015, doi:10.1137/140961511.
+
+\textbf{Podaci i opisi skupova.}
+F.~Brinkmann i sur., \emph{The HUTUBS head-related transfer function (HRTF) database}, TU Berlin, 2019,
+doi:10.14279/depositonce-8487.
+Y.~Zhang i sur., \emph{Identifying degradation patterns of lithium ion batteries from impedance
+spectroscopy using machine learning}, Nature Communications 11, 1706, 2020,
+doi:10.1038/s41467-020-15235-7; podaci: \url{https://zenodo.org/records/3633835}.
+N.~Dwek i sur., \emph{Frequency response function data of a composite plate under various damage
+identification scenarios}, Data in Brief 59, 111385, 2025, doi:10.1016/j.dib.2025.111385;
+podaci: \url{https://zenodo.org/records/11033677}.
+\par}
+
+\end{document}

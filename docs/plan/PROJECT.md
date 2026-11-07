@@ -33,8 +33,8 @@ odobrila određeni skup podataka, inačicu metode ili pregled tijeka rada.
 
 Zadatak može imati privremenog nositelja i drugu osobu koja ga pregledava. Time se ne smije
 stvoriti matematički stručnjak koji jedini razumije izvod ili programerski stručnjak koji
-jedini zna pokrenuti projekt. Pojedinačna zaduženja i način izmjene uloga dogovorit će se
-kasnije.
+jedini zna pokrenuti projekt. Predložena podjela na niti i međusobni pregled zapisani su u
+[podjeli rada](PODJELA.md) i [ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md).
 
 Na ključnim točkama zajednički proći matematiku, algoritam, podatke, kod i interpretaciju.
 Oba člana trebaju moći objasniti:
@@ -57,17 +57,19 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
 ## Još otvorene odluke
 
 - Format seminara i prezentacije, opseg i trajanje, kriteriji ocjenjivanja i rok.
-- Konkretna primjena, istraživačko pitanje, sustav i skup podataka te uvjeti pristupa i daljnje
-  distribucije; mogu li se vrijednosti prijenosne funkcije računati u proizvoljnim točkama ili
-  postoje samo zadana mjerenja; postoji li referentni model za računanje globalne pogreške.
-- Inačica metode (klasični VF, QuadVF ili proširenje iz rada), funkcija cilja i težine, čvorovi
-  uzorkovanja i parametar kvadrature, red aproksimacije, početni polovi, zrcaljenje nestabilnih
-  polova, rješavač najmanjih kvadrata, regularizacija, kriterij zaustavljanja te strogo pravi ili
-  pravi oblik modela.
+- Primjena, pitanje i podaci odlučeni su u
+  [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md): Gabrielov model permitivnosti
+  tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Otvoreni su
+  frekvencijski pojas, razine točnosti, razvojni podskup tkiva i podskup za detaljnu analizu te
+  je li tema prihvatljiva nastavniku kolegija.
+- Postavke metode: VF i QuadVF uspoređuju se s referentnom metodom fiksnih polova, a otvoreni su
+  težine, broj i raspored čvorova, prilagodba kvadrature pojasu i parametar $L$, red, početni
+  polovi, zrcaljenje, rješavač najmanjih kvadrata, regularizacija i kriterij zaustavljanja.
+- Unos Sarina probnog koda u repozitorij i ponovno pokretanje probnog pokusa.
 - Znanstvene Python ovisnosti, podržana verzija, okruženje i referentna bibliotečna implementacija.
 - Prikladna referentna metoda, metrike domene i opseg eksperimenata.
-- Pojedinačna zaduženja i potvrda GitHub identiteta: repozitorij je pod računom `saragrguric`,
-  a Lovro radi kao `LRazum`.
+- Potvrda GitHub identiteta: repozitorij je pod računom `saragrguric`, a Lovro radi kao
+  `LRazum`.
 - Dostupnost zaštite grana na GitHubu te povjerenje i aktivacija hookova na pojedinom računalu.
 
 Za važne izbore pripremiti argumente i prijedlog, zatim dogovor zabilježiti u ADR-u i ažurirati

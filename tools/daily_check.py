@@ -43,6 +43,8 @@ AUTHORIZED_REVIEW_EXCEPTIONS: frozenset[tuple[int, str]] = frozenset({
     (1, "codex/seminar-workflow"),
     (2, "codex/course-name"),
     (3, "lovro/ai-attribution"),
+    (5, "lovro/podjela-zadataka"),
+    (6, "lovro/tema-i-podjela"),
 })
 
 
