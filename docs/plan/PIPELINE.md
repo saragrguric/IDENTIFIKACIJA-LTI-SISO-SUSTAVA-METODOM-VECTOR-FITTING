@@ -107,7 +107,7 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 1. **Instalacija uv-a.** Prema [uputama](https://docs.astral.sh/uv/getting-started/installation/);
    na Windowsu npr. `winget install --id=astral-sh.uv -e`. uv sam preuzima Python 3.12 ako ga
    nema na računalu.
-2. **Okruženje.** `uv sync` stvara `.venv/` (izvan Gita) iz `uv.lock`.
+2. **Okruženje.** `uv sync` iz `uv.lock` stvara lokalno virtualno okruženje u mapi .venv, izvan Gita.
 3. **Provjere.** `uv run pytest` pokreće `tests/`, a `uv run ruff check .` statičku provjeru.
    Ruff ne provjerava `tools/`: to su alati tijeka rada sa standardnom bibliotekom i vlastitim
    `unittest` testovima.
