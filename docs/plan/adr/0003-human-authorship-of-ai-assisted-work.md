@@ -53,3 +53,16 @@ autora i prefiks grane pojednostavljuju pregled: drugi član tima zna tko odgova
   suradnik ih ne može ukloniti.
 - Povijesni nazivi grana `codex/seminar-workflow` i `codex/course-name` ostaju u zapisima i u
   `tools/daily_check.py` jer su vezani uz stvarne PR-ove #1 i #2.
+
+## Dodatak 2026-11-01: vraćanje `main` nakon pogrešnog spajanja
+
+Lokalna kopija koja nije bila usklađena s prepisanom poviješću vratila je 2026-11-01 `main` na
+stari `3dc2fd6`, a zatim je na njega pushan merge `b6e993a` s nerazriješenim konfliktnim
+markerima u 12 datoteka. CI je pao, a stari commitovi s retkom `Co-Authored-By` vratili su se u
+povijest `main`.
+
+Lovro je istog dana u razgovoru izričito odobrio prisilni push kojim je `main` vraćen na
+`6ac9efa` (PR #3). Iz povijesti `main` uklonjeni su `b6e993a`, `3dc2fd6` i `ff79853`; sadržaj
+datoteka jednak je stanju nakon PR-a #3. Iznimka vrijedi samo za taj push i ne bilježi Sarino
+odobrenje. Zabrana prisilnog pusha i prepisivanja povijesti ostaje za sve druge slučajeve.
+Lokalne kopije koje još sadrže te commitove treba uskladiti s `main` na GitHubu.
