@@ -66,6 +66,10 @@ $\tilde d^{(k)}$, čime se SK težina apsorbira u novu bazu i svaki korak postaj
 problem najmanjih kvadrata (2.12) (L1, §2.2). Objasniti računanje nultočaka kao spektra
 perturbacije ranga jedan dijagonalne matrice (L1, §4.2, opažanje (i)) i završnu identifikaciju
 reziduala problemom najmanjih kvadrata sa zadržanim polovima (L1, §4.2, nakon opažanja (iii)).
+Uz zapis (2.5) nultočke od $\tilde d$ su spektar matrice $\operatorname{diag}(\lambda)-\varphi e^T$
+(vlastiti izvod preko determinante perturbacije ranga jedan; numerički provjereno u
+`tests/test_vf.py`). Opažanje (i) piše $\operatorname{diag}(\lambda)+\tilde\varphi e^T$; razliku
+predznaka treba razjasniti u A5. Ocjena (4.4) ne ovisi o predznaku.
 
 Objasniti osjetljivost na početne polove (L1, §2.2). U primjerima L1 početni polovi leže na
 logaritamskoj mreži preko područja koje približno sadrži spektar (Primjer 3.1); to traži
@@ -210,7 +214,10 @@ kruženje, zrcaljenje te rubne slučajeve kao što su čvor jednak polu ili blis
 Kvadraturu provjeriti na funkciji poznate norme; primjerice za $H(s)=1/(s+a)$, $a>0$, vrijedi
 $\int_{-\infty}^{\infty}\lvert H(\imath\omega)\rvert^2\,d\omega=\pi/a$ (vlastiti izračun).
 
-Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
+Udaljenost (4.3) skupova polova je problem uparivanja s najmanjim najvećim odstupanjem
+(engl. *bottleneck assignment*), a ne s najmanjim zbrojem; računa ga
+`vfdebye.vf.matching_distance`, a test ga uspoređuje s definicijom preko svih permutacija za
+$r\le6$. Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
 točkama. Zato uspoređivati vrijednosti $H_r$ na kontrolnoj mreži ili skupove polova
 uparivanjem, kao u (4.3), a ne vektore koeficijenata. Koristiti opravdane tolerancije i
 neovisne izračune; uvjetovanost određuje dostižnu točnost. Kada se biblioteka koristi kao
