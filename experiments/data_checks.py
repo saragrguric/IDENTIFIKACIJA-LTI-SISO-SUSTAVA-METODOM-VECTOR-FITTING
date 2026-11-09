@@ -2,9 +2,10 @@
 
 Run from the repository root after data/fetch_gabriel.py:  uv run python experiments/data_checks.py
 
-For every tissue it prints the relaxation frequency 1/(2 pi tau_n) and alpha_n of each present
-term, and the largest share max_f |term_n(s)| / |H(s)| of each term on the band. The band is
-the provisional 10 MHz-10 GHz from the ADR-0004 addendum of 2026-11-09; Z2 fixes the final one.
+For every tissue it prints the relaxation frequency 1/(2 pi tau_n), alpha_n and delta_eps_n of
+each present term, and the largest share max_f |term_n(s)| / |H(s)| of each term on the band.
+The band is the provisional 10 MHz-10 GHz from the ADR-0004 addendum of 2026-11-09; Z2 fixes
+the final one.
 Output goes to stdout only; recorded runs need vfdebye.provenance (task A6).
 """
 from __future__ import annotations
@@ -48,7 +49,8 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"band {lo:.0e}-{hi:.0e} Hz (provisional), {GRID_POINTS} log-spaced points")
     print(f"{'tissue':<22}{'same as':<16}" + "".join(
-        f"{'f' + str(n) + ' Hz':>10}{'a' + str(n):>6}{'share':>7}" for n in range(1, 5)))
+        f"{'f' + str(n) + ' Hz':>10}{'a' + str(n):>6}{'de' + str(n):>9}{'share':>7}"
+        for n in range(1, 5)))
     dispersive = [t for t in tissues if t.is_dispersive]
     for tissue in tissues:
         if not tissue.is_dispersive:
@@ -58,14 +60,15 @@ def main(argv: list[str] | None = None) -> int:
         cells = []
         for d, t, a, share in zip(tissue.delta_eps, tissue.tau, tissue.alpha, shares, strict=True):
             if d > 0:
-                cells.append(f"{1 / (2 * np.pi * t):>10.2e}{a:>6.2f}{share:>7.3f}")
+                cells.append(f"{1 / (2 * np.pi * t):>10.2e}{a:>6.2f}{d:>9.2e}{share:>7.3f}")
             else:
-                cells.append(f"{'-':>10}{'':>6}{'':>7}")
+                cells.append(f"{'-':>10}{'':>6}{'':>9}{'':>7}")
         print(f"{tissue.name:<22}{duplicates.get(tissue.name, ''):<16}" + "".join(cells))
 
     present = [(t, n) for t in dispersive for n in range(4) if t.delta_eps[n] > 0]
     alphas = [t.alpha[n] for t, n in present]
     taus = [t.tau[n] for t, n in present]
+    deltas = [t.delta_eps[n] for t, n in present]
     in_band = [t.name for t in dispersive
                if any(lo <= 1 / (2 * np.pi * t.tau[n]) <= hi
                       for n in range(4) if t.delta_eps[n] > 0)]
@@ -73,7 +76,14 @@ def main(argv: list[str] | None = None) -> int:
     print(f"rows {len(tissues)}, dispersive {len(dispersive)}, "
           f"distinct dispersive parameter sets {len({t.parameters for t in dispersive})}")
     print(f"present terms {len(present)}: alpha in [{min(alphas)}, {max(alphas)}], "
-          f"tau in [{min(taus):.3e}, {max(taus):.3e}] s")
+          f"tau in [{min(taus):.3e}, {max(taus):.3e}] s, "
+          f"delta_eps in [{min(deltas):.3g}, {max(deltas):.3g}]")
+    for n in range(4):
+        terms = [t for t in dispersive if t.delta_eps[n] > 0]
+        print(f"  term {n + 1}: present in {len(terms)} tissues, delta_eps in "
+              f"[{min(t.delta_eps[n] for t in terms):.3g}, "
+              f"{max(t.delta_eps[n] for t in terms):.3g}], alpha in "
+              f"[{min(t.alpha[n] for t in terms)}, {max(t.alpha[n] for t in terms)}]")
     print(f"tissues with a relaxation frequency inside the band: {len(in_band)}")
     return 0
 
