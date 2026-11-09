@@ -15,16 +15,21 @@ concurrency:
 
 jobs:
   workflow:
-    name: Dokumentacija i alati tijeka rada
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    name: Dokumentacija, alati i numeričke provjere (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        # Sara works on Windows and Lovro on Linux (ADR-0006).
+        os: [ubuntu-24.04, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1; reference workflow pin
         with:
           persist-credentials: false
-      - run: python3 --version
-      - run: python3 tools/check_before_stop.py
-
-  # Add the agreed numerical environment, lockfile installation and project runner in the
-  # same change that introduces pyproject.toml. The finish checker then rejects a missing
-  # tools/check_project.py rather than silently reporting a pass.
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          version: "0.13.6"
+      # uv picks Python 3.12 from .python-version; check_project.py installs from uv.lock.
+      - run: uv run --no-project python --version
+      - run: uv run --no-project python tools/check_before_stop.py

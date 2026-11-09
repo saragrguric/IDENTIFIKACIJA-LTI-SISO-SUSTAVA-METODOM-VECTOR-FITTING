@@ -19,8 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # Remove an entry when its path is created; the checker reports stale entries.
 PLANNED = frozenset({
-    "src/", "tests/", "experiments/", "data/", "results/", "seminar/",
-    "presentation/", "pyproject.toml", "uv.lock", "tools/check_project.py",
+    "experiments/", "data/", "results/", "seminar/", "presentation/",
 })
 SKIP_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".mypy_cache"}
 FILE_EXTENSIONS = {

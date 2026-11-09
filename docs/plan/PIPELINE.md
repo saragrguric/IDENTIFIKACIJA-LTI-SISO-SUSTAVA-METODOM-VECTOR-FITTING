@@ -1,8 +1,7 @@
 # Tijek rada
 
 Struktura repozitorija, automatske provjere i put od istraživačkog pitanja do reproducibilnih
-rezultata seminara. Postavljanje tijeka rada odvojeno je od numeričkog rada koji će tim
-odabrati kasnije.
+rezultata seminara.
 
 ## Struktura repozitorija
 
@@ -13,6 +12,12 @@ AGENTS.md                           jedinstveni izvor pravila repozitorija
 CLAUDE.md                           @AGENTS.md
 README.md                           svrha, tim, trenutačno stanje i naredbe
 .gitignore
+.python-version                     Python 3.12 za uv
+pyproject.toml                      paket vfdebye, ovisnosti, postavke pytesta i ruffa
+uv.lock                             zaključane verzije ovisnosti
+src/
+  vfdebye/                          višekratno upotrebljiva Python implementacija
+tests/                              numeričke provjere i provjere podataka (pytest)
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
@@ -36,7 +41,8 @@ tools/
   test_daily_check.py
   check_before_stop.py               zajedničke završne provjere
   test_check_before_stop.py
-  check_project.py                   planirano: dogovorene numeričke provjere
+  check_project.py                   numeričke provjere u okruženju iz uv.lock
+  test_check_project.py
 .github/
   CODEOWNERS                         automatski zahtjev za pregled od recenzenta niti
   ISSUE_TEMPLATE/                    predlošci issuea „Zadatak” i „Nalaz”
@@ -49,10 +55,6 @@ tools/
   hooks/check_before_stop.py         omotač oko zajedničke završne provjere
 .codex/
   hooks.json                         konfiguracija Codex Stop hooka; povjerenje je lokalno
-pyproject.toml                       planirano: dogovoreno numeričko okruženje
-uv.lock                              planirano: zaključane numeričke ovisnosti
-src/                                 planirano: višekratno upotrebljiva Python implementacija
-tests/                               planirano: numeričke provjere i provjere podataka
 experiments/                         planirano: konfiguracije i reproducibilne ulazne točke
 data/                                planirano: dokumentirana nabava/priprema podataka
 results/                             planirano: označena izvođenja, slike i tablice
@@ -61,21 +63,25 @@ results/                             planirano: označena izvođenja, slike i ta
 Planirane mape uvode se kada za njih postoji stvaran sadržaj. Naziv mape ne određuje skup
 podataka, inačicu metode ni format dokumenta. Numeričko okruženje (Python 3.12, uv i `uv.lock`,
 CI na Linuxu i Windowsu) odlučeno je u
-[ADR-0006](adr/0006-choose-python-environment.md), a uvodi ga zadatak A1. Seminar i prezentacija
+[ADR-0006](adr/0006-choose-python-environment.md) i uvedeno u zadatku A1. Seminar i prezentacija
 pišu se u Overleafu, izvan repozitorija; slike i tablice u njih se prenose iz `results/` zajedno
 s identifikatorom pokretanja.
 Provjerite integraciju s aplikacijom prije tvrdnje da je Codex završni hook aktivan.
 
 ## Provjere dostupne pri postavljanju
 
-`.github/workflows/ci.yml` pokreće se na PR-ovima, pri pushu na `main` i ručnim pokretanjem.
-Izvodi provjeru dokumentacije i testove za `tools/` koji koriste standardnu biblioteku.
-Te provjere ne zahtijevaju numeričke pakete, odabran skup podataka ni plaćenu uslugu. Još ne
-provjeravaju numeričku implementaciju.
+`.github/workflows/ci.yml` pokreće se na PR-ovima, pri pushu na `main` i ručnim pokretanjem,
+na Ubuntuu i Windowsu. Instalira uv 0.13.6 i pokreće `tools/check_before_stop.py`: provjeru
+dokumentacije, testove za `tools/` i numeričke provjere iz `tools/check_project.py`. Provjere
+ne zahtijevaju odabran skup podataka ni plaćenu uslugu.
 
-Pokrenite lokalno iz korijena repozitorija:
+Pokrenite lokalno iz korijena repozitorija (na Windowsu umjesto `python3` pišite
+`uv run --no-project python`):
 
 ```bash
+uv sync
+uv run pytest
+uv run ruff check .
 python3 tools/check_docs.py
 python3 -m unittest discover -s tools -p 'test_*.py'
 python3 tools/check_before_stop.py
@@ -93,26 +99,37 @@ repozitorija ne zadržava pristupne podatke. Dnevni tijek rada treba ovlast pisa
 zakazana pokretanja dok ne stigne na zadanu granu repozitorija i dok GitHub Actions ne dopusti
 izvođenje.
 
-## Numeričko okruženje: naknadna timska odluka
+## Numeričko okruženje
 
-Python je dogovoren; inačica metode, verzije ovisnosti, numeričke naredbe i primjena ostaju
-otvoreni. Zadatak implementacije zajedno će dodati specifikaciju okruženja i datoteku
-zaključanih ovisnosti, a zatim dokumentirati jednu podržanu naredbu za postavljanje, naredbu
-za testove i ulaznu točku eksperimenta. Dodajte CI zadatak koji instalira zaključane ovisnosti
-i pokreće male determinističke provjere. Cjelovita preuzimanja podataka i dugačke serije
-eksperimenata držite izvan zadanog PR zadatka, osim uz izričito obrazloženje.
+Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-version`),
+`numpy`, `scipy` i `matplotlib`, razvojno `pytest` i `ruff`, sve zaključano u `uv.lock`.
 
-Završna skripta, CI, korijenski popis naredbi i ova stranica moraju se promijeniti zajedno.
-Dok `pyproject.toml` ne postoji, završna skripta označava numeričku provjeru kao NOT RUN.
-Kad ta datoteka postoji, zahtijeva `tools/check_project.py`, uveden zajedno s dogovorenim
-okruženjem radi izvođenja numeričkih provjera. Nedostajuća skripta tada uzrokuje jasno vidljiv
-pad provjere. Numerički CI zadatak mora pasti i pri neispravnom okruženju ili nevaljanom ulazu;
-odsutna provjera nikad se ne računa kao uspješna.
+1. **Instalacija uv-a.** Prema [uputama](https://docs.astral.sh/uv/getting-started/installation/);
+   na Windowsu npr. `winget install --id=astral-sh.uv -e`. uv sam preuzima Python 3.12 ako ga
+   nema na računalu.
+2. **Okruženje.** `uv sync` stvara `.venv/` (izvan Gita) iz `uv.lock`.
+3. **Provjere.** `uv run pytest` pokreće `tests/`, a `uv run ruff check .` statičku provjeru.
+   Ruff ne provjerava `tools/`: to su alati tijeka rada sa standardnom bibliotekom i vlastitim
+   `unittest` testovima.
+4. **Nova ovisnost** dodaje se naredbom `uv add` (ili `uv add --dev`) uz dogovor i obrazloženje u
+   PR-u; `pyproject.toml` i `uv.lock` mijenjaju se u istom commitu.
+
+`tools/check_project.py` pokreće iste provjere s `uv run --locked`, pa zastarjeli `uv.lock` ruši
+provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
+eksperimenata dodaju se s prvim eksperimentom (A2, experiments/data_checks.py). Cjelovita
+preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
+izričito obrazloženje.
+
+Završna skripta, CI, korijenski popis naredbi i ova stranica mijenjaju se zajedno. Brojevi s
+Linuxa i Windowsa mogu se razlikovati na razini zaokruživanja, pa testovi koriste imenovane
+tolerancije.
 
 ## Završni hookovi
 
 `tools/check_before_stop.py` lokalni je CLI. Način `--hook` daje JSON za Stop hook, a Claude
-omotač poziva tu zajedničku implementaciju. `.codex/hooks.json` poziva istu provjeru preko
+omotač poziva tu zajedničku implementaciju. Oba hooka pozivaju provjeru naredbom
+`uv run --no-project python`, koja radi na Linuxu i Windowsu i traži samo uv na putanji
+(`PATH`). Codex promijenjenu definiciju hooka preskače dok joj se ponovno ne potvrdi povjerenje. `.codex/hooks.json` poziva istu provjeru preko
 korijena Git repozitorija, pa klonovi i radna stabla ne ovise o Lovrinoj ili Sarinoj apsolutnoj
 putanji. Codex zahtijeva i pouzdanu projektnu konfiguraciju i pregled te potvrdu povjerenja za
 točnu definiciju hooka kojom ne upravlja sustav; nova ili promijenjena definicija preskače se

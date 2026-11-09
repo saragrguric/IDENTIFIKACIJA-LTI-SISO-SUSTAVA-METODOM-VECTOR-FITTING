@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Run the shared local checks; --hook uses the Stop-hook JSON protocol.
 
-The numerical stack has not been selected yet. Until pyproject.toml exists, project
-checks are explicitly NOT RUN. Adding that file requires tools/check_project.py,
-which must run the agreed checks in the agreed environment and propagate failures.
+With pyproject.toml present, tools/check_project.py must exist; it runs the numerical
+checks in the locked uv environment (ADR-0006) and propagates failures. Without
+pyproject.toml, project checks are explicitly NOT RUN.
 """
 from __future__ import annotations
 

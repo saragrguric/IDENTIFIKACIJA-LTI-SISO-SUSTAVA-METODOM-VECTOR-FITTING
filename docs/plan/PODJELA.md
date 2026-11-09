@@ -170,7 +170,8 @@ ih ponovno obrađujemo.
 
    Prefiks je ime člana, a ne slovo niti.
 3. Radi u malim commitovima s porukama na hrvatskom, npr. `kvadratura: dodaj čvorove na pojasu`.
-4. Prije PR-a lokalno pokreni `python3 tools/check_before_stop.py`.
+4. Prije PR-a lokalno pokreni `uv run --no-project python tools/check_before_stop.py` (na Linuxu može i
+   `python3 tools/check_before_stop.py`).
 5. Otvori PR prema predlošku. Ako zadatak ima issue, u opisu napiši `Closes #N`. GitHub
    automatski traži pregled od recenzenta niti, a spajanje je moguće tek nakon odobrenja drugog
    člana i uspješnog CI-ja.
@@ -179,8 +180,8 @@ ih ponovno obrađujemo.
 
 ## Što je automatizirano na GitHubu
 
-- **CI** na svakom PR-u i pushu na `main`: provjera dokumentacije i testovi alata. Numeričke
-  provjere dodaje A1.
+- **CI** na svakom PR-u i pushu na `main`, na Linuxu i Windowsu: provjera dokumentacije, testovi
+  alata i numeričke provjere (`pytest` i `ruff`).
 - **Dnevna provjera** prijavljuje pad CI-ja, konflikte, zastarjele PR-ove i spajanja bez pregleda.
 - **`.github/CODEOWNERS`** automatski traži pregled od recenzenta niti.
 - **Predlošci issuea** „Zadatak” i „Nalaz” te predložak PR-a.

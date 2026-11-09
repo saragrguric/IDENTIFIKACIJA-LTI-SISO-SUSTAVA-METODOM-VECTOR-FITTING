@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$(git rev-parse --show-toplevel)/tools/check_before_stop.py\" --hook",
+            "command": "uv run --no-project python \"$(git rev-parse --show-toplevel)/tools/check_before_stop.py\" --hook",
             "timeout": 600
           }
         ]

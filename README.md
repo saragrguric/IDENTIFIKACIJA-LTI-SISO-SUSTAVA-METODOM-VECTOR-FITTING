@@ -37,12 +37,13 @@ projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJEC
 4. Prije predaje rada drugom članu pokreni lokalne provjere:
 
 ```bash
-python3 tools/check_before_stop.py
+uv run --no-project python tools/check_before_stop.py
 ```
 
-Za alate tijeka rada dovoljni su Python 3.11 ili noviji i Git; znanstveni paketi zasad nisu
-potrebni. Provjera pokreće provjere dokumentacije i jedinične testove alata. Numeričke provjere
-izričito označava s NOT RUN dok ne dogovorimo implementacijsko okruženje.
+Potrebni su Git i [uv](https://docs.astral.sh/uv/), koji sam instalira Python 3.12 i zaključane
+ovisnosti iz `uv.lock` ([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)). Na Linuxu
+je ista naredba `python3 tools/check_before_stop.py`. Provjera pokreće provjeru dokumentacije,
+jedinične testove alata te numeričke provjere (`pytest` i `ruff`).
 
 Zasebne naredbe, CI i postavljanje lokalnih hookova opisani su u
 [tijeku rada i provjera](docs/plan/PIPELINE.md). Postupanje s nalazima i probno pokretanje
