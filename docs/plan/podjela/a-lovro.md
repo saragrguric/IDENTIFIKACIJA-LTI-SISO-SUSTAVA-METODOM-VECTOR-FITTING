@@ -62,6 +62,11 @@ sustava i Sara pregleda PR.
 
 **Cilj:** ponovljivo preuzimanje tablice i modul `vfdebye.gabriel`.
 
+**Stanje 2026-11-09:** `data/README.md`, `data/fetch_gabriel.py`, `vfdebye.gabriel`, testovi i
+experiments/data_checks.py dodani su na grani `lovro/a2-gabriel`. Zadatak je gotov kad Sara
+pregleda PR. Točka 2 ima jedno pojašnjenje: član s $\Delta\varepsilon_n=0$ ne pridonosi modelu,
+pa se za njega ne provjerava $0\le\alpha_n<1$ (zrak i vakuum imaju $\alpha_n=1$).
+
 1. U data/README.md zapiši izvor (izvješće AL/OE-TR-1996-0037 i prijepis na WebNIR-u), licencu,
    datum pristupa, upute za preuzimanje i kontrolni zbroj. Tablica ostaje izvan Gita.
 2. Učitaj svih 57 redaka. Pretvori $\tau_n$ u sekunde. Provjeri konačnost, predznake i

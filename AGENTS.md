@@ -31,7 +31,8 @@ Sara je tu odluku potvrdila na sastanku Z0 2026-11-09. Razine točnosti zapisane
 ADR-0004, a Python okruženje u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Pojas je
 privremen (10 MHz–10 GHz). Čvorovi i težine, red, početni polovi i rok **nisu odlučeni**.
-Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metode.
+Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje i model tkiva (`vfdebye.gabriel`), još bez
+implementacije metode.
 
 ## 2. Znanstvena i numerička pravila
 
@@ -125,9 +126,9 @@ lokalne završne provjere i Python okruženje s paketom `vfdebye`
 ([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)), još bez implementacije metode.
 Trenutačna i planirana struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
 
-Područja: `src/` za višekratno upotrebljiv Python kod i `tests/` za numeričke provjere; planirani
-su `experiments/` za ponovljiva izvođenja, `data/` za lokalne ulaze i njihov opis, `results/` za
-rezultate. Stvaraj ih kada imaju koristan sadržaj. Seminar i prezentaciju pišemo u Overleafu,
+Područja: `src/` za višekratno upotrebljiv Python kod, `tests/` za numeričke provjere,
+`experiments/` za ponovljiva izvođenja i `data/` za opis i pripremu lokalnih ulaza; planiran je
+`results/` za rezultate. Stvaraj ih kada imaju koristan sadržaj. Seminar i prezentaciju pišemo u Overleafu,
 izvan ovog repozitorija. Istraživanje u bilježnici mora se povezati s ponovljivim izvođenjem.
 
 - Pristupne podatke i osobne postavke ne spremaj u Git. Zasad nije potreban API ključ.
