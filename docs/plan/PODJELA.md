@@ -118,7 +118,6 @@ Sastanak je održan 2026-11-09; ishod je zapisan u [prijedlogu za Z0](Z0_PRIJEDL
 - [x] Dogovoriti format seminara i prezentacije: pišemo ih u Overleafu, izvan repozitorija.
 - [x] Odrediti razine točnosti (ADR-0004, dodatak 2026-11-09).
 - [ ] Rok utvrđuje nastavnik; zatim rasporediti faze unatrag od njega.
-- [ ] Provjeriti s nastavnikom je li tema prihvatljiva.
 - [ ] Svatko lokalno: klonirati repozitorij, pokrenuti `python3 tools/check_before_stop.py` i
   provjeriti povjerenje hookovima (vidi [tijek rada](PIPELINE.md)).
 

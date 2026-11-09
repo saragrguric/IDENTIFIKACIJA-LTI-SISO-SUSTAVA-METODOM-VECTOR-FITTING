@@ -63,7 +63,7 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
   tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Razine
   točnosti 5 %, 1 % i 0,1 % odlučene su u dodatku ADR-0004 od 2026-11-09. Otvoreni su konačni
   frekvencijski pojas (privremeno 10 MHz–10 GHz), razvojni podskup tkiva i podskup za detaljnu
-  analizu te je li tema prihvatljiva nastavniku kolegija.
+  analizu. Temu smatramo prihvatljivom i ne tražimo prethodnu potvrdu nastavnika.
 - Postavke metode: VF i QuadVF uspoređuju se s referentnom metodom fiksnih polova, a otvoreni su
   težine, broj i raspored čvorova, prilagodba kvadrature pojasu i parametar $L$, red, početni
   polovi, zrcaljenje, rješavač najmanjih kvadrata, regularizacija i kriterij zaustavljanja.

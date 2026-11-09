@@ -15,7 +15,7 @@ iznimke i dopune:
 | 4 | Razine 5 %, 1 % i 0,1 %, zasebno za obje mjere; pojas privremeno 10 MHz–10 GHz do Z2 | ADR-0004, dodatak 2026-11-09 |
 | 5 | Seminar i prezentaciju pišemo u Overleafu, izvan repozitorija | [zadaci](TASKS.md), T6 |
 | 6 | Rok utvrđuje nastavnik; faze se raspoređuju kad ga znamo | otvoreno |
-| 7 | Prihvatljivost teme provjerava se s nastavnikom | otvoreno |
+| 7 | Temu smatramo prihvatljivom; prethodnu potvrdu nastavnika ne tražimo | ADR-0004, dodatak 2026-11-09 |
 | 8 | Potvrđeno: B1 nakon A1 | [podjela rada](PODJELA.md) |
 
 Ostatak stranice je izvorni prijedlog i nije mijenjan.

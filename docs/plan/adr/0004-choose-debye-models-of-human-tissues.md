@@ -154,6 +154,7 @@ Obrazloženje:
 eksperimenata (Z2). Gornju granicu pouzdanosti modela treba provjeriti u izvješću.
 
 Ostaje otvoreno iz točke 6: način prilagodbe kvadrature pojasu, čvorovi, početni polovi,
-zrcaljenje, kriterij zaustavljanja, regularizacija i podskupovi tkiva (Z2) te rok i
-prihvatljivost teme, koje utvrđuje nastavnik. Python okruženje odlučeno je u
+zrcaljenje, kriterij zaustavljanja, regularizacija i podskupovi tkiva (Z2) te rok, koji
+utvrđuje nastavnik. Lovro je 2026-11-09 odlučio da temu smatramo prihvatljivom i da prethodnu
+potvrdu nastavnika ne tražimo; to nije nastavnikovo odobrenje. Python okruženje odlučeno je u
 [ADR-0006](0006-choose-python-environment.md).
