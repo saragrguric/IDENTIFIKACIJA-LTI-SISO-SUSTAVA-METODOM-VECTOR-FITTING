@@ -6,17 +6,21 @@ For every tissue it prints the relaxation frequency 1/(2 pi tau_n), alpha_n and 
 each present term, and the largest share max_f |term_n(s)| / |H(s)| of each term on the band.
 The band is the provisional 10 MHz-10 GHz from the ADR-0004 addendum of 2026-11-09; Z2 fixes
 the final one.
-Output goes to stdout only; recorded runs need vfdebye.provenance (task A6).
+
+Every run is recorded with vfdebye.provenance in results/runs/<run_id>/ (outside Git): the
+report is saved there as data_checks.txt next to provenance.json.
 """
 from __future__ import annotations
 
 import argparse
+import contextlib
+import io
 import sys
 from pathlib import Path
 
 import numpy as np
 
-from vfdebye import gabriel
+from vfdebye import gabriel, provenance
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV = ROOT / "data" / "processed" / "gabriel_parameters.csv"
@@ -34,14 +38,8 @@ def term_shares(tissue: gabriel.Tissue, s: np.ndarray) -> list[float]:
     return shares
 
 
-def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--csv", type=Path, default=CSV)
-    args = parser.parse_args(argv)
-    if not args.csv.is_file():
-        print(f"{args.csv} is missing; run uv run python data/fetch_gabriel.py", file=sys.stderr)
-        return 1
-    tissues = gabriel.read_csv(args.csv)
+def report(tissues: list[gabriel.Tissue]) -> dict[str, int]:
+    """Print the overview; return the summary counts recorded as the run outcome."""
     duplicates = {name: group[0] for group in gabriel.duplicate_groups(tissues)
                   for name in group[1:]}
     s = gabriel.laplace_variable(np.geomspace(*BAND_HZ, GRID_POINTS))
@@ -85,6 +83,33 @@ def main(argv: list[str] | None = None) -> int:
               f"{max(t.delta_eps[n] for t in terms):.3g}], alpha in "
               f"[{min(t.alpha[n] for t in terms)}, {max(t.alpha[n] for t in terms)}]")
     print(f"tissues with a relaxation frequency inside the band: {len(in_band)}")
+    return {
+        "rows": len(tissues),
+        "dispersive": len(dispersive),
+        "distinct_dispersive_parameter_sets": len({t.parameters for t in dispersive}),
+        "tissues_with_relaxation_in_band": len(in_band),
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--csv", type=Path, default=CSV)
+    parser.add_argument("--runs-dir", type=Path, default=provenance.RUNS_DIR)
+    args = parser.parse_args(argv)
+    if not args.csv.is_file():
+        print(f"{args.csv} is missing; run uv run python data/fetch_gabriel.py", file=sys.stderr)
+        return 1
+    settings = {"band_hz": BAND_HZ, "band_status": "provisional", "grid_points": GRID_POINTS,
+                "grid": "log-spaced"}
+    with provenance.run("data_checks", settings=settings, inputs=[args.csv],
+                        runs_dir=args.runs_dir) as record:
+        text = io.StringIO()
+        with contextlib.redirect_stdout(text):
+            counts = report(gabriel.read_csv(args.csv))
+        (record.dir / "data_checks.txt").write_text(text.getvalue(), encoding="utf-8")
+        record.update(summary=counts, artifacts=["data_checks.txt"])
+    print(text.getvalue(), end="")
+    print(f"run {record.run_id} -> {record.dir}")
     return 0
 
 

@@ -81,7 +81,8 @@ Dogovori o podacima:
 - **Nevaljan ulaz** (NaN, krivi oblici, negativne vrijednosti gdje nisu dopuštene, $r$ veći od
   broja uzoraka) izaziva `ValueError` s jasnom porukom. Ništa se ne popravlja prešutno.
 - **Slučajnost** se ne očekuje. Ako zatreba, dolazi samo iz `numpy.random.default_rng(seed)`.
-- **Svako pokretanje eksperimenta** zapisuje podrijetlo preko `vfdebye.provenance`.
+- **Svako pokretanje eksperimenta** zapisuje podrijetlo preko `vfdebye.provenance`
+  (`with provenance.run(...) as rec`; opis u [tijeku rada](PIPELINE.md)).
 
 ## Faze i zadaci
 

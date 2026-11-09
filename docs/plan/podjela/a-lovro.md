@@ -131,6 +131,11 @@ Modul `vfdebye.provenance` prema [tijeku rada](../PIPELINE.md), odjeljak o podri
 koda i necommitirane promjene, okruženje, kontrolni zbroj tablice, pojas, čvorovi i težine, red,
 početni polovi, postavke i razlog zaustavljanja.
 
+**Stanje 2026-11-09:** modul, testovi i zapis podrijetla u experiments/data_checks.py dodani su na
+grani `lovro/a6-podrijetlo`. Pojas, čvorove, težine, red i početne polove eksperiment predaje u
+`settings`, a razlog zaustavljanja u `rec.update(stop_reason=...)`; njihov sadržaj određuju A4
+i Z2. Zadatak je gotov kad Sara pregleda PR.
+
 ## A7: ponašanje iteracija i zaustavljanje
 
 experiments/convergence.py na podskupu iz Z2: broj iteracija, kretanje polova, kruženje,

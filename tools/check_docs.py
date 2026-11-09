@@ -17,7 +17,8 @@ from urllib.parse import unquote
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-# Remove an entry when its path is created; the checker reports stale entries.
+# Remove an entry when Git sees files at its path; the checker reports stale entries.
+# Git-ignored local outputs (e.g. results/runs/) do not make an entry stale.
 PLANNED = frozenset({
     "results/", "seminar/", "presentation/",
 })
@@ -99,6 +100,11 @@ class Repo:
     def exists(self, path: str) -> bool:
         return (self.root / path).exists()
 
+    def has_files(self, path: str) -> bool:
+        """True when Git sees the file or a file below the folder (ignored outputs do not count)."""
+        path = path.rstrip("/")
+        return any(name == path or name.startswith(path + "/") for name in self.files)
+
 
 def normalize_rel(path: str) -> str | None:
     """Return a repository-relative path, or None if it escapes the repository."""
@@ -172,7 +178,7 @@ def check_paths(repo: Repo, mentions: list[Mention], config: Config) -> list[Pro
             message = f"`{mention.raw}` does not exist and is not in PLANNED (tools/check_docs.py)"
         problems.append(Problem(mention.source, mention.line, 1, message))
     for entry in sorted(config.planned):
-        if repo.exists(entry):
+        if repo.has_files(entry):
             problems.append(Problem("tools/check_docs.py", 0, 1, f"PLANNED entry `{entry}` exists now; remove it"))
     return problems
 
