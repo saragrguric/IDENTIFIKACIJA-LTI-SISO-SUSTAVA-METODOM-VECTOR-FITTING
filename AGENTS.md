@@ -27,9 +27,11 @@ podjela na niti zapisana je u [podjeli rada](docs/plan/PODJELA.md). Pogledaj
 **Primjena je odlučena** u [ADR-0004](docs/plan/adr/0004-choose-debye-models-of-human-tissues.md):
 VF i QuadVF aproksimiraju Gabrielov Cole–Coleov model permitivnosti ljudskih tkiva Debyejevim
 članovima (realnim polovima), a pitanje je koliko je polova najmanje potrebno za zadanu točnost.
-Frekvencijski pojas, razine točnosti, čvorovi i težine, red, početni polovi, Python ovisnosti,
-formati predaje i rok **nisu odlučeni**. Primjer ili prijedlog metode ne pretvaraj u prihvaćenu
-odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metode.
+Sara je tu odluku potvrdila na sastanku Z0 2026-11-09. Razine točnosti zapisane su u dodatku
+ADR-0004, a Python okruženje u
+[ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Pojas je
+privremen (10 MHz–10 GHz). Čvorovi i težine, red, početni polovi i rok **nisu odlučeni**.
+Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasad sadrži tijek rada i planove, bez implementacije metode.
 
 ## 2. Znanstvena i numerička pravila
 
@@ -124,8 +126,8 @@ struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
 
 Planirana područja: `src/` za višekratno upotrebljiv Python kod, `tests/` za numeričke provjere,
 `experiments/` za ponovljiva izvođenja, `data/` za lokalne ulaze i njihov opis, `results/` za
-rezultate, `seminar/` za pisani rad i `presentation/` za prezentaciju. Stvaraj ih kada imaju
-koristan sadržaj. Istraživanje u bilježnici mora se povezati s ponovljivim izvođenjem.
+rezultate. Stvaraj ih kada imaju koristan sadržaj. Seminar i prezentaciju pišemo u Overleafu,
+izvan ovog repozitorija. Istraživanje u bilježnici mora se povezati s ponovljivim izvođenjem.
 
 - Pristupne podatke i osobne postavke ne spremaj u Git. Zasad nije potreban API ključ.
 - Sirova preuzimanja, izmjereni ili simulirani frekvencijski odzivi, modeli prostora stanja i

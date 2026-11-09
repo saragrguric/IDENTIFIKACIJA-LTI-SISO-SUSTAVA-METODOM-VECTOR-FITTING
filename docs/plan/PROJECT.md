@@ -56,17 +56,20 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
 
 ## Još otvorene odluke
 
-- Format seminara i prezentacije, opseg i trajanje, kriteriji ocjenjivanja i rok.
+- Opseg i trajanje seminara i prezentacije, kriteriji ocjenjivanja i rok, koje utvrđuje
+  nastavnik. Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija.
 - Primjena, pitanje i podaci odlučeni su u
   [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md): Gabrielov model permitivnosti
-  tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Otvoreni su
-  frekvencijski pojas, razine točnosti, razvojni podskup tkiva i podskup za detaljnu analizu te
-  je li tema prihvatljiva nastavniku kolegija.
+  tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Razine
+  točnosti 5 %, 1 % i 0,1 % odlučene su u dodatku ADR-0004 od 2026-11-09. Otvoreni su konačni
+  frekvencijski pojas (privremeno 10 MHz–10 GHz), razvojni podskup tkiva i podskup za detaljnu
+  analizu te je li tema prihvatljiva nastavniku kolegija.
 - Postavke metode: VF i QuadVF uspoređuju se s referentnom metodom fiksnih polova, a otvoreni su
   težine, broj i raspored čvorova, prilagodba kvadrature pojasu i parametar $L$, red, početni
   polovi, zrcaljenje, rješavač najmanjih kvadrata, regularizacija i kriterij zaustavljanja.
 - Unos Sarina probnog koda u repozitorij i ponovno pokretanje probnog pokusa.
-- Znanstvene Python ovisnosti, podržana verzija, okruženje i referentna bibliotečna implementacija.
+- Referentna bibliotečna implementacija. Python 3.12, ovisnosti i uv odlučeni su u ADR-0006, a
+  provodi ih zadatak A1.
 - Prikladna referentna metoda, metrike domene i opseg eksperimenata.
 - Potvrda GitHub identiteta: repozitorij je pod računom `saragrguric`, a Lovro radi kao
   `LRazum`.

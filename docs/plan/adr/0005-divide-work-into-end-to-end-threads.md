@@ -1,6 +1,6 @@
 # ADR-0005: Podijeliti rad na dvije niti od matematike do rezultata, uz međusobni pregled
 
-**Datum:** 2026-11-07 · **Status:** predloženo
+**Datum:** 2026-11-07 · **Status:** prihvaćeno (Lovro i Sara prema Lovrinoj izjavi, 2026-11-09)
 
 ## Kontekst
 
@@ -66,3 +66,11 @@ pomoć AI alata; oni su prijedlog sadržaja.
 - GitHub issuei, oznake niti i milestonei faza stvaraju se tek nakon potvrde na Z0 i uz
   Lovrino ovlaštenje za tu radnju.
 - Ako Sara na Z0 ne prihvati niti, novi zapis zamjenjuje ovaj, a vrijedi podjela iz PR-a #5.
+
+## Dodatak 2026-11-09: potvrda na Z0
+
+Lovro je 2026-11-09 u razgovoru prenio da Sara na sastanku Z0 potvrđuje ovaj zapis, oba osobna
+plana, zajednička sučelja iz [podjele rada](../PODJELA.md) i naziv paketa `vfdebye`. Status je
+promijenjen u prihvaćeno na temelju te izjave; Sarin pregled PR-a koji uvodi ovaj dodatak njezina
+je potvrda u repozitoriju. Podjela iz PR-a #5 ostaje zamijenjena. GitHub issuei, oznake niti i
+milestonei faza i dalje traže Lovrino ovlaštenje za tu radnju.

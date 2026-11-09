@@ -1,6 +1,24 @@
 # Prijedlog odluka za sastanak Z0
 
-**Pripremio:** Lovro, 2026-11-07 · **Status:** prijedlog za raspravu, a ne odluka.
+**Pripremio:** Lovro, 2026-11-07 · **Status:** povijesni zapis; ishod sastanka je u nastavku.
+
+## Ishod sastanka 2026-11-09
+
+Lovro je 2026-11-09 prenio ishod sastanka. Sara potvrđuje prijedloge s ove stranice, uz ove
+iznimke i dopune:
+
+| # | Ishod | Zapis |
+|---|---|---|
+| 1 | Potvrđeno | ADR-0004 i ADR-0005, dodaci 2026-11-09 |
+| 2 | Potvrđeno, uključujući naziv `vfdebye` | ADR-0005, dodatak 2026-11-09 |
+| 3 | Prijedlog prihvaćen; Sara radi na Windowsu, Lovro na Linuxu, pa CI pokreće oba sustava | [ADR-0006](adr/0006-choose-python-environment.md) |
+| 4 | Razine 5 %, 1 % i 0,1 %, zasebno za obje mjere; pojas privremeno 10 MHz–10 GHz do Z2 | ADR-0004, dodatak 2026-11-09 |
+| 5 | Seminar i prezentaciju pišemo u Overleafu, izvan repozitorija | [zadaci](TASKS.md), T6 |
+| 6 | Rok utvrđuje nastavnik; faze se raspoređuju kad ga znamo | otvoreno |
+| 7 | Prihvatljivost teme provjerava se s nastavnikom | otvoreno |
+| 8 | Potvrđeno: B1 nakon A1 | [podjela rada](PODJELA.md) |
+
+Ostatak stranice je izvorni prijedlog i nije mijenjan.
 
 Ova stranica priprema sastanak Z0 iz [podjele rada](PODJELA.md). Za svako otvoreno pitanje daje
 konkretan prijedlog i obrazloženje, kako AGENTS.md traži prije odluke tima. Odluke sa sastanka

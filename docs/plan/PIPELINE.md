@@ -56,13 +56,14 @@ tests/                               planirano: numeričke provjere i provjere p
 experiments/                         planirano: konfiguracije i reproducibilne ulazne točke
 data/                                planirano: dokumentirana nabava/priprema podataka
 results/                             planirano: označena izvođenja, slike i tablice
-seminar/                             planirano: izvor pisanog seminara
-presentation/                        planirano: izvor prezentacije
 ```
 
 Planirane mape uvode se kada za njih postoji stvaran sadržaj. Naziv mape ne određuje skup
-podataka, inačicu metode ni format dokumenta. Predložena datoteka zaključanih ovisnosti za uv
-slijedi referentni tijek rada; numeričko okruženje i upravitelj paketa još nisu dogovoreni.
+podataka, inačicu metode ni format dokumenta. Numeričko okruženje (Python 3.12, uv i `uv.lock`,
+CI na Linuxu i Windowsu) odlučeno je u
+[ADR-0006](adr/0006-choose-python-environment.md), a uvodi ga zadatak A1. Seminar i prezentacija
+pišu se u Overleafu, izvan repozitorija; slike i tablice u njih se prenose iz `results/` zajedno
+s identifikatorom pokretanja.
 Provjerite integraciju s aplikacijom prije tvrdnje da je Codex završni hook aktivan.
 
 ## Provjere dostupne pri postavljanju

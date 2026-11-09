@@ -4,7 +4,8 @@ Tema je odabrana u [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md),
 niti predložena je u [ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md). Ova stranica je
 zajednički plan; detaljni koraci za svaku osobu nalaze se u osobnim planovima. Sadržaj planova je
 prijedlog koji je napisao Lovro uz pomoć AI alata. PR #6 spojen je bez Sarina pregleda (ADR-0002,
-dodatak 2026-11-07), pa Sara planove potvrđuje ili mijenja na sastanku Z0 ili novim PR-om. Rok nije poznat, pa faze nemaju datume.
+dodatak 2026-11-07); Sara ih je potvrdila na sastanku Z0 2026-11-09 (ADR-0005, dodatak
+2026-11-09). Rok utvrđuje nastavnik; dok ga ne znamo, faze nemaju datume.
 
 ## Tko je tko
 
@@ -41,8 +42,8 @@ nijednoj niti traže pregled od oboje. Za spajanje vrijedi odobrenje drugog čla
 
 ## Zajednička sučelja
 
-Prijedlog za potvrdu na sastanku Z0. Nakon potvrde mijenja se samo dogovorom, uz ažuriranje ove
-stranice i pogođenih testova. Naziv paketa `vfdebye` također je prijedlog.
+Potvrđeno na sastanku Z0 2026-11-09, uključujući naziv paketa `vfdebye`. Mijenja se samo
+dogovorom, uz ažuriranje ove stranice i pogođenih testova.
 
 ```text
 src/vfdebye/
@@ -109,11 +110,14 @@ Najvažnije ovisnosti:
 
 Sudjeluju oboje. Prijedlozi odluka nalaze se u [prijedlogu za Z0](Z0_PRIJEDLOG.md).
 
-- [ ] Sara potvrđuje ADR-0004, ADR-0005 i svoj plan ili traži izmjene.
-- [ ] Potvrditi zajednička sučelja s ove stranice ili ih izmijeniti.
-- [ ] Dogovoriti Python ovisnosti; A1 ih zatim provodi.
-- [ ] Dogovoriti format seminara i prezentacije.
-- [ ] Odrediti rok i rasporediti faze unatrag od njega.
+Sastanak je održan 2026-11-09; ishod je zapisan u [prijedlogu za Z0](Z0_PRIJEDLOG.md#ishod-sastanka-2026-11-09).
+
+- [x] Sara potvrđuje ADR-0004, ADR-0005 i svoj plan ili traži izmjene.
+- [x] Potvrditi zajednička sučelja s ove stranice ili ih izmijeniti.
+- [x] Dogovoriti Python ovisnosti; A1 ih zatim provodi (ADR-0006).
+- [x] Dogovoriti format seminara i prezentacije: pišemo ih u Overleafu, izvan repozitorija.
+- [x] Odrediti razine točnosti (ADR-0004, dodatak 2026-11-09).
+- [ ] Rok utvrđuje nastavnik; zatim rasporediti faze unatrag od njega.
 - [ ] Provjeriti s nastavnikom je li tema prihvatljiva.
 - [ ] Svatko lokalno: klonirati repozitorij, pokrenuti `python3 tools/check_before_stop.py` i
   provjeriti povjerenje hookovima (vidi [tijek rada](PIPELINE.md)).
@@ -132,7 +136,7 @@ Nositeljica je Sara, a sudjeluju oboje. To je zadatak T3 iz [popisa zadataka](TA
   - VF treba manje polova od fiksnih logaritamskih polova za istu točnost kod većine tkiva;
   - QuadVF ne treba više polova od VF-a s logaritamskim čvorovima;
   - tkiva s većim $\alpha_n$ u pojasu trebaju više polova.
-- Odabrati pojas, razine točnosti, razvojni podskup tkiva, podskup za detaljnu analizu, broj
+- Odabrati konačni pojas, razvojni podskup tkiva, podskup za detaljnu analizu, broj
   čvorova, raspon za $L$, početne polove, kriterij zaustavljanja i računalni proračun. Važne
   izbore zabilježiti u ADR-u i [metodologiji](METHODOLOGY.md).
 

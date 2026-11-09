@@ -120,3 +120,40 @@ $\sigma=0{,}943$ S/m). To je provjera prijepisa tablice, a ne rezultat projekta.
   se navesti kao opažanje, a kao tvrdnja tek kad tim doda izvor u literaturu.
 - Seminar mora ukratko objasniti permitivnost i Cole–Coleov model, a temu opravdati matematikom
   racionalne aproksimacije.
+
+## Dodatak 2026-11-09: potvrda na Z0 i razine točnosti
+
+Lovro je 2026-11-09 u razgovoru prenio ishod sastanka Z0: Sara potvrđuje ovaj zapis i
+[prijedlog za Z0](../Z0_PRIJEDLOG.md). Odluku o razinama točnosti Lovro je prepustio AI alatu;
+Lovro ju prihvaća otvaranjem PR-a, a Sara je potvrđuje njegovim pregledom.
+
+**Razine točnosti** su $\delta\in\{5\,\%,\ 1\,\%,\ 0{,}1\,\%\}$. Za svako tkivo, metodu i
+razinu $\delta$ najmanji red $r$ traži se zasebno za svaku od dviju mjera iz točke 5:
+
+- najveća relativna pogreška od $\varepsilon$ na kontrolnoj mreži je najviše $\delta$;
+- relativna $\mathcal{H}_2$ pogreška od $H$ na pojasu je najviše $\delta$.
+
+Mjere imaju različite nazivnike: prva dijeli s $\lvert\varepsilon\rvert$, koja sadrži točno
+poznate članove $\varepsilon_\infty$ i $\sigma_i/(s\varepsilon_0)$, a druga s normom od $H$. Ista
+razina $\delta$ zato nema isto značenje u objema mjerama, pa se rezultati ne zbrajaju u jednu
+ocjenu.
+
+Obrazloženje:
+
+- Tri razine razmaknute za faktor 5 i 10 pokazuju kako $r$ raste s traženom točnošću; jedna
+  razina to ne bi pokazala, a više razina povećava tablicu bez novog pitanja.
+- Gabrielov model sam je prilagodba mjerenjima. Njegovu nesigurnost treba provjeriti u izvješću
+  (zadatak A2). Ako je veća od 0,1 %, najstroža razina odgovara na matematičko pitanje o
+  aproksimaciji funkcije, a ne na fizikalno.
+- Sve su razine daleko iznad preciznosti aritmetike s pomičnim zarezom. Ako metoda ne dosegne
+  0,1 % zbog loše uvjetovanosti (B7), to se prijavljuje kao neuspjeh te metode, a ne skriva.
+- Razine su zadane prije ikakvog rezultata projekta i ne mijenjaju se nakon pregleda rezultata
+  (AGENTS.md, pravilo 7). Promjena prije završnih pokretanja traži novi dodatak s razlogom.
+
+**Pojas** ostaje privremeno 10 MHz–10 GHz za faze 1 i 2; konačan izbor dio je plana
+eksperimenata (Z2). Gornju granicu pouzdanosti modela treba provjeriti u izvješću.
+
+Ostaje otvoreno iz točke 6: način prilagodbe kvadrature pojasu, čvorovi, početni polovi,
+zrcaljenje, kriterij zaustavljanja, regularizacija i podskupovi tkiva (Z2) te rok i
+prihvatljivost teme, koje utvrđuje nastavnik. Python okruženje odlučeno je u
+[ADR-0006](0006-choose-python-environment.md).
