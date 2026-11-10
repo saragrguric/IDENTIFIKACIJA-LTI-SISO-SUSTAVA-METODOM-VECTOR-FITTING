@@ -18,6 +18,7 @@ uv.lock                             zaključane verzije ovisnosti
 src/
   vfdebye/                          višekratno upotrebljiva Python implementacija
     gabriel.py                      tablica parametara, provjera ulaza, ε(s) i H(s)
+    provenance.py                   zapis podrijetla pokretanja u results/runs (izvan Gita)
 tests/                              numeričke provjere i provjere podataka (pytest)
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
@@ -186,7 +187,26 @@ referentnog projekta odnose i na ovaj repozitorij.
 
 ## Najmanji skup podataka o podrijetlu za prijavljeno izvođenje
 
-Konkretan format zapisa odaberite tijekom implementacije. Mora sačuvati:
+Zapis provodi `vfdebye.provenance` (zadatak A6). Svako pokretanje eksperimenta otvara
+`with provenance.run(naziv, settings=..., inputs=[...]) as rec:` i dobiva vlastitu mapu
+results/runs/<run_id>/ izvan Gita. Identifikator pokretanja je UTC vremenska oznaka s
+mikrosekundama i naziv eksperimenta; postojeća mapa se nikad ne prepisuje. U mapi su:
+
+- provenance.json: identifikator, status (`running`, `completed` ili `failed` uz pogrešku),
+  početak, kraj i trajanje, naredba, postavke (`settings`), kontrolni zbrojevi ulaznih
+  datoteka, stanje koda, okruženje i ishod (`rec.update(...)`: razlog zaustavljanja, broj
+  iteracija, metrike, upozorenja, artefakti). Zapis se sprema na početku i na kraju, pa i
+  prekinuto pokretanje ostavlja trag;
+- uncommitted.diff s razlikama praćenih datoteka u odnosu na commit i mapa untracked/ s
+  kopijama nepraćenih datoteka koje Git ne zanemaruje (do 1 MB; veće se navode s kontrolnim
+  zbrojem). Bez Gita zapis navodi razlog umjesto izmišljene revizije;
+- okruženje: verzija i putanja Pythona, platforma, verzije `vfdebye`, `numpy`, `scipy` i
+  `matplotlib`, SHA-256 od `uv.lock` i varijable broja dretvi;
+- artefakti pokretanja, npr. ispis ili tablice.
+
+Kompleksni brojevi zapisuju se kao `{"re", "im"}`, a vrijednosti koje nisu konačne kao
+`"nan"`, `"inf"` i `"-inf"`. Nepodržana vrsta vrijednosti u postavkama izaziva pogrešku umjesto
+gubitka podatka. Zapis mora sačuvati:
 
 - Jedinstven identifikator izvođenja, vremensku oznaku, status i korištenu naredbu/konfiguraciju.
 - Commit koda i podatak o necommitiranim promjenama u radnom stablu. Sačuvajte pripadajuće

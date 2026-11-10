@@ -135,6 +135,17 @@ class DocsCheckTest(unittest.TestCase):
         self.assertEqual(self.checks(), [])
 
     @unittest.skipUnless(shutil.which("git"), "Git is not installed")
+    def test_planned_folder_with_only_ignored_outputs_is_not_stale(self) -> None:
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
+        self.write(".gitignore", "/results/runs/\n")
+        self.write("results/runs/1/provenance.json", "{}\n")
+        self.write("README.md", "`results/`\n")
+        config = check_docs.Config(planned=frozenset({"results/"}))
+        self.assertEqual(self.checks(config), [])
+        self.write("results/table.csv", "a\n")
+        self.assertIn("exists now", self.checks(config)[0].message)
+
+    @unittest.skipUnless(shutil.which("git"), "Git is not installed")
     def test_unignored_env_is_reported_without_exposing_content(self) -> None:
         subprocess.run(["git", "init", "-q", str(self.root)], check=True)
         self.write(".env", "TOKEN=secret-value\n")
