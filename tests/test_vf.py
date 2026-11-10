@@ -114,6 +114,14 @@ def test_matching_distance_ignores_the_order_of_poles():
     assert list(sigma) == [1, 3, 2, 0]
 
 
+def test_relative_distance_is_scaled_by_the_first_set_and_not_symmetric():
+    a = [-1.0, -100.0]
+    b = [-2.0, -100.0]
+    assert matching_distance(a, b)[0] == matching_distance(b, a)[0] == 1.0
+    assert matching_distance(a, b, relative=True)[0] == 1.0
+    assert matching_distance(b, a, relative=True)[0] == 0.5
+
+
 def test_bound_4_4_for_zeros_of_the_denominator():
     # L1 (4.4): poles move by at most r(2r-1) max|phi| when lambda+ are the zeros of
     # d(s) = 1 + sum phi_j/(s - lambda_j). Those zeros are eig(diag(lambda) - phi e^T).
@@ -139,3 +147,11 @@ def test_detect_period_recognises_settling_cycling_and_neither():
     assert detect_period(drifting, rtol=1e-9, max_period=3) is None
     with pytest.raises(ValueError):
         detect_period(settled, rtol=1e-9, max_period=0)
+
+
+def test_detect_period_scales_by_the_earlier_set_as_in_figure_2():
+    # L1, Fig. 2: ||(lambda^(k) - lambda^(k+1)) ./ lambda^(k)||_inf. Relative to the earlier
+    # set the step is 1, relative to the later one 0.5.
+    history = [np.array([-1.0, -100.0]), np.array([-2.0, -100.0])]
+    assert detect_period(history, rtol=0.75, max_period=1) is None
+    assert detect_period(history, rtol=1.0, max_period=1) == 1

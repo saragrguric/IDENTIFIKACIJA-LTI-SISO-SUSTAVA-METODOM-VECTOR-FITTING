@@ -217,7 +217,12 @@ $\int_{-\infty}^{\infty}\lvert H(\imath\omega)\rvert^2\,d\omega=\pi/a$ (vlastiti
 Udaljenost (4.3) skupova polova je problem uparivanja s najmanjim najvećim odstupanjem
 (engl. *bottleneck assignment*), a ne s najmanjim zbrojem; računa ga
 `vfdebye.vf.matching_distance`, a test ga uspoređuje s definicijom preko svih permutacija za
-$r\le6$. Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
+$r\le6$. Udaljenost (4.3) je apsolutna i simetrična. Slika 2 i Primjer 4.2 u L1 prate relativnu
+promjenu $\lVert(\lambda^{(k)}-\lambda^{(k+1)})./\lambda^{(k)}\rVert_\infty$, normiranu
+ranijim skupom. Relativna udaljenost nije simetrična: za $a=\{-1,-100\}$ i $b=\{-2,-100\}$
+iznosi 1 normirana s $a$, a 0,5 normirana s $b$. L1 cik-cak oblik te krivulje na desnoj
+slici pripisuje upravo računanju relativnih udaljenosti. `vfdebye.vf.detect_period` zato,
+kao L1, normira skupom starijim za $\tau$ koraka. Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
 točkama. Zato uspoređivati vrijednosti $H_r$ na kontrolnoj mreži ili skupove polova
 uparivanjem, kao u (4.3), a ne vektore koeficijenata. Koristiti opravdane tolerancije i
 neovisne izračune; uvjetovanost određuje dostižnu točnost. Kada se biblioteka koristi kao

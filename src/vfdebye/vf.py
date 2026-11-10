@@ -102,6 +102,9 @@ def matching_distance(
     Omega = min over permutations sigma of max_j |a_j - b_sigma(j)|, or with relative=True of
     max_j |a_j - b_sigma(j)| / |a_j|. Returns (Omega, sigma) with b[sigma] paired to a; among
     the optimal sigma the one with the smallest sum of distances is returned.
+
+    The absolute distance (4.3) is symmetric; the relative one is not, since it is scaled by a:
+    for a = {-1, -100} and b = {-2, -100} it is 1 for (a, b) and 0.5 for (b, a).
     """
     a = _complex_vector("a", a)
     b = _complex_vector("b", b)
@@ -136,9 +139,11 @@ def detect_period(
     rtol: float,
     max_period: int,
 ) -> int | None:
-    """Smallest lag tau in 1..max_period with relative matching distance of the last pole set
-    to the one tau steps earlier at most rtol; None when there is none.
+    """Smallest lag tau in 1..max_period with relative matching distance between the pole set
+    tau steps before the last one and the last one at most rtol; None when there is none.
 
+    The distance is scaled by the earlier set, as ||(lambda^(k) - lambda^(k+tau)) ./
+    lambda^(k)||_inf in L1, Fig. 2; the relative distance is not symmetric (matching_distance).
     tau = 1 means the poles have settled; tau = 2 is the cycling of L1, Example 4.2. A
     detected period says only that the iteration repeats, not that the model is good.
     """
@@ -146,7 +151,7 @@ def detect_period(
         raise ValueError("max_period must be at least 1")
     last = pole_history[-1]
     for tau in range(1, min(max_period, len(pole_history) - 1) + 1):
-        omega, _ = matching_distance(last, pole_history[-1 - tau], relative=True)
+        omega, _ = matching_distance(pole_history[-1 - tau], last, relative=True)
         if omega <= rtol:
             return tau
     return None
