@@ -123,12 +123,13 @@ Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij zasa
 
 ## 4. Struktura repozitorija i podaci
 
-Zasad postoje upute, planska/istraživačka dokumentacija, alati tijeka rada, CI konfiguracije
-te lokalne završne provjere. Znanstvena implementacija slijedi kasnije. Trenutačna i planirana
-struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
+Postoje upute, planska/istraživačka dokumentacija, alati tijeka rada, CI konfiguracije,
+lokalne završne provjere i Python okruženje s paketom `vfdebye`
+([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)), još bez implementacije metode.
+Trenutačna i planirana struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
 
-Planirana područja: `src/` za višekratno upotrebljiv Python kod, `tests/` za numeričke provjere,
-`experiments/` za ponovljiva izvođenja, `data/` za lokalne ulaze i njihov opis, `results/` za
+Područja: `src/` za višekratno upotrebljiv Python kod i `tests/` za numeričke provjere; planirani
+su `experiments/` za ponovljiva izvođenja, `data/` za lokalne ulaze i njihov opis, `results/` za
 rezultate. Stvaraj ih kada imaju koristan sadržaj. Seminar i prezentaciju pišemo u Overleafu,
 izvan ovog repozitorija. Istraživanje u bilježnici mora se povezati s ponovljivim izvođenjem.
 
@@ -139,14 +140,18 @@ izvan ovog repozitorija. Istraživanje u bilježnici mora se povezati s ponovlji
   zabilježi izvor, licencu i upute za preuzimanje/pripremu.
 - Priloženi rad i druge tuđe materijale ne objavljuj bez prava daljnje distribucije. Osobne
   apsolutne putanje nisu prenosive projektne ovisnosti.
-- Ovisnosti i datoteku zaključanih verzija dodaj kada dogovorimo implementaciju; u sklopu
-  postavljanja tijeka rada ne instaliraj znanstveno okruženje i ne gradi aplikaciju.
+- Ovisnosti su zaključane u `uv.lock` (ADR-0006). Novu ovisnost dodaj samo dogovorom, naredbom
+  `uv add`, uz obrazloženje u PR-u. Ne gradi aplikaciju ni servis.
 
 ## 5. Naredbe i dovršavanje rada
 
-Pokreni iz korijena repozitorija; trenutačni alati koriste samo standardnu Python biblioteku:
+Pokreni iz korijena repozitorija. Alati u `tools/` koriste samo standardnu Python biblioteku, a
+numeričke provjere traže [uv](https://docs.astral.sh/uv/):
 
 ```bash
+uv sync                      # okruženje iz uv.lock
+uv run pytest
+uv run ruff check .
 python3 tools/check_docs.py
 python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 tools/check_before_stop.py
@@ -154,10 +159,12 @@ python3 tools/daily_check.py --dry-run  # treba pristup čitanju GitHuba; ništa
 gh issue list --label finding --state open
 ```
 
-Prve tri naredbe rade lokalno bez GitHub pristupnih podataka. Završna provjera numeričke
-provjere označava s **NOT RUN** dok ne postoji Python projekt. Pri uvođenju `pyproject.toml`
-ista promjena mora dodati `tools/check_project.py`, dogovorene naredbe testiranja/statičke
-provjere i CI integraciju. Nedostajući pokretač tada je pogreška umjesto prešutnog preskakanja.
+Naredbe osim zadnje dvije rade lokalno bez GitHub pristupnih podataka. Na Windowsu, gdje
+`python3` često ne postoji, umjesto `python3` piši `uv run --no-project python`; hookovi i CI
+već tako pozivaju završnu provjeru. Završna provjera preko `tools/check_project.py` pokreće
+`pytest` i `ruff` u okruženju iz `uv.lock`. Nedostajući uv, zastarjeli `uv.lock` ili
+nedostajući pokretač pogreška su, a ne prešutno preskakanje. Promjena okruženja mijenja
+zajedno `pyproject.toml`, `uv.lock`, pokretač, CI i [tijek rada](docs/plan/PIPELINE.md).
 
 Prije završetka uskladi primjenjive retke protokola promjena i navedi rezultate provjera,
 broj testova i ograničenja. Ne isključuj neuspješnu provjeru da bi završio rad. Jasno navedi

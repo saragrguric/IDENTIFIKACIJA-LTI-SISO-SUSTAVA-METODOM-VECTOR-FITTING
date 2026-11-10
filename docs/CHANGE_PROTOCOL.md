@@ -102,8 +102,9 @@ python3 tools/check_before_stop.py
 ```
 
 Zadnja naredba objedinjuje dostupne završne provjere. Ona je i zajednička ulazna točka za
-hookove alata. Numeričke naredbe dodaju se uz dogovoreno Python okruženje i ne nagađaju se
-unaprijed. Provjerite da su razlike unutar opsega, da ne sadrže tajne ili podatke s ograničenim
+hookove alata. Numeričke provjere pokreće preko `tools/check_project.py` u okruženju iz
+`uv.lock`; na Windowsu umjesto `python3` koristite `uv run --no-project python`. Nove numeričke
+naredbe dodaju se uz dogovoreno okruženje i ne nagađaju se unaprijed. Provjerite da su razlike unutar opsega, da ne sadrže tajne ili podatke s ograničenim
 pristupom i da ne tvrde bez potkrepe da je implementacija dovršena, da netko razumije ili
 odobrava rad ili da je eksperiment uspio. U PR-u ili primopredaji zabilježite naredbu, rezultat
 i bitna ograničenja. Uspješne provjere repozitorija ne dokazuju znanstvenu ispravnost.

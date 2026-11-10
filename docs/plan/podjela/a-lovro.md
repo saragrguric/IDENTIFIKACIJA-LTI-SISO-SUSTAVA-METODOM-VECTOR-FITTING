@@ -54,6 +54,10 @@ Z0.
 **Gotovo kada:** `python3 tools/check_before_stop.py` izvršava numeričke provjere umjesto NOT RUN,
 a CI prolazi.
 
+**Stanje 2026-11-09:** okruženje, `tools/check_project.py`, CI na Linuxu i Windowsu te poziv
+hookova preko uv-a dodani su na grani `lovro/a1-okruzenje`. Zadatak je gotov kad CI prođe na oba
+sustava i Sara pregleda PR.
+
 ## A2: tablica tkiva i model $H(s)$
 
 **Cilj:** ponovljivo preuzimanje tablice i modul `vfdebye.gabriel`.
