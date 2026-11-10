@@ -97,6 +97,9 @@ iteraciju ili neovisno provjerljiv numerički primjer, primjerice racionalnu fun
 
 ## 4. $\mathcal{H}_2$ pogreška i uzorkovanje kvadraturom
 
+Izvod ovog odjeljka, s našim odmakom na pojas i prijedlogom kvadrature za Z2, nalazi se u
+[izvodu B2](../izvodi/b2-h2-kvadratura.md).
+
 Definirati prostor $\mathcal{H}_2(\mathbb{C}_+)$, skalarni produkt i normu (3.1) te
 $\mathcal{H}_\infty$ normu (L1, §3.4.1). Objasniti nužne uvjete $\mathcal{H}_2$ optimalnosti
 (3.2), Hermiteovu interpolaciju u zrcalnim slikama polova, i ulogu metode IRKA kao reference

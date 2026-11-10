@@ -14,6 +14,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Projekt](plan/PROJECT.md): opseg, predaja, zajedničko razumijevanje i otvorene odluke.
 - [Zadaci](plan/TASKS.md): etape, ovisnosti, stanje i dokazi dovršenosti.
 - [Metodologija](plan/METHODOLOGY.md): matematička razrada, provjera implementacije i eksperimenti.
+- [Izvod B2](izvodi/b2-h2-kvadratura.md): $\mathcal{H}_2$ greška, kvadratura, QuadVF i naša kvadratura na pojasu.
 - [Literatura](research/LITERATURE.md): priloženi rad, njegovi odjeljci i predloženi redoslijed učenja.
 - [Prijedlog tema](plan/prijedlog-tema/prijedlog-tema-vf.pdf) ([izvor](plan/prijedlog-tema/prijedlog-tema-vf.tex)): tri prve moguće teme; odabrana tema nije među njima (vidi ADR-0004).
 - [Podjela rada](plan/PODJELA.md): dvije niti, međusobni pregled, zajednička sučelja, faze i zajednički zadaci.
