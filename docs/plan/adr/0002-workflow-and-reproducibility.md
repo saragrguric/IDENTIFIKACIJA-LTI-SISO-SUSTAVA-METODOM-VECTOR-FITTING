@@ -145,3 +145,11 @@ bilježi Sarino odobrenje i ne mijenja pravilo pregleda budućih PR-ova; CI i os
 moraju proći. Sara sadržaj obaju PR-ova (ADR-0004, ADR-0005, podjelu rada, osobne planove i
 dodatke ADR-0001 od 2026-11-01 i 2026-11-03) potvrđuje na sastanku Z0 ili traži izmjene novim
 PR-om.
+
+## Dodatak 2026-11-10: odobrenje i spajanje preko AI alata
+
+[ADR-0007](0007-ai-tool-acts-for-its-user-in-git.md) dopunjuje točke 2 i 5: AI alat na
+izričitu uputu člana smije odobriti i spojiti PR pod računom tog člana. Odobrenje koje AI alat
+da na uputu člana nakon njegova pregleda ispunjava točku 2. Odbačena mogućnost „AI odobrenje
+ili uspješan CI kao dovoljan uvjet” i dalje vrijedi za samostalan AI pregled i odobrenja bot
+računa.

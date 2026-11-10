@@ -94,7 +94,10 @@ implementacije metode.
 - Male opisne commit poruke: `dio: što je promijenjeno`, primjerice
   `teorija: izvedi premještanje polova u VF-u`.
 - Nema izravnih commitova na `main`, prisilnog pusha ni prepisivanja tuđe grane rebaseom.
-- Svaki PR u `main` mora odobriti drugi član tima. AI pregled dodatna je provjera.
+- Svaki PR u `main` mora odobriti drugi član tima. Član promjenu pregledava sam, a odobrenje
+  može dati osobno ili izričitom uputom svom AI alatu da ga da pod njegovim računom
+  ([ADR-0007](docs/plan/adr/0007-ai-tool-acts-for-its-user-in-git.md)). Samostalan AI pregled
+  i odobrenja bot računa dodatna su provjera, a ne odobrenje člana.
   Zaštitu grane treba zasebno provjeriti; lokalne je datoteke ne uključuju. Dnevna provjera
   neke prekršaje otkriva naknadno. Iznimka vrijedi samo za točan par broja PR-a i grane koji
   korisnik izričito odobri; bilježi se kao datirani dodatak zapisa ADR-0002 i u
@@ -105,8 +108,8 @@ implementacije metode.
   Sarina pregleda za izbor teme i podjelu na niti u PR-u #6 s grane `lovro/tema-i-podjela` i za
   podjelu rada u PR-u #5 s grane `lovro/podjela-zadataka`, čije commitove PR #6 sadrži. To su
   iznimke samo za navedene parove broja i grane; ostali PR-ovi slijede redovno pravilo.
-- AI alati rade commit/push, otvaraju PR-ove/issuee, objavljuju preglede/komentare ili šalju
-  poruke samo uz korisnikovo ovlaštenje za tu radnju. Ovlaštenje ostaje valjano unutar
+- AI alati rade commit/push, otvaraju, odobravaju i spajaju PR-ove, otvaraju issuee, objavljuju
+  preglede/komentare ili šalju poruke samo uz korisnikovo ovlaštenje za tu radnju (ADR-0007). Ovlaštenje ostaje valjano unutar
   dogovorenog opsega; ne traži ga ponovno za već odobrenu radnju. Lokalne promjene koje se mogu
   poništiti i provjere obavljaju se u opsegu zadatka. Poštuj aktualno ovlaštenje: samo početno
   lokalno postavljanje nije ovlastilo objavu, dok je kasnija Lovrova uputa od 2026-10-28
