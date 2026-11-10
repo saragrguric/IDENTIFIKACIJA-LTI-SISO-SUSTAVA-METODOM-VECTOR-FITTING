@@ -101,6 +101,11 @@ tablicu.
 
 **Cilj:** `vfdebye.vf.vector_fit` prema sučelju iz podjele rada.
 
+**Stanje 2026-11-09:** dijelovi koji ne ovise o B1 dodani su na grani `lovro/a4-model`:
+`PoleResidueModel` (model iz sučelja, izračun u bilo kojim točkama, provjera realnosti i
+stabilnosti), `matching_distance` (uparivanje skupova polova, (4.3)) i `detect_period`
+(prepoznavanje kruženja, Primjer 4.2 i Napomena 4.3). Sama iteracija `vector_fit` čeka B1.
+
 1. Pregledaj Sarin probni kod iz B1 i odluči što od njega preuzimaš.
 2. SK iteracija u baricentričnom obliku s težinama, premještanje polova (2.9)–(2.12), završna
    identifikacija reziduala, zrcaljenje nestabilnih polova (L1, §4.1).

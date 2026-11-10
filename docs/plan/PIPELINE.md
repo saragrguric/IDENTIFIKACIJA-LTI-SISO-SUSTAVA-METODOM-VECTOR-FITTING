@@ -19,6 +19,7 @@ src/
   vfdebye/                          višekratno upotrebljiva Python implementacija
     gabriel.py                      tablica parametara, provjera ulaza, ε(s) i H(s)
     provenance.py                   zapis podrijetla pokretanja u results/runs (izvan Gita)
+    vf.py                           model polova i reziduala, uparivanje polova (4.3); VF slijedi
 tests/                              numeričke provjere i provjere podataka (pytest)
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
