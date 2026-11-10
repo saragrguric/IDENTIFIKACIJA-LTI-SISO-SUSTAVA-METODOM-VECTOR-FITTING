@@ -82,10 +82,11 @@ za predaju već postoje. Njihovo je trenutačno stanje zabilježeno u `docs/plan
 7. Pripremite male opisne commitove, primjerice `docs: objasni premještanje polova u VF-u` ili
    `vf: provjeri konjugiranu simetriju uzoraka`. Autor commita i PR-a isključivo je osoba koja
    vodi rad; bez `Co-Authored-By` AI alata i AI potpisa (ADR-0003). AI radi commit, push,
-   otvara PR-ove te objavljuje prijave, preglede ili komentare samo uz izričito odobrenje koje
+   otvara, odobrava i spaja PR-ove te objavljuje prijave, preglede ili komentare samo uz izričito odobrenje koje
    u trenutačnoj sesiji pokriva tu radnju. Postojeće odobrenje vrijedi unutar navedenog opsega; ne tražite ga
    ponovno.
 8. Koristite predložak PR-a. Prije spajanja pribavite odobrenje drugog člana dvočlanog tima,
+   koje on daje osobno ili izričitom uputom svom AI alatu nakon vlastitog pregleda (ADR-0007),
    osim za konkretne PR-ove s izričito zabilježenim korisničkim iznimkama u dodacima zapisa
    ADR-0002; zasad su zabilježene iznimke za PR #1, PR #2 i PR #3. Riješite nalaze i ponovno
    pokrenite samo provjere pogođene naknadnim izmjenama.

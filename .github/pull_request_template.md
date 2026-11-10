@@ -26,7 +26,8 @@
 
 ## Pregled i zajedničko razumijevanje
 
-<!-- Prije spajanja promjenu pregledava drugi član tima (Sara ili Lovro, ovisno o autoru).
+<!-- Prije spajanja promjenu pregledava drugi član tima (Sara ili Lovro, ovisno o autoru);
+     odobrenje daje osobno ili uputom svom AI alatu (ADR-0007).
      Zabilježite stvarni zajednički prolaz ako je održan i neriješena pitanja.
      Nemojte unaprijed upisivati ničije odobrenje ili razumijevanje. Konkretne korisnički
      odobrene iznimke dokumentiraju se u dodacima zapisa ADR-0002; zabilježene su samo

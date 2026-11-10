@@ -63,8 +63,9 @@ timu; provjera nije potpuna povijesna provjera niti zamjena za zaštitu grane.
 Pravilo za ljudski pregled strože je: pregledavatelj mora biti drugi član tima koji čine
 Sara i Lovro. Dok njihovi GitHub identiteti nisu potvrđeni i konfigurirani, ljudsko odobrenje
 osobe koja nije autor provjerava samo taj ograničeni uvjet; sudionici PR-a i dalje provjeravaju
-članstvo u timu. Automatski pregledi i odobrenja botova nikad ne ispunjavaju pravilo ljudskog
-pregleda. Dnevna provjera ne može potvrditi da pregledavatelji razumiju matematiku, da su oba
+članstvo u timu. Odobrenje koje AI alat da pod računom člana na njegovu izričitu uputu, nakon
+članova pregleda, odobrenje je tog člana (ADR-0007). Automatski pregledi i odobrenja botova
+nikad ne ispunjavaju pravilo ljudskog pregleda. Dnevna provjera ne može potvrditi da pregledavatelji razumiju matematiku, da su oba
 člana naučila gradivo ni da su rezultati znanstveno utemeljeni.
 
 Lovro je 2026-10-28 izričito odobrio spajanje bez Sarina pregleda za početni PR #1 iz
@@ -136,7 +137,8 @@ prijavite kao nalaz. Nalaze koji zahtijevaju radnju prijavite prema ozbiljnosti,
 mjesta i posljedice; odvojite neobvezna poboljšanja od pogrešaka. Navedite što je provjereno i
 što ostaje nepokrenuto. Kad se commitovi promijene, usredotočite se na nove promjene i njihove
 pogođene ovisnosti. Pregled objavite samo uz izričito odobrenje. Nikad ne tvrdite da AI pregled
-ispunjava obvezno ljudsko odobrenje.
+ispunjava obvezno ljudsko odobrenje; PR odobravajte samo na izričitu uputu člana koji ga je
+pregledao (ADR-0007).
 
 ## Primopredaja i timsko učenje
 
