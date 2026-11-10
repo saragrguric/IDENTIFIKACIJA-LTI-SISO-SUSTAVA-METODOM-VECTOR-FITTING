@@ -29,3 +29,4 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [ADR-0004](plan/adr/0004-choose-debye-models-of-human-tissues.md): primjena VF-a i QuadVF-a na Debyejeve modele ljudskih tkiva.
 - [ADR-0005](plan/adr/0005-divide-work-into-end-to-end-threads.md): podjela rada na dvije niti uz međusobni pregled.
 - [ADR-0006](plan/adr/0006-choose-python-environment.md): Python 3.12 s uv-om, uz provjere na Linuxu i Windowsu.
+- [ADR-0007](plan/adr/0007-ai-tool-acts-for-its-user-in-git.md): AI alat na uputu člana obavlja Git i GitHub radnje, uključujući odobrenje PR-a.
