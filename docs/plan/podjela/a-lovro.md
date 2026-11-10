@@ -42,12 +42,14 @@ Z0.
 
 **Cilj:** dogovoreno Python okruženje sa zaključanim verzijama i numeričkim provjerama u CI-ju.
 
-1. Prema odluci sa Z0 dodaj `pyproject.toml`, datoteku zaključanih verzija i paket
-   `vfdebye` u mapi `src/`.
+1. Prema [ADR-0006](../adr/0006-choose-python-environment.md) dodaj
+   `pyproject.toml`, `uv.lock` i paket `vfdebye` u mapi `src/`. CI pokreće numeričke provjere
+   na Linuxu i Windowsu; provjeri rade li završna provjera i hookovi na Windowsu, gdje
+   `python3` često ne postoji.
 2. Prema AGENTS.md, odjeljak 5, u istoj promjeni dodaj `tools/check_project.py`, naredbe testova
    i statičke provjere te CI integraciju. Ukloni ostvarene stavke iz popisa `PLANNED` u
    `tools/check_docs.py`.
-3. Zabilježi odluku o okruženju u novom ADR-u i u [tijeku rada](../PIPELINE.md).
+3. Odluka je u ADR-0006; provedbu opiši u [tijeku rada](../PIPELINE.md).
 
 **Gotovo kada:** `python3 tools/check_before_stop.py` izvršava numeričke provjere umjesto NOT RUN,
 a CI prolazi.

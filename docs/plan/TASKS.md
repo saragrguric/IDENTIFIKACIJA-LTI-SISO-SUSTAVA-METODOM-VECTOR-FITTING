@@ -2,7 +2,8 @@
 
 Status se temelji na dokazima: plan nije implementacija, uspješne provjere alata nisu numerički
 rezultati, a AI sažetak nije ljudsko odobrenje. Predložena podjela na niti opisana je u
-[podjeli rada](PODJELA.md); Sara je potvrđuje na sastanku Z0. Svi su zadaci zajednički.
+[podjeli rada](PODJELA.md); Sara ju je potvrdila na sastanku Z0 2026-11-09. Svi su zadaci
+zajednički.
 
 ## Pregled
 
@@ -11,14 +12,14 @@ rezultati, a AI sažetak nije ljudsko odobrenje. Predložena podjela na niti opi
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Spremno za početak |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode i mjere u ADR-0004; ostatak u Z2 |
-| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Odgođeno do dogovora tima o implementaciji |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
+| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Okruženje odlučeno (ADR-0006); počinje s A1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
-Rok projekta nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski raspored ili podjela
-pojedinih područja među članovima.
+Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
+raspored ili podjela pojedinih područja među članovima.
 
 ## Podjela rada
 
@@ -27,8 +28,8 @@ Lovro, a osoba B Sara. Nakon izbora teme rad je 2026-11-07 predloženo podijelit
 matematike do rezultata, uz međusobni pregled
 ([ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md)). Niti, sučelja, faze i zadaci
 nalaze se u [podjeli rada](PODJELA.md), a koraci u osobnim planovima. PR-ovi #5 i #6 spojeni su
-bez Sarina pregleda (ADR-0002, dodatak 2026-11-07), pa Sara podjelu potvrđuje na sastanku Z0;
-ovaj zapis to ne zamjenjuje.
+bez Sarina pregleda (ADR-0002, dodatak 2026-11-07). Prema Lovrinoj izjavi Sara je podjelu
+potvrdila na sastanku Z0 2026-11-09 (ADR-0005, dodatak 2026-11-09).
 
 Načela ostaju ista. Kod, testove i nacrte piše AI alat (dodatak zapisa ADR-0001), a autor commita
 je član koji vodi rad (ADR-0003). Testovi se temelje na izvodu i analitičkim primjerima, a ne na
@@ -132,9 +133,9 @@ povezati s pokretanjem koje ju je proizvelo. Sam povoljan primjer nije dovoljan.
 
 Pisati nacrte odjeljaka kako se razvija razumijevanje, zatim privremeni sadržaj zamijeniti
 provjerenim rezultatima. Oznake, algoritam, postavke, slike i zaključke uskladiti s kodom.
-Odabrati izvorne formate i naredbe za izradu prije tvrdnje da je bilo koji od tih materijala
-moguće izgraditi. Seminar i prezentaciju pisati na hrvatskom. Uključiti citate i razlikovati
-preuzete slike od slika nastalih u ovom projektu.
+Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija. Slike i tablice prenose se
+iz `results/` zajedno s identifikatorom pokretanja koje ih je stvorilo. Seminar i prezentaciju
+pisati na hrvatskom. Uključiti citate i razlikovati preuzete slike od slika nastalih u ovom projektu.
 
 ## T7: završna reprodukcija rezultata i zajednički prolazak
 

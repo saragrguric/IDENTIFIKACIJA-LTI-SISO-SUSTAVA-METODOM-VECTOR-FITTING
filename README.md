@@ -16,8 +16,10 @@ projekta nonneg-matrix-fact-clustering i prilagođene ovoj temi. Primjena je oda
 ([ADR-0004](docs/plan/adr/0004-choose-debye-models-of-human-tissues.md)): koliko je realnih
 polova (Debyejevih članova) najmanje potrebno da racionalni model reproducira Gabrielov model
 permitivnosti ljudskih tkiva uz zadanu točnost i štede li VF i QuadVF polove. Rad je podijeljen
-na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što Sara još potvrđuje na sastanku Z0.
-Pojas, postavke metode, znanstveno Python okruženje, rok i formati predaje još nisu odabrani.
+na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što je Sara potvrdila na sastanku Z0.
+Python okruženje odabrano je u
+[ADR-0006](docs/plan/adr/0006-choose-python-environment.md), a razine točnosti
+u dodatku ADR-0004. Konačni pojas, postavke metode i rok još nisu odabrani.
 Implementacija i eksperimentalni rezultati još ne postoje.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
