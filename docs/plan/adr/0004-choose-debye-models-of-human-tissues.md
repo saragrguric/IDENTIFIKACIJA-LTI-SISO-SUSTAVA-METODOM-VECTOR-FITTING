@@ -23,8 +23,8 @@ Isti je dan provjerena tablica parametara na stranici WebNIR (CNR-IFAC). Ona pre
 C. Gabriel i S. Gabriel, *Compilation of the dielectric properties of body tissues at RF and
 microwave frequencies*, Armstrong Laboratory, AL/OE-TR-1996-0037, 1996. Izvješće je označeno
 „Approved for public release, distribution unlimited” (DTIC AD-A305826). Stranica WebNIR
-objavljena je pod CC BY-NC-SA 4.0. Tablica ima 57 redaka: 44 tipa tkiva iz izvješća, unose koji
-ponavljaju parametre postojećeg tkiva te zrak i vakuum bez disperzije. Prema stranici, model je
+objavljena je pod CC BY-NC-SA 4.0. Tablica ima 57 redaka: tkiva iz izvješća, unose koji ponavljaju
+parametre postojećeg tkiva te zrak i vakuum bez disperzije. Prema stranici, model je
 pouzdan iznad 1 MHz. Iz redaka za krv i mišić ponovno su izračunate Sarine kontrolne vrijednosti
 na 900 MHz (krv $\varepsilon'=61{,}36$, $\sigma=1{,}538$ S/m; mišić $\varepsilon'=55{,}03$,
 $\sigma=0{,}943$ S/m). To je provjera prijepisa tablice, a ne rezultat projekta.
@@ -46,7 +46,7 @@ $\sigma=0{,}943$ S/m). To je provjera prijepisa tablice, a ne rezultat projekta.
    Aproksimira se strogo pravi dio
    $H(s)=\varepsilon(s)-\varepsilon_\infty-\sigma_i/(s\varepsilon_0)$ oblikom
    $H_r(s)=\sum_{j=1}^{r}\phi_j/(s-\lambda_j)$ iz [metodologije](../METHODOLOGY.md).
-3. **Podaci.** Parametri iz izvješća AL/OE-TR-1996-0037 za 44 tipa tkiva. Tablica ostaje izvan
+3. **Podaci.** Parametri iz izvješća AL/OE-TR-1996-0037 za tkiva iz Gabrielove tablice. Tablica ostaje izvan
    Gita; repozitorij čuva izvor, upute za preuzimanje i kontrolni zbroj. Zrak i vakuum nisu dio
    eksperimenta jer nemaju disperziju. Ostala tkiva ne izbacujemo prešutno: sva ulaze u zbirnu
    tablicu, uključujući ona na kojima metoda ne uspije.
@@ -158,3 +158,10 @@ zrcaljenje, kriterij zaustavljanja, regularizacija i podskupovi tkiva (Z2) te ro
 utvrđuje nastavnik. Lovro je 2026-11-09 odlučio da temu smatramo prihvatljivom i da prethodnu
 potvrdu nastavnika ne tražimo; to nije nastavnikovo odobrenje. Python okruženje odlučeno je u
 [ADR-0006](0006-choose-python-environment.md).
+
+## Dodatak 2026-11-10: broj tkiva
+
+Ranije navedeni broj od 44 tipa tkiva tablica ne podupire: ima 57 redaka, od kojih je 55
+disperzivnih s 41 različitim skupom parametara ([podaci](../../../data/README.md)). Na Sarin
+prijedlog u PR-u #9 zapis zasad govori o tkivima iz Gabrielove tablice. Točan broj i način
+brojanja ponovljenih parametara dogovaraju se u planu eksperimenata (Z2).

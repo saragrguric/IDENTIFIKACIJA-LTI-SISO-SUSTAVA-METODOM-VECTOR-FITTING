@@ -99,7 +99,8 @@ Isti su dan razmotreni i toplinski model zida te Debyejevi modeli ljudskih tkiva
 **Dovršeno 2026-11-07.** Tim je odabrao Debyejeve modele tkiva
 ([ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md)). Pitanje je koliko je realnih
 polova najmanje potrebno za zadanu točnost i štede li VF i QuadVF polove. Podaci su parametri
-Gabrielova modela za 44 tipa tkiva; tablica još nije preuzeta u repozitorij (zadatak A2).
+Gabrielova modela za tkiva iz Gabrielove tablice; preuzimanje i model tkiva
+opisani su u [podacima](../../data/README.md) (zadatak A2).
 
 Zadatak završava dogovorenim istraživačkim pitanjem, opisom izvora i podataka, planom
 predobrade, predviđenim značenjem modela i izvedivom evaluacijom.

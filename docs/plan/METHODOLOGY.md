@@ -194,6 +194,8 @@ Treba izvesti i obrazložiti:
   rezultata. L1 ih ne jamči; tvrdnja da ih ima najbolja aproksimacija traži izvor koji tim još
   nije dodao.
 
+Član s $\Delta\varepsilon_n=0$ ne pridonosi modelu, pa za njega $\tau_n$ i $\alpha_n$ nisu
+ograničeni; svaki prisutni član traži $\tau_n>0$ i $0\le\alpha_n<1$ (`vfdebye.gabriel`).
 Testovi s točnim konačnim redom koriste umjetne modele s tabličnim $\Delta\varepsilon_n$ i
 $\tau_n$ uz sve $\alpha_n=0$, jer nijedno tkivo u tablici nema sve $\alpha_n=0$.
 

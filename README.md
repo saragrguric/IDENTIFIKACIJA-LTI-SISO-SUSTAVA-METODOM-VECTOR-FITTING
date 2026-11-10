@@ -20,7 +20,8 @@ na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što je Sara potvrdila
 Python okruženje odabrano je u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md), a razine točnosti
 u dodatku ADR-0004. Konačni pojas, postavke metode i rok još nisu odabrani.
-Implementacija i eksperimentalni rezultati još ne postoje.
+Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); VF,
+QuadVF i eksperimentalni rezultati još ne postoje.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),

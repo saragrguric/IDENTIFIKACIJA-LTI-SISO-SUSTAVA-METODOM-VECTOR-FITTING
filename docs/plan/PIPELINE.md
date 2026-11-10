@@ -17,7 +17,13 @@ pyproject.toml                      paket vfdebye, ovisnosti, postavke pytesta i
 uv.lock                             zaključane verzije ovisnosti
 src/
   vfdebye/                          višekratno upotrebljiva Python implementacija
+    gabriel.py                      tablica parametara, provjera ulaza, ε(s) i H(s)
 tests/                              numeričke provjere i provjere podataka (pytest)
+data/
+  README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
+  fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
+experiments/
+  data_checks.py                    pregled parametara tkiva u odnosu na pojas
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
@@ -55,8 +61,6 @@ tools/
   hooks/check_before_stop.py         omotač oko zajedničke završne provjere
 .codex/
   hooks.json                         konfiguracija Codex Stop hooka; povjerenje je lokalno
-experiments/                         planirano: konfiguracije i reproducibilne ulazne točke
-data/                                planirano: dokumentirana nabava/priprema podataka
 results/                             planirano: označena izvođenja, slike i tablice
 ```
 
@@ -116,7 +120,7 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 
 `tools/check_project.py` pokreće iste provjere s `uv run --locked`, pa zastarjeli `uv.lock` ruši
 provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
-eksperimenata dodaju se s prvim eksperimentom (A2, experiments/data_checks.py). Cjelovita
+eksperimenata nalaze se u `experiments/`; prva je `experiments/data_checks.py` (A2). Cjelovita
 preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
 izričito obrazloženje.
 

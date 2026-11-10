@@ -27,7 +27,7 @@ podataka. On nije izvor matematike metode.
 
 | ID | Izvor | Pristup i uvjeti | Uloga |
 |---|---|---|---|
-| D1 | C. Gabriel i S. Gabriel, *Compilation of the dielectric properties of body tissues at RF and microwave frequencies*, Armstrong Laboratory, AL/OE-TR-1996-0037, 1996 (DTIC AD-A305826). | Izvješće je označeno „Approved for public release, distribution unlimited”. Prijepis s tablicom parametara objavljuje WebNIR (CNR-IFAC) na <https://webnir.eu/04-Dosimetry/04-Gabriel.php?lang=gb>, pod CC BY-NC-SA 4.0. Provjereno 2026-11-07. | Parametri Cole–Coleova modela s četiri disperzije za 44 tipa tkiva; referentni model $H(s)$ |
+| D1 | C. Gabriel i S. Gabriel, *Compilation of the dielectric properties of body tissues at RF and microwave frequencies*, Armstrong Laboratory, AL/OE-TR-1996-0037, 1996 (DTIC AD-A305826). | Izvješće je označeno „Approved for public release, distribution unlimited”. Prijepis s tablicom parametara objavljuje WebNIR (CNR-IFAC) na <https://webnir.eu/04-Dosimetry/04-Gabriel.php?lang=gb>, pod CC BY-NC-SA 4.0. Provjereno 2026-11-07. | Parametri Cole–Coleova modela s četiri disperzije za tkiva iz Gabrielove tablice; referentni model $H(s)$ |
 
 Tablica se ne verzionira; upute za preuzimanje i kontrolni zbroj idu u opis podataka (zadatak A2).
 Baza IT'IS Foundation (v4.1) temelji se na istim parametrima, ali njezine uvjete uporabe nismo
