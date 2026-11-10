@@ -1,5 +1,6 @@
 """Checks of the Gabriel tissue model against independent formulas and published values."""
 import hashlib
+import io
 from pathlib import Path
 
 import numpy as np
@@ -177,15 +178,51 @@ def test_csv_round_trip_and_repeated_names(tmp_path):
         gabriel.read_csv(path)
 
 
-def test_downloaded_table_matches_the_recorded_checksum():
-    if not DATA_CSV.is_file():
-        pytest.skip("NOT RUN: data/processed/gabriel_parameters.csv missing; "
-                    "run uv run python data/fetch_gabriel.py")
+def load_fetch_script():
     from importlib.util import module_from_spec, spec_from_file_location
 
     spec = spec_from_file_location("fetch_gabriel", DATA_CSV.parents[1] / "fetch_gabriel.py")
     fetch = module_from_spec(spec)
     spec.loader.exec_module(fetch)
+    return fetch
+
+
+def test_fetch_replaces_verified_files_only_when_the_checksum_matches(tmp_path, monkeypatch):
+    fetch = load_fetch_script()
+    raw, csv = tmp_path / "raw" / "page.html", tmp_path / "processed" / "table.csv"
+    raw.parent.mkdir()
+    csv.parent.mkdir()
+    raw.write_text("verified page", encoding="utf-8")
+    csv.write_text("verified table", encoding="utf-8")
+    html = page(gabriel.WEBNIR_HEADER, [["Blood", *BLOOD]])
+    monkeypatch.setattr(fetch, "DATA", tmp_path)
+    monkeypatch.setattr(fetch, "RAW", raw)
+    monkeypatch.setattr(fetch, "CSV", csv)
+    monkeypatch.setattr(fetch.urllib.request, "urlopen",
+                        lambda url, timeout: io.BytesIO(html.encode("utf-8")))
+
+    monkeypatch.setattr(fetch, "EXPECTED_CSV_SHA256", "0" * 64)
+    assert fetch.main([]) == 1
+    assert raw.read_text(encoding="utf-8") == "verified page"
+    assert csv.read_text(encoding="utf-8") == "verified table"
+    assert (tmp_path / "raw" / "page.html.new").is_file()
+    assert (tmp_path / "processed" / "table.csv.new").is_file()
+
+    expected = tmp_path / "expected.csv"
+    gabriel.write_csv([["Blood", *BLOOD]], expected)
+    monkeypatch.setattr(fetch, "EXPECTED_CSV_SHA256",
+                        hashlib.sha256(expected.read_bytes()).hexdigest())
+    assert fetch.main([]) == 0
+    assert raw.read_text(encoding="utf-8") == html
+    assert csv.read_bytes() == expected.read_bytes()
+    assert sorted(p.name for p in tmp_path.rglob("*.new")) == []
+
+
+def test_downloaded_table_matches_the_recorded_checksum():
+    if not DATA_CSV.is_file():
+        pytest.skip("NOT RUN: data/processed/gabriel_parameters.csv missing; "
+                    "run uv run python data/fetch_gabriel.py")
+    fetch = load_fetch_script()
     assert hashlib.sha256(DATA_CSV.read_bytes()).hexdigest() == fetch.EXPECTED_CSV_SHA256
     tissues = gabriel.read_csv(DATA_CSV)
     assert len(tissues) == 57
