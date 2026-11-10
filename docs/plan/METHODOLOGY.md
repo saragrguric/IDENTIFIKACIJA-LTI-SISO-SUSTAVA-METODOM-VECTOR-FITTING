@@ -66,9 +66,11 @@ $\tilde d^{(k)}$, čime se SK težina apsorbira u novu bazu i svaki korak postaj
 problem najmanjih kvadrata (2.12) (L1, §2.2). Objasniti računanje nultočaka kao spektra
 perturbacije ranga jedan dijagonalne matrice (L1, §4.2, opažanje (i)) i završnu identifikaciju
 reziduala problemom najmanjih kvadrata sa zadržanim polovima (L1, §4.2, nakon opažanja (iii)).
-Uz zapis (2.5) nultočke od $\tilde d$ su spektar matrice $\operatorname{diag}(\lambda)-\varphi e^T$
-(vlastiti izvod preko determinante perturbacije ranga jedan; numerički provjereno u
-`tests/test_vf.py`). Opažanje (i) piše $\operatorname{diag}(\lambda)+\tilde\varphi e^T$; razliku
+Uz zapis (2.5) i $\Lambda=\operatorname{diag}(\lambda)$ vrijedi
+$\tilde d(s)=1+e^T(sI-\Lambda)^{-1}\varphi$, pa lema o determinanti daje
+$\det(sI-\Lambda+\varphi e^T)=\det(sI-\Lambda)\,\tilde d(s)$. Nultočke od $\tilde d$ koje
+nisu ujedno točke $\lambda_j$ zato su svojstvene vrijednosti matrice $\Lambda-\varphi e^T$
+(numerički provjereno u `tests/test_vf.py`). Opažanje (i) piše $\operatorname{diag}(\lambda)+\tilde\varphi e^T$; razliku
 predznaka treba razjasniti u A5. Ocjena (4.4) ne ovisi o predznaku.
 
 Objasniti osjetljivost na početne polove (L1, §2.2). U primjerima L1 početni polovi leže na
@@ -222,7 +224,10 @@ promjenu $\lVert(\lambda^{(k)}-\lambda^{(k+1)})./\lambda^{(k)}\rVert_\infty$, no
 ranijim skupom. Relativna udaljenost nije simetrična: za $a=\{-1,-100\}$ i $b=\{-2,-100\}$
 iznosi 1 normirana s $a$, a 0,5 normirana s $b$. L1 cik-cak oblik te krivulje na desnoj
 slici pripisuje upravo računanju relativnih udaljenosti. `vfdebye.vf.detect_period` zato,
-kao L1, normira skupom starijim za $\tau$ koraka. Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
+kao L1, normira skupom starijim za $\tau$ koraka. L1 za sliku 2 ne navodi uparivanje: zapis
+$./$ je po elementima, a opažanje (ii) u §4.2 za relativne razlike u (4.5) traži uparivanje
+odgovarajućom permutacijom. Naše je tumačenje da se polovi uparuju permutacijom koja daje
+najmanji najveći relativni pomak, kako to radi `matching_distance` s `relative=True`. Polovi su određeni samo do poretka, a koeficijenti baricentričnog prikaza ovise o odabranim
 točkama. Zato uspoređivati vrijednosti $H_r$ na kontrolnoj mreži ili skupove polova
 uparivanjem, kao u (4.3), a ne vektore koeficijenata. Koristiti opravdane tolerancije i
 neovisne izračune; uvjetovanost određuje dostižnu točnost. Kada se biblioteka koristi kao

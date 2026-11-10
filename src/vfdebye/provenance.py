@@ -50,7 +50,8 @@ def to_jsonable(value: Any) -> Any:
     """Convert settings and metrics to JSON values without losing information.
 
     Complex numbers become {"re": .., "im": ..}; arrays become nested lists; non-finite floats
-    become the strings "nan", "inf" and "-inf". Unknown types raise TypeError.
+    become {"float": "nan"}, {"float": "inf"} or {"float": "-inf"}, so they stay distinct from
+    strings. Unknown types raise TypeError.
     """
     if isinstance(value, Mapping):
         return {str(k): to_jsonable(v) for k, v in value.items()}
@@ -63,7 +64,7 @@ def to_jsonable(value: Any) -> Any:
     if isinstance(value, bool) or value is None or isinstance(value, (int, str)):
         return value
     if isinstance(value, float):
-        return value if math.isfinite(value) else str(value)
+        return value if math.isfinite(value) else {"float": str(value)}
     if isinstance(value, complex):
         return {"re": to_jsonable(value.real), "im": to_jsonable(value.imag)}
     if isinstance(value, Path):
@@ -129,6 +130,22 @@ def code_state(repo: Path, run_dir: Path) -> dict[str, Any]:
     return state
 
 
+def linear_algebra() -> dict[str, Any]:
+    """BLAS and LAPACK numpy was built with; LS and eig results can differ between them."""
+    build = np.show_config(mode="dicts")["Build Dependencies"]
+    keys = ("name", "version", "openblas configuration")
+    return {lib: {k: build[lib][k] for k in keys if k in build.get(lib, {})}
+            for lib in ("blas", "lapack")}
+
+
+def recorded_path(path: Path, repo: Path) -> str:
+    """Path relative to the repository when inside it, so no personal absolute path is kept."""
+    try:
+        return path.resolve().relative_to(repo.resolve()).as_posix()
+    except ValueError:
+        return str(path.resolve())
+
+
 def environment(repo: Path) -> dict[str, Any]:
     packages = {}
     for name in PACKAGES:
@@ -145,6 +162,7 @@ def environment(repo: Path) -> dict[str, Any]:
         "packages": packages,
         "uv_lock_sha256": sha256(lock) if lock.is_file() else None,
         "threads": {name: os.environ.get(name) for name in THREAD_VARIABLES},
+        "linear_algebra": linear_algebra(),
     }
 
 
@@ -195,7 +213,7 @@ def run(
 
     settings: everything that determines the result (band, nodes and weights, order,
     initial poles, solver, tolerances, iteration limits, seed if any). inputs: data files whose
-    SHA-256 identifies the input.
+    SHA-256 identifies the input; paths inside the repository are recorded relative to it.
     """
     repo = Path(repo) if repo is not None else REPO
     runs_dir = Path(runs_dir) if runs_dir is not None else RUNS_DIR
@@ -217,7 +235,7 @@ def run(
         "duration_seconds": None,
         "command": command if command is not None else [sys.executable, *sys.argv],
         "settings": to_jsonable(settings),
-        "inputs": [{"path": str(p), "sha256": sha256(p)} for p in input_paths],
+        "inputs": [{"path": recorded_path(p, repo), "sha256": sha256(p)} for p in input_paths],
         "code": code_state(repo, run_dir),
         "environment": environment(repo),
         "outcome": {},

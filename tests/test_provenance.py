@@ -49,7 +49,7 @@ def test_completed_run_records_settings_inputs_code_and_environment(tmp_path, re
         "band_hz": [1e7, 1e10], "order": 6,
         "poles0": [{"re": -1.0, "im": 2.0}, {"re": -1.0, "im": -2.0}],
     }
-    assert saved["inputs"] == [{"path": str(data),
+    assert saved["inputs"] == [{"path": str(data.resolve()),
                                 "sha256": hashlib.sha256(b"a,b\n1,2\n").hexdigest()}]
     assert saved["outcome"] == {"stop_reason": "tolerance", "iterations": 7}
     head = subprocess.run(["git", "-C", str(repo), "rev-parse", "HEAD"],
@@ -57,6 +57,8 @@ def test_completed_run_records_settings_inputs_code_and_environment(tmp_path, re
     assert saved["code"]["commit"] == head and saved["code"]["dirty"] is False
     assert saved["environment"]["uv_lock_sha256"] == hashlib.sha256(b"lock\n").hexdigest()
     assert saved["environment"]["packages"]["numpy"] == np.__version__
+    blas = np.show_config(mode="dicts")["Build Dependencies"]["blas"]["name"]
+    assert saved["environment"]["linear_algebra"]["blas"]["name"] == blas
 
 
 def test_uncommitted_changes_are_saved_with_the_run(tmp_path, repo):
@@ -127,8 +129,19 @@ def test_reserved_fields_and_bad_names_are_rejected(tmp_path, repo):
 
 
 def test_to_jsonable_keeps_non_finite_values_and_rejects_unknown_types():
-    assert provenance.to_jsonable([np.nan, np.inf, -np.inf, 1.5]) == ["nan", "inf", "-inf", 1.5]
+    assert provenance.to_jsonable([np.nan, np.inf, -np.inf, 1.5, "nan"]) == [
+        {"float": "nan"}, {"float": "inf"}, {"float": "-inf"}, 1.5, "nan"]
     assert provenance.to_jsonable(np.float32(0.5)) == 0.5
     assert provenance.to_jsonable({"z": 1j}) == {"z": {"re": 0.0, "im": 1.0}}
     with pytest.raises(TypeError, match="set"):
         provenance.to_jsonable({1, 2})
+
+
+def test_input_inside_the_repository_is_recorded_relative_to_it(tmp_path, repo):
+    (repo / "data").mkdir()
+    inside = repo / "data" / "table.csv"
+    inside.write_bytes(b"x\n")
+    with provenance.run("rel", settings={}, inputs=[inside], runs_dir=tmp_path / "runs",
+                        repo=repo) as record:
+        pass
+    assert read(record)["inputs"][0]["path"] == "data/table.csv"

@@ -139,6 +139,14 @@ Nositeljica je Sara, a sudjeluju oboje. To je zadatak T3 iz [popisa zadataka](TA
 - Odabrati konačni pojas, razvojni podskup tkiva, podskup za detaljnu analizu, broj
   čvorova, raspon za $L$, početne polove, kriterij zaustavljanja i računalni proračun. Važne
   izbore zabilježiti u ADR-u i [metodologiji](METHODOLOGY.md).
+- Prije B6 odlučiti točnu definiciju $H$ (Sarin pregled PR-a #9). Član s $\alpha_n=0$ točno je
+  jedan Debyejev pol, kod mišića oko 70 Hz, daleko ispod pojasa. Treba odlučiti oduzima li se
+  točno, kao $\varepsilon_\infty$ i $\sigma_i$, ili ga VF mora pronaći. Članovi s $\alpha_n>0$ i
+  relaksacijom ispod pojasa u pojasu su potencijski zakon. Izbor mijenja najmanji $r$ i
+  usporedivost tkiva.
+- Prije prvog pokretača B5–B7 odlučiti je li prolaz po tkivima, metodama i redovima jedno
+  pokretanje s rezultatima po slučaju ili jedno pokretanje po slučaju (Sarin pregled PR-a #10).
+  `vfdebye.provenance` podržava oba načina.
 
 ### Z3: prolaz 2, cijeli lanac na razvojnom podskupu
 

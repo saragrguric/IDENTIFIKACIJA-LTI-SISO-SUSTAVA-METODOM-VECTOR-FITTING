@@ -25,13 +25,16 @@ uv run python data/fetch_gabriel.py
 
 Skripta:
 
-1. sprema stranicu u data/raw/webnir-gabriel.html;
+1. sprema stranicu u data/raw/webnir-gabriel.html.new;
 2. pronalazi tablicu po točnom zaglavlju (nazivi i jedinice stupaca), a promijenjeno zaglavlje
    prijavljuje kao pogrešku;
 3. provjerava svaki redak funkcijom `vfdebye.gabriel.tissue_from_row`;
-4. zapisuje data/processed/gabriel_parameters.csv s vrijednostima doslovno kako su objavljene
-   (iste jedinice kao u tablici, LF završeci redaka, UTF-8);
-5. uspoređuje SHA-256 CSV-a sa zabilježenim i vraća pogrešku ako se razlikuju.
+4. zapisuje data/processed/gabriel_parameters.csv.new s vrijednostima doslovno kako su
+   objavljene (iste jedinice kao u tablici, LF završeci redaka, UTF-8);
+5. uspoređuje SHA-256 CSV-a sa zabilježenim. Tek kad se podudaraju, nove datoteke
+   zamjenjuju data/raw/webnir-gabriel.html i data/processed/gabriel_parameters.csv. Inače
+   skripta vraća pogrešku, ranije provjerene datoteke ostaju nepromijenjene, a nove ostaju
+   s nastavkom .new radi usporedbe.
 
 S `--offline` skripta ponovno gradi CSV iz spremljenog HTML-a bez preuzimanja. Ništa se ne
 interpolira, ne preuzorkuje ni ne izbacuje.

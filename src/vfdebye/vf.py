@@ -79,7 +79,8 @@ class PoleResidueModel:
 
         Holds when the poles are closed under conjugation and conjugate poles carry conjugate
         residues (real poles with real residues), and d is real. rtol is relative to the largest
-        pole and residue magnitudes.
+        pole and residue magnitudes; for Im d the threshold is rtol * max(|d|, 1), so it is
+        absolute when |d| < 1.
         """
         pole_scale = np.max(np.abs(self.poles))
         residue_scale = max(np.max(np.abs(self.residues)), np.finfo(float).tiny)
@@ -145,7 +146,9 @@ def detect_period(
     The distance is scaled by the earlier set, as ||(lambda^(k) - lambda^(k+tau)) ./
     lambda^(k)||_inf in L1, Fig. 2; the relative distance is not symmetric (matching_distance).
     tau = 1 means the poles have settled; tau = 2 is the cycling of L1, Example 4.2. A
-    detected period says only that the iteration repeats, not that the model is good.
+    detected period says only that the iteration repeats, not that the model is good. One
+    repetition suffices: for the history [x, y, x] the result is 2, which may be chance. A
+    stopping rule built on this may require the period to repeat; that choice is open (Z2).
     """
     if max_period < 1:
         raise ValueError("max_period must be at least 1")
