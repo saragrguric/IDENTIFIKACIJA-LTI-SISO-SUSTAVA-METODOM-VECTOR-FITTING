@@ -19,6 +19,7 @@ src/
   vfdebye/                          višekratno upotrebljiva Python implementacija
     gabriel.py                      tablica parametara, provjera ulaza, ε(s) i H(s)
     provenance.py                   zapis podrijetla pokretanja u results/runs (izvan Gita)
+    quadrature.py                   čvorovi i težine kvadrature (pojas, (3.4)) i norma iz vrijednosti
     vf.py                           model polova i reziduala, uparivanje polova (4.3); VF slijedi
 tests/                              numeričke provjere i provjere podataka (pytest)
 data/
@@ -26,9 +27,11 @@ data/
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
 experiments/
   data_checks.py                    pregled parametara tkiva u odnosu na pojas
+  quadrature_checks.py              brojke izvoda B2 ponovno izračunate modulom quadrature
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
+  izvodi/                           matematički izvodi zadataka (B2: H2 greška, kvadratura, QuadVF)
   plan/
     PROJECT.md                      opseg, materijali za predaju i otvorene odluke
     TASKS.md                        mali zadaci i njihove ovisnosti
@@ -122,7 +125,8 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 
 `tools/check_project.py` pokreće iste provjere s `uv run --locked`, pa zastarjeli `uv.lock` ruši
 provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
-eksperimenata nalaze se u `experiments/`; prva je `experiments/data_checks.py` (A2). Cjelovita
+eksperimenata nalaze se u `experiments/`; prve su `experiments/data_checks.py` (A2) i
+`experiments/quadrature_checks.py` (B3). Cjelovita
 preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
 izričito obrazloženje.
 
