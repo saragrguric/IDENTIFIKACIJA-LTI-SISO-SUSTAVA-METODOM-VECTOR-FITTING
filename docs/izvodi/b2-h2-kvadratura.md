@@ -390,8 +390,9 @@ funkcije iza njega, do $\omega=\pm\infty$. Primjeri:
 ### 4.5 Uloga parametra $L$
 
 **Vlastito.** Čvorovi su $\omega_j=L\cot t_j$, pa promjena $L$ samo **pomnoži sve čvorove** istim brojem:
-na logaritamskoj osi pomiče cijeli skup bez promjene oblika. Za $t=\pi/4$ je $\omega=L$, pa je polovica
-pozitivnih čvorova ispod $L$, a polovica iznad. Npr. za $L=1$, $\ell=15$ pozitivni čvorovi su
+na logaritamskoj osi pomiče cijeli skup bez promjene oblika. Za $t=\pi/4$ je $\omega=L$; budući da su
+$t_j$ jednako razmaknuti, otprilike je polovica pozitivnih čvorova ispod $L$, a polovica iznad (broj se
+razlikuje najviše za jedan; ako je $\ell+1$ djeljiv s 4, jedan je čvor točno u $L$). Npr. za $L=1$, $\ell=15$ pozitivni čvorovi su
 $5{,}03;\ 2{,}41;\ 1{,}50;\ 1{,}00;\ 0{,}67;\ 0{,}41;\ 0{,}20$.
 
 **Kada je formula točna (vlastiti izvod).** Za $H=\dfrac{1}{s+a}$ i $L=a$:
@@ -403,7 +404,8 @@ $$
 konstanta, koju trapezna formula integrira točno. Opća pouka: čvorovi trebaju biti gusti tamo
 gdje se funkcija mijenja; za $\frac{1}{s+a}$ to je oko $\omega\approx a$.
 
-**Opažanje (vlastiti izračun).** Relativna greška formule (3.4) za $H=\frac{1}{s+1}$ (točan integral $\pi$):
+**Opažanje (vlastiti izračun, `experiments/quadrature_checks.py`, dio 1).** Relativna greška formule
+(3.4) za $H=\frac{1}{s+1}$ (točan integral $\pi$):
 
 | $L$ | $\ell=10$ | $\ell=20$ | $\ell=40$ |
 |---|---|---|---|
@@ -415,15 +417,18 @@ gdje se funkcija mijenja; za $\frac{1}{s+a}$ to je oko $\omega\approx a$.
 
 ### 4.6 Zašto to ne odgovara tkivima
 
-**Opažanje (vlastiti izračun).** Pozitivni čvorovi pokrivaju raspon od otprilike
+**Opažanje (vlastiti izračun, `experiments/quadrature_checks.py`, dijelovi 2 i 5).** Pozitivni čvorovi
+pokrivaju raspon od otprilike
 
 | $\ell$ | 15 | 100 | 1000 | 10 000 | 40 000 |
 |---|---|---|---|---|---|
 | dekade | 1,4 | 3,3 | 5,3 | 7,3 | 8,5 |
 
 (dekada = raspon u kojem frekvencija naraste 10 puta). Frekvencije relaksacije mišića
-$f_n=1/(2\pi\tau_n)$ su oko 70 Hz, 500 Hz, 450 kHz i 22 GHz, dakle oko 8,5 dekada. Jedan $L$ ne može
-postaviti guste čvorove oko svih njih. Uz to, za Cole–Coleov član s $\alpha>0$ je
+$f_n=1/(2\pi\tau_n)$ su oko 70 Hz, 500 Hz, 450 kHz i 22 GHz, dakle oko 8,5 dekada; od 41 različitog
+skupa parametara u Gabrielovoj tablici njih 36 ima raspon od barem 8 dekada, a pet (krv, tjelesna
+tekućina, likvor, žuč, suha koža) 2,3–4,3 dekade. Jedan $L$ ne može postaviti guste čvorove oko svih
+relaksacija. Uz to, za Cole–Coleov član s $\alpha>0$ je
 $\lvert\imath\omega H(\imath\omega)\rvert\sim\omega^{\alpha}\to\infty$, pa $M_+$ ne postoji. Rješenje je §6.
 
 ---
@@ -528,6 +533,11 @@ QuadVF ne treba novu jezgru: to je Lovrin `vector_fit` s čvorovima $\xi_j$ i te
 **množe redak** (u [podjeli rada](../plan/PODJELA.md) to je zasad prijedlog; dogovoriti s Lovrom). Kod nas otpada dodatni
 redak (§6).
 
+U `vfdebye.quadrature` (B3) težine već sadrže normalizaciju norme ($\frac{1}{\pi}$ na pojasu, $\frac{1}{2\pi}$ na
+cijeloj osi), pa $\sum_jw_j\lvert G_j\rvert^2$ izravno daje kvadrat norme; težina retka je $\rho_j=\sqrt{w_j}$, a
+zajednički faktor ne mijenja LS rješenje. Frekvencije na sučelju su u Hz ($s=2\pi\imath f$), pa i skala
+$L$ za (3.4).
+
 ---
 
 ## 6. Naši odmaci: greška i kvadratura na pojasu
@@ -538,18 +548,26 @@ redak (§6).
 
 1. **Pitanje projekta.** Zanima nas točnost tamo gdje se modeli tkiva koriste (MHz–GHz), a Gabrielov
    model je pouzdan tek iznad oko 1 MHz.
-2. **Norma na cijeloj osi gleda krivo područje.** *Opažanje (vlastiti izračun, mišić, ADR-0004):*
+2. **Norma na cijeloj osi gleda krivo područje.** *Opažanje (vlastiti izračun,
+   `experiments/quadrature_checks.py`, dijelovi 3 i 5; mišić prema ADR-0004):*
 
 | frekvencija | 100 Hz | 10 kHz | 1 MHz | 10 MHz | 1 GHz | 10 GHz |
 |---|---|---|---|---|---|---|
 | $\lvert H(\imath\omega)\rvert$ | $1{,}5\cdot10^{7}$ | $2{,}5\cdot10^{5}$ | $5{,}7\cdot10^{3}$ | $770$ | $53$ | $43$ |
 
-   Od $\|H\|^2$ na cijeloj osi $99{,}8\,\%$ otpada na frekvencije ispod 1 MHz, a $0{,}04\,\%$ na pojas
-   10 MHz–10 GHz. Model jednak $H$ svugdje osim na pojasu, a na pojasu nula, imao bi relativnu grešku
-   na cijeloj osi $\sqrt{0{,}0004}\approx1{,}9\,\%$: mjera ne prepoznaje model koji je beskoristan na pojasu.
-   Fit na cijeloj osi trošio bi polove na niske frekvencije, pa bi procijenjeni najmanji $r$ bio
-   iskrivljen.
-3. **Tehnički razlozi (§4.6).** Jedan $L$ ne pokriva 8 dekada relaksacija, a $M_+$ za $\alpha>0$ ne postoji.
+   Za mišić od $\|H\|^2$ na cijeloj osi $99{,}8\,\%$ otpada na frekvencije ispod 1 MHz, a $0{,}04\,\%$ na
+   pojas 10 MHz–10 GHz. Model jednak $H$ svugdje osim na pojasu, a na pojasu nula, imao bi relativnu
+   grešku na cijeloj osi $\sqrt{0{,}0004}\approx1{,}9\,\%$: mjera ne prepoznaje model koji je beskoristan
+   na pojasu.
+
+   Za svih 41 različitih skupova parametara pojas nosi najviše $33\,\%$ norme na cijeloj osi, pa ona
+   uvijek većinom mjeri ponašanje izvan pojasa. Kod 30 tkiva više od $90\,\%$ otpada na frekvencije ispod
+   1 MHz (kao kod mišića); kod 11 tkiva bez velikih niskofrekventnih članova (npr. krv, likvor, suha
+   koža) većina je iznad pojasa. Model jednak nuli na pojasu imao bi grešku na cijeloj osi manju od
+   $5\,\%$ za 29 od 41 tkiva (raspon $0{,}3\,\%$–$58\,\%$). Fit na cijeloj osi trošio bi polove izvan
+   pojasa, pa bi procijenjeni najmanji $r$ bio iskrivljen.
+3. **Tehnički razlozi (§4.6).** Jedan $L$ ne pokriva relaksacije raspršene preko 8 i više dekada
+   (36 od 41 tkiva), a $M_+$ ne postoji jer svako tkivo ima barem jedan član s $\alpha>0$.
 
 **Cijena.** Ponašanje modela izvan pojasa ne kontroliramo. To treba navesti u seminaru.
 
@@ -588,21 +606,26 @@ u_j=\frac{\ln\omega_2-\ln\omega_1}{2}\,x_j+\frac{\ln\omega_2+\ln\omega_1}{2},\qq
 \rho_j^2=\frac{\ln\omega_2-\ln\omega_1}{2}\,g_j\,\omega_j .
 $$
 
-Čvorovi su približno logaritamski raspoređeni (kao kod običnog VF-a), ali **težina raste s $\omega_j$**,
-jer viši čvor predstavlja širi komad osi (§3.4). L1 Gauss–Legendre spominje samo kao jednu od mogućnosti
+Čvorovi su približno logaritamski raspoređeni (kao kod običnog VF-a), a težina sadrži **faktor $\omega_j$**,
+jer viši čvor predstavlja širi komad osi (§3.4). Gauss–Legendreove težine $g_j$ najveće su u sredini
+intervala i padaju prema krajevima, pa težine ne rastu u svakom čvoru, ali visoki čvorovi imaju mnogo
+veće težine od niskih (za $N=41$ zadnja je više od 100 puta veća od prve). L1 Gauss–Legendre spominje samo kao jednu od mogućnosti
 (str. A633).
 
-**Opažanje (vlastiti izračun, mišić, pojas 10 MHz–10 GHz).**
+**Opažanje (vlastiti izračun, `experiments/quadrature_checks.py`, dijelovi 4 i 5; pojas
+10 MHz–10 GHz).**
 
-- Uz 40 logaritamskih čvorova i jednake težine dekada 1–10 GHz nosi $1{,}5\,\%$ zbroja, a u pravom
-  integralu $67\,\%$.
+- Uz 40 logaritamskih čvorova i jednake težine dekada 1–10 GHz za mišić nosi $1{,}4\,\%$ zbroja, a u
+  pravom integralu $67\,\%$. Za svih 41 tkiva: $0{,}4\,\%$–$31\,\%$ zbroja prema $38\,\%$–$89\,\%$ integrala.
 - Relativna greška kvadrature za $\int\lvert H\rvert^2d\omega$ na pojasu:
 
 | $N$ | trapezna u $u$ | Gauss–Legendre u $u$ |
 |---|---|---|
 | 10 | $2{,}6\cdot10^{-2}$ | $5\cdot10^{-8}$ |
-| 20 | $5{,}7\cdot10^{-3}$ | $3\cdot10^{-15}$ |
-| 40 | $1{,}4\cdot10^{-3}$ | $7\cdot10^{-15}$ |
+| 20 | $5{,}7\cdot10^{-3}$ | oko $10^{-14}$ (strojna preciznost) |
+| 40 | $1{,}4\cdot10^{-3}$ | oko $10^{-14}$ (strojna preciznost) |
+
+  Za svih 41 tkiva Gauss–Legendre s 20 čvorova griješi manje od $10^{-9}$.
 
 ### 6.4 Bez retka $M_+$
 
