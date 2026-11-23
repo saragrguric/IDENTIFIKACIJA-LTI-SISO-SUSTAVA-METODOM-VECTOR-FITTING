@@ -82,6 +82,12 @@ izvode, pitanja i zajedničke prolaske pratiti kroz [popis zadataka](../plan/TAS
   toj definiciji. To je vlastita algebarska provjera, potkrijepljena primjerom reda jedan.
   Ocjena norme perturbacije ne ovisi o predznaku. Izvod razlikuje korijene polinomnog
   nazivnika od nultočaka racionalnog izraza nakon kraćenja. Sarin pregled B9 još nije proveden.
+- Izvod [A3](../izvodi/a3-problem-sk.md) razrađuje L1, §1, (1.1)–(1.3), str. A626–A627, i
+  §2.1, (2.1)–(2.7), str. A628–A629. Veza s modelom tkiva i ručni primjer reda jedan naši su
+  izvodi; ne pripisuju se L1. U §6.3 vlastitom algebarskom provjerom razdvojene su normalizacije
+  $d(0)=1$ i moničnog polinomnog nazivnika: jednakost racionalnog prikaza sama nije dovoljna
+  za jednakost neovisno normaliziranih LS koraka. Točnu promjenu baze treba provesti i na
+  prethodnom nazivniku i na težinama. Sarin neovisni pregled B9 još nije zabilježen.
 - Problem (1.1) nelinearan je i nekonveksan; VF rješava niz linearnih problema najmanjih
   kvadrata, a granica tog niza nije dokazano optimalno rješenje.
 - Teorijska konvergencija VF-a otvoren je problem (§2.2, §4.2); iteracije mogu kružiti
@@ -100,4 +106,4 @@ izvode, pitanja i zajedničke prolaske pratiti kroz [popis zadataka](../plan/TAS
   za budući rad.
 - Rad obrađuje SISO sustave; MIMO proširenje navodi samo kao budući smjer (§6).
 - Nova primjena može dijeliti domenu s primjerima iz rada, ali mora imati nov konkretan problem
-  i skup podataka. Primjena još nije odabrana.
+  i skup podataka. Odabrana primjena na tkivima zapisana je u ADR-0004.

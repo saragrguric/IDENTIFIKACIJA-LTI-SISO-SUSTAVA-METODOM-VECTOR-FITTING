@@ -9,6 +9,11 @@ metode, uzorkovanje i red još nisu odabrani.
 
 ## 1. Oznake i model
 
+Razrađeni izvod odjeljaka 1–2 nalazi se u [izvodu A3](../izvodi/a3-problem-sk.md): model
+permitivnosti, izdvajanje poznatih članova, linearizacija, SK, polinomni i baricentrični LS
+retci te ručni primjer reda jedan. Pripremljen je za neovisni pregled B9; ljudski prolaz
+još nije zabilježen.
+
 Promatramo linearni vremenski nepromjenjiv (LTI) sustav s jednim ulazom i jednim izlazom
 (SISO) i prijenosnom funkcijom $H(s)$. Jedina pretpostavljena informacija su vrijednosti
 $H(\xi_1),\dots,H(\xi_\ell)$ u unaprijed zadanim točkama $\xi_j\in\mathbb{C}$ (L1, §1). Za
@@ -31,7 +36,8 @@ parovima; to je standardno svojstvo, a L1 ga koristi u §3.3 kada čvorovi zatvo
 konjugiranje prepolovljuju broj potrebnih izračuna $H$. Ako kod računa u kompleksnoj
 aritmetici, objasniti kako se čuva i provjerava realnost modela. Simbol $\lambda_j$ u L1
 označava točke baricentričnog prikaza i, nakon premještanja, polove aproksimanta; u seminaru
-tu dvojnost izričito objasniti.
+tu dvojnost izričito objasniti. Koeficijenti $\phi_j$ pomoćnog baricentričnog brojnika također
+općenito još nisu reziduali konačnog racionalnog modela.
 
 ## 2. Funkcija cilja i linearizacija
 
@@ -53,8 +59,12 @@ Zatim izvesti SK iteraciju (2.1), koja tu težinu aproksimira nazivnikom iz pret
 Izvesti oba prikaza iz L1, §2.1: polinomni (2.2)–(2.3) s matricom Vandermondeova tipa i
 baricentrični (2.4)–(2.7) s matricom Cauchyjeva tipa. Pokazati vlastitim izvodom kako redak
 matrice $A$ slijedi množenjem jednadžbe $H_r(\xi_i)\approx H(\xi_i)$ nazivnikom $\tilde d(\xi_i)$.
-Objasniti da su to dva zapisa iste iteracije u različitim bazama; vezu preko diskretne
-Fourierove transformacije (2.8) obraditi samo ako je potrebna.
+Objasniti promjenu baze uz dosljednu normalizaciju i prijenos težina. Izvod A3, §6.3,
+razdvaja normalizaciju $d(0)=1$ od moničnog polinomnog nazivnika koji odgovara
+$\widetilde d(\infty)=1$. Prelazak između njih uvodi faktor koji ovisi o novom nazivniku;
+bez usklađivanja ne treba tvrditi jednakost LS koraka. Uz monične polinome i isti prethodni
+nazivnik faktor čvornog polinoma krati se točno. Vezu preko diskretne Fourierove transformacije
+(2.8) obraditi samo ako je potrebna.
 
 L1 navodi da se uz konvergenciju nazivnika može očekivati lokalno optimalno rješenje problema
 (1.1) (§2.1). To nije dokaz: u seminaru tu tvrdnju navesti kao očekivanje, a ne kao teorem.

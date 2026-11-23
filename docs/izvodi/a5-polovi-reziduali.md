@@ -3,7 +3,7 @@
 **Stanje 2026-11-23:** pripremljeni izvod i numeričke operacije na grani
 `lovro/a5-polovi-reziduali`. Preostaju neovisni pregled B9 i zajedničko objašnjenje.
 Puna petlja `vector_fit` još čeka probni kod B1, a postavke eksperimenata ostaju za Z2.
-Ovaj zadatak nastavlja pripremljeni nacrt A3; njegov zaseban lokalni sadržaj nije dio ove grane.
+Ovaj zadatak nastavlja [izvod A3](a3-problem-sk.md), uključen u ovu granu kao ovisnost.
 
 **Izvor:** L1, §2.1–§2.2, (2.5)–(2.12), str. A628–A631; §4.1, (4.1)–(4.2) i
 Propozicija 4.1, str. A641–A642; §4.2, (4.3)–(4.5), Primjer 4.2 i Napomena 4.3,
