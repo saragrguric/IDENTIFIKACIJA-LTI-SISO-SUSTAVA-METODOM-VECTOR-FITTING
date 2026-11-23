@@ -97,6 +97,14 @@ iteraciju ili neovisno provjerljiv numerički primjer, primjerice racionalnu fun
 
 ## 4. $\mathcal{H}_2$ pogreška i uzorkovanje kvadraturom
 
+Izvod ovog odjeljka, s našim odmakom na pojas i prijedlogom kvadrature za Z2, nalazi se u
+[izvodu B2](../izvodi/b2-h2-kvadratura.md).
+
+QuadVF rješava ponderirane linearizirane LS probleme. Ustaljeni polovi ne jamče nestajanje
+reziduala nazivnika (L1, Primjer 4.2), a ni nestajanje tih reziduala ne dokazuje minimum
+racionalne funkcije cilja. Ograničeni integral po pojasu nije puna $\mathcal{H}_2$ norma;
+polunormu na općem $L^2$ prostoru treba razlikovati od norme na stabilnim racionalnim funkcijama.
+
 Definirati prostor $\mathcal{H}_2(\mathbb{C}_+)$, skalarni produkt i normu (3.1) te
 $\mathcal{H}_\infty$ normu (L1, §3.4.1). Objasniti nužne uvjete $\mathcal{H}_2$ optimalnosti
 (3.2), Hermiteovu interpolaciju u zrcalnim slikama polova, i ulogu metode IRKA kao reference
