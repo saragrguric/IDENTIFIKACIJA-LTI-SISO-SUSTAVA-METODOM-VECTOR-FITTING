@@ -21,6 +21,15 @@ zajednički.
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
 
+## Pregled i ispravci B2–B4, 2026-11-23
+
+Lovro je zatražio pregled Sarinih PR-ova #14–#16, zatim ispravke nalaza i spajanje. U PR-u #14
+ispravljaju se tvrdnje o konvergenciji i optimalnosti te tumačenje norme na pojasu. Ovisni PR-ovi
+#15 i #16 trebaju preuzeti taj ispravak; u njima slijede provjere realnih težina i polova,
+oblika i konačnosti odziva modela, nulte referentne norme i nevaljanih pogrešaka pri odabiru reda.
+Numerički algoritam i otvorene odluke Z2 time se ne biraju. A4 i dalje čeka probni kod B1;
+ovaj pregled ne bilježi zajednički prolaz ni potvrdu razumijevanja članova.
+
 ## Podjela rada
 
 Prijedlog od 2026-11-01 Lovro je prihvatio, a na sastanku 2026-11-03 naveo je uloge: osoba A je
