@@ -22,6 +22,9 @@ Python okruženje odabrano je u
 u dodatku ADR-0004. Konačni pojas, postavke metode i rok još nisu odabrani.
 Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); VF,
 QuadVF i eksperimentalni rezultati još ne postoje.
+Samostalne operacije za baricentrični LS korak, premještanje i refleksiju polova te završne
+reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Puna VF petlja i
+postavke eksperimenata još čekaju B1 i Z2.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),
