@@ -20,6 +20,8 @@ src/
     gabriel.py                      tablica parametara, provjera ulaza, ε(s) i H(s)
     provenance.py                   zapis podrijetla pokretanja u results/runs (izvan Gita)
     quadrature.py                   čvorovi i težine kvadrature (pojas, (3.4)) i norma iz vrijednosti
+    metrics.py                      dvije mjere greške i najmanji red za zadanu točnost
+    baseline.py                     referentna metoda: fiksni log. polovi i LS reziduali
     vf.py                           model polova i reziduala, uparivanje polova (4.3); VF slijedi
 tests/                              numeričke provjere i provjere podataka (pytest)
 data/
