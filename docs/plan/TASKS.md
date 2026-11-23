@@ -24,11 +24,18 @@ raspored ili podjela pojedinih područja među članovima.
 ## Pregled i ispravci B2–B4, 2026-11-23
 
 Lovro je zatražio pregled Sarinih PR-ova #14–#16, zatim ispravke nalaza i spajanje. U PR-u #14
-ispravljaju se tvrdnje o konvergenciji i optimalnosti te tumačenje norme na pojasu. Ovisni PR-ovi
-#15 i #16 trebaju preuzeti taj ispravak; u njima slijede provjere realnih težina i polova,
+ispravljaju se tvrdnje o konvergenciji i optimalnosti te tumačenje norme na pojasu. PR #15
+preuzima ispravak, odbija kompleksne težine s nenultim imaginarnim dijelom i izračun omjera
+normi više ne naziva pogreškom dopuštenog racionalnog modela. U PR-u #16 slijede provjere
+realnih polova i težina,
 oblika i konačnosti odziva modela, nulte referentne norme i nevaljanih pogrešaka pri odabiru reda.
 Numerički algoritam i otvorene odluke Z2 time se ne biraju. A4 i dalje čeka probni kod B1;
 ovaj pregled ne bilježi zajednički prolaz ni potvrdu razumijevanja članova.
+
+Provjere B3: 112 numeričkih testova, Ruff i završna provjera prolaze. Pokretanje
+`20261123T143501129808Z-quadrature_checks` ponovno računa tablice za svih 41 različitih
+disperzivnih skupova parametara; podrijetlo i izvještaj ostaju u lokalnom direktoriju pokretanja
+opisanom u [tijeku rada](PIPELINE.md), izvan Gita.
 
 ## Podjela rada
 
