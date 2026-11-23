@@ -99,7 +99,10 @@ def axis_nodes(L_hz: float, n: int) -> AxisRule:
 def band_norm(values: object, weights: object) -> float:
     """sqrt(sum_j weights[j] |values[j]|^2): the norm from values at quadrature nodes."""
     v = np.asarray(values, dtype=complex)
-    w = np.asarray(weights, dtype=float)
+    w = np.asarray(weights, dtype=complex)
+    if np.any(w.imag != 0):
+        raise ValueError("weights must be real")
+    w = w.real
     if v.ndim != 1 or w.ndim != 1:
         raise ValueError(f"values and weights must be one-dimensional, got {v.shape}, {w.shape}")
     if v.size == 0 or v.shape != w.shape:
