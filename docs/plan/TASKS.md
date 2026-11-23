@@ -10,7 +10,7 @@ zajednički.
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
-| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3, A5 i zajednički prolazi preostaju |
+| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 je pripremljen za B9, A5 i zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje okruženje, model tkiva, podrijetlo, model polova, kvadratura, mjere i referentna metoda; VF iteracija A4 čeka B1 |
@@ -20,6 +20,24 @@ zajednički.
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## A3: priprema izvoda, 2026-11-23
+
+Na grani `lovro/a3-izvod-vf` pripremljen je [izvod A3](../izvodi/a3-problem-sk.md):
+permitivnost kao realan LTI SISO opis, izdvajanje poznatih članova, veza Cole–Coleova i
+Debyejeva člana, nekonveksnost racionalne aproksimacije, Levyjeva linearizacija, SK težine i
+izvodi polinomne i baricentrične matrice. Ručni primjer reda jedan ima poznat pol i rezidual.
+Posebno je razjašnjena razlika normalizacija nazivnika pri promjeni baze. Ovaj korak ne bira
+postavke Z2 i ne implementira VF. A3 ovisi o provedenom Z0; za prihvat izvoda preostaje Sarin
+neovisni pregled B9. Zajedničko razumijevanje time nije potvrđeno. A5 može nastaviti izvod,
+a implementacija A4 i dalje čeka B1.
+
+Lokalne provjere: izravnim izračunom potvrđeni su uzorci, obje LS matrice i rješenja ručnog
+primjera. Na dodatnom primjeru s nenultim rezidualom provjereni su prijenos moničnog
+polinomnog problema u baricentrični i faktor promjene normalizacije. Završna provjera
+`python3 tools/check_before_stop.py` prolazi: 170 numeričkih testova, 49 testova alata, Ruff i
+provjera dokumentacije. Novi automatski testovi nisu dodani jer se mijenja izvod, a ne
+numerička implementacija. CI za ovu lokalnu promjenu nije pokrenut.
 
 ## Pregled i ispravci B2–B4, 2026-11-23
 

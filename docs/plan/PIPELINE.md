@@ -33,7 +33,9 @@ experiments/
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
-  izvodi/                           matematički izvodi zadataka (B2: H2 greška, kvadratura, QuadVF)
+  izvodi/
+    a3-problem-sk.md                 model tkiva, racionalni problem, linearizacija i SK; primjer r=1
+    b2-h2-kvadratura.md              H2 greška, kvadratura, QuadVF i prilagodba pojasu
   plan/
     PROJECT.md                      opseg, materijali za predaju i otvorene odluke
     TASKS.md                        mali zadaci i njihove ovisnosti
