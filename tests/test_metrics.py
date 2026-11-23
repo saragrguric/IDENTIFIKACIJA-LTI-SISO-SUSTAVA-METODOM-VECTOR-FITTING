@@ -78,6 +78,34 @@ def test_band_error_of_a_scaled_model_is_the_scale_error():
     assert band_h2_error(tissue, model, *BAND) == pytest.approx(0.01, rel=1e-10)
 
 
+@pytest.mark.parametrize("measure", ["max_relative_error", "band_h2_error"])
+@pytest.mark.parametrize("invalid", ["column", "scalar", "nan", "inf"])
+def test_measures_reject_wrong_shape_or_nonfinite_model_values(measure, invalid):
+    tissue = muscle()
+
+    def model(s):
+        values = gabriel.strictly_proper_part(tissue, s)
+        if invalid == "column":
+            return values[:, None]
+        if invalid == "scalar":
+            return 0.0
+        return np.full_like(values, math.nan if invalid == "nan" else math.inf)
+
+    with pytest.raises(ValueError):
+        if measure == "max_relative_error":
+            max_relative_error(tissue, model, control_grid(*BAND, n=20))
+        else:
+            band_h2_error(tissue, model, *BAND, n=20)
+
+
+@pytest.mark.parametrize("name", ["Air", "Vacuum"])
+def test_band_error_explains_undefined_relative_error_for_zero_reference(name):
+    tissue = gabriel.tissue_from_row(name, [1, 0] + [0, 1, 1] * 4)
+    assert max_relative_error(tissue, zero_model, control_grid(*BAND, n=20)) == 0.0
+    with pytest.raises(ValueError, match="reference.*zero"):
+        band_h2_error(tissue, zero_model, *BAND, n=20)
+
+
 def test_band_norm_of_one_debye_term_matches_the_arctan_formula():
     # Derivation 2.4: d/(1 + s tau) = phi/(s + a) with phi = d/tau, a = 1/tau, and 6.2 gives the
     # band integral, so ||H||^2 = phi^2/(pi a) * (atan(w2/a) - atan(w1/a)). The same function
@@ -110,6 +138,16 @@ def test_min_order_does_not_assume_that_errors_decrease():
 def test_min_order_never_accepts_a_failed_fit():
     assert min_order([math.nan, math.inf, 0.005], 0.01) == 3
     assert min_order([math.nan, math.nan], 0.01) is None
+
+
+def test_min_order_never_accepts_negative_infinity():
+    assert min_order([-math.inf, math.inf, math.nan, 0.005], 0.01) == 4
+
+
+@pytest.mark.parametrize("error", [-0.1, -1e-300])
+def test_min_order_rejects_finite_negative_errors(error):
+    with pytest.raises(ValueError, match="non-negative"):
+        min_order([error], 0.01)
 
 
 @pytest.mark.parametrize("delta", [0.0, -0.01, math.nan, math.inf])

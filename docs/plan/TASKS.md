@@ -10,10 +10,10 @@ zajednički.
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
-| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Spremno za početak |
+| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3, A5 i zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
-| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Okruženje i CI uvedeni u A1 (ADR-0006); metoda još nije implementirana |
+| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje okruženje, model tkiva, podrijetlo, model polova, kvadratura, mjere i referentna metoda; VF iteracija A4 čeka B1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
@@ -24,17 +24,22 @@ raspored ili podjela pojedinih područja među članovima.
 ## Pregled i ispravci B2–B4, 2026-11-23
 
 Lovro je zatražio pregled Sarinih PR-ova #14–#16, zatim ispravke nalaza i spajanje. U PR-u #14
-ispravljaju se tvrdnje o konvergenciji i optimalnosti te tumačenje norme na pojasu. PR #15
+ispravljene su tvrdnje o konvergenciji i optimalnosti te tumačenje norme na pojasu. PR #15
 preuzima ispravak, odbija kompleksne težine s nenultim imaginarnim dijelom i izračun omjera
-normi više ne naziva pogreškom dopuštenog racionalnog modela. U PR-u #16 slijede provjere
-realnih polova i težina,
-oblika i konačnosti odziva modela, nulte referentne norme i nevaljanih pogrešaka pri odabiru reda.
+normi više ne naziva pogreškom dopuštenog racionalnog modela. PR #16 provjerava realnost polova
+i težina te oblik i konačnost odziva modela, prijavljuje nultu referentnu normu i odbija konačne
+negativne pogreške pri odabiru reda. Sve nekonačne oznake neuspjelih fitova preskače.
 Numerički algoritam i otvorene odluke Z2 time se ne biraju. A4 i dalje čeka probni kod B1;
 ovaj pregled ne bilježi zajednički prolaz ni potvrdu razumijevanja članova.
 
 Provjere B3: 112 numeričkih testova, Ruff i završna provjera prolaze. Pokretanje
 `20261123T143501129808Z-quadrature_checks` ponovno računa tablice za svih 41 različitih
 disperzivnih skupova parametara; podrijetlo i izvještaj ostaju lokalno u `results/runs/`.
+
+Provjere cijelog lanca nakon ispravaka B4: 170 numeričkih testova prolazi, uključujući 21 novi
+regresijski slučaj u odnosu na izvorni vrh PR-a #16. Novi testovi prije ispravka otkrivaju
+odbacivanje imaginarnih dijelova, proširivanje oblika, dijeljenje nulom i prihvaćanje nevaljane
+pogreške. Ruff, provjera dokumentacije i završna provjera također prolaze.
 
 ## Podjela rada
 

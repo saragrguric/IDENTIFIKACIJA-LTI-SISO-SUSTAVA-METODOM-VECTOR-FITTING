@@ -198,9 +198,14 @@ Treba izvesti i obrazložiti:
   na gustoj kontrolnoj mreži, koja nije skup čvorova prilagodbe, i relativna $\mathcal{H}_2$
   pogreška na pojasu. Mjera na logaritamskoj mreži pogoduje logaritamskim čvorovima i relativnim
   težinama, pa se poredak metoda prijavljuje u obje mjere.
+  Odziv modela mora biti konačan vektor istog oblika kao čvorovi; krivi oblik se ne proširuje
+  prešutno. Ako je $H=0$ (zrak i vakuum), relativna $\mathcal{H}_2$ pogreška nije definirana i
+  `band_h2_error` daje `ValueError`. Budući pokretač mora to izričito prijaviti uz taj redak.
 - **Razine točnosti.** $\delta\in\{5\,\%,\ 1\,\%,\ 0{,}1\,\%\}$; najmanji $r$ traži se zasebno
   za svaku mjeru (ADR-0004, dodatak 2026-11-09). Nazivnici mjera su različiti, pa ista $\delta$
   u njima nema isto značenje. Pojas je privremeno 10 MHz–10 GHz, a konačno se bira u Z2.
+  `min_order` preskače `nan` i oba predznaka beskonačnosti kao oznake neuspjelog fita;
+  konačne negativne pogreške odbija. Ne pretpostavlja monotonost pogreške s redom.
 - **Referentna metoda.** Polovi $-1/\tau_j$ fiksni su i logaritamski raspoređeni po pojasu, a
   reziduali se dobivaju linearnim problemom najmanjih kvadrata. Tako se izolira učinak
   premještanja polova.

@@ -91,6 +91,15 @@ def test_weights_do_not_change_an_exact_fit():
     assert weighted.model.residues.real == pytest.approx(residues, rel=1e-12)
 
 
+@pytest.mark.filterwarnings("error")
+@pytest.mark.parametrize("weights", [[1.0, 9.0], np.array([1.0 + 0j, 9.0 + 0j])])
+def test_real_complex_dtype_inputs_preserve_the_weighted_ls_solution(weights):
+    # For C = (1/(1+i), 1/(1+2i)), phi = Re(C* W h)/(C* W C) = -203/23.
+    f = np.array([1.0, 2.0]) / (2 * math.pi)
+    fit = fit_residues(f, [1.0 + 2j, -3.0 + 4j], np.array([-1.0 + 0j]), weights)
+    assert fit.model.residues == pytest.approx([-203 / 23], rel=1e-14)
+
+
 def test_residues_are_real_for_a_non_rational_tissue():
     muscle = gabriel.tissue_from_row(
         "Muscle", [4, 0.2, 50, 7.234, 0.1, 7000, 353.68, 0.1, 1.2e6, 318.31, 0.1, 2.5e7, 2.274, 0])
@@ -126,6 +135,10 @@ def test_a_wider_fit_does_not_get_worse_on_its_own_nodes():
         ([1e7, 1e8], [1.0], [-1.0], None),  # length mismatch
         ([1e7, 1e8], [1.0, math.nan], [-1.0], None),  # non-finite data
         ([1e7, 1e8], [1.0, 2.0], [-1.0], [1.0, 0.0]),  # zero weight
+        ([1e7, 1e8], [1.0, 2.0], np.array([-1.0 + 2j]), None),
+        ([1e7, 1e8], [1.0, 2.0], [-1.0 + 2j], None),
+        ([1e7, 1e8], [1.0, 2.0], [-1.0], np.array([1.0 + 2j, 1.0])),
+        ([1e7, 1e8], [1.0, 2.0], [-1.0], [1.0 + 2j, 1.0]),
         ([-1e7, 1e8], [1.0, 2.0], [-1.0], None),  # negative frequency
     ],
 )

@@ -62,7 +62,10 @@ def fit_residues(f: object, h: object, poles: object, weights: object = None) ->
     """
     s = gabriel.laplace_variable(f)
     h = np.asarray(h, dtype=complex)
-    p = np.asarray(poles, dtype=float)
+    p = np.asarray(poles, dtype=complex)
+    if np.any(p.imag != 0):
+        raise ValueError("poles must be real")
+    p = p.real
     if s.ndim != 1 or h.shape != s.shape:
         raise ValueError(f"f and h must be one-dimensional of equal length, got {s.shape}, "
                          f"{h.shape}")
@@ -77,7 +80,10 @@ def fit_residues(f: object, h: object, poles: object, weights: object = None) ->
     if weights is None:
         w = np.ones(s.size)
     else:
-        w = np.asarray(weights, dtype=float)
+        w = np.asarray(weights, dtype=complex)
+        if np.any(w.imag != 0):
+            raise ValueError("weights must be real")
+        w = w.real
         if w.shape != s.shape or not np.all(np.isfinite(w)) or np.any(w <= 0):
             raise ValueError("weights must be positive, finite and one per node")
 

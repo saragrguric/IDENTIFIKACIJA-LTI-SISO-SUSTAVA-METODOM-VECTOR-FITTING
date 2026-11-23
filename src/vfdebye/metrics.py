@@ -27,6 +27,15 @@ from vfdebye.quadrature import band_nodes, band_norm
 Model = Callable[[np.ndarray], np.ndarray]
 
 
+def _model_values(model: Model, s: np.ndarray) -> np.ndarray:
+    values = np.asarray(model(s), dtype=complex)
+    if values.shape != s.shape:
+        raise ValueError(f"model values must have shape {s.shape}, got {values.shape}")
+    if not np.all(np.isfinite(values)):
+        raise ValueError("model values must be finite")
+    return values
+
+
 def control_grid(f_min: float, f_max: float, n: int = 2000) -> np.ndarray:
     """n log-spaced frequencies in Hz from f_min to f_max, both included."""
     if not (math.isfinite(f_min) and math.isfinite(f_max) and 0 < f_min < f_max):
@@ -43,28 +52,38 @@ def max_relative_error(tissue: gabriel.Tissue, model: Model, f: np.ndarray) -> f
         raise ValueError("f must be a non-empty one-dimensional grid")
     h = gabriel.strictly_proper_part(tissue, s)
     eps = gabriel.permittivity(tissue, s)
-    return float(np.max(np.abs(np.asarray(model(s)) - h) / np.abs(eps)))
+    return float(np.max(np.abs(_model_values(model, s) - h) / np.abs(eps)))
 
 
 def band_h2_error(tissue: gabriel.Tissue, model: Model, f_min: float, f_max: float,
                   n: int = 200) -> float:
-    """||H - H_r|| / ||H|| on [f_min, f_max] with n Gauss-Legendre nodes in ln(omega)."""
+    """||H - H_r|| / ||H|| on [f_min, f_max] with n Gauss-Legendre nodes in ln(omega).
+
+    A zero reference H (e.g. air or vacuum) has no relative error and raises ValueError.
+    """
     f, w = band_nodes(f_min, f_max, n)
     s = gabriel.laplace_variable(f)
     h = gabriel.strictly_proper_part(tissue, s)
-    return band_norm(np.asarray(model(s)) - h, w) / band_norm(h, w)
+    reference_norm = band_norm(h, w)
+    if reference_norm == 0.0:
+        raise ValueError("relative band error is undefined: reference norm is zero")
+    return band_norm(_model_values(model, s) - h, w) / reference_norm
 
 
 def min_order(errors: Sequence[float], delta: float) -> int | None:
     """Smallest r with errors[r - 1] <= delta, where errors[r - 1] is the error of order r.
 
     The errors need not decrease with r (a fit can stop in a worse local minimum), so every order
-    is checked in turn; a failed fit may be reported as nan or inf and never satisfies delta.
-    Returns None if no order up to len(errors) reaches delta.
+    is checked in turn; a failed fit may be reported as nan or +/-inf and never satisfies delta.
+    A finite negative error raises ValueError. Returns None if no order reaches delta.
     """
     if not (math.isfinite(delta) and delta > 0):
         raise ValueError(f"delta must be positive and finite, got {delta}")
     for r, error in enumerate(errors, start=1):
-        if error <= delta:  # False for nan
+        if not math.isfinite(error):
+            continue
+        if error < 0:
+            raise ValueError("errors must be non-negative or non-finite failed-fit markers")
+        if error <= delta:
             return r
     return None
