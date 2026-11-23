@@ -250,7 +250,9 @@ $$
 \sum_{j=1}^{\ell}\rho_j^2\lvert H(\xi_j)-H_r(\xi_j)\rvert^2+\rho_+^2M_+\bigl[\lvert H-H_r\rvert^2\bigr]+\rho_-^2M_-\bigl[\lvert H-H_r\rvert^2\bigr],
 $$
 
-pa VF, minimizirajući zbroj, minimizira diskretiziranu $\mathcal{H}_2$ grešku. Uz ekvidistantne čvorove u
+pa kvadratura daje diskretiziranu mjeru $\mathcal{H}_2$ greške. VF u svakom koraku minimizira
+linearizirani LS problem, što ne jamči minimum te racionalne funkcije cilja (vidi §5.3).
+Uz ekvidistantne čvorove u
 konjugiranim parovima, $\rho_j=1$ i $\rho_\pm=0$, zbroj je složena trapezna formula, tj. obični VF.
 
 ### 3.4 Primjer: kolika treba biti težina
@@ -461,8 +463,10 @@ $$
 - **VF (L1 §2.2, (2.9)–(2.12)).** Nove točke $\lambda^{(k+1)}$ su nultočke prethodnog nazivnika; time SK težina
   prelazi u novu bazu i svaki korak je LS bez težine. Nultočke se računaju kao svojstvene vrijednosti
   od $\operatorname{diag}(\lambda)-\varphi\mathbf{1}^T$. Nestabilni polovi se zrcale (L1 §4.1), a na kraju se reziduali
-  računaju LS-om uz fiksne polove. Pri konvergenciji $\varphi\to0$. Konvergencija nije zajamčena
-  (L1, str. A631).
+  računaju LS-om uz fiksne polove. U idealnom graničnom slučaju nazivnik teži jedinici i
+  $\varphi\to0$, ali ustaljenje polova samo po sebi to ne jamči: L1, Primjer 4.2, za $r=18$
+  pokazuje ustaljene polove uz normu reziduala nazivnika oko $8{,}042$. Konvergencija VF-a nije
+  zajamčena (L1, str. A631 i §4.2).
 
 ### 5.2 Tri promjene
 
@@ -509,13 +513,18 @@ $$
 \imath\omega\,H_r(\imath\omega)=\frac{\sum_k\frac{\imath\omega}{\imath\omega-\lambda_k}\phi_k}{1+\sum_k\frac{\varphi_k}{\imath\omega-\lambda_k}}\ \xrightarrow{\ \omega\to\infty\ }\ \sum_k\phi_k,
 $$
 
-  jer $\frac{\imath\omega}{\imath\omega-\lambda_k}\to1$, a nazivnik $\to1$. Rubni član iz (3.4) traži da model ima isti
-  rep kao $H$: $\sum_k\phi_k=M_+[H]$.
+  jer $\frac{\imath\omega}{\imath\omega-\lambda_k}\to1$, a nazivnik $\to1$. Posljednji LS redak zato penalizira
+  razliku $\sum_k\phi_k-M_+[H]$; to nije dodatno egzaktno ograničenje.
 - **Otkud $\rho_+^2$.** Za realne sustave $M_+=M_-$, pa se dva rubna člana iz (3.4) spoje u jedan:
   $2\cdot\dfrac{\pi}{2L(\ell+1)}=\dfrac{\pi}{L(\ell+1)}=\rho_+^2$.
-- **Što QuadVF minimizira.** Greška retka je Levyjeva greška, koja u VF bazi sadrži SK težinu
-  $1/\lvert d^{(k)}\rvert$; pri konvergenciji ($\varphi\to0$) ta težina nestaje. Uz konvergenciju LS dakle
-  minimizira kvadraturu $\int\lvert H_r(\imath\omega)-H(\imath\omega)\rvert^2d\omega$, tj. diskretiziranu $\mathcal{H}_2$ grešku.
+- **Što QuadVF minimizira.** Svaki korak minimizira ponderirani linearizirani LS problem iz
+  §5.2. Za baricentrični brojnik $\tilde n$ i nazivnik $\tilde d$ iz §5.1 vrijedi
+  $\tilde n-H\tilde d=\tilde d(H_r-H)$: linearizirani rezidual općenito nije stvarna greška
+  modela. Premještanje polova apsorbira prethodnu SK težinu u bazu. Čak i ako
+  $\tilde d\to1$, podudaranje vrijednosti funkcija cilja u granici ne dokazuje da je dobiven
+  lokalni ili globalni minimum racionalnog problema. Završni LS uz fiksne polove optimira
+  samo reziduale. Kvadratura motivira izbor čvorova i težina; konvergenciju i optimalnost
+  konačnog modela time nismo dokazali (L1, §2.1–§2.2 i §4.2).
 
 ### 5.4 Rezultat u članku
 
@@ -556,14 +565,15 @@ $L$ za (3.4).
 | $\lvert H(\imath\omega)\rvert$ | $1{,}5\cdot10^{7}$ | $2{,}5\cdot10^{5}$ | $5{,}7\cdot10^{3}$ | $770$ | $53$ | $43$ |
 
    Za mišić od $\|H\|^2$ na cijeloj osi $99{,}8\,\%$ otpada na frekvencije ispod 1 MHz, a $0{,}04\,\%$ na
-   pojas 10 MHz–10 GHz. Model jednak $H$ svugdje osim na pojasu, a na pojasu nula, imao bi relativnu
-   grešku na cijeloj osi $\sqrt{0{,}0004}\approx1{,}9\,\%$: mjera ne prepoznaje model koji je beskoristan
-   na pojasu.
+   pojas 10 MHz–10 GHz. Omjer ograničene i pune norme je zato
+   $\|H\|_{\text{pojas}}/\|H\|_{\mathcal{H}_2}\approx\sqrt{0{,}0004}\approx1{,}9\,\%$.
+   To opisuje raspodjelu energije referentnog odziva, a ne pogrešku nekog racionalnog modela.
+   Odsijecanje odziva samo na pojas općenito ne daje prijenosnu funkciju dopuštene klase.
 
    Za svih 41 različitih skupova parametara pojas nosi najviše $33\,\%$ norme na cijeloj osi, pa ona
    uvijek većinom mjeri ponašanje izvan pojasa. Kod 30 tkiva više od $90\,\%$ otpada na frekvencije ispod
    1 MHz (kao kod mišića); kod 11 tkiva bez velikih niskofrekventnih članova (npr. krv, likvor, suha
-   koža) većina je iznad pojasa. Model jednak nuli na pojasu imao bi grešku na cijeloj osi manju od
+   koža) većina je iznad pojasa. Omjer $\|H\|_{\text{pojas}}/\|H\|_{\mathcal{H}_2}$ manji je od
    $5\,\%$ za 29 od 41 tkiva (raspon $0{,}3\,\%$–$58\,\%$). Fit na cijeloj osi trošio bi polove izvan
    pojasa, pa bi procijenjeni najmanji $r$ bio iskrivljen.
 3. **Tehnički razlozi (§4.6).** Jedan $L$ ne pokriva relaksacije raspršene preko 8 i više dekada
@@ -579,9 +589,14 @@ $$
 \|G\|_{\text{pojas}}^2=\frac{1}{2\pi}\int_{\omega_1\le\lvert\omega\rvert\le\omega_2}\lvert G(\imath\omega)\rvert^2d\omega=\frac{1}{\pi}\int_{\omega_1}^{\omega_2}\lvert G(\imath\omega)\rvert^2d\omega,
 $$
 
-privremeno $\omega_1=2\pi\cdot10\,\text{MHz}$, $\omega_2=2\pi\cdot10\,\text{GHz}$ (odluka u Z2). To je **polunorma**, ne norma
-prostora $\mathcal{H}_2$: funkcija jednaka nuli na pojasu, a različita od nule izvan njega, ima vrijednost 0.
-U tekstu pisati „$\mathcal{H}_2$ greška na pojasu”.
+privremeno $\omega_1=2\pi\cdot10\,\text{MHz}$, $\omega_2=2\pi\cdot10\,\text{GHz}$ (odluka u Z2).
+To je ograničena $L^2$ veličina, koju u tekstu zovemo „$\mathcal{H}_2$ greška na pojasu”;
+ne poistovjećujemo je s punom $\mathcal{H}_2$ normom. Na općem prostoru $L^2$ ona je polunorma,
+jer zanemaruje vrijednosti izvan pojasa. Taj protuprimjer ne vrijedi za stabilne racionalne
+funkcije: racionalna funkcija bez polova na imaginarnoj osi koja iščezava na cijelom intervalu
+mora biti identički nula, jer njezin brojnik inače ne može imati beskonačno mnogo nultočaka
+(vlastiti argument). Na toj klasi ograničeni integral definira normu. Razliku prostora funkcija
+treba zadržati i pri tumačenju §6.1.
 
 **Test za B3 (vlastiti izračun, numerički provjeren).** Za $G=\frac{1}{s+a}$:
 

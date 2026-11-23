@@ -7,8 +7,7 @@ Reproduces the tables of docs/izvodi/b2-h2-kvadratura.md:
 1. section 4.5: relative error of rule (3.4) of L1 for G = 1/(s + 1) against the exact pi;
 2. section 4.6: decades spanned by the positive nodes L cot(j pi / (l + 1));
 3. section 6.1: |H| of muscle at a few frequencies and the share of ||H||^2 on the whole axis
-   below 1 MHz and on the band; relative error on the whole axis of a model equal to H except
-   on the band, where it is zero;
+   below 1 MHz and on the band; ratio of the band norm to the whole-axis norm of H;
 4. section 6.3: share of the top decade of the band in the sum with equal weights on log-spaced
    nodes against the true integral; relative error of Gauss-Legendre and of the trapezoidal rule
    in u = ln(omega).
@@ -111,12 +110,11 @@ def whole_axis_shares(tissue: gabriel.Tissue) -> dict[str, float]:
     # Tails outside WHOLE_AXIS_HZ: H is bounded near 0 and decays like omega^-(1-alpha) at inf.
     edge = integral_over_log_omega(tissue, WHOLE_AXIS_HZ[1] / 10, WHOLE_AXIS_HZ[1])
     shares = {"below_1MHz": below / total, "band": band / total,
-              "zero_in_band_relative_error": math.sqrt(band / total),
+              "band_to_axis_norm_ratio": math.sqrt(band / total),
               "last_decade_share": edge / total}
     print(f"  share of ||H||^2 below 1 MHz: {shares['below_1MHz']:.4f}")
     print(f"  share of ||H||^2 on the band: {shares['band']:.2e}")
-    print(f"  relative whole-axis error of a model that is zero on the band: "
-          f"{shares['zero_in_band_relative_error']:.3f}")
+    print(f"  band norm / whole-axis norm of H: {shares['band_to_axis_norm_ratio']:.3f}")
     print(f"  (check of the cut-off: share of the last decade before "
           f"{WHOLE_AXIS_HZ[1]:.0e} Hz is {shares['last_decade_share']:.1e})")
     return shares
@@ -176,7 +174,7 @@ def tissue_figures(tissue: gabriel.Tissue) -> dict[str, float]:
         "relaxation_spread_decades": relaxation_spread(tissue),
         "below_1MHz": below / total,
         "band": band / total,
-        "zero_in_band_relative_error": math.sqrt(band / total),
+        "band_to_axis_norm_ratio": math.sqrt(band / total),
         "top_decade_equal_weights": float(values[f_log > hi / 10].sum() / values.sum()),
         "top_decade_true": top / band,
         "gauss_legendre_error": abs(gl * math.pi - band) / band,
@@ -189,14 +187,14 @@ def all_tissues(tissues: list[gabriel.Tissue]) -> dict[str, object]:
     distinct = [t for t in tissues if t.is_dispersive and t.name not in duplicates]
     print(f"\n5. all {len(distinct)} distinct dispersive parameter sets of the Gabriel table "
           f"(duplicates skipped)")
-    print(f"{'tissue':<24}{'spread':>8}{'<1MHz':>8}{'band':>10}{'zero-in-band':>14}"
+    print(f"{'tissue':<24}{'spread':>8}{'<1MHz':>8}{'band':>10}{'band/axis':>14}"
           f"{'top eq.':>9}{'top true':>10}{'GL N=' + str(ALL_TISSUES_GL_N):>11}")
     rows = {}
     for tissue in distinct:
         r = tissue_figures(tissue)
         rows[tissue.name] = r
         print(f"{tissue.name:<24}{r['relaxation_spread_decades']:>8.1f}{r['below_1MHz']:>8.4f}"
-              f"{r['band']:>10.1e}{r['zero_in_band_relative_error']:>14.3f}"
+              f"{r['band']:>10.1e}{r['band_to_axis_norm_ratio']:>14.3f}"
               f"{r['top_decade_equal_weights']:>9.3f}{r['top_decade_true']:>10.3f}"
               f"{r['gauss_legendre_error']:>11.1e}")
     keys = next(iter(rows.values())).keys()

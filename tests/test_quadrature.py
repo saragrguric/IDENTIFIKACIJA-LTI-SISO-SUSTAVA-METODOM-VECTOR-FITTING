@@ -178,6 +178,7 @@ def test_axis_nodes_rejects_invalid_input(L_hz, n):
         ([1.0, float("nan")], [1.0, 1.0]),
         ([1.0, 2.0], [1.0, 0.0]),
         ([1.0, 2.0], [1.0, -1.0]),
+        ([1.0, 2.0], np.array([1.0 + 2j, 1.0])),
         ([[1.0, 2.0]], [[1.0, 1.0]]),
     ],
 )
@@ -185,3 +186,6 @@ def test_band_norm_rejects_invalid_input(values, weights):
     with pytest.raises(ValueError):
         band_norm(values, weights)
 
+
+def test_band_norm_accepts_real_weights_stored_as_complex():
+    assert band_norm([3.0 + 4j], np.array([1.0 + 0j])) == pytest.approx(5.0)

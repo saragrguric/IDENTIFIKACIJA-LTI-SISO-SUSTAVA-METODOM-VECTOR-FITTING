@@ -79,6 +79,9 @@ izvode, pitanja i zajedničke prolaske pratiti kroz [popis zadataka](../plan/TAS
   kvadrata, a granica tog niza nije dokazano optimalno rješenje.
 - Teorijska konvergencija VF-a otvoren je problem (§2.2, §4.2); iteracije mogu kružiti
   (Primjer 4.2), a kriteriji zaustavljanja iz §4.2 vrijede uz navedene pretpostavke.
+- Primjer 4.2 za $r=18$ pokazuje ustaljene polove uz nenulte reziduale nazivnika. Ponderirani
+  linearizirani LS korak iz §3.3 nije dokaz optimalnosti racionalnog modela; ispravak tog
+  tumačenja i razlika ograničenog $L^2$ integrala od pune norme zapisani su u izvodu B2, §5–§6.
 - Mali rezidual najmanjih kvadrata na uzorcima ne jamči malu $\mathcal{H}_2$ ili
   $\mathcal{H}_\infty$ pogrešku (Primjer 3.1, §3.4).
 - Prednosti QuadVF-a i SobVF-a u radu su numerička opažanja na odabranim primjerima;

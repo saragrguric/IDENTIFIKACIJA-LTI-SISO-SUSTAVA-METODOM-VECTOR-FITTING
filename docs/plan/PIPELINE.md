@@ -29,7 +29,7 @@ data/
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
 experiments/
   data_checks.py                    pregled parametara tkiva u odnosu na pojas
-  quadrature_checks.py              brojke izvoda B2 ponovno izračunate modulom quadrature
+  quadrature_checks.py              brojke izvoda B2, uključujući omjer pojasne i pune norme H
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
