@@ -34,7 +34,8 @@ ovaj pregled ne bilježi zajednički prolaz ni potvrdu razumijevanja članova.
 
 Provjere B3: 112 numeričkih testova, Ruff i završna provjera prolaze. Pokretanje
 `20261123T143501129808Z-quadrature_checks` ponovno računa tablice za svih 41 različitih
-disperzivnih skupova parametara; podrijetlo i izvještaj ostaju lokalno u `results/runs/`.
+disperzivnih skupova parametara; podrijetlo i izvještaj ostaju u lokalnom direktoriju pokretanja
+opisanom u [tijeku rada](PIPELINE.md), izvan Gita.
 
 ## Podjela rada
 
