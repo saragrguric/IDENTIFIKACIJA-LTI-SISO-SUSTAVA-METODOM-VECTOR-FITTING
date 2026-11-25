@@ -121,7 +121,9 @@ experiments/sensitivity.py: ovisnost o broju čvorova i početnim polovima prema
 najmanjih kvadrata (frekvencije su reda $10^7$–$10^{10}$ rad/s), utjecaj skaliranja i redanja
 redaka (L1, §4.3).
 
-**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka); nije započeto.
+**Stanje 2026-11-25:** napravljeno u smanjenom opsegu: `experiments/sensitivity.py` sažima
+zapise B5 i B6 (N, početni polovi, uvjetovanost); skaliranje i redanje redaka izostavljeno.
+Rezultati u [zapisu B7](../../izvodi/b7-osjetljivost.md).
 
 ## B8 i B10: seminar i slajdovi niti B
 
