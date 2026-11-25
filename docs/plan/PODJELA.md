@@ -59,7 +59,7 @@ experiments/
   convergence.py   A  ponašanje iteracija i kriteriji zaustavljanja
   pilot.py         B  reprodukcija probnog pokusa (krv i mišić)
   min_order.py     B  najmanji r po tkivu, metodi i točnosti
-  sensitivity.py   B  osjetljivost na L i broj čvorova, uvjetovanost
+  sensitivity.py   B  osjetljivost na broj čvorova i početne polove, uvjetovanost
 data/              README s izvorom, uputama za preuzimanje i kontrolnim zbrojem; tablica izvan Gita
 results/           odabrane tablice i slike; results/runs/ izvan Gita
 ```
@@ -131,6 +131,16 @@ B Lovro. Pitanja, nejasnoće i tko je stvarno sudjelovao zapisujemo u zadatak.
 ### Z2: plan eksperimenata prije završnih pokretanja
 
 Nositeljica je Sara, a sudjeluju oboje. To je zadatak T3 iz [popisa zadataka](TASKS.md).
+
+Za raspravu je 2026-11-23 pripremljen [konkretan prijedlog Z2](Z2_PRIJEDLOG.md), s
+brojkama, usporedbama, podjelom skupina i proračunom.
+
+**Ishod 2026-11-25:** prema Lovrinoj izjavi Sara i Lovro su na sastanku Z2 uživo prihvatili
+sve preporuke prijedloga bez izmjena ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)).
+Time su odlučene i točke ispod: hipoteze, pojas, skupine, broj čvorova, početni polovi,
+zaustavljanje, proračun, definicija $H$ bez izdvajanja članova s $\alpha_n=0$ i jedinica
+pokretanja (roditeljski zapis i zapis po slučaju). Raspon za $L$ nije primjenjiv. Plan se
+zaključava nakon razvojnih kriterija iz B5.
 
 - Hipoteze se zapisuju prije završnih rezultata, npr.:
   - VF treba manje polova od fiksnih logaritamskih polova za istu točnost kod većine tkiva;

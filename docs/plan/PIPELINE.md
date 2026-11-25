@@ -47,6 +47,7 @@ docs/
     TASKS.md                        mali zadaci i njihove ovisnosti
     PODJELA.md                      niti, međusobni pregled, sučelja, faze i zajednički zadaci
     Z0_PRIJEDLOG.md                 prijedlozi odluka za sastanak Z0
+    Z2_PRIJEDLOG.md                 plan eksperimenata Z2, prihvaćen u ADR-0008
     podjela/                        osobni planovi niti A i B
     METHODOLOGY.md                  matematički i eksperimentalni plan
     PIPELINE.md                     ova datoteka

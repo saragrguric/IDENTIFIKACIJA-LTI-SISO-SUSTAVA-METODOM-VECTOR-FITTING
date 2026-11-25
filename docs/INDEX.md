@@ -23,6 +23,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Podjela rada](plan/PODJELA.md): dvije niti, međusobni pregled, zajednička sučelja, faze i zajednički zadaci.
 - [Plan A (Lovro)](plan/podjela/a-lovro.md) i [plan B (Sara)](plan/podjela/b-sara.md): koraci za svaku nit.
 - [Prijedlog za Z0](plan/Z0_PRIJEDLOG.md): prijedlozi odluka za prvi zajednički sastanak i njihov ishod.
+- [Plan Z2](plan/Z2_PRIJEDLOG.md): postavke, razvojne skupine, usporedbe i pravila vrednovanja; prijedlog prihvaćen bez izmjena 2026-11-25 (ADR-0008).
 
 ## Odluke
 
@@ -34,3 +35,4 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [ADR-0005](plan/adr/0005-divide-work-into-end-to-end-threads.md): podjela rada na dvije niti uz međusobni pregled.
 - [ADR-0006](plan/adr/0006-choose-python-environment.md): Python 3.12 s uv-om, uz provjere na Linuxu i Windowsu.
 - [ADR-0007](plan/adr/0007-ai-tool-acts-for-its-user-in-git.md): AI alat na uputu člana obavlja Git i GitHub radnje, uključujući odobrenje PR-a.
+- [ADR-0008](plan/adr/0008-accept-z2-experiment-plan.md): prihvaćen plan eksperimenata Z2 bez izmjena.

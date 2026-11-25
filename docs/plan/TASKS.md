@@ -12,7 +12,7 @@ zajednički.
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; nacrt pune petlje A4 provjeren je na sintetičkim sustavima, a usporedba s B1 i prihvat preostaju |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
@@ -21,11 +21,24 @@ zajednički.
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
 
+## Z2: prihvat plana, 2026-11-25
+
+Prema Lovrinoj izjavi Sara i Lovro su 2026-11-25 uživo na sastanku Z2 prihvatili svih 13
+preporuka iz [prijedloga](Z2_PRIJEDLOG.md) bez izmjena. Odluka je zapisana u
+[ADR-0008](adr/0008-accept-z2-experiment-plan.md), a metodologija, projekt, podjela rada,
+osobni planovi, README i `AGENTS.md` usklađeni su s njom. Prijedlog preporuke ne numerira;
+ADR sažima prihvaćeni tekst po odjeljcima.
+
+Prema prihvaćenom §7 plan se zaključava tek nakon razvojnih kriterija B5. Za provedbu
+preostaju usklađivanje kriterija pomaka u A4 s §5, statusi `poles_and_denominator_settled` i
+`ill_conditioned` te kontrolna mreža iz §6. Zapis ne potvrđuje Sarin pregled PR-a ni rezultate.
+
 ## A4: nacrt pune petlje, 2026-11-25
 
 Na grani `lovro/a4-vf-petlja` pripremljena je petlja `vfdebye.vf.vector_fit` prema
 zajedničkom sučelju, opisana u [A4](../izvodi/a4-implementacija.md). Kontrole zaustavljanja,
-refleksije i kruženja zadaje pozivatelj; postavke Z2 nisu odabrane. Povijest čuva svaki LS
+refleksije i kruženja zadaje pozivatelj. Nakon prihvata Z2 prag pomaka koristi maksimum
+dviju skala, a dodan je status `poles_and_denominator_settled` (ADR-0008, §5). Povijest čuva svaki LS
 korak te sirove i upotrijebljene polove. Gubitak ranga, nevaljana nova baza, numerička
 pogreška, kruženje i iscrpljene iteracije vraćaju se izričito. `experiments/vf_checks.py`
 provjerava tri sintetička sustava poznatih polova uz zapis podrijetla.
@@ -33,9 +46,27 @@ provjerava tri sintetička sustava poznatih polova uz zapis podrijetla.
 Ovo je nacrt prije usporedbe sa Sarinim B1: B1 nije preuzet, A7 i eksperimenti na tkivima
 nisu pokrenuti, a Sarin pregled i zajednički prolaz nisu provedeni.
 
-Provjere: 38 novih numeričkih slučajeva za petlju i pokretač; ukupno 280 numeričkih testova
-uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff, provjera dokumentacije i
-`python3 tools/check_before_stop.py` prolaze. Nova ovisnost nije dodana.
+Provjere: 41 novi numerički slučaj za petlju i pokretač, uključujući prag kao maksimum dviju
+skala; ukupno 283 numerička testa uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff,
+provjera dokumentacije i `python3 tools/check_before_stop.py` prolaze. Nova ovisnost nije dodana.
+
+## Z2: priprema prijedloga, 2026-11-23
+
+Na grani `lovro/z2-prijedlog` pripremljen je [konkretan prijedlog](Z2_PRIJEDLOG.md):
+definicija H, pet razvojnih i 36 završnih skupina parametara, četiri usporediva postupka,
+početni polovi, svi redovi 1–32, zaustavljanje, razdvajanje Debyejevih i općih racionalnih
+modela, neovisno vrednovanje i proračun od 5568 slučajeva. Identitet CSV-a i podjela 8/47
+disperzivnih naziva provjereni su prema lokalnom ulazu. Raniji pregled svih skupina u B3
+izričito je naveden; završni skup nije predstavljen kao dosad neviđen.
+
+Z2 nije održan ni prihvaćen. Nositeljica je Sara, sudjeluju oboje; konačni plan slijedi B5.
+Nema novih pokretača, ovisnosti ni rezultata. Predložene brojke ne mijenjaju postojeće
+algoritme. Puna petlja A4 i dalje čeka B1, a A7 i završni eksperimenti potvrđene postavke.
+
+Provjere: identitet CSV-a, članstvo skupina i zbrojevi slučajeva provjereni su lokalno.
+`python3 tools/check_before_stop.py` prolazi: 242 numerička testa uz lokalnu tablicu,
+49 testova alata, Ruff i provjera dokumentacije. `git diff --check` nema nalaza.
+Numerička implementacija nije mijenjana; novi testovi za sam prijedlog nisu dodani.
 
 ## A5: izvod i samostalne numeričke operacije, 2026-11-23
 

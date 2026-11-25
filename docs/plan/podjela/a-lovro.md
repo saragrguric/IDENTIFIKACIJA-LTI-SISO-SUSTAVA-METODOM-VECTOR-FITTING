@@ -164,6 +164,9 @@ i Z2. Zadatak je gotov kad Sara pregleda PR.
 experiments/convergence.py na podskupu iz Z2: broj iteracija, kretanje polova, kruženje,
 kriteriji (4.3)–(4.5) i osjetljivost na početne polove. Prikaži i neuspjehe.
 
+Razvojne skupine i postavke prihvaćene su 2026-11-25 u
+[ADR-0008](../adr/0008-accept-z2-experiment-plan.md).
+
 ## A8 i A10: seminar i slajdovi niti A
 
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki

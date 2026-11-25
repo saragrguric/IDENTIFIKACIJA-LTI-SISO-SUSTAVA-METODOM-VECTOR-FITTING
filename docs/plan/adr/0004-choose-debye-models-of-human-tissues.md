@@ -165,3 +165,10 @@ Ranije navedeni broj od 44 tipa tkiva tablica ne podupire: ima 57 redaka, od koj
 disperzivnih s 41 različitim skupom parametara ([podaci](../../../data/README.md)). Na Sarin
 prijedlog u PR-u #9 zapis zasad govori o tkivima iz Gabrielove tablice. Točan broj i način
 brojanja ponovljenih parametara dogovaraju se u planu eksperimenata (Z2).
+
+## Dodatak 2026-11-25: pojas i skupine iz Z2
+
+Plan eksperimenata Z2 prihvaćen je u [ADR-0008](0008-accept-z2-experiment-plan.md). Privremeni
+pojas 10 MHz–10 GHz postaje pojas plana. Tkiva se broje po skupinama identičnih parametara:
+41 disperzivna skupina s 55 naziva, od toga 5 razvojnih i 36 završnih skupina. Air i Vacuum su
+izvan relativnog vrednovanja. Primjena, pitanje i razine točnosti iz ovog zapisa ne mijenjaju se.
