@@ -28,6 +28,8 @@ tests/                              numeričke provjere i provjere podataka (pyt
   test_vector_fit.py                 puna VF petlja: poznati polovi i izričiti neuspjesi
   test_vf_checks.py                  zapis svih slučajeva sintetičke provjere A4
   test_convergence.py                pravilo zaustavljanja, ocjene (4.4) i q ≤ η, zapis A7
+  test_z1_blood.py                   Debyejevi članovi iz polova i zapis prolaza Z1
+  test_figures_a7.py                 slike niti A iz malog zabilježenog pokretanja
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
@@ -36,6 +38,8 @@ experiments/
   quadrature_checks.py              brojke izvoda B2, uključujući omjer pojasne i pune norme H
   vf_checks.py                      sintetičke provjere pune VF petlje (A4), ne tkiva
   convergence.py                    ponašanje VF iteracija na razvojnim skupinama Z2 (A7)
+  z1_blood.py                       prolaz Z1: od tablice do VF modela krvi i pogrešaka
+  figures_a7.py                     slike niti A (putanje iteracija, početni raspon) iz A7
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
@@ -51,6 +55,7 @@ docs/
     PODJELA.md                      niti, međusobni pregled, sučelja, faze i zajednički zadaci
     Z0_PRIJEDLOG.md                 prijedlozi odluka za sastanak Z0
     Z2_PRIJEDLOG.md                 plan eksperimenata Z2, prihvaćen u ADR-0008
+    Z1_PROLAZ.md                    vodič i zapis za zajednički prolaz Z1
     podjela/                        osobni planovi niti A i B
     METHODOLOGY.md                  matematički i eksperimentalni plan
     PIPELINE.md                     ova datoteka
@@ -141,7 +146,8 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
 eksperimenata nalaze se u `experiments/`; prve su `experiments/data_checks.py` (A2),
 `experiments/quadrature_checks.py` (B3), `experiments/vf_checks.py` (A4, sintetički sustavi) i
-`experiments/convergence.py` (A7, razvojne skupine Z2). Cjelovita
+`experiments/convergence.py` (A7, razvojne skupine Z2) i `experiments/z1_blood.py` (Z1), uz
+slike iz `experiments/figures_a7.py`. Cjelovita
 preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
 izričito obrazloženje.
 

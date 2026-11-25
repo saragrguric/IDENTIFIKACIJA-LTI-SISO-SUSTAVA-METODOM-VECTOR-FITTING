@@ -57,8 +57,8 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
 
 ## Još otvorene odluke
 
-- Opseg i trajanje seminara i prezentacije, kriteriji ocjenjivanja i rok, koje utvrđuje
-  nastavnik. Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija.
+- Opseg i trajanje seminara i prezentacije te kriteriji ocjenjivanja, koje utvrđuje
+  nastavnik. Izlaganje i predaja svih materijala su 2026-12-01 (prema Lovrinoj izjavi od 2026-11-25). Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija.
 - Primjena, pitanje i podaci odlučeni su u
   [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md): Gabrielov model permitivnosti
   tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Razine

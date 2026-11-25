@@ -20,8 +20,8 @@ na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što je Sara potvrdila
 Python okruženje odabrano je u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md), a razine točnosti
 u dodatku ADR-0004. Plan eksperimenata (pojas 10 MHz–10 GHz, postavke metode, redovi i
-vrednovanje) prihvaćen je u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md); rok još
-nije poznat.
+vrednovanje) prihvaćen je u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md); izlaganje i
+predaja su 2026-12-01.
 Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); rezultati
 VF-a i QuadVF-a na tkivima još ne postoje.
 Samostalne operacije za baricentrični LS korak, premještanje i refleksiju polova te završne

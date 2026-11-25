@@ -129,3 +129,19 @@ referentnu metodu.
 Samo pet razvojnih skupina; fiksni polovi samo iz istih početnih polova kao VF. Nije provjerena
 osjetljivost na N, nije dodana slika i nije provedena provjera finijom mrežom iz §6.
 Završne skupine nisu dirane. Okvirni redovi iz opažanja 2 nisu najmanji redovi iz B6.
+
+## 6. Slike za seminar
+
+`experiments/figures_a7.py` crta dvije slike iz pokretanja `20261125T090048328276Z-convergence`.
+Pokretanje slika `20261125T102501836176Z-figures_a7` (revizija `1258799`, čisto stablo) sprema
+PDF za Overleaf, PNG za pregled i figures_a7.txt sa svim prikazanim vrijednostima. Boje su
+plava redoslijedna ljestvica provjerena validatorom palete na bijeloj podlozi.
+
+Prijedlozi opisa:
+
+1. **fig_putanja:** relativni pomak polova δk i odmak pomoćnog nazivnika qk tijekom VF
+   iteracije za krv (`vf_log`, početni polovi 10 MHz–10 GHz) uz r = 4, 7 i 10. Prag
+   zaustavljanja je 10⁻⁸. Nakon ustaljenja obje veličine ostaju na razini šuma koja raste s r.
+2. **fig_raspon:** broj razvojnih skupina (od pet) u kojima se VF petlja ustali, za tri
+   raspona početnih polova. Uz šire raspone petlja se prestaje ustaljivati od r = 6–9, zbog
+   gubitka ranga već u prvom koraku (opažanje 1).
