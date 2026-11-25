@@ -31,8 +31,8 @@ Sara je tu odluku potvrdila na sastanku Z0 2026-11-09. Razine točnosti zapisane
 ADR-0004, a Python okruženje u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Pojas je
 privremen (10 MHz–10 GHz). Čvorovi i težine, red, početni polovi i rok **nisu odlučeni**.
-Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje i model tkiva (`vfdebye.gabriel`), još bez
-implementacije metode.
+Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje, model tkiva (`vfdebye.gabriel`),
+kvadraturu, mjere, referentnu metodu i VF petlju (`vfdebye.vf`), još bez rezultata na tkivima.
 
 ## 2. Znanstvena i numerička pravila
 
@@ -126,7 +126,7 @@ implementacije metode.
 
 Postoje upute, planska/istraživačka dokumentacija, alati tijeka rada, CI konfiguracije,
 lokalne završne provjere i Python okruženje s paketom `vfdebye`
-([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)), još bez implementacije metode.
+([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)) i VF petljom, još bez rezultata na tkivima.
 Trenutačna i planirana struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
 
 Područja: `src/` za višekratno upotrebljiv Python kod, `tests/` za numeričke provjere,
