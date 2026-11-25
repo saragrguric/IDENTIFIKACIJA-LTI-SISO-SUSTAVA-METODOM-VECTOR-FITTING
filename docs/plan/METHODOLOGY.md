@@ -214,8 +214,8 @@ Treba izvesti i obrazložiti:
   nije dodao. `PoleResidueModel.is_debye` provjerava da je svaki član Debyejev: realan
   negativan pol i realan strogo pozitivan rezidual, jer je $\lambda=-1/\tau$ i
   $\phi=\Delta\varepsilon/\tau$. Provjera je točna, bez tolerancije i zaokruživanja: realan
-  model s konjugiranim parom ili s nultim rezidualom nije Debyejev. Hoće li se tablice ipak
-  koristiti s tolerancijom, odlučuje se u Z2.
+  model s konjugiranim parom ili s nultim rezidualom nije Debyejev. Prihvaćeni plan Z2
+  (ADR-0008, §5) za Debyejevu tablicu traži upravo takvu provjeru, bez naknadnog zaokruživanja.
 
 Član s $\Delta\varepsilon_n=0$ ne pridonosi modelu, pa za njega $\tau_n$ i $\alpha_n$ nisu
 ograničeni; svaki prisutni član traži $\tau_n>0$ i $0\le\alpha_n<1$ (`vfdebye.gabriel`).
