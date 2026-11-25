@@ -10,7 +10,8 @@ metode, uzorkovanje i red prihvaćeni su 2026-11-25 u
 
 Konkretne vrijednosti nalaze se u [prihvaćenom planu Z2](Z2_PRIJEDLOG.md): pojas
 10 MHz–10 GHz, predmet H, razvojne i završne skupine, N = 240 čvorova, redovi 1–32,
-logaritamski početni polovi na 1 kHz–100 GHz, četiri usporedbe, zaustavljanje i kontrolno
+logaritamski početni polovi na 10 MHz–10 GHz (dodatak ADR-0008 nakon A7; fiksni polovi i na
+1 kHz–100 GHz kao dodatna referentna metoda), četiri usporedbe, zaustavljanje i kontrolno
 vrednovanje. QuadVF se prilagođava pojasu bez parametra $L$ i rubnih redaka iz (3.4), pa raspon
 $L$ iz ranijih odjeljaka ovog plana nije primjenjiv na primarnu usporedbu. Plan se zaključava
 nakon razvojnih kriterija iz B5; dotad se doradbe rade samo na razvojnom skupu i bilježe.
@@ -242,7 +243,11 @@ Treba izvesti i obrazložiti:
   premještanja polova.
 - **Realnost polova i pozitivnost reziduala** prijavljuju se kao provjereno svojstvo svakog
   rezultata. L1 ih ne jamči; tvrdnja da ih ima najbolja aproksimacija traži izvor koji tim još
-  nije dodao.
+  nije dodao. `PoleResidueModel.is_debye` provjerava da je svaki član Debyejev: realan
+  negativan pol i realan strogo pozitivan rezidual, jer je $\lambda=-1/\tau$ i
+  $\phi=\Delta\varepsilon/\tau$. Provjera je točna, bez tolerancije i zaokruživanja: realan
+  model s konjugiranim parom ili s nultim rezidualom nije Debyejev. Prihvaćeni plan Z2
+  (ADR-0008, §5) za Debyejevu tablicu traži upravo takvu provjeru, bez naknadnog zaokruživanja.
 
 Član s $\Delta\varepsilon_n=0$ ne pridonosi modelu, pa za njega $\tau_n$ i $\alpha_n$ nisu
 ograničeni; svaki prisutni član traži $\tau_n>0$ i $0\le\alpha_n<1$ (`vfdebye.gabriel`).

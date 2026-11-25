@@ -14,12 +14,34 @@ zajednički.
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; nacrt pune petlje A4 provjeren je na sintetičkim sustavima, a usporedba s B1 i prihvat preostaju |
-| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
+| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojno pokretanje A7 provedeno 2026-11-25; B5–B7 otvoreni |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## A7: razvojno pokretanje, 2026-11-25
+
+Na grani `lovro/a7-konvergencija` dodani su `experiments/convergence.py` i
+`PoleResidueModel.is_debye` (s grane `lovro/debye-provjera`). Pokretanje
+`20261125T084356823080Z-convergence` prolazi pet razvojnih skupina Z2 s postavkama iz
+ADR-0008: 400 slučajeva, svaki s prihvaćenim zaustavljanjem i s cijelom putanjom.
+[Zapis A7](../izvodi/a7-konvergencija.md) navodi opažanja. S primarnim rasponom početnih
+polova 1 kHz–100 GHz petlja za r ≥ 9 staje zbog gubitka ranga već u prvom koraku, pa
+`vf_log` na razvojnim skupinama ne doseže 0,1 %. Svi ustaljeni kandidati su Debyejevi
+modeli, a ocjene (4.4) i q ≤ η vrijede do zaokruživanja.
+
+Drugo pokretanje `20261125T090048328276Z-convergence` dodaje fiksne polove iz istih
+početnih polova i sve redove u sva tri raspona. Tim je odluku o rasponu prepustio AI alatu
+(prema Lovrinoj izjavi). Prema dodatku ADR-0008 primarni raspon za sva četiri postupka je
+10 MHz–10 GHz, a fiksni polovi se dodatno računaju s 1 kHz–100 GHz kao jača referentna metoda.
+Pokretač A7 sada kao primarni koristi raspon pojasa.
+
+Provjere: 14 novih testova za pokretač A7 i 9 za provjeru Debyejeva modela; ukupno 306
+numeričkih testova uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff, provjera
+dokumentacije i `python3 tools/check_before_stop.py` prolaze. Završne skupine nisu pokretane,
+nije dodana slika, a Sarin pregled i zajednički prolaz nisu provedeni.
 
 ## Z2: prihvat plana, 2026-11-25
 
