@@ -132,3 +132,18 @@ skupina, svi r od 1 do 32 u sva tri raspona):
 Odbačeno: zadržati 1 kHz–100 GHz (VF bi za r ≥ 9 imao samo neuspjehe); različit primarni
 raspon po postupku (gubi se usporedba iz istog početka); nastavak iteracije unatoč gubitku
 ranga (promjena pravila §5 bez izvoda).
+
+## Dodatak 2026-11-25: zaključavanje plana nakon B5
+
+Razvojni pokusi B5 (pokretanje `20261125T144135977334Z-min_order`, revizija `8324725`, čisto
+stablo; [zapis B5](../../izvodi/b5-razvoj.md)) ispunjavaju svih pet razvojnih kriterija iz §7:
+analitički testovi prolaze, nema skrivenih intervencija, nema nerazriješenih procjena ni
+graničnih ćelija, podrijetlo omogućuje ponavljanje, a trošak je izmjeren (1280 slučajeva, 12 s).
+
+**Odluka.** Plan se zaključava bez izmjena, s postavkama ovog zapisa i dodatka nakon A7.
+Završni pokus `final_base` pokreće se tek nakon ovog dodatka i ne služi podešavanju.
+
+Sara je zaključavanje odobrila 2026-11-25 na temelju pregleda razvojnih kriterija koji je
+proveo AI alat u njezinoj sesiji. Zapis ne bilježi potvrdu razumijevanja. Završni pokus s grane
+`lovro/b6-min-order` (PR #25) ranije je pokrenut i viđen; ovaj dodatak to ne mijenja, a
+postavke nisu mijenjane ni prema njemu.

@@ -91,7 +91,10 @@ experiments/pilot.py ponavlja probni pokus (krv i mišić, VF s logaritamskim i 
 čvorovima, relativne težine, QuadVF, fiksni polovi) iz repozitorija, uz zapis podrijetla.
 Razlike u odnosu na brojeve iz tvog dokumenta zapiši i objasni.
 
-**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka); nije započeto.
+**Stanje 2026-11-25:** razvojni pokusi provedeni pokretačem `experiments/min_order.py`
+(preuzet s grane `lovro/b6-min-order`); svih pet razvojnih kriterija iz Z2, §7 ispunjeno.
+Usporedba s probnim pokusom je u zapisu umjesto zasebnog pokretača, jer probni kod nije u
+repozitoriju (odluka 2026-11-10). Zapis: [B5](../../izvodi/b5-razvoj.md).
 
 ## Z2: plan eksperimenata
 
