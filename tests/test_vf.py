@@ -62,6 +62,36 @@ def test_realness_check(poles, residues, d, real):
     assert PoleResidueModel(poles, residues, d).is_real() is real
 
 
+def test_debye_check_matches_the_relaxation_parameters():
+    # Delta_eps/(1 + s tau) with tau = 1e-9 s and 1e-11 s, Delta_eps = 40 and 10.
+    tau, delta = np.array([1e-9, 1e-11]), np.array([40.0, 10.0])
+    model = PoleResidueModel(-1 / tau, delta / tau)
+    s = 2j * np.pi * np.geomspace(1e6, 1e11, 7)
+    expected = np.sum(delta / (1 + s[:, None] * tau), axis=1)
+    np.testing.assert_allclose(model(s), expected, rtol=1e-13)
+    assert model.is_debye() and model.is_real() and model.is_stable()
+
+
+@pytest.mark.parametrize(
+    ("poles", "residues", "d", "reason"),
+    [
+        ([-1 + 2j, -1 - 2j], [1 - 1j, 1 + 1j], 0, "real conjugate pair"),
+        ([-1, -5], [2, -3], 0, "negative residue"),
+        ([-1, -5], [2, 0], 0, "zero residue"),
+        ([1, -5], [2, 3], 0, "unstable pole"),
+        ([-1 + 1e-300j, -5], [2, 3], 0, "tiny imaginary pole"),
+        ([-1, -5], [2, 3 + 1e-300j], 0, "tiny imaginary residue"),
+        ([-1, -5], [2, 3], 1j, "complex d"),
+    ],
+)
+def test_debye_check_is_exact_and_rejects_non_debye_terms(poles, residues, d, reason):
+    assert not PoleResidueModel(poles, residues, d).is_debye(), reason
+
+
+def test_debye_check_ignores_a_real_direct_term():
+    assert PoleResidueModel([-2], [3], d=-0.5).is_debye()
+
+
 def test_stability_is_the_open_left_half_plane():
     assert PoleResidueModel([-1e-9, -3.0], [1, 1]).is_stable()
     assert not PoleResidueModel([0.0, -3.0], [1, 1]).is_stable()
