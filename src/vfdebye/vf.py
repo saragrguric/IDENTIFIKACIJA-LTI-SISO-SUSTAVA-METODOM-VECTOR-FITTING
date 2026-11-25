@@ -91,6 +91,22 @@ class PoleResidueModel:
         d_gap = abs(self.d.imag)
         return bool(residue_gap <= rtol * residue_scale and d_gap <= rtol * max(abs(self.d), 1.0))
 
+    def is_debye(self) -> bool:
+        """Every term is a Debye relaxation: a real negative pole with a real positive residue.
+
+        Delta_eps / (1 + s tau) = phi / (s - lambda) with lambda = -1/tau and phi = Delta_eps/tau,
+        so tau > 0 and Delta_eps > 0 hold exactly when lambda < 0 and phi > 0 (METHODOLOGY 6.1).
+        The test is exact, without a tolerance: any nonzero imaginary part makes a pole or
+        residue non-real, and a zero residue is not positive. Nothing is rounded or projected.
+        A real model with conjugate pairs (is_real) is a valid rational model, not a Debye one.
+        d is not a relaxation term; only Im d = 0 is required.
+        """
+        return bool(
+            np.all(self.poles.imag == 0) and np.all(self.poles.real < 0)
+            and np.all(self.residues.imag == 0) and np.all(self.residues.real > 0)
+            and self.d.imag == 0
+        )
+
 
 def matching_distance(
     a: Sequence[complex] | np.ndarray,
