@@ -7,6 +7,11 @@ nastavku odnose se na taj rad. Primjena je odabrana u
 [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md) i opisana u odjeljku 6; postavke
 metode, uzorkovanje i red još nisu odabrani.
 
+Konkretne vrijednosti za raspravu zapisane su u [prijedlogu Z2](Z2_PRIJEDLOG.md).
+Predlaže konačni pojas, skupine, čvorove/težine, početne polove, zaustavljanje i kontrolno
+vrednovanje; nijedna od tih novih postavki još nije timski prihvaćena ni primijenjena u
+završnom eksperimentu. Prihvat slijedi nakon B5 i zahtijeva ADR te usklađivanje ovog plana.
+
 ## 1. Oznake i model
 
 Razrađeni izvod odjeljaka 1–2 nalazi se u [izvodu A3](../izvodi/a3-problem-sk.md): model

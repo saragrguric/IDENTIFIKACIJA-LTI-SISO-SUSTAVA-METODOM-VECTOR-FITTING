@@ -12,7 +12,7 @@ zajednički.
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Pripremljen konkretan prijedlog Z2; konačni dogovor i dalje otvoren, nakon B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
@@ -20,6 +20,24 @@ zajednički.
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## Z2: priprema prijedloga, 2026-11-23
+
+Na grani `lovro/z2-prijedlog` pripremljen je [konkretan prijedlog](Z2_PRIJEDLOG.md):
+definicija H, pet razvojnih i 36 završnih skupina parametara, četiri usporediva postupka,
+početni polovi, svi redovi 1–32, zaustavljanje, razdvajanje Debyejevih i općih racionalnih
+modela, neovisno vrednovanje i proračun od 5568 slučajeva. Identitet CSV-a i podjela 8/47
+disperzivnih naziva provjereni su prema lokalnom ulazu. Raniji pregled svih skupina u B3
+izričito je naveden; završni skup nije predstavljen kao dosad neviđen.
+
+Z2 nije održan ni prihvaćen. Nositeljica je Sara, sudjeluju oboje; konačni plan slijedi B5.
+Nema novih pokretača, ovisnosti ni rezultata. Predložene brojke ne mijenjaju postojeće
+algoritme. Puna petlja A4 i dalje čeka B1, a A7 i završni eksperimenti potvrđene postavke.
+
+Provjere: identitet CSV-a, članstvo skupina i zbrojevi slučajeva provjereni su lokalno.
+`python3 tools/check_before_stop.py` prolazi: 242 numerička testa uz lokalnu tablicu,
+49 testova alata, Ruff i provjera dokumentacije. `git diff --check` nema nalaza.
+Numerička implementacija nije mijenjana; novi testovi za sam prijedlog nisu dodani.
 
 ## A5: izvod i samostalne numeričke operacije, 2026-11-23
 

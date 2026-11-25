@@ -22,6 +22,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Podjela rada](plan/PODJELA.md): dvije niti, međusobni pregled, zajednička sučelja, faze i zajednički zadaci.
 - [Plan A (Lovro)](plan/podjela/a-lovro.md) i [plan B (Sara)](plan/podjela/b-sara.md): koraci za svaku nit.
 - [Prijedlog za Z0](plan/Z0_PRIJEDLOG.md): prijedlozi odluka za prvi zajednički sastanak i njihov ishod.
+- [Prijedlog za Z2](plan/Z2_PRIJEDLOG.md): konkretne postavke, razvojne skupine, usporedbe i pravila vrednovanja za raspravu; nije prihvaćena odluka.
 
 ## Odluke
 

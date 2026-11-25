@@ -132,6 +132,10 @@ B Lovro. Pitanja, nejasnoće i tko je stvarno sudjelovao zapisujemo u zadatak.
 
 Nositeljica je Sara, a sudjeluju oboje. To je zadatak T3 iz [popisa zadataka](TASKS.md).
 
+Za raspravu je 2026-11-23 pripremljen [konkretan prijedlog Z2](Z2_PRIJEDLOG.md), s
+brojkama, usporedbama, podjelom skupina i proračunom. To nije prihvaćen plan ni zamjena
+za B5 i zajednički dogovor.
+
 - Hipoteze se zapisuju prije završnih rezultata, npr.:
   - VF treba manje polova od fiksnih logaritamskih polova za istu točnost kod većine tkiva;
   - QuadVF ne treba više polova od VF-a s logaritamskim čvorovima;
