@@ -169,6 +169,10 @@ def figure_errors(errors: dict, group: str, directory: Path, table: io.StringIO)
 def figure_trajectory(npz: Path, directory: Path, table: io.StringIO,
                       orders=(4, 7, 10), steps: int = 100) -> list[str]:
     fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.5), sharex=True)
+    for ax in axes:  # fixed before plotting, so an all-zero synthetic series cannot collapse it
+        ax.set_yscale("log")
+        ax.set_ylim(1e-16, 1e2)
+        ax.set_yticks([1e-16, 1e-12, 1e-8, 1e-4, 1.0])
     table.write("\nfig_putanja: Blood, vf_log, početni polovi 10 MHz–10 GHz\n")
     with np.load(npz) as data:
         for r, colour in zip(orders, ORDINAL[::-1], strict=True):
@@ -176,7 +180,7 @@ def figure_trajectory(npz: Path, directory: Path, table: io.StringIO,
             for ax, name in zip(axes, ("delta", "q"), strict=True):
                 values = data[f"{key}|{name}"][:steps]
                 k = np.arange(1, values.size + 1)
-                ax.semilogy(k, np.where(values > 0, values, np.nan), color=colour,
+                ax.plot(k, np.where(values > 0, values, np.nan), color=colour,
                             label=f"r = {r}")
                 table.write(f"r={r} {name}: " + " ".join(f"{v:.2e}" for v in values) + "\n")
     titles = (r"$\delta_k$ (relativni pomak polova)", r"$q_k=\max_i\,|\tilde d(\xi_i)-1|$")
@@ -186,7 +190,6 @@ def figure_trajectory(npz: Path, directory: Path, table: io.StringIO,
         ax.set_title(label, loc="left")
         ax.set_xlabel("korak k")
         ax.set_xlim(0, steps)
-        ax.set_ylim(1e-16, 1e2)
     axes[0].legend(frameon=False, loc="upper right")
     fig.tight_layout()
     return save(fig, directory, "fig_putanja")
@@ -246,7 +249,8 @@ def main(argv: list[str] | None = None) -> int:
     style()
     with provenance.run("figures", settings=settings, inputs=inputs,
                         runs_dir=args.runs_dir) as record:
-        rows = list(csv.DictReader(open(mo / "min_order.csv", encoding="utf-8")))
+        with open(mo / "min_order.csv", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
         convergence_rows = json.loads((cv / "convergence.json").read_text(encoding="utf-8"))
         table = io.StringIO()
         table.write(f"izvor: {source['min_order_run']} i {source['convergence_run']}\n")

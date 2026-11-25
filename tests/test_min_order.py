@@ -1,4 +1,5 @@
 """B6 runner: groups, the section-6 verdicts, smallest orders, case counts and resumable runs."""
+import csv
 import json
 import sys
 from importlib.util import module_from_spec, spec_from_file_location
@@ -97,10 +98,10 @@ def test_case_counts_match_the_adr_0008_addendum():
 def test_run_recovers_exact_debye_tissue_and_resumes_without_recomputing(tmp_path, monkeypatch):
     monkeypatch.setattr(mo, "GRID_CELLS", (16, 32))
     monkeypatch.setattr(mo, "BAND_NODES", (16, 32))
-    csv = tmp_path / "table.csv"
-    gabriel.write_csv([AIR, row("Blood", *DEBYE), row("Synthetic Cole", *COLE)], csv)
+    table = tmp_path / "table.csv"
+    gabriel.write_csv([AIR, row("Blood", *DEBYE), row("Synthetic Cole", *COLE)], table)
     runs = tmp_path / "runs"
-    common = ["--csv", str(csv), "--runs-dir", str(runs), "--experiments", "dev_base",
+    common = ["--csv", str(table), "--runs-dir", str(runs), "--experiments", "dev_base",
               "--orders", "1", "2", "3"]
     assert mo.main(common) == 0
     [first] = list(runs.iterdir())
@@ -108,7 +109,8 @@ def test_run_recovers_exact_debye_tissue_and_resumes_without_recomputing(tmp_pat
     assert record["status"] == "completed"
     assert len(list((first / "cases").glob("*.json"))) == 3 * 6  # one dev group, no final
     assert record["outcome"]["summary"]["cases"] == 18
-    rows = list(__import__("csv").DictReader(open(first / "min_order.csv", encoding="utf-8")))
+    with open(first / "min_order.csv", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
     for procedure in ("vf_log", "quadvf_band"):
         [cell] = [x for x in rows if x["procedure"] == procedure and x["table"] == "debye"
                   and x["measure"] == "max_relative_error" and x["level"] == "0.001"]
@@ -124,5 +126,5 @@ def test_run_recovers_exact_debye_tissue_and_resumes_without_recomputing(tmp_pat
     assert (second / "min_order.csv").read_text() == (first / "min_order.csv").read_text()
 
     with pytest.raises(SystemExit):  # other orders mean other settings: no silent reuse
-        mo.main(["--csv", str(csv), "--runs-dir", str(runs), "--experiments", "dev_base",
+        mo.main(["--csv", str(table), "--runs-dir", str(runs), "--experiments", "dev_base",
                  "--orders", "1", "2", "--resume-from", str(first)])
