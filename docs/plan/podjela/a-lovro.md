@@ -180,3 +180,6 @@ broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
 Na papiru prođi Sarin izvod $\mathcal{H}_2$ norme, kvadrature i prilagodbe pojasu. Nejasnoće i
 ishod zapiši u zadatak.
+
+**Stanje 2026-11-25:** prema Lovrinoj izjavi provjera je provedena i izvod je ispravan.
+Pojedinosti i eventualne napomene nisu zabilježene.

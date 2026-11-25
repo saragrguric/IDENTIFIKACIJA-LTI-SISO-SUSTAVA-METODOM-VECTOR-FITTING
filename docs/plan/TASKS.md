@@ -10,7 +10,7 @@ zajednički.
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
-| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
+| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji, ispravljen je nakon pregleda i Lovro ga je neovisno provjerio (A9); A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; nacrt pune petlje A4 provjeren je na sintetičkim sustavima, a usporedba s B1 i prihvat preostaju |
@@ -18,8 +18,25 @@ zajednički.
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
-Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
+Rok projekta je 2026-12-01 (prema Lovrinoj izjavi); prijedlog rasporeda je u
+[podjeli rada](PODJELA.md#z0-dogovor). Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## Z1, A9 i rok, 2026-11-25
+
+Za prolaz Z1 pripremljeni su [vodič](Z1_PROLAZ.md) i `experiments/z1_blood.py`. Pokretanje
+`20261125T091152576258Z-z1_blood` vodi od tablice preko VF koraka do Debyejevih članova i
+pogrešaka za krv. Prolaz nije održan i zapis u vodiču je prazan.
+
+Prema Lovrinoj izjavi Lovro je 2026-11-25 proveo A9: na papiru je neovisno provjerio Sarin
+izvod B2 i nije našao pogreške. Pojedinosti provjere nisu zabilježene.
+
+Prema Lovrinoj izjavi rok je 2026-12-01. Prijedlog rasporeda faza unatrag od roka nalazi se
+u [podjeli rada](PODJELA.md#z0-dogovor); tim ga još nije potvrdio.
+
+Provjere: 3 nova testa za pokretač Z1; ukupno 309 numeričkih testova uz lokalnu Gabrielovu
+tablicu, 49 testova alata, Ruff, provjera dokumentacije i `python3 tools/check_before_stop.py`
+prolaze.
 
 ## A7: razvojno pokretanje, 2026-11-25
 
