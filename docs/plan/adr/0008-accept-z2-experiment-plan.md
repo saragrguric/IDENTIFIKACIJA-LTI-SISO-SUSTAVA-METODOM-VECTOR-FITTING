@@ -1,7 +1,6 @@
 # ADR-0008: Prihvatiti prijedlog plana eksperimenata Z2 bez izmjena
 
-**Datum:** 2026-11-25 · **Status:** prihvaćeno (Lovro i Sara prema Lovrinoj izjavi, 2026-11-25; Sara
-potvrdila isti dan)
+**Datum:** 2026-11-25 · **Status:** prihvaćeno (Lovro i Sara prema Lovrinoj izjavi, 2026-11-25)
 
 ## Kontekst
 
