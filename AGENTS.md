@@ -31,7 +31,7 @@ Sara je tu odluku potvrdila na sastanku Z0 2026-11-09. Razine točnosti zapisane
 ADR-0004, a Python okruženje u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Plan eksperimenata Z2 prihvaćen je
 2026-11-25 u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md): pojas 10 MHz–10 GHz,
-čvorovi i težine, redovi 1–32, početni polovi, zaustavljanje i vrednovanje. Rok je **2026-12-01**.
+čvorovi i težine, redovi 1–32, početni polovi, zaustavljanje i vrednovanje. Izlaganje i predaja su **2026-12-01**.
 Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje, model tkiva (`vfdebye.gabriel`),
 kvadraturu, mjere, referentnu metodu i VF petlju (`vfdebye.vf`), još bez rezultata na tkivima.
 

@@ -122,14 +122,14 @@ Sastanak je održan 2026-11-09; ishod je zapisan u [prijedlogu za Z0](Z0_PRIJEDL
 - [ ] Svatko lokalno: klonirati repozitorij, pokrenuti `python3 tools/check_before_stop.py` i
   provjeriti povjerenje hookovima (vidi [tijek rada](PIPELINE.md)).
 
-**Rok 2026-12-01** (prema Lovrinoj izjavi od 2026-11-25). Nije zabilježeno je li to rok predaje
-svih materijala ili datum izlaganja; raspored ispod pretpostavlja predaju svega do tog dana.
-Raspored je prijedlog, a ne dogovor tima:
+**Rok 2026-12-01** (prema Lovrinoj izjavi od 2026-11-25): toga dana je izlaganje i predaja
+svih materijala. Lovro je istog dana odlučio da A4 ne čeka usporedbu sa Sarinim probnim kodom
+B1. Raspored je prijedlog, a ne dogovor tima:
 
 | Dan | Cilj |
 |---|---|
 | sri 25. 11. | Odluka o rasponu polova (dodatak ADR-0008), priprema Z1, otvoreni PR-ovi |
-| čet 26. 11. | Sarin pregled i spajanje lanca PR-ova; prolaz Z1; B1 ili odluka da A4 ide bez usporedbe s B1; B5 i razvojni kriteriji, zatim zaključavanje plana Z2 |
+| čet 26. 11. | Sarin pregled i spajanje lanca PR-ova; prolaz Z1; B5 i razvojni kriteriji, zatim zaključavanje plana Z2 |
 | pet 27. 11. | B6 završni pokus i B7 osjetljivost; prolaz Z3 |
 | sub 28. 11. | Tablice i slike; poglavlja A8 i B8 s rezultatima; Z5 uvod i zaključak |
 | ned 29. 11. | Slajdovi A10 i B10; Z4 reprodukcija u čistom okruženju |
