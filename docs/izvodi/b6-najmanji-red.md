@@ -145,3 +145,29 @@ položaj prema pojasu nisu držani stalnima, pa ovo nije uzročni zaključak.
 - Razvojne skupine bile su viđene ranije (B3), ali završne skupine nisu korištene za
   podešavanje.
 - Rezultat ne govori o točnosti prema novim mjerenjima tkiva.
+
+## 6. Slike za seminar
+
+`experiments/figures.py` crta četiri slike iz zabilježenih pokretanja i zapisuje izvore u
+provenance. Pokretanje `20261125T100131023934Z-figures` (revizija `f98453b`, čisto stablo)
+koristi završni pokus `20261125T094751901934Z-min_order` i A7 pokretanje
+`20261125T090048328276Z-convergence`. Svaka slika ima PDF za Overleaf i PNG za pregled, a
+figures.txt sadrži sve prikazane vrijednosti kao tablice. Boje su provjerene validatorom
+palete na bijeloj podlozi; svijetle nijanse imaju kontrast ispod 3:1, pa svaku seriju imenuje
+legenda.
+
+Prijedlozi opisa slika:
+
+1. **fig_udio_skupina:** udio 36 završnih skupina tkiva za koje postupak nalazi prihvatljiv
+   model reda najviše r, za obje mjere pogreške i tri razine točnosti. Prikazana je opća
+   tablica; za VF i QuadVF ona je jednaka Debyejevoj, a fiksni polovi Debyejev model ne daju.
+2. **fig_pogreska_red:** najveća relativna pogreška i relativna pogreška na pojasu za jetru
+   (Liver) u ovisnosti o redu r. Vodoravne crte su razine 5 %, 1 % i 0,1 %. Prikazani su samo
+   prihvatljivi kandidati; linija prestaje kad petlja gubi rang ili je uvjetovanost veća od
+   10¹².
+3. **fig_putanja:** relativni pomak polova δk i odmak pomoćnog nazivnika qk tijekom VF
+   iteracije za krv (`vf_log`, početni polovi 10 MHz–10 GHz) uz r = 4, 7 i 10. Prag
+   zaustavljanja je 10⁻⁸. Nakon ustaljenja obje veličine ostaju na razini šuma koja raste s r.
+4. **fig_raspon:** broj razvojnih skupina (od pet) u kojima se VF petlja ustali, za tri
+   raspona početnih polova. Uz šire raspone petlja se prestaje ustaljivati od r = 6–9, zbog
+   gubitka ranga već u prvom koraku (A7).

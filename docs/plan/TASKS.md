@@ -14,7 +14,7 @@ zajednički.
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008), raspon polova promijenjen nakon A7 i plan zaključan istog dana |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
-| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojna pokretanja A7 i B6 te završni pokus B6 provedeni 2026-11-25; slike, tumačenje i Sarin pregled preostaju |
+| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojna pokretanja A7 i B6, završni pokus B6 i slike za seminar provedeni 2026-11-25; tumačenje u seminaru i Sarin pregled preostaju |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
