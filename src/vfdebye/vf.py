@@ -1,6 +1,6 @@
 """Vector fitting (L1, section 2.2) and the objects around it.
 
-This module so far holds the parts of task A4 that do not depend on the pilot code (B1):
+The algebraic steps are independently usable; vector_fit composes them into an iteration:
 
 - PoleResidueModel: H_r(s) = d + sum_j phi_j / (s - lambda_j), the model object of the shared
   interface in docs/plan/PODJELA.md, evaluated at arbitrary points;
@@ -9,13 +9,14 @@ This module so far holds the parts of task A4 that do not depend on the pilot co
 - barycentric_step, relocate_poles, reflect_unstable_poles and fit_fixed_poles: independently
   usable linear algebra from A5, with real-system structure and weighted LS diagnostics.
 
-The iteration itself, vector_fit(s, h, weights, poles0, ...), follows after B1 (Z0 agreement).
+Stopping tolerances and reflection are explicit caller choices, not experimental defaults.
+Comparison with the pilot code B1 and team approval remain separate acceptance steps.
 Poles and residues are in the variable s = 2j*pi*f, i.e. in rad/s.
 """
 from __future__ import annotations
 
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 from scipy.linalg import norm
@@ -352,3 +353,170 @@ def fit_fixed_poles(s, h, poles, weights=None) -> ResidueFit:
         basis = cauchy @ transform
     x, rank, condition, residual = _real_lstsq(basis, h, weights)
     return ResidueFit(PoleResidueModel(poles, transform @ x), rank, condition, residual)
+
+
+def _pole_snapshot(poles: np.ndarray) -> np.ndarray:
+    snapshot = poles.copy()
+    snapshot.flags.writeable = False
+    return snapshot
+
+
+@dataclass(frozen=True, eq=False)
+class VFIteration:
+    """One attempted LS step, including raw relocation and any explicit reflection.
+
+    poles_before/after and raw_poles are in rad/s. pole_distance is the absolute bottleneck
+    distance between before/after, not a coefficient-wise distance or an accuracy estimate.
+    None means an operation was not reached, e.g. relocation after a rank-deficient LS.
+    """
+
+    poles_before: np.ndarray
+    step: BarycentricStep
+    raw_poles: np.ndarray | None = None
+    poles_after: np.ndarray | None = None
+    reflected_count: int = 0
+    pole_distance: float | None = None
+    denominator_deviation: float | None = None
+
+
+@dataclass(frozen=True, eq=False)
+class VectorFitResult:
+    """Iteration outcome and final LS at the last valid pole set.
+
+    poles_settled and poles_and_denominator_settled are stopping observations, never proof of
+    accuracy or optimality.
+    A candidate can accompany rank loss, cycling or exhaustion; inspect stop_reason, the
+    history and final_fit diagnostics before accepting it. final_fit_error records a failed
+    final residue solve separately, without erasing the iteration's stop reason.
+    """
+
+    history: tuple[VFIteration, ...]
+    stop_reason: str
+    final_fit: ResidueFit | None
+    message: str | None = None
+    cycle_period: int | None = None
+    final_fit_error: str | None = None
+
+    @property
+    def model(self) -> PoleResidueModel | None:
+        return self.final_fit.model if self.final_fit is not None else None
+
+
+def _poles_close(a, b, rtol, atol):
+    # Omega <= max(atol, rtol*max|a|), i.e. Omega / max(atol/rtol, max|a|) <= rtol (ADR-0008).
+    with np.errstate(over="raise", invalid="raise"):
+        distance, _ = matching_distance(a, b)
+        threshold = max(atol, rtol * np.max(np.abs(a)))
+    return distance, bool(distance <= threshold)
+
+
+def vector_fit(
+    s, h, weights, poles0, *, max_iterations: int, pole_rtol: float, pole_atol: float,
+    denominator_tol: float, reflect_unstable: bool, settle_steps: int, max_period: int,
+    cycle_repeats: int,
+) -> VectorFitResult:
+    """Real-system VF with external squared-error weights (L1 2.2, 4.1, 4.2).
+
+    s is in rad/s; weights are positive w in sum w*|error|^2 (None means ones). All control
+    settings are required: they are software choices for the caller, not a selected Z2 plan.
+    Stop after settle_steps consecutive moves with Omega <= max(pole_atol, pole_rtol*max|old|);
+    pole_atol is in rad/s. With pole_rtol = 1e-8 and pole_atol = 1e-8 * 2*pi*10 MHz this is
+    the accepted Z2 rule delta_k <= 1e-8 (ADR-0008). The status is then
+    poles_and_denominator_settled when the last step also has max|d_tilde - 1| <=
+    denominator_tol, otherwise poles_settled. max_period=0 disables cycle detection, otherwise
+    a period >=2 requires cycle_repeats successive returns under the same distance criterion.
+
+    Reflection is applied after relocation, only for imaginary-axis samples, where the
+    unit-modulus argument holds. Initial auxiliary poles are recorded unchanged. Neither
+    real negative poles nor positive final residues are imposed. The final model is strictly
+    proper. No samples or poles are dropped, merged, projected or jittered.
+
+    Malformed inputs raise ValueError. Numerical failures inside the iteration are returned
+    explicitly with a last-valid candidate when its final residue solve succeeds. Rank loss
+    stops the iteration; a large condition number is recorded without an automatic cutoff.
+    """
+    for name, value, minimum in (
+        ("max_iterations", max_iterations, 1), ("settle_steps", settle_steps, 1),
+        ("max_period", max_period, 0), ("cycle_repeats", cycle_repeats, 1),
+    ):
+        if (isinstance(value, (bool, np.bool_))
+                or not isinstance(value, (int, np.integer)) or value < minimum):
+            raise ValueError(f"{name} must be an integer >= {minimum}")
+    for name, value in (("pole_rtol", pole_rtol), ("pole_atol", pole_atol),
+                        ("denominator_tol", denominator_tol)):
+        if (isinstance(value, (bool, np.bool_))
+                or not isinstance(value, (int, float, np.integer, np.floating))
+                or not np.isfinite(value) or value < 0):
+            raise ValueError(f"{name} must be a finite nonnegative real number")
+    if not isinstance(reflect_unstable, (bool, np.bool_)):
+        raise ValueError("reflect_unstable must be a boolean")
+    # Validate once before failure reporting: malformed caller inputs are programming errors.
+    _, h, poles, weights = _fit_inputs(s, h, poles0, weights)
+    s = _complex_vector("s", s)
+    _real_pole_basis(poles)
+    if reflect_unstable and np.any(s.real != 0):
+        raise ValueError("pole reflection requires samples on the imaginary axis")
+
+    history = []
+    pole_history = [_pole_snapshot(poles)]
+    small_moves = 0
+    reason, message, period = "max_iterations", None, None
+    numerical_errors = (FloatingPointError, np.linalg.LinAlgError)
+    for iteration in range(1, max_iterations + 1):
+        try:
+            step = barycentric_step(s, h, poles, weights)
+            step.numerator_residues.flags.writeable = False
+            step.denominator_residues.flags.writeable = False
+            history.append(VFIteration(_pole_snapshot(poles), step))
+            if step.rank < 2 * poles.size:
+                reason, message = "rank_deficient", f"iteration {iteration}: rank < 2r"
+                break
+            with np.errstate(over="raise", divide="raise", invalid="raise"):
+                deviation = np.max(np.abs(np.sum(
+                    step.denominator_residues / (s[:, None] - poles), axis=1
+                )))
+            if not np.isfinite(deviation):
+                raise FloatingPointError("denominator deviation is not finite")
+            history[-1] = replace(history[-1], denominator_deviation=float(deviation))
+            raw = relocate_poles(poles, step.denominator_residues)
+            updated = reflect_unstable_poles(raw) if reflect_unstable else raw.copy()
+            history[-1] = replace(
+                history[-1], raw_poles=_pole_snapshot(raw), poles_after=_pole_snapshot(updated),
+                reflected_count=int(np.count_nonzero(raw.real > 0)) if reflect_unstable else 0,
+            )
+            try:
+                _fit_inputs(s, h, updated, weights)
+                _real_pole_basis(updated)
+                if reflect_unstable and np.any(updated.real >= 0):
+                    raise ValueError("reflection leaves poles on the imaginary axis")
+            except ValueError as error:
+                reason, message = "invalid_relocated_poles", f"iteration {iteration}: {error}"
+                break
+            distance, small = _poles_close(poles, updated, pole_rtol, pole_atol)
+            history[-1] = replace(history[-1], pole_distance=distance)
+            poles = updated
+            pole_history.append(_pole_snapshot(poles))
+            small_moves = small_moves + 1 if small else 0
+            if small_moves >= settle_steps:
+                settled_denominator = history[-1].denominator_deviation <= denominator_tol
+                reason = "poles_and_denominator_settled" if settled_denominator else "poles_settled"
+                break
+            for lag in range(2, min(max_period, (len(pole_history) - 1) // cycle_repeats) + 1):
+                if all(_poles_close(
+                    pole_history[-1 - (j + 1) * lag], pole_history[-1 - j * lag],
+                    pole_rtol, pole_atol,
+                )[1] for j in range(cycle_repeats)):
+                    period, reason = lag, "cycle"
+                    break
+            if period is not None:
+                break
+        except numerical_errors as error:
+            reason, message = "numerical_failure", f"iteration {iteration}: {error}"
+            break
+
+    final_fit, final_error = None, None
+    try:
+        final_fit = fit_fixed_poles(s, h, poles, weights)
+    except numerical_errors as error:
+        final_error = str(error)
+    return VectorFitResult(tuple(history), reason, final_fit, message, period, final_error)

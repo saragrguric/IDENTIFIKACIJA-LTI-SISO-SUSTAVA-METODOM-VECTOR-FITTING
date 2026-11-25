@@ -32,8 +32,8 @@ ADR-0004, a Python okruženje u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Plan eksperimenata Z2 prihvaćen je
 2026-11-25 u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md): pojas 10 MHz–10 GHz,
 čvorovi i težine, redovi 1–32, početni polovi, zaustavljanje i vrednovanje. Rok **nije poznat**.
-Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje i model tkiva (`vfdebye.gabriel`), još bez
-implementacije metode.
+Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje, model tkiva (`vfdebye.gabriel`),
+kvadraturu, mjere, referentnu metodu i VF petlju (`vfdebye.vf`), još bez rezultata na tkivima.
 
 ## 2. Znanstvena i numerička pravila
 
@@ -127,7 +127,7 @@ implementacije metode.
 
 Postoje upute, planska/istraživačka dokumentacija, alati tijeka rada, CI konfiguracije,
 lokalne završne provjere i Python okruženje s paketom `vfdebye`
-([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)), još bez implementacije metode.
+([ADR-0006](docs/plan/adr/0006-choose-python-environment.md)) i VF petljom, još bez rezultata na tkivima.
 Trenutačna i planirana struktura opisane su u [tijeku rada](docs/plan/PIPELINE.md).
 
 Područja: `src/` za višekratno upotrebljiv Python kod, `tests/` za numeričke provjere,

@@ -22,11 +22,12 @@ Python okruženje odabrano je u
 u dodatku ADR-0004. Plan eksperimenata (pojas 10 MHz–10 GHz, postavke metode, redovi i
 vrednovanje) prihvaćen je u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md); rok još
 nije poznat.
-Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); VF,
-QuadVF i eksperimentalni rezultati još ne postoje.
+Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); rezultati
+VF-a i QuadVF-a na tkivima još ne postoje.
 Samostalne operacije za baricentrični LS korak, premještanje i refleksiju polova te završne
-reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Puna VF petlja
-još čeka B1.
+reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Nacrt pune VF
+petlje opisan je u [A4](docs/izvodi/a4-implementacija.md), usklađen sa zaustavljanjem iz Z2 i
+provjeren samo na sintetičkim sustavima; usporedba s B1 još preostaje.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),
