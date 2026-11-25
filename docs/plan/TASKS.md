@@ -22,6 +22,29 @@ Rok projekta je 2026-12-01 (prema Lovrinoj izjavi); prijedlog rasporeda je u
 [podjeli rada](PODJELA.md#z0-dogovor). Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
 
+## Preostali zadaci niti B, 2026-11-25
+
+Lovro je odlučio da **B5, B6, B7 i B8 ostaju Sari**, radi ravnomjerne raspodjele posla. To su
+reprodukcija probnog pokusa (experiments/pilot.py), glavni eksperiment
+(experiments/min_order.py), osjetljivost i uvjetovanost (experiments/sensitivity.py,
+uključujući skaliranje i redanje redaka iz L1, §4.3) te poglavlja seminara o $\mathcal{H}_2$
+normi, kvadraturi, QuadVF-u, planu eksperimenata, rezultatima i raspravi. Sara smije koristiti
+AI alat. AI alati u Lovrinoj sesiji ne rade te zadatke bez izričite upute.
+
+AI alat u Lovrinoj sesiji ranije je napravio B6 i slike rezultata (PR #25, grana
+`lovro/b6-min-order`). Lovro to nije izričito tražio; AI je opći zahtjev „napravi što još
+možeš od koda” protumačio šire, bez pitanja. PR #25 zatvoren je bez spajanja, a grana je
+ostala samo kao zapis. Ništa od toga nije u `main`, pa ni zapis o zaključavanju plana s te
+grane. Plan Z2 zato **nije zaključan**; zaključava se nakon Sarina razvojnog pokretanja.
+
+Završni pokus s te grane ipak je pokrenut i njegovi su rezultati viđeni u Lovrinoj sesiji
+(lokalno pokretanje `20261125T094751901934Z-min_order`, izvan Gita). Završne skupine zato više
+nisu neviđene. Sarin B6 mora koristiti postavke iz ADR-0008 s dodatkom nakon A7 i ne smije ih
+mijenjati prema tim rezultatima; svaka promjena ide kao označen dopunski eksperiment.
+
+Dvije slike niti A ostaju Lovri: `experiments/figures_a7.py` crta putanje iteracija i utjecaj
+početnog raspona iz A7 ([zapis A7](../izvodi/a7-konvergencija.md), §6).
+
 ## Z1, A9 i rok, 2026-11-25
 
 Za prolaz Z1 pripremljeni su [vodič](Z1_PROLAZ.md) i `experiments/z1_blood.py`. Pokretanje
