@@ -15,6 +15,10 @@ Every case is run twice:
 - trajectory: the same start with stopping disabled for the whole budget, to study the pole
   moves, the bounds of L1 (4.4)-(4.5) and section 4.2 (iii) and what happens after settling.
 
+The paired fixed-pole procedure of section 4 (fixed_log with vf_log, fixed_band with
+quadvf_band) is fitted from the same initial poles with baseline.fit_residues, so that the
+effect of the start range on both kinds of method is visible.
+
 Errors use a section-6 style grid (band edges and 4096 cell midpoints in ln f and in f) and the
 band norm with 1024 nodes, without the refinement check of section 6: they are indicative and
 not the conservative pass of B6. No final-evaluation group is touched.
@@ -36,7 +40,7 @@ from pathlib import Path
 import numpy as np
 
 from vfdebye import gabriel, metrics, provenance
-from vfdebye.baseline import log_poles
+from vfdebye.baseline import fit_residues, log_poles
 from vfdebye.quadrature import band_nodes, band_norm
 from vfdebye.vf import detect_period, matching_distance, vector_fit
 
@@ -153,9 +157,22 @@ class Reference:
 
 def candidate(reference: Reference, result) -> dict:
     """Properties and indicative errors of the final residue fit of one vector_fit call."""
-    fit = result.final_fit
-    if fit is None:
+    if result.final_fit is None:
         return {"available": False, "final_fit_error": result.final_fit_error}
+    return fit_summary(reference, result.final_fit)
+
+
+def fixed_candidate(reference: Reference, f, h, poles0, weights) -> dict:
+    """The fixed-pole reference method (B4) from the same initial poles and nodes."""
+    try:
+        fit = fit_residues(f, h, poles0, weights)
+    except (FloatingPointError, np.linalg.LinAlgError) as error:
+        return {"available": False, "final_fit_error": str(error)}
+    return fit_summary(reference, fit)
+
+
+def fit_summary(reference: Reference, fit) -> dict:
+    """Rank, conditioning, Debye property and indicative errors of a residue fit."""
     model = fit.model
     summary = {
         "available": True, "rank": fit.rank, "full_rank": fit.rank == model.order,
@@ -172,7 +189,7 @@ def candidate(reference: Reference, result) -> dict:
     return summary
 
 
-def run_case(reference, s, h, weights, poles0, max_iterations):
+def run_case(reference, f, s, h, weights, poles0, max_iterations):
     controls = CONTROLS | {"max_iterations": max_iterations}
     accepted = vector_fit(s, h, weights, poles0, **controls)
     trajectory = vector_fit(s, h, weights, poles0, **(controls | {
@@ -216,6 +233,7 @@ def run_case(reference, s, h, weights, poles0, max_iterations):
                               if len(poles) > 1 else None),
             "candidate": candidate(reference, trajectory),
         },
+        "fixed": fixed_candidate(reference, f, h, poles0, weights),
     }
     return summary, diagnostics, poles
 
@@ -244,7 +262,7 @@ def report(rows: list[dict], max_iterations: int) -> dict:
           f"{BAND_NORM_NODES} nodes; development groups only\n")
     header = (f"{'group':<14}{'method':<12}{'start Hz':<14}{'r':>3}  {'status':<30}{'it':>4}"
               f"{'cond':>9}{'debye':>6}{'cpx':>4}{'max rel':>10}{'band':>10}"
-              f"{'q stop':>9}{'k(1e-8)':>8}{'tail d':>9}{'q end':>9}")
+              f"{'q stop':>9}{'k(1e-8)':>8}{'tail d':>9}{'q end':>9}{'fixed':>10}{'f cond':>9}")
     print(header)
     statuses: dict[str, int] = {}
     for row in rows:
@@ -259,7 +277,9 @@ def report(rows: list[dict], max_iterations: int) -> dict:
               f"{fmt(cand.get('max_relative_error')):>10}{fmt(cand.get('band_error')):>10}"
               f"{fmt(acc['q_at_stop'], '.1e'):>9}"
               f"{fmt(traj['settle_iteration']['1e-08'], 'd'):>8}"
-              f"{fmt(traj['tail_median_delta'], '.1e'):>9}{fmt(traj['final_q'], '.1e'):>9}")
+              f"{fmt(traj['tail_median_delta'], '.1e'):>9}{fmt(traj['final_q'], '.1e'):>9}"
+              f"{fmt(row['fixed'].get('max_relative_error')):>10}"
+              f"{fmt(row['fixed'].get('condition'), '.1e'):>9}")
     first_step_rank = sorted({(r["method"], f"{r['start_hz'][0]:.0e}-{r['start_hz'][1]:.0e}",
                                r["r"]) for r in rows
                               if r["accepted"]["stop_reason"] == "rank_deficient"
@@ -333,7 +353,7 @@ def main(argv: list[str] | None = None) -> int:
                 h = gabriel.strictly_proper_part(tissue, s)
                 for start, r in cases:
                     summary, diagnostics, poles = run_case(
-                        reference, s, h, weights, log_poles(*start, r), args.max_iterations)
+                        reference, f, s, h, weights, log_poles(*start, r), args.max_iterations)
                     key = f"{group}|{method}|{start[0]:.0e}-{start[1]:.0e}|{r}"
                     rows.append({"group": group, "names": members[group], "method": method,
                                  "start_hz": start, "r": r, **summary})
