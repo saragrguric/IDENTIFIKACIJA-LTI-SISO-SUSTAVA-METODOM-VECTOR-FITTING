@@ -5,7 +5,16 @@ prihvaćena specifikacija implementacije. Jedini izvor je rad L1 (Drmač, Gugerc
 2015) iz [vodiča kroz literaturu](../research/LITERATURE.md); oznake jednadžbi i odjeljaka u
 nastavku odnose se na taj rad. Primjena je odabrana u
 [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md) i opisana u odjeljku 6; postavke
-metode, uzorkovanje i red još nisu odabrani.
+metode, uzorkovanje i red prihvaćeni su 2026-11-25 u
+[ADR-0008](adr/0008-accept-z2-experiment-plan.md).
+
+Konkretne vrijednosti nalaze se u [prihvaćenom planu Z2](Z2_PRIJEDLOG.md): pojas
+10 MHz–10 GHz, predmet H, razvojne i završne skupine, N = 240 čvorova, redovi 1–32,
+logaritamski početni polovi na 1 kHz–100 GHz, četiri usporedbe, zaustavljanje i kontrolno
+vrednovanje. QuadVF se prilagođava pojasu bez parametra $L$ i rubnih redaka iz (3.4), pa raspon
+$L$ iz ranijih odjeljaka ovog plana nije primjenjiv na primarnu usporedbu. Plan se zaključava
+nakon razvojnih kriterija iz B5; dotad se doradbe rade samo na razvojnom skupu i bilježe.
+Nijedna postavka još nije primijenjena u završnom eksperimentu.
 
 ## 1. Oznake i model
 
@@ -225,7 +234,7 @@ Treba izvesti i obrazložiti:
   `band_h2_error` daje `ValueError`. Budući pokretač mora to izričito prijaviti uz taj redak.
 - **Razine točnosti.** $\delta\in\{5\,\%,\ 1\,\%,\ 0{,}1\,\%\}$; najmanji $r$ traži se zasebno
   za svaku mjeru (ADR-0004, dodatak 2026-11-09). Nazivnici mjera su različiti, pa ista $\delta$
-  u njima nema isto značenje. Pojas je privremeno 10 MHz–10 GHz, a konačno se bira u Z2.
+  u njima nema isto značenje. Pojas 10 MHz–10 GHz prihvaćen je u Z2 (ADR-0008).
   `min_order` preskače `nan` i oba predznaka beskonačnosti kao oznake neuspjelog fita;
   konačne negativne pogreške odbija. Ne pretpostavlja monotonost pogreške s redom.
 - **Referentna metoda.** Polovi $-1/\tau_j$ fiksni su i logaritamski raspoređeni po pojasu, a
