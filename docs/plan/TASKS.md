@@ -15,11 +15,23 @@ zajednički.
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
-| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
+| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Pripremljen teorijski nacrt A8 za Overleaf; rezultati, pregled i završno usklađivanje otvoreni |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## A8: prvi teorijski nacrt, 2026-11-23
+
+Na grani `lovro/a8-nacrt` zabilježena je [predaja nacrta A8](A8_NACRT.md). Samostalan
+LaTeX izvor izvan repozitorija sadrži poglavlja o modelu i podacima, VF/SK izvodu,
+premještanju polova, realnosti, refleksiji i konvergenciji te vezu s kvadraturom i mjerama.
+Koristi postojeće izvode A3/A5/B2 i ne uvodi nove znanstvene izvore ni odluke Z2.
+
+Kompilacija ugrađenim editorom zapela je na nedostupnom vanjskom TeX paketu; PDF i izgled
+nisu potvrđeni. Nacrt nije prenesen u Overleaf. A8 nije dovršen: preostaju A4/A7 i rezultati,
+Sarin pregled B9, zajednički prolaz i usklađivanje s niti B u Z5. Izmišljeni eksperimenti,
+odobrenja ni potvrde razumijevanja nisu dodani.
 
 ## A5: izvod i samostalne numeričke operacije, 2026-11-23
 

@@ -22,6 +22,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Podjela rada](plan/PODJELA.md): dvije niti, međusobni pregled, zajednička sučelja, faze i zajednički zadaci.
 - [Plan A (Lovro)](plan/podjela/a-lovro.md) i [plan B (Sara)](plan/podjela/b-sara.md): koraci za svaku nit.
 - [Prijedlog za Z0](plan/Z0_PRIJEDLOG.md): prijedlozi odluka za prvi zajednički sastanak i njihov ishod.
+- [Predaja nacrta A8](plan/A8_NACRT.md): sadržaj prvog teorijskog nacrta za Overleaf, ovisnosti i ograničenja provjere.
 
 ## Odluke
 

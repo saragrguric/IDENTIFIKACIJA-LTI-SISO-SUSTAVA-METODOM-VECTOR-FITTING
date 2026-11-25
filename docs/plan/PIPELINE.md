@@ -43,6 +43,7 @@ docs/
     TASKS.md                        mali zadaci i njihove ovisnosti
     PODJELA.md                      niti, međusobni pregled, sučelja, faze i zajednički zadaci
     Z0_PRIJEDLOG.md                 prijedlozi odluka za sastanak Z0
+    A8_NACRT.md                     predaja teorijskog nacrta za Overleaf izvan repozitorija
     podjela/                        osobni planovi niti A i B
     METHODOLOGY.md                  matematički i eksperimentalni plan
     PIPELINE.md                     ova datoteka

@@ -7,6 +7,10 @@ nastavku odnose se na taj rad. Primjena je odabrana u
 [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md) i opisana u odjeljku 6; postavke
 metode, uzorkovanje i red još nisu odabrani.
 
+Postojeći izvodi A3/A5 i most prema B2 preneseni su u prvi teorijski nacrt A8 za Overleaf,
+izvan repozitorija. [Zapis predaje A8](A8_NACRT.md) navodi sadržaj i otvorene provjere.
+Nacrt ne potvrđuje odluke Z2, rezultate, Sarin pregled ni zajedničko razumijevanje.
+
 ## 1. Oznake i model
 
 Razrađeni izvod odjeljaka 1–2 nalazi se u [izvodu A3](../izvodi/a3-problem-sk.md): model
