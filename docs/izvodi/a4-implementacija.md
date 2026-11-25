@@ -21,7 +21,8 @@ kontrole obvezne su imenovane vrijednosti, bez zadanih znanstvenih postavki:
 |---|---|
 | `max_iterations` | Pozitivna najveća dopuštena količina baricentričnih LS koraka |
 | `pole_rtol` | Nenegativna relativna tolerancija pomaka skupa polova |
-| `pole_atol` | Nenegativna apsolutna tolerancija pomaka, u rad/s |
+| `pole_atol` | Nenegativna apsolutna donja granica praga pomaka, u rad/s |
+| `denominator_tol` | Nenegativna granica za `max_i abs(d_tilde(s_i) − 1)` u zadnjem koraku |
 | `reflect_unstable` | Izričit izbor refleksije nakon svakog premještanja |
 | `settle_steps` | Broj uzastopnih malih pomaka za opaženo ustaljenje |
 | `max_period` | Najveći provjeravani period ≥ 2; nula isključuje provjeru kruženja |
@@ -31,14 +32,18 @@ Za stare polove a i nove b koristi se Ω iz L1 (4.3), uz uparivanje neovisno o p
 Mali pomak znači
 
 $$
-\Omega(a,b)\le \texttt{pole\_atol}+
-\texttt{pole\_rtol}\,\max_j|a_j|.
+\Omega(a,b)\le \max\bigl(\texttt{pole\_atol},\
+\texttt{pole\_rtol}\,\max_j|a_j|\bigr).
 $$
 
-To je programski kriterij sa skalom cijelog skupa, ne komponentna relativna udaljenost
-staroga pomoćnika `detect_period`. Tako se može obraditi i početni pol nula bez dijeljenja
-nulom. Pri promjeni jedinice s istim faktorom mijenjaju se polovi i `pole_atol`; relativna
-tolerancija ostaje ista. Prag i broj ponavljanja moraju biti zapisani u postavkama pokretanja.
+To je pravilo iz prihvaćenog plana Z2 ([ADR-0008](../plan/adr/0008-accept-z2-experiment-plan.md)):
+uz `pole_rtol` = 10⁻⁸ i `pole_atol` = 10⁻⁸ · 2π · 10 MHz vrijedi upravo
+δk = Ω / max(2π · 10 MHz, max abs(λk−1)) ≤ 10⁻⁸. Ranija inačica ovog nacrta zbrajala je
+dvije skale, što je prag činilo do dvaput blažim. To je kriterij sa skalom cijelog skupa,
+ne komponentna relativna udaljenost staroga pomoćnika `detect_period`. Tako se može obraditi
+i početni pol nula bez dijeljenja nulom. Pri promjeni jedinice s istim faktorom mijenjaju se
+polovi i `pole_atol`; relativna tolerancija ostaje ista. Prag i broj ponavljanja moraju biti
+zapisani u postavkama pokretanja.
 
 Provjera perioda uspoređuje zadnji skup sa skupom p koraka prije, taj skup s prethodnim
 odmaknutim p koraka itd., ukupno `cycle_repeats` povrataka. Ista granica pomaka vrijedi
@@ -65,7 +70,8 @@ pretvaraju se u Debyejeve članove.
 
 | `stop_reason` | Značenje |
 |---|---|
-| `poles_settled` | Zadan broj uzastopnih malih pomaka; nije potvrda točnosti ili optimalnosti |
+| `poles_and_denominator_settled` | Ustaljeni polovi i u zadnjem koraku `max_i abs(d_tilde(s_i) − 1)` ≤ `denominator_tol`; ni to nije dokaz optimalnosti |
+| `poles_settled` | Zadan broj uzastopnih malih pomaka uz veći odmak nazivnika od jedinice; nije potvrda točnosti |
 | `max_iterations` | Iscrpljen dopušten broj koraka; nije oznaka uspjeha |
 | `cycle` | Potvrđeni povratci s periodom `cycle_period` |
 | `rank_deficient` | LS matrica ima numerički rang manji od 2r; nema nastavka s proizvoljnim polovima |
@@ -74,7 +80,8 @@ pretvaraju se u Debyejeve članove.
 
 Nevaljan početni ulaz izaziva `ValueError` prije iteracije. To se razlikuje od neuspjeha
 valjano zadanog numeričkog postupka. Uvjetovanost se bilježi bez automatskog praga,
-regularizacije ili skaliranja redaka; prihvatljiv prag odlučuje eksperiment.
+regularizacije ili skaliranja redaka. Oznaku `ill_conditioned` za uvjetovanost iznad 10¹²
+iz ADR-0008 dodjeljuje pokretač eksperimenta pri razvrstavanju kandidata, ne petlja.
 
 Nakon zaustavljanja `fit_fixed_poles` rješava završni LS na posljednjem prihvaćenom
 valjanom skupu polova. Zato rezultat može sadržavati kandidat i uz neuspjeh petlje.
@@ -102,8 +109,8 @@ Tri umjetna slučaja imaju poznate odzive:
 Frekvencijska skala primjera je 0,1–40 rad/s; to nije pojas tkiva u MHz/GHz. Početni
 polovi i svi parametri zapisani su u podrijetlu. Postavke skripte služe provjeri poznatih
 sintetičkih sustava, ne određuju Z2. Pogreška se računa u dodatnim točkama iz izravnih
-analitičkih izraza. Prolaz traži ustaljenu petlju, puni rang završnog LS-a, realan stabilan
-model i malu provjerenu pogrešku. Namjerni poziv s `--max-iterations 1` vraća izlazni kod 1
+analitičkih izraza. Prolaz traži status `poles_and_denominator_settled`, puni rang završnog
+LS-a, realan stabilan model i malu provjerenu pogrešku. Namjerni poziv s `--max-iterations 1` vraća izlazni kod 1
 i sačuva sva tri slučaja s oznakom iscrpljenih iteracija, čak i ako je odziv već točan.
 
 `results/runs/<run_id>/` sadrži provenance.json i vf_checks.json: postavke, kod i

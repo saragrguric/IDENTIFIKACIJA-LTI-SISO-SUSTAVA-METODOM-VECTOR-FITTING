@@ -5,7 +5,8 @@ import pytest
 from vfdebye import vf
 
 SETTINGS = dict(
-    max_iterations=30, pole_rtol=1e-9, pole_atol=1e-12, reflect_unstable=False,
+    max_iterations=30, pole_rtol=1e-9, pole_atol=1e-12, denominator_tol=1e-8,
+    reflect_unstable=False,
     settle_steps=2, max_period=4, cycle_repeats=2,
 )
 
@@ -21,7 +22,7 @@ def test_recovers_known_real_poles_and_residues_at_independent_points(scale, wei
     h = 2 * scale / (s + scale) + 3 * scale / (s + 5 * scale)
     w = np.geomspace(0.2, 5, s.size) if weighted else None
     result = fit(s, h, scale * np.array([-2.0, -8.0]), w, pole_atol=1e-12 * scale)
-    assert result.stop_reason == "poles_settled"
+    assert result.stop_reason == "poles_and_denominator_settled"
     assert result.final_fit_error is None and result.final_fit.rank == 2
     assert result.model.is_stable() and result.model.is_real()
     assert vf.matching_distance(result.model.poles / scale, [-1, -5])[0] < 1e-10
@@ -35,7 +36,7 @@ def test_recovers_conjugate_pair_from_one_sided_samples_without_projection():
     s = 1j * np.geomspace(0.1, 40, 50)
     h = (s + 5) / (s**2 + 2 * s + 5) + 3 / (s + 8)
     result = fit(s, h, [-2 + 1j, -7, -2 - 1j])
-    assert result.stop_reason == "poles_settled"
+    assert result.stop_reason == "poles_and_denominator_settled"
     assert result.model.is_real() and result.model.is_stable()
     expected_poles = [-1 + 2j, -1 - 2j, -8]
     assert vf.matching_distance(result.model.poles, expected_poles)[0] < 1e-10
@@ -49,14 +50,14 @@ def test_recovers_conjugate_pair_from_one_sided_samples_without_projection():
 def test_real_off_axis_samples_are_allowed_when_reflection_is_disabled():
     s = np.array([1 + 1j, 1 - 1j, 2 + 3j, 2 - 3j])
     result = fit(s, 2 / (s + 1), [-3])
-    assert result.stop_reason == "poles_settled"
+    assert result.stop_reason == "poles_and_denominator_settled"
     np.testing.assert_allclose(result.model(0), 2, rtol=1e-12)
 
 
 def test_an_unstable_target_is_not_silently_stabilized():
     s = 1j * np.geomspace(0.2, 10, 30)
     result = fit(s, 2 / (s - 1), [-3])
-    assert result.stop_reason == "poles_settled"
+    assert result.stop_reason == "poles_and_denominator_settled"
     assert not result.model.is_stable()
     assert all(item.reflected_count == 0 for item in result.history)
     np.testing.assert_allclose(result.model.poles, [1], rtol=1e-12)
@@ -75,6 +76,21 @@ def test_reflection_records_raw_and_used_poles_and_does_not_claim_small_error():
     assert first.reflected_count == 1
     assert result.history[-1].denominator_deviation > 0.1
     assert result.final_fit.weighted_residual_norm > 0.1
+
+
+def test_small_move_threshold_is_the_larger_scale_not_the_sum(monkeypatch):
+    # ADR-0008: Omega / max(atol/rtol, max|lambda|) <= rtol. With atol = 0.3, rtol = 0.01 and
+    # |lambda| < 4 the threshold is 0.3; a sum atol + rtol*|lambda| would accept moves of 0.32.
+    monkeypatch.setattr(vf, "relocate_poles", lambda poles, *_: poles - 0.32)
+    s = 1j * np.array([0.2, 1, 3, 10])
+    result = fit(s, 2 / (s + 1), [-3], pole_rtol=0.01, pole_atol=0.3, max_iterations=2,
+                 max_period=0)
+    assert result.stop_reason == "max_iterations"
+    np.testing.assert_allclose([item.pole_distance for item in result.history], 0.32)
+    monkeypatch.setattr(vf, "relocate_poles", lambda poles, *_: poles - 0.29)
+    result = fit(s, 2 / (s + 1), [-3], pole_rtol=0.01, pole_atol=0.3, max_iterations=2,
+                 max_period=0)
+    assert result.stop_reason == "poles_settled"  # the forced moves leave d_tilde far from 1
 
 
 def test_iteration_limit_retains_a_final_residue_fit_but_does_not_report_settling():
@@ -188,7 +204,8 @@ def test_caller_arrays_and_iteration_snapshots_are_preserved():
      ("settle_steps", 0), ("max_period", -1), ("cycle_repeats", 0),
      ("cycle_repeats", np.bool_(True)), ("pole_rtol", -1), ("pole_rtol", np.inf),
      ("pole_rtol", np.nan), ("pole_rtol", 1j), ("pole_atol", -1),
-     ("pole_atol", [0.1]), ("pole_atol", True), ("reflect_unstable", "yes")],
+     ("pole_atol", [0.1]), ("pole_atol", True), ("denominator_tol", -1),
+     ("denominator_tol", np.nan), ("reflect_unstable", "yes")],
 )
 def test_invalid_controls_raise_before_solving(name, value):
     with pytest.raises(ValueError, match=name):

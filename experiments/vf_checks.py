@@ -39,7 +39,8 @@ def main(argv: list[str] | None = None) -> int:
 
     # These values are for known synthetic systems only, not an approved tissue setup.
     controls = dict(max_iterations=args.max_iterations, pole_rtol=1e-9, pole_atol=1e-12,
-                    reflect_unstable=True, settle_steps=2, max_period=4, cycle_repeats=2)
+                    denominator_tol=1e-9, reflect_unstable=True, settle_steps=2, max_period=4,
+                    cycle_repeats=2)
     s = 1j * np.geomspace(0.1, 40, 60)
     f_quad, w_quad = band_nodes(0.1 / (2 * np.pi), 40 / (2 * np.pi), 60)
     cases = [
@@ -64,7 +65,8 @@ def main(argv: list[str] | None = None) -> int:
                 reference = response(probe)
                 error = float(np.max(np.abs(result.model(probe) - reference))
                               / np.max(np.abs(reference)))
-            passed = bool(result.stop_reason == "poles_settled" and error is not None
+            passed = bool(result.stop_reason == "poles_and_denominator_settled"
+                          and error is not None
                           and error < CHECK_RTOL and result.model.is_stable()
                           and result.model.is_real() and result.final_fit.rank == len(poles)
                           and result.final_fit_error is None)

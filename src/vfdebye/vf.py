@@ -383,7 +383,8 @@ class VFIteration:
 class VectorFitResult:
     """Iteration outcome and final LS at the last valid pole set.
 
-    poles_settled is a stopping observation, never proof of accuracy or optimality.
+    poles_settled and poles_and_denominator_settled are stopping observations, never proof of
+    accuracy or optimality.
     A candidate can accompany rank loss, cycling or exhaustion; inspect stop_reason, the
     history and final_fit diagnostics before accepting it. final_fit_error records a failed
     final residue solve separately, without erasing the iteration's stop reason.
@@ -402,23 +403,28 @@ class VectorFitResult:
 
 
 def _poles_close(a, b, rtol, atol):
+    # Omega <= max(atol, rtol*max|a|), i.e. Omega / max(atol/rtol, max|a|) <= rtol (ADR-0008).
     with np.errstate(over="raise", invalid="raise"):
         distance, _ = matching_distance(a, b)
-        threshold = atol + rtol * np.max(np.abs(a))
+        threshold = max(atol, rtol * np.max(np.abs(a)))
     return distance, bool(distance <= threshold)
 
 
 def vector_fit(
     s, h, weights, poles0, *, max_iterations: int, pole_rtol: float, pole_atol: float,
-    reflect_unstable: bool, settle_steps: int, max_period: int, cycle_repeats: int,
+    denominator_tol: float, reflect_unstable: bool, settle_steps: int, max_period: int,
+    cycle_repeats: int,
 ) -> VectorFitResult:
     """Real-system VF with external squared-error weights (L1 2.2, 4.1, 4.2).
 
     s is in rad/s; weights are positive w in sum w*|error|^2 (None means ones). All control
     settings are required: they are software choices for the caller, not a selected Z2 plan.
-    Stop after settle_steps consecutive moves with Omega <= pole_atol + pole_rtol*max|old|;
-    pole_atol is in rad/s. max_period=0 disables cycle detection, otherwise a period >=2
-    requires cycle_repeats successive returns under that same distance criterion.
+    Stop after settle_steps consecutive moves with Omega <= max(pole_atol, pole_rtol*max|old|);
+    pole_atol is in rad/s. With pole_rtol = 1e-8 and pole_atol = 1e-8 * 2*pi*10 MHz this is
+    the accepted Z2 rule delta_k <= 1e-8 (ADR-0008). The status is then
+    poles_and_denominator_settled when the last step also has max|d_tilde - 1| <=
+    denominator_tol, otherwise poles_settled. max_period=0 disables cycle detection, otherwise
+    a period >=2 requires cycle_repeats successive returns under the same distance criterion.
 
     Reflection is applied after relocation, only for imaginary-axis samples, where the
     unit-modulus argument holds. Initial auxiliary poles are recorded unchanged. Neither
@@ -436,7 +442,8 @@ def vector_fit(
         if (isinstance(value, (bool, np.bool_))
                 or not isinstance(value, (int, np.integer)) or value < minimum):
             raise ValueError(f"{name} must be an integer >= {minimum}")
-    for name, value in (("pole_rtol", pole_rtol), ("pole_atol", pole_atol)):
+    for name, value in (("pole_rtol", pole_rtol), ("pole_atol", pole_atol),
+                        ("denominator_tol", denominator_tol)):
         if (isinstance(value, (bool, np.bool_))
                 or not isinstance(value, (int, float, np.integer, np.floating))
                 or not np.isfinite(value) or value < 0):
@@ -491,7 +498,8 @@ def vector_fit(
             pole_history.append(_pole_snapshot(poles))
             small_moves = small_moves + 1 if small else 0
             if small_moves >= settle_steps:
-                reason = "poles_settled"
+                settled_denominator = history[-1].denominator_deviation <= denominator_tol
+                reason = "poles_and_denominator_settled" if settled_denominator else "poles_settled"
                 break
             for lag in range(2, min(max_period, (len(pole_history) - 1) // cycle_repeats) + 1):
                 if all(_poles_close(
