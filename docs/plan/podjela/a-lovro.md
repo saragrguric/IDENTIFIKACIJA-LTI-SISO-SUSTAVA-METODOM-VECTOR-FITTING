@@ -89,6 +89,10 @@ tablicu.
 
 **Cilj:** čitljiv izvod s pretpostavkama, prema [metodologiji](../METHODOLOGY.md), odjeljci 1–2.
 
+**Stanje 2026-11-23:** [izvod A3](../../izvodi/a3-problem-sk.md) pripremljen je na grani
+`lovro/a3-izvod-vf`. Sadrži oba LS prikaza, razliku normalizacija i ručno riješen primjer
+reda jedan. Preostaje Sarin neovisni pregled B9; zajednički prolaz nije zabilježen.
+
 1. Permitivnost kao prijenosna funkcija realnog LTI SISO sustava; zašto su $\varepsilon_\infty$ i
    $\sigma_i/(s\varepsilon_0)$ izdvojeni; zašto Cole–Coleov član nije racionalan.
 2. Problem (1.1) i zašto je nekonveksan.

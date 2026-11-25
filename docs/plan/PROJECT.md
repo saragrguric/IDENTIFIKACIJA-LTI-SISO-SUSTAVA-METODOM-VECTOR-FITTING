@@ -39,8 +39,9 @@ jedini zna pokrenuti projekt. Predložena podjela na niti i međusobni pregled z
 Na ključnim točkama zajednički proći matematiku, algoritam, podatke, kod i interpretaciju.
 Oba člana trebaju moći objasniti:
 
-1. Odakle potječu uzorci frekvencijskog odziva, u kojim su jedinicama i zašto je model LTI SISO
-   sustav s racionalnom prijenosnom funkcijom.
+1. Odakle potječu uzorci frekvencijskog odziva, u kojim su jedinicama i kako opisuju LTI SISO
+   sustav; zašto je Debyejeva aproksimacija racionalna, dok je Cole–Coleov model općenito
+   neracionalan.
 2. Što predstavljaju red, polovi i reziduali aproksimanta te što nije jednoznačno određeno
    (poredak polova, izbor baricentričnih točaka).
 3. Što funkcija cilja najmanjih kvadrata mjeri i kako iz linearizacije, SK iteracije i
