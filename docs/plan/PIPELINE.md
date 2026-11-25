@@ -22,8 +22,9 @@ src/
     quadrature.py                   čvorovi i težine kvadrature (pojas, (3.4)) i norma iz vrijednosti
     metrics.py                      dvije mjere greške i najmanji red za zadanu točnost
     baseline.py                     referentna metoda: fiksni log. polovi i LS reziduali
-    vf.py                           model polova i reziduala, uparivanje polova (4.3); VF slijedi
+    vf.py                           model, uparivanje, kruženje; LS korak, premještanje i refleksija
 tests/                              numeričke provjere i provjere podataka (pytest)
+  test_vf_steps.py                   analitički primjeri za operacije A5 i nevaljane ulaze
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
@@ -35,6 +36,7 @@ docs/
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
   izvodi/
     a3-problem-sk.md                 model tkiva, racionalni problem, linearizacija i SK; primjer r=1
+    a5-polovi-reziduali.md           polovi, reziduali, realnost, refleksija i zaustavljanje
     b2-h2-kvadratura.md              H2 greška, kvadratura, QuadVF i prilagodba pojasu
   plan/
     PROJECT.md                      opseg, materijali za predaju i otvorene odluke

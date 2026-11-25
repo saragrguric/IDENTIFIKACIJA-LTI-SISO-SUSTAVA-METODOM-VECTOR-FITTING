@@ -110,6 +110,11 @@ reda jedan. Preostaje Sarin neovisni pregled B9; zajednički prolaz nije zabilje
 stabilnosti), `matching_distance` (uparivanje skupova polova, (4.3)) i `detect_period`
 (prepoznavanje kruženja, Primjer 4.2 i Napomena 4.3). Sama iteracija `vector_fit` čeka B1.
 
+**Stanje 2026-11-23:** u A5 dodani su samostalni `barycentric_step`, `relocate_poles`,
+`reflect_unstable_poles` i `fit_fixed_poles`, s realnim polovima i konjugiranim parovima,
+provjerama ulaza i LS dijagnostikom. Puna petlja i odluke o zaustavljanju nisu implementirane;
+ovisnost A4 o B1 ostaje.
+
 1. Pregledaj Sarin probni kod iz B1 i odluči što od njega preuzimaš.
 2. SK iteracija u baricentričnom obliku s težinama, premještanje polova (2.9)–(2.12), završna
    identifikacija reziduala, zrcaljenje nestabilnih polova (L1, §4.1).
@@ -126,6 +131,11 @@ stabilnosti), `matching_distance` (uparivanje skupova polova, (4.3)) i `detect_p
 **Gotovo kada:** testovi prolaze, a Sara je pregledala PR.
 
 ## A5: matematika VF-a, drugi dio
+
+**Stanje 2026-11-23:** [izvod A5](../../izvodi/a5-polovi-reziduali.md) i njegove numeričke
+operacije pripremljeni su na grani `lovro/a5-polovi-reziduali`. Razjašnjen je predznak u
+matrici premještanja, realna parametrizacija, refleksija i ograničenja kriterija. Testovi
+koriste analitičke modele; nema konačnih rezultata na tkivima. Preostaje neovisni pregled B9.
 
 1. Izvedi premještanje polova (2.9)–(2.12) i identifikaciju reziduala.
 2. Propozicija 4.1 i zrcaljenje.

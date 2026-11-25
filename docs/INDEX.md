@@ -15,6 +15,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Zadaci](plan/TASKS.md): etape, ovisnosti, stanje i dokazi dovršenosti.
 - [Metodologija](plan/METHODOLOGY.md): matematička razrada, provjera implementacije i eksperimenti.
 - [Izvod A3](izvodi/a3-problem-sk.md): model tkiva, racionalni problem, Levyjeva linearizacija, SK i oba prikaza LS matrice, s primjerom reda jedan.
+- [Izvod A5](izvodi/a5-polovi-reziduali.md): premještanje polova, realna parametrizacija LS-a, reziduali, zrcaljenje i granice kriterija zaustavljanja; veza s kodom.
 - [Izvod B2](izvodi/b2-h2-kvadratura.md): $\mathcal{H}_2$ greška, kvadratura, QuadVF i naša kvadratura na pojasu.
 - [Literatura](research/LITERATURE.md): priloženi rad, njegovi odjeljci i predloženi redoslijed učenja.
 - [Prijedlog tema](plan/prijedlog-tema/prijedlog-tema-vf.pdf) ([izvor](plan/prijedlog-tema/prijedlog-tema-vf.tex)): tri prve moguće teme; odabrana tema nije među njima (vidi ADR-0004).

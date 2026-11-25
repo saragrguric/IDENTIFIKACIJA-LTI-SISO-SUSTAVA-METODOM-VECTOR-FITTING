@@ -10,16 +10,37 @@ zajednički.
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
-| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 je pripremljen za B9, A5 i zajednički prolazi preostaju |
+| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
-| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje okruženje, model tkiva, podrijetlo, model polova, kvadratura, mjere i referentna metoda; VF iteracija A4 čeka B1 |
+| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## A5: izvod i samostalne numeričke operacije, 2026-11-23
+
+Na grani `lovro/a5-polovi-reziduali` pripremljen je [izvod A5](../izvodi/a5-polovi-reziduali.md)
+i pojedinačne operacije u `vfdebye.vf`: baricentrični LS korak, premještanje polova,
+izričito zrcaljenje i završni izračun reziduala. Za realne sustave obrađeni su i realni polovi
+i konjugirani parovi. Vraćaju se težinski rezidual, numerički rang i uvjetovanost realne
+matrice. Gubitak ranga i nevaljani ulazi ne popravljaju se prešutno. Ne provodi se automatska
+stabilizacija ni odluka o konvergenciji.
+
+Ovaj rad koristi L1 i [izvod A3](../izvodi/a3-problem-sk.md), uključen s grane
+`lovro/a3-izvod-vf` kao ovisnost grane A5. Promjene A3 i A5 pregledavaju se zasebnim PR-ovima.
+Numeričke operacije mogu se neovisno provjeriti bez B1 i Z2. Za potpunu petlju A4 i dalje
+treba pregledati B1, a A7 i eksperimenti čekaju zapisane postavke Z2. Za prihvat izvoda A5
+preostaje Sarin neovisni pregled B9; zajednički prolaz i razumijevanje nisu potvrđeni.
+
+Provjere: 72 nova numerička slučaja za operacije A5 prolaze, uključujući promjenu frekvencijske
+skale, težinski cilj, konjugirane parove, višestruke korijene i gubitak ranga uz nulte podatke.
+Ukupno prolaze 242 numerička testa uz lokalnu ignoriranu Gabrielovu tablicu i 49 testova alata,
+Ruff, provjera dokumentacije i `python3 tools/check_before_stop.py`. Nova ovisnost nije dodana.
+Ovo su lokalne provjere; udaljene provjere na Linuxu i Windowsu izvode se u CI-ju PR-a.
 
 ## A3: priprema izvoda, 2026-11-23
 

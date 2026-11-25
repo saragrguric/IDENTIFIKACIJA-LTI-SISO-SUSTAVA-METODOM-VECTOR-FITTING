@@ -75,6 +75,13 @@ izvode, pitanja i zajedničke prolaske pratiti kroz [popis zadataka](../plan/TAS
 
 ## Napomene koje treba zadržati u seminaru
 
+- [A5](../izvodi/a5-polovi-reziduali.md) razrađuje §2.2, (2.9)–(2.12), i §4.1–§4.2:
+  polinomni nazivnik, matricu premještanja, realnu parametrizaciju, završne reziduale,
+  Propoziciju 4.1 i (4.3)–(4.5). Uz plus u definiciji (2.5), lema o determinanti daje
+  $\operatorname{diag}(\lambda)-\varphi e^T$; plus iz opažanja (i) u §4.2 nije dosljedan
+  toj definiciji. To je vlastita algebarska provjera, potkrijepljena primjerom reda jedan.
+  Ocjena norme perturbacije ne ovisi o predznaku. Izvod razlikuje korijene polinomnog
+  nazivnika od nultočaka racionalnog izraza nakon kraćenja. Sarin pregled B9 još nije proveden.
 - Izvod [A3](../izvodi/a3-problem-sk.md) razrađuje L1, §1, (1.1)–(1.3), str. A626–A627, i
   §2.1, (2.1)–(2.7), str. A628–A629. Veza s modelom tkiva i ručni primjer reda jedan naši su
   izvodi; ne pripisuju se L1. U §6.3 vlastitom algebarskom provjerom razdvojene su normalizacije

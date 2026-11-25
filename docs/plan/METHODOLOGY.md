@@ -71,6 +71,12 @@ L1 navodi da se uz konvergenciju nazivnika može očekivati lokalno optimalno rj
 
 ## 3. Vector fitting: premještanje polova i reziduali
 
+Izvod je razrađen u [A5](../izvodi/a5-polovi-reziduali.md), zajedno s vezom na pojedinačne
+numeričke operacije i njihove analitičke testove. Neovisni pregled B9 još nije proveden.
+`barycentric_step` rješava jedan realno parametrizirani težinski LS korak, `relocate_poles`
+računa novi skup pomoćnih točaka, `reflect_unstable_poles` izričitu refleksiju, a
+`fit_fixed_poles` završne reziduale. To još nije petlja `vector_fit`, koja čeka B1.
+
 Izvesti korake (2.9)–(2.12): VF za nove točke $\lambda^{(k+1)}$ uzima nultočke nazivnika
 $\tilde d^{(k)}$, čime se SK težina apsorbira u novu bazu i svaki korak postaje netežinski
 problem najmanjih kvadrata (2.12) (L1, §2.2). Objasniti računanje nultočaka kao spektra
@@ -79,9 +85,12 @@ reziduala problemom najmanjih kvadrata sa zadržanim polovima (L1, §4.2, nakon 
 Uz zapis (2.5) i $\Lambda=\operatorname{diag}(\lambda)$ vrijedi
 $\tilde d(s)=1+e^T(sI-\Lambda)^{-1}\varphi$, pa lema o determinanti daje
 $\det(sI-\Lambda+\varphi e^T)=\det(sI-\Lambda)\,\tilde d(s)$. Nultočke od $\tilde d$ koje
-nisu ujedno točke $\lambda_j$ zato su svojstvene vrijednosti matrice $\Lambda-\varphi e^T$
-(numerički provjereno u `tests/test_vf.py`). Opažanje (i) piše $\operatorname{diag}(\lambda)+\tilde\varphi e^T$; razliku
-predznaka treba razjasniti u A5. Ocjena (4.4) ne ovisi o predznaku.
+nisu ujedno točke $\lambda_j$ zato su svojstvene vrijednosti matrice $\Lambda-\varphi e^T$.
+`relocate_poles` računa sve korijene moničnog polinoma
+$Q(s)=\prod_j(s-\lambda_j)\widetilde d(s)$, uključujući zadržane pomoćne točke pri nultim
+$\varphi_j$ i višestruke korijene. Opažanje (i) u L1 piše plus; izvod A5, §2.2, i primjer reda
+jedan potvrđuju minus uz definiciju (2.5). Ocjena (4.4) ne ovisi o predznaku. Provjere su u
+`tests/test_vf.py` i `tests/test_vf_steps.py`.
 
 Objasniti osjetljivost na početne polove (L1, §2.2). U primjerima L1 početni polovi leže na
 logaritamskoj mreži preko područja koje približno sadrži spektar (Primjer 3.1); to traži
@@ -92,6 +101,9 @@ Zrcaljenje nestabilnih polova (L1, §4.1): polovi iz desne poluravnine reflektir
 imaginarne osi. Nakon zrcaljenja korak formalno ostaje u težinskom SK obliku; Propozicija 4.1
 pokazuje da je za čvorove na imaginarnoj osi pripadna dijagonalna težina unitarna pa se
 rješenje ne mijenja. Navesti tu pretpostavku o čvorovima i provjeriti stabilnost konačnog modela.
+Time se ne tvrdi jednakost izvornog i zrcaljenog modela, nego jednakost težinskog i
+netežinskog LS cilja u novoj bazi. Polovi na osi ostaju neriješen slučaj politike stabilizacije;
+refleksija također može stvoriti duplikate, koje novi LS poziv odbija.
 
 Konvergencija i zaustavljanje (L1, §2.2 i §4.2): teorijska konvergencija VF-a otvoren je
 problem; rad navodi primjer s odbojnim fiksnim točkama, a Primjer 4.2 pokazuje kruženje polova s
@@ -236,6 +248,12 @@ Obuhvatiti provjeru ulaza, realnost i konačnost izlaza, stabilnost ili izričit
 nestabilnih polova, oporavak poznatog racionalnog modela reda najviše $r$ iz egzaktnih uzoraka
 uz navedene pretpostavke, ponašanje kriterija zaustavljanja uključujući nekonvergenciju i
 kruženje, zrcaljenje te rubne slučajeve kao što su čvor jednak polu ili bliski polovi.
+Pojedinačne operacije iz A5 nameću realnost parametrizacijom konjugiranih reziduala, bez
+usrednjavanja ulaza. Provjeravaju točne konjugirane parove polova i zadane konjugirane uzorke
+relativnom tolerancijom `SAMPLE_SYMMETRY_RTOL = 1e-10`. Rang i uvjetovanost odnose se na
+težinsku realnu LS matricu; gubitak ranga ne proglašava se uspješnom konvergencijom. Težine
+su koeficijenti kvadrata pogreške, a redci se množe njihovim kvadratnim korijenima. Rješavač
+je postojeći `numpy.linalg.lstsq` s `rcond=None`, bez dodatnog skaliranja ili regularizacije.
 Kvadraturu provjeriti na funkciji poznate norme; primjerice za $H(s)=1/(s+a)$, $a>0$, vrijedi
 $\int_{-\infty}^{\infty}\lvert H(\imath\omega)\rvert^2\,d\omega=\pi/a$ (vlastiti izračun).
 
