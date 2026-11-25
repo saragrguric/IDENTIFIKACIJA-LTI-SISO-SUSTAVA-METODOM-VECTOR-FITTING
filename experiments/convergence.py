@@ -5,8 +5,9 @@ Run from the repository root after data/fetch_gabriel.py:  uv run python experim
 Settings follow the accepted Z2 plan (ADR-0008): band 10 MHz-10 GHz, N = 240 nodes, the two
 VF procedures vf_log (log nodes, unit weights) and quadvf_band (band_nodes and their weights),
 log-spaced real initial poles, the loop control of section 5 and the development groups only.
-The primary start range 1 kHz-100 GHz is run for every r in 1..32; the start-range
-sensitivity of section 7 (1 Hz-1 THz and 10 MHz-10 GHz) for r in 4, 8, 16, 32.
+The primary start range is the band 10 MHz-10 GHz for every r in 1..32 (ADR-0008 addendum after
+A7; the first A7 runs used 1 kHz-100 GHz); the start-range sensitivity (1 kHz-100 GHz and
+1 Hz-1 THz) runs for r in 4, 8, 16, 32.
 
 Every case is run twice:
 
@@ -49,8 +50,8 @@ CSV = ROOT / "data" / "processed" / "gabriel_parameters.csv"
 BAND_HZ = (1e7, 1e10)
 NODES = 240
 DEV_GROUPS = ("Blood", "Muscle", "Fat", "Bone cortical", "Skin wet")
-PRIMARY_START_HZ = (1e3, 1e11)
-SENSITIVITY_STARTS_HZ = ((1.0, 1e12), (1e7, 1e10))
+PRIMARY_START_HZ = BAND_HZ  # ADR-0008 addendum after A7
+SENSITIVITY_STARTS_HZ = ((1e3, 1e11), (1.0, 1e12))
 SENSITIVITY_ORDERS = (4, 8, 16, 32)
 TOLERANCE = 1e-8  # section 5: delta_k and q_k
 OMEGA_FLOOR = 2 * math.pi * BAND_HZ[0]  # rad/s, the scale floor of delta_k

@@ -89,3 +89,46 @@ Prijedlog navodi razmotrene inačice; tim ih je odbacio prihvaćanjem prijedloga
 - Usklađeni su [metodologija](../METHODOLOGY.md), [projekt](../PROJECT.md),
   [podjela rada](../PODJELA.md), osobni planovi, [zadaci](../TASKS.md), README, `AGENTS.md`
   i dodatak ADR-0004. Tekst prijedloga ostaje kakav je pripremljen.
+
+## Dodatak 2026-11-25: raspon početnih i fiksnih polova nakon A7
+
+**Tko je odlučio.** Prema Lovrinoj izjavi Sara i Lovro su 2026-11-25 odluku o rasponu
+početnih polova prepustili AI alatu kojim se Lovro služi. Odluka ispod donesena je tim
+ovlaštenjem na temelju razvojnih pokretanja; nijedan član je nije zasebno pregledao prije
+zapisa. Doradu prije zaključavanja plana dopušta §7, samo na razvojnom skupu.
+
+**Dokazi** ([zapis A7](../../izvodi/a7-konvergencija.md), pokretanja
+`20261125T084356823080Z-convergence` i `20261125T090048328276Z-convergence`, pet razvojnih
+skupina, svi r od 1 do 32 u sva tri raspona):
+
+- S rasponom 1 kHz–100 GHz VF staje zbog gubitka ranga u prvom koraku za r ≥ 9, pa `vf_log`
+  ne doseže 0,1 %. S rasponom 10 MHz–10 GHz `vf_log` doseže 0,1 % najveće relativne pogreške
+  kod r = 9–10, a `quadvf_band` kod r = 7–8. Prihvatljivih Debyejevih kandidata ima 89 i 99
+  od 160 mogućih, umjesto 38 i 41.
+- Fiksni polovi ni u jednom rasponu ne daju Debyejev model ispod 5 %: reziduali postaju
+  negativni ili LS gubi rang. Za Debyejevu tablicu raspon im zato ne mijenja ishod.
+- U tablici općih realnih modela širi raspon fiksnim polovima bitno pomaže. Uz 1 kHz–100 GHz
+  najveća relativna pogreška 5 % postiže se kod r = 8–10, a uz 10 MHz–10 GHz tek kod r = 15–25.
+
+**Odluka.**
+
+1. Primarni raspon početnih i fiksnih polova za sva četiri postupka je **10 MHz–10 GHz**
+   (`baseline.log_poles`), umjesto 1 kHz–100 GHz. Parovi iz §4 i dalje počinju iz istih polova.
+2. **Dodatna referentna metoda:** `fixed_log` i `fixed_band` računaju se i za svaki r od 1 do
+   32 s rasponom 1 kHz–100 GHz, na razvojnim i završnim skupinama, pod oznakama
+   `fixed_log_wide` i `fixed_band_wide`. Prikazuju se uz primarne fiksne polove u tablici
+   općih modela, a hipoteza 1 izvještava se i prema njima. Tako usporedba ne ovisi o rasponu
+   koji odgovara samo VF-u.
+3. **Osjetljivost na početak (§7)** koristi raspone 1 kHz–100 GHz i 1 Hz–1 THz, za
+   r = 4, 8, 16 i 32 i sva četiri postupka.
+4. Bez promjene ostaju prag δk ≤ 10⁻⁸, pravilo kruženja i redovi 1–32. Kruženje na razini
+   šuma kod r ≥ 16 i dalje znači neuspješnu iteraciju. Gubitak ranga kod r = 32 prijavljuje se
+   kao neuspjeh. Redovi koje VF treba za pragove na razvojnim skupinama nisu veći od 10, pa
+   ta pravila ne mijenjaju odgovor.
+5. **Proračun:** broj VF slučajeva je nepromijenjen, pa ostaje i gornja granica od 556800 LS
+   koraka. Dodaje se 2624 slučaja s fiksnim polovima (320 razvojnih i 2304 završna), bez
+   iteracija. Ukupno je 8192 slučaja: 1280 razvojnih i 6912 završnih.
+
+Odbačeno: zadržati 1 kHz–100 GHz (VF bi za r ≥ 9 imao samo neuspjehe); različit primarni
+raspon po postupku (gubi se usporedba iz istog početka); nastavak iteracije unatoč gubitku
+ranga (promjena pravila §5 bez izvoda).

@@ -30,8 +30,13 @@ ADR-0008: 400 slučajeva, svaki s prihvaćenim zaustavljanjem i s cijelom putanj
 [Zapis A7](../izvodi/a7-konvergencija.md) navodi opažanja. S primarnim rasponom početnih
 polova 1 kHz–100 GHz petlja za r ≥ 9 staje zbog gubitka ranga već u prvom koraku, pa
 `vf_log` na razvojnim skupinama ne doseže 0,1 %. Svi ustaljeni kandidati su Debyejevi
-modeli, a ocjene (4.4) i q ≤ η vrijede do zaokruživanja. Prijedlog promjene primarnog raspona
-nije odluka; tim ga razmatra prije zaključavanja plana, nakon provjere fiksnih polova u B5.
+modeli, a ocjene (4.4) i q ≤ η vrijede do zaokruživanja.
+
+Drugo pokretanje `20261125T090048328276Z-convergence` dodaje fiksne polove iz istih
+početnih polova i sve redove u sva tri raspona. Tim je odluku o rasponu prepustio AI alatu
+(prema Lovrinoj izjavi). Prema dodatku ADR-0008 primarni raspon za sva četiri postupka je
+10 MHz–10 GHz, a fiksni polovi se dodatno računaju s 1 kHz–100 GHz kao jača referentna metoda.
+Pokretač A7 sada kao primarni koristi raspon pojasa.
 
 Provjere: 14 novih testova za pokretač A7 i 9 za provjeru Debyejeva modela; ukupno 306
 numeričkih testova uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff, provjera

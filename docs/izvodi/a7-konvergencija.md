@@ -76,7 +76,14 @@ Sva opažanja su numerička, na ovih pet skupina, a ne opći teoremi.
    (4.4) + 0,42 · eps · max abs(λ). Vrijedi i q ≤ η · (1 + 4·10⁻¹⁶). Za r = 1 obje vrijede s
    jednakošću, pa se vidi samo zaokruživanje.
 
-## 3. Prijedlog za tim, nije odluka
+## 3. Prijedlog i odluka o rasponu
+
+**Odluka 2026-11-25:** tim je odluku prepustio AI alatu kojim se Lovro služi (prema Lovrinoj
+izjavi), a ona je zapisana u
+[dodatku ADR-0008](../plan/adr/0008-accept-z2-experiment-plan.md#dodatak-2026-11-25-raspon-početnih-i-fiksnih-polova-nakon-a7).
+Primarni raspon za sva četiri postupka je 10 MHz–10 GHz. Fiksni polovi se dodatno računaju
+s rasponom 1 kHz–100 GHz kao jača referentna metoda. Prijedlog niže ostaje kakav je bio prije
+odluke.
 
 Opažanja 1 i 2 pogađaju prihvaćeni plan. Primarna tablica B6 za `vf_log` bi prijavila „nema
 prihvatljivog modela” na 0,1 % zbog prvog LS koraka, a ne zbog kvalitete aproksimacije. Prema
@@ -96,8 +103,29 @@ Prijedlog je mogućnost 2, uz provjeru fiksnih polova u B5 prije dodatka ADR-000
 Neovisno o tome, r = 32 pada i s polovima u pojasu. Za r ≥ 16 prag 10⁻⁸ približava se šumu
 δ, pa treba odlučiti tretira li se kruženje na razini šuma kao neuspjeh.
 
-## 4. Granice
+## 4. Provjera fiksnih polova prije odluke
 
-Samo pet razvojnih skupina i dva VF postupka; fiksni polovi nisu pokretani. Nije provjerena
+Pokretanje `20261125T090048328276Z-convergence` (revizija `9e86ebd`, čisto stablo) dodaje
+uparene fiksne polove iz istih početnih polova (`baseline.fit_residues`) i pokreće sva tri
+raspona za svaki r od 1 do 32. Prihvatljiv kandidat ima puni rang, uvjetovanost najviše 10¹²,
+stabilan i Debyejev model, a za VF i status ustaljenja.
+
+- **VF:** u pojasu prihvatljivih Debyejevih kandidata ima 89 (`vf_log`) i 99 (`quadvf_band`)
+  od 160, a s 1 kHz–100 GHz 38 i 41. Najveću relativnu pogrešku 0,1 % `vf_log` u pojasu
+  postiže kod r = 9–10, a `quadvf_band` kod r = 7–8. Pojasnu pogrešku 0,1 % postižu kod
+  r = 8–9 odnosno r = 7.
+- **Fiksni polovi, Debyejeva tablica:** ni u jednom rasponu nema kandidata ispod 5 %.
+  U pojasu 149 od 160 fitova `fixed_log` ima nepozitivan rezidual. S 1 kHz–100 GHz 95 ih
+  gubi rang, a 45 ima nepozitivan rezidual.
+- **Fiksni polovi, opći realni modeli:** s 1 kHz–100 GHz najveća relativna pogreška 5 %
+  postiže se kod r = 8–10. U pojasu to se događa tek kod r = 15–25, a 1 % većinom ni do r = 32.
+
+Zato jedan zajednički raspon ne može biti najbolji za obje vrste postupaka. Odluka zadržava
+usporedbu iz istog početka u pojasu i dodaje fiksne polove sa širim rasponom kao jaču
+referentnu metodu.
+
+## 5. Granice
+
+Samo pet razvojnih skupina; fiksni polovi samo iz istih početnih polova kao VF. Nije provjerena
 osjetljivost na N, nije dodana slika i nije provedena provjera finijom mrežom iz §6.
 Završne skupine nisu dirane. Okvirni redovi iz opažanja 2 nisu najmanji redovi iz B6.

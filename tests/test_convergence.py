@@ -137,7 +137,7 @@ def test_cli_records_every_case_and_recovers_an_exact_debye_tissue(tmp_path, mon
         assert row["fixed"]["available"] and row["fixed"]["rank"] == row["r"]
         assert len(row["fixed"]["poles"]) == row["r"]
     with np.load(run_dir / "convergence_iterations.npz") as arrays:
-        key = f"Synthetic Debye|quadvf_band|{1e3:.0e}-{1e11:.0e}|2"
+        key = f"Synthetic Debye|quadvf_band|{1e7:.0e}-{1e10:.0e}|2"
         assert arrays[f"{key}|delta"].size == arrays[f"{key}|q"].size >= 1
         assert arrays[f"{key}|poles"].shape[1] == 2
     assert math.isfinite(rows[0]["trajectory"]["max_q_over_eta"])
