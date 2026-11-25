@@ -16,12 +16,16 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Metodologija](plan/METHODOLOGY.md): matematička razrada, provjera implementacije i eksperimenti.
 - [Izvod A3](izvodi/a3-problem-sk.md): model tkiva, racionalni problem, Levyjeva linearizacija, SK i oba prikaza LS matrice, s primjerom reda jedan.
 - [Izvod A5](izvodi/a5-polovi-reziduali.md): premještanje polova, realna parametrizacija LS-a, reziduali, zrcaljenje i granice kriterija zaustavljanja; veza s kodom.
+- [Implementacija A4](izvodi/a4-implementacija.md): nacrt pune VF petlje, povijest iteracija, razlozi zaustavljanja i sintetičke provjere; prije usporedbe s B1.
+- [Razvojno pokretanje A7](izvodi/a7-konvergencija.md): ponašanje VF iteracija na razvojnim skupinama Z2, gubitak ranga uz primarni raspon polova i prijedlog za tim.
 - [Izvod B2](izvodi/b2-h2-kvadratura.md): $\mathcal{H}_2$ greška, kvadratura, QuadVF i naša kvadratura na pojasu.
 - [Literatura](research/LITERATURE.md): priloženi rad, njegovi odjeljci i predloženi redoslijed učenja.
 - [Prijedlog tema](plan/prijedlog-tema/prijedlog-tema-vf.pdf) ([izvor](plan/prijedlog-tema/prijedlog-tema-vf.tex)): tri prve moguće teme; odabrana tema nije među njima (vidi ADR-0004).
 - [Podjela rada](plan/PODJELA.md): dvije niti, međusobni pregled, zajednička sučelja, faze i zajednički zadaci.
 - [Plan A (Lovro)](plan/podjela/a-lovro.md) i [plan B (Sara)](plan/podjela/b-sara.md): koraci za svaku nit.
 - [Prijedlog za Z0](plan/Z0_PRIJEDLOG.md): prijedlozi odluka za prvi zajednički sastanak i njihov ishod.
+- [Vodič Z1](plan/Z1_PROLAZ.md): zajednički prolaz od tablice do VF modela krvi, pitanja i prazan zapis.
+- [Plan Z2](plan/Z2_PRIJEDLOG.md): postavke, razvojne skupine, usporedbe i pravila vrednovanja; prijedlog prihvaćen bez izmjena 2026-11-25 (ADR-0008).
 - [Predaja nacrta A8](plan/A8_NACRT.md): sadržaj prvog teorijskog nacrta za Overleaf, ovisnosti i ograničenja provjere.
 
 ## Odluke
@@ -34,3 +38,4 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [ADR-0005](plan/adr/0005-divide-work-into-end-to-end-threads.md): podjela rada na dvije niti uz međusobni pregled.
 - [ADR-0006](plan/adr/0006-choose-python-environment.md): Python 3.12 s uv-om, uz provjere na Linuxu i Windowsu.
 - [ADR-0007](plan/adr/0007-ai-tool-acts-for-its-user-in-git.md): AI alat na uputu člana obavlja Git i GitHub radnje, uključujući odobrenje PR-a.
+- [ADR-0008](plan/adr/0008-accept-z2-experiment-plan.md): prihvaćen plan eksperimenata Z2 bez izmjena.

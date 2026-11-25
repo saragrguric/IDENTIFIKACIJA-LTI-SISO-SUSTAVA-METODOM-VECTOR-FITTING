@@ -10,16 +10,127 @@ zajednički.
 | Zadatak | Cilj | Ovisi o | Stanje |
 |---|---|---|---|
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
-| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
+| T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji, ispravljen je nakon pregleda i Lovro ga je neovisno provjerio (A9); A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
-| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
-| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
+| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
+| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojno pokretanje A7 provedeno 2026-11-25; B5–B7 otvoreni |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Pripremljen teorijski nacrt A8 za Overleaf; rezultati, pregled i završno usklađivanje otvoreni |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
-Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
+Rok projekta je 2026-12-01 (prema Lovrinoj izjavi); prijedlog rasporeda je u
+[podjeli rada](PODJELA.md#z0-dogovor). Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## Preostali zadaci niti B, 2026-11-25
+
+Lovro je odlučio da **B5, B6, B7 i B8 ostaju Sari**, radi ravnomjerne raspodjele posla. To su
+reprodukcija probnog pokusa (experiments/pilot.py), glavni eksperiment
+(experiments/min_order.py), osjetljivost i uvjetovanost (experiments/sensitivity.py,
+uključujući skaliranje i redanje redaka iz L1, §4.3) te poglavlja seminara o $\mathcal{H}_2$
+normi, kvadraturi, QuadVF-u, planu eksperimenata, rezultatima i raspravi. Sara smije koristiti
+AI alat. AI alati u Lovrinoj sesiji ne rade te zadatke bez izričite upute.
+
+AI alat u Lovrinoj sesiji ranije je napravio B6 i slike rezultata (PR #25, grana
+`lovro/b6-min-order`). Lovro to nije izričito tražio; AI je opći zahtjev „napravi što još
+možeš od koda” protumačio šire, bez pitanja. PR #25 zatvoren je bez spajanja, a grana je
+ostala samo kao zapis. Ništa od toga nije u `main`, pa ni zapis o zaključavanju plana s te
+grane. Plan Z2 zato **nije zaključan**; zaključava se nakon Sarina razvojnog pokretanja.
+
+Završni pokus s te grane ipak je pokrenut i njegovi su rezultati viđeni u Lovrinoj sesiji
+(lokalno pokretanje `20261125T094751901934Z-min_order`, izvan Gita). Završne skupine zato više
+nisu neviđene. Sarin B6 mora koristiti postavke iz ADR-0008 s dodatkom nakon A7 i ne smije ih
+mijenjati prema tim rezultatima; svaka promjena ide kao označen dopunski eksperiment.
+
+Dvije slike niti A ostaju Lovri: `experiments/figures_a7.py` crta putanje iteracija i utjecaj
+početnog raspona iz A7 ([zapis A7](../izvodi/a7-konvergencija.md), §6).
+
+## Z1, A9 i rok, 2026-11-25
+
+Za prolaz Z1 pripremljeni su [vodič](Z1_PROLAZ.md) i `experiments/z1_blood.py`. Pokretanje
+`20261125T091152576258Z-z1_blood` vodi od tablice preko VF koraka do Debyejevih članova i
+pogrešaka za krv. Prolaz nije održan i zapis u vodiču je prazan.
+
+Prema Lovrinoj izjavi Lovro je 2026-11-25 proveo A9: na papiru je neovisno provjerio Sarin
+izvod B2 i nije našao pogreške. Pojedinosti provjere nisu zabilježene.
+
+Prema Lovrinoj izjavi 2026-12-01 je dan izlaganja i predaje svih materijala. Prijedlog
+rasporeda faza unatrag od tog dana nalazi se u [podjeli rada](PODJELA.md#z0-dogovor); tim ga
+još nije potvrdio. Lovro je odlučio da A4 ne čeka usporedbu s B1; PR #20 zato izlazi iz
+drafta, a usporedba s probnim kodom više nije uvjet prihvata A4.
+
+Provjere: 3 nova testa za pokretač Z1; ukupno 309 numeričkih testova uz lokalnu Gabrielovu
+tablicu, 49 testova alata, Ruff, provjera dokumentacije i `python3 tools/check_before_stop.py`
+prolaze.
+
+## A7: razvojno pokretanje, 2026-11-25
+
+Na grani `lovro/a7-konvergencija` dodani su `experiments/convergence.py` i
+`PoleResidueModel.is_debye` (s grane `lovro/debye-provjera`). Pokretanje
+`20261125T084356823080Z-convergence` prolazi pet razvojnih skupina Z2 s postavkama iz
+ADR-0008: 400 slučajeva, svaki s prihvaćenim zaustavljanjem i s cijelom putanjom.
+[Zapis A7](../izvodi/a7-konvergencija.md) navodi opažanja. S primarnim rasponom početnih
+polova 1 kHz–100 GHz petlja za r ≥ 9 staje zbog gubitka ranga već u prvom koraku, pa
+`vf_log` na razvojnim skupinama ne doseže 0,1 %. Svi ustaljeni kandidati su Debyejevi
+modeli, a ocjene (4.4) i q ≤ η vrijede do zaokruživanja.
+
+Drugo pokretanje `20261125T090048328276Z-convergence` dodaje fiksne polove iz istih
+početnih polova i sve redove u sva tri raspona. Tim je odluku o rasponu prepustio AI alatu
+(prema Lovrinoj izjavi). Prema dodatku ADR-0008 primarni raspon za sva četiri postupka je
+10 MHz–10 GHz, a fiksni polovi se dodatno računaju s 1 kHz–100 GHz kao jača referentna metoda.
+Pokretač A7 sada kao primarni koristi raspon pojasa.
+
+Provjere: 14 novih testova za pokretač A7 i 9 za provjeru Debyejeva modela; ukupno 306
+numeričkih testova uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff, provjera
+dokumentacije i `python3 tools/check_before_stop.py` prolaze. Završne skupine nisu pokretane,
+nije dodana slika, a Sarin pregled i zajednički prolaz nisu provedeni.
+
+## Z2: prihvat plana, 2026-11-25
+
+Prema Lovrinoj izjavi Sara i Lovro su 2026-11-25 uživo na sastanku Z2 prihvatili svih 13
+preporuka iz [prijedloga](Z2_PRIJEDLOG.md) bez izmjena. Odluka je zapisana u
+[ADR-0008](adr/0008-accept-z2-experiment-plan.md), a metodologija, projekt, podjela rada,
+osobni planovi, README i `AGENTS.md` usklađeni su s njom. Prijedlog preporuke ne numerira;
+ADR sažima prihvaćeni tekst po odjeljcima.
+
+Prema prihvaćenom §7 plan se zaključava tek nakon razvojnih kriterija B5. Za provedbu
+preostaju usklađivanje kriterija pomaka u A4 s §5, statusi `poles_and_denominator_settled` i
+`ill_conditioned` te kontrolna mreža iz §6. Zapis ne potvrđuje Sarin pregled PR-a ni rezultate.
+
+## A4: nacrt pune petlje, 2026-11-25
+
+Na grani `lovro/a4-vf-petlja` pripremljena je petlja `vfdebye.vf.vector_fit` prema
+zajedničkom sučelju, opisana u [A4](../izvodi/a4-implementacija.md). Kontrole zaustavljanja,
+refleksije i kruženja zadaje pozivatelj. Nakon prihvata Z2 prag pomaka koristi maksimum
+dviju skala, a dodan je status `poles_and_denominator_settled` (ADR-0008, §5). Povijest čuva svaki LS
+korak te sirove i upotrijebljene polove. Gubitak ranga, nevaljana nova baza, numerička
+pogreška, kruženje i iscrpljene iteracije vraćaju se izričito. `experiments/vf_checks.py`
+provjerava tri sintetička sustava poznatih polova uz zapis podrijetla.
+
+Ovo je nacrt prije usporedbe sa Sarinim B1: B1 nije preuzet, A7 i eksperimenti na tkivima
+nisu pokrenuti, a Sarin pregled i zajednički prolaz nisu provedeni.
+
+Provjere: 41 novi numerički slučaj za petlju i pokretač, uključujući prag kao maksimum dviju
+skala; ukupno 283 numerička testa uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff,
+provjera dokumentacije i `python3 tools/check_before_stop.py` prolaze. Nova ovisnost nije dodana.
+
+## Z2: priprema prijedloga, 2026-11-23
+
+Na grani `lovro/z2-prijedlog` pripremljen je [konkretan prijedlog](Z2_PRIJEDLOG.md):
+definicija H, pet razvojnih i 36 završnih skupina parametara, četiri usporediva postupka,
+početni polovi, svi redovi 1–32, zaustavljanje, razdvajanje Debyejevih i općih racionalnih
+modela, neovisno vrednovanje i proračun od 5568 slučajeva. Identitet CSV-a i podjela 8/47
+disperzivnih naziva provjereni su prema lokalnom ulazu. Raniji pregled svih skupina u B3
+izričito je naveden; završni skup nije predstavljen kao dosad neviđen.
+
+Z2 nije održan ni prihvaćen. Nositeljica je Sara, sudjeluju oboje; konačni plan slijedi B5.
+Nema novih pokretača, ovisnosti ni rezultata. Predložene brojke ne mijenjaju postojeće
+algoritme. Puna petlja A4 i dalje čeka B1, a A7 i završni eksperimenti potvrđene postavke.
+
+Provjere: identitet CSV-a, članstvo skupina i zbrojevi slučajeva provjereni su lokalno.
+`python3 tools/check_before_stop.py` prolazi: 242 numerička testa uz lokalnu tablicu,
+49 testova alata, Ruff i provjera dokumentacije. `git diff --check` nema nalaza.
+Numerička implementacija nije mijenjana; novi testovi za sam prijedlog nisu dodani.
 
 ## A8: prvi teorijski nacrt, 2026-11-23
 

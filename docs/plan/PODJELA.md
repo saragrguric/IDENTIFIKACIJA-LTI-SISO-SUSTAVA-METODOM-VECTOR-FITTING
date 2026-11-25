@@ -5,7 +5,7 @@ niti predložena je u [ADR-0005](adr/0005-divide-work-into-end-to-end-threads.md
 zajednički plan; detaljni koraci za svaku osobu nalaze se u osobnim planovima. Sadržaj planova je
 prijedlog koji je napisao Lovro uz pomoć AI alata. PR #6 spojen je bez Sarina pregleda (ADR-0002,
 dodatak 2026-11-07); Sara ih je potvrdila na sastanku Z0 2026-11-09 (ADR-0005, dodatak
-2026-11-09). Rok utvrđuje nastavnik; dok ga ne znamo, faze nemaju datume.
+2026-11-09). Rok je 2026-12-01; prijedlog rasporeda faza nalazi se u odjeljku Z0.
 
 ## Tko je tko
 
@@ -59,7 +59,7 @@ experiments/
   convergence.py   A  ponašanje iteracija i kriteriji zaustavljanja
   pilot.py         B  reprodukcija probnog pokusa (krv i mišić)
   min_order.py     B  najmanji r po tkivu, metodi i točnosti
-  sensitivity.py   B  osjetljivost na L i broj čvorova, uvjetovanost
+  sensitivity.py   B  osjetljivost na broj čvorova i početne polove, uvjetovanost
 data/              README s izvorom, uputama za preuzimanje i kontrolnim zbrojem; tablica izvan Gita
 results/           odabrane tablice i slike; results/runs/ izvan Gita
 ```
@@ -118,9 +118,23 @@ Sastanak je održan 2026-11-09; ishod je zapisan u [prijedlogu za Z0](Z0_PRIJEDL
 - [x] Dogovoriti Python ovisnosti; A1 ih zatim provodi (ADR-0006).
 - [x] Dogovoriti format seminara i prezentacije: pišemo ih u Overleafu, izvan repozitorija.
 - [x] Odrediti razine točnosti (ADR-0004, dodatak 2026-11-09).
-- [ ] Rok utvrđuje nastavnik; zatim rasporediti faze unatrag od njega.
+- [x] Rok utvrđuje nastavnik; zatim rasporediti faze unatrag od njega.
 - [ ] Svatko lokalno: klonirati repozitorij, pokrenuti `python3 tools/check_before_stop.py` i
   provjeriti povjerenje hookovima (vidi [tijek rada](PIPELINE.md)).
+
+**Rok 2026-12-01** (prema Lovrinoj izjavi od 2026-11-25): toga dana je izlaganje i predaja
+svih materijala. Lovro je istog dana odlučio da A4 ne čeka usporedbu sa Sarinim probnim kodom
+B1. Raspored je prijedlog, a ne dogovor tima:
+
+| Dan | Cilj |
+|---|---|
+| sri 25. 11. | Odluka o rasponu polova (dodatak ADR-0008), priprema Z1, otvoreni PR-ovi |
+| čet 26. 11. | Sarin pregled i spajanje lanca PR-ova; prolaz Z1; B5 i razvojni kriteriji, zatim zaključavanje plana Z2 |
+| pet 27. 11. | B6 završni pokus i B7 osjetljivost; prolaz Z3 |
+| sub 28. 11. | Tablice i slike; poglavlja A8 i B8 s rezultatima; Z5 uvod i zaključak |
+| ned 29. 11. | Slajdovi A10 i B10; Z4 reprodukcija u čistom okruženju |
+| pon 30. 11. | Z6 probna obrana i ispravci |
+| uto 1. 12. | Predaja |
 
 ### Z1: prolaz 1, prvi VF model jednog tkiva
 
@@ -128,9 +142,22 @@ Lovro pokazuje kako se iz tablice dobiva $H(s)$ za krv i kako VF dolazi do polov
 modelu mjeri najveću relativnu i $\mathcal{H}_2$ pogrešku na pojasu. Nit A objašnjava Sara, a nit
 B Lovro. Pitanja, nejasnoće i tko je stvarno sudjelovao zapisujemo u zadatak.
 
+Za prolaz je 2026-11-25 pripremljen [vodič Z1](Z1_PROLAZ.md) s pokretačem
+`experiments/z1_blood.py`. Prolaz još nije održan.
+
 ### Z2: plan eksperimenata prije završnih pokretanja
 
 Nositeljica je Sara, a sudjeluju oboje. To je zadatak T3 iz [popisa zadataka](TASKS.md).
+
+Za raspravu je 2026-11-23 pripremljen [konkretan prijedlog Z2](Z2_PRIJEDLOG.md), s
+brojkama, usporedbama, podjelom skupina i proračunom.
+
+**Ishod 2026-11-25:** prema Lovrinoj izjavi Sara i Lovro su na sastanku Z2 uživo prihvatili
+sve preporuke prijedloga bez izmjena ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)).
+Time su odlučene i točke ispod: hipoteze, pojas, skupine, broj čvorova, početni polovi,
+zaustavljanje, proračun, definicija $H$ bez izdvajanja članova s $\alpha_n=0$ i jedinica
+pokretanja (roditeljski zapis i zapis po slučaju). Raspon za $L$ nije primjenjiv. Plan se
+zaključava nakon razvojnih kriterija iz B5.
 
 - Hipoteze se zapisuju prije završnih rezultata, npr.:
   - VF treba manje polova od fiksnih logaritamskih polova za istu točnost kod većine tkiva;

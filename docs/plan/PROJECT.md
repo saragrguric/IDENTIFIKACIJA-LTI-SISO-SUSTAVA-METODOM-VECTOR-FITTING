@@ -57,17 +57,18 @@ razumijevanje; AI alat to ne može potvrditi umjesto nje.
 
 ## Još otvorene odluke
 
-- Opseg i trajanje seminara i prezentacije, kriteriji ocjenjivanja i rok, koje utvrđuje
-  nastavnik. Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija.
+- Opseg i trajanje seminara i prezentacije te kriteriji ocjenjivanja, koje utvrđuje
+  nastavnik. Izlaganje i predaja svih materijala su 2026-12-01 (prema Lovrinoj izjavi od 2026-11-25). Seminar i prezentaciju pišemo u Overleafu, izvan ovog repozitorija.
 - Primjena, pitanje i podaci odlučeni su u
   [ADR-0004](adr/0004-choose-debye-models-of-human-tissues.md): Gabrielov model permitivnosti
   tkiva, koji se može računati u proizvoljnim točkama i služi kao referentni model. Razine
-  točnosti 5 %, 1 % i 0,1 % odlučene su u dodatku ADR-0004 od 2026-11-09. Otvoreni su konačni
-  frekvencijski pojas (privremeno 10 MHz–10 GHz), razvojni podskup tkiva i podskup za detaljnu
-  analizu. Temu smatramo prihvatljivom i ne tražimo prethodnu potvrdu nastavnika.
-- Postavke metode: VF i QuadVF uspoređuju se s referentnom metodom fiksnih polova, a otvoreni su
-  težine, broj i raspored čvorova, prilagodba kvadrature pojasu i parametar $L$, red, početni
-  polovi, zrcaljenje, rješavač najmanjih kvadrata, regularizacija i kriterij zaustavljanja.
+  točnosti 5 %, 1 % i 0,1 % odlučene su u dodatku ADR-0004 od 2026-11-09. Pojas 10 MHz–10 GHz te
+  razvojni i završni podskup tkiva prihvaćeni su u Z2
+  ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)). Temu smatramo prihvatljivom i ne tražimo prethodnu potvrdu nastavnika.
+- Postavke metode: VF i QuadVF uspoređuju se s referentnom metodom fiksnih polova. Težine,
+  čvorovi, prilagodba kvadrature pojasu bez parametra $L$, redovi, početni polovi, zrcaljenje,
+  rješavač, izostanak regularizacije i kriterij zaustavljanja prihvaćeni su u ADR-0008. Otvoreno
+  je samo ono što prihvaćeni plan ostavlja razvojnim provjerama B5 prije zaključavanja.
 - Unos Sarina probnog koda u repozitorij i ponovno pokretanje probnog pokusa.
 - Referentna bibliotečna implementacija. Python 3.12, ovisnosti i uv odlučeni su u ADR-0006, a
   provodi ih zadatak A1.

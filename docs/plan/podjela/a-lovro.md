@@ -115,6 +115,11 @@ stabilnosti), `matching_distance` (uparivanje skupova polova, (4.3)) i `detect_p
 provjerama ulaza i LS dijagnostikom. Puna petlja i odluke o zaustavljanju nisu implementirane;
 ovisnost A4 o B1 ostaje.
 
+**Stanje 2026-11-25:** nacrt pune petlje `vector_fit` objavljen je kao draft PR s grane
+`lovro/a4-vf-petlja` i opisan u [A4](../../izvodi/a4-implementacija.md). Provjeren je na
+sintetičkim sustavima poznatih polova, a A7 ga pokreće na razvojnim skupinama. Lovro je
+2026-11-25 odlučio da A4 ne čeka usporedbu s B1; preostaje Sarin pregled.
+
 1. Pregledaj Sarin probni kod iz B1 i odluči što od njega preuzimaš.
 2. SK iteracija u baricentričnom obliku s težinama, premještanje polova (2.9)–(2.12), završna
    identifikacija reziduala, zrcaljenje nestabilnih polova (L1, §4.1).
@@ -160,6 +165,13 @@ i Z2. Zadatak je gotov kad Sara pregleda PR.
 experiments/convergence.py na podskupu iz Z2: broj iteracija, kretanje polova, kruženje,
 kriteriji (4.3)–(4.5) i osjetljivost na početne polove. Prikaži i neuspjehe.
 
+Razvojne skupine i postavke prihvaćene su 2026-11-25 u
+[ADR-0008](../adr/0008-accept-z2-experiment-plan.md).
+
+**Stanje 2026-11-25:** pokretač i prvo razvojno pokretanje opisani su u
+[zapisu A7](../../izvodi/a7-konvergencija.md). Preostaju odluka tima o primarnom rasponu
+početnih polova, slika putanja za seminar i Sarin pregled.
+
 ## A8 i A10: seminar i slajdovi niti A
 
 **Stanje 2026-11-23:** pripremljen je prvi teorijski LaTeX nacrt izvan repozitorija, za
@@ -174,3 +186,6 @@ broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
 Na papiru prođi Sarin izvod $\mathcal{H}_2$ norme, kvadrature i prilagodbe pojasu. Nejasnoće i
 ishod zapiši u zadatak.
+
+**Stanje 2026-11-25:** prema Lovrinoj izjavi provjera je provedena i izvod je ispravan.
+Pojedinosti i eventualne napomene nisu zabilježene.

@@ -91,27 +91,43 @@ experiments/pilot.py ponavlja probni pokus (krv i mišić, VF s logaritamskim i 
 čvorovima, relativne težine, QuadVF, fiksni polovi) iz repozitorija, uz zapis podrijetla.
 Razlike u odnosu na brojeve iz tvog dokumenta zapiši i objasni.
 
+**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka); nije započeto.
+
 ## Z2: plan eksperimenata
 
 Nositeljica si ti. Prije završnih pokretanja zapisuju se hipoteze, pojas, razine točnosti,
 razvojni podskup tkiva i podskup za detaljnu analizu. $L$ i broj čvorova biraju se samo na
 razvojnom podskupu.
 
+**Stanje 2026-11-25:** plan je prihvaćen bez izmjena
+([ADR-0008](../adr/0008-accept-z2-experiment-plan.md)). Primarni QuadVF nema parametar $L$;
+B5 mjeri trošak i provjerava razvojne kriterije prije zaključavanja plana.
+
 ## B6: glavni eksperiment
 
 experiments/min_order.py: najmanji $r$ za svako tkivo, metodu i razinu točnosti, u objema
 mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
+**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka). AI alat u Lovrinoj sesiji napravio je
+jednu inačicu bez izričite upute (zatvoreni PR #25). Nije spojena; možeš je pogledati ili
+zanemariti. Njezin završni pokus je već viđen, pa postavke iz ADR-0008 ne mijenjaj prema
+završnim rezultatima ([zadaci](../TASKS.md)).
+
 ## B7: osjetljivost i uvjetovanost
 
-experiments/sensitivity.py: ovisnost o $L$ i broju čvorova, brojevi uvjetovanosti matrica
+experiments/sensitivity.py: ovisnost o broju čvorova i početnim polovima prema ADR-0008
+(ranije planirani $L$ nije primjenjiv), brojevi uvjetovanosti matrica
 najmanjih kvadrata (frekvencije su reda $10^7$–$10^{10}$ rad/s), utjecaj skaliranja i redanja
 redaka (L1, §4.3).
+
+**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka); nije započeto.
 
 ## B8 i B10: seminar i slajdovi niti B
 
 Poglavlja: $\mathcal{H}_2$ norma i kvadratura, QuadVF, plan eksperimenata, rezultati i rasprava.
 Svaki broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
+
+**Stanje 2026-11-25:** B8 ostaje tebi (Lovrina odluka).
 
 ## B9: neovisna provjera izvoda niti A
 
