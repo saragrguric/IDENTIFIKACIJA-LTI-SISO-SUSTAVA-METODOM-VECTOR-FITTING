@@ -106,6 +106,11 @@ B5 mjeri trošak i provjerava razvojne kriterije prije zaključavanja plana.
 experiments/min_order.py: najmanji $r$ za svako tkivo, metodu i razinu točnosti, u objema
 mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
+**Stanje 2026-11-25:** pokretač i razvojni pokusi opisani su u
+[zapisu B6](../../izvodi/b6-najmanji-red.md); napisao ih je AI alat na Lovrin zahtjev, zbog
+roka 2026-12-01. Preostaju tvoj pregled tumačenja iz odjeljka 2, zaključavanje plana i
+završni pokus.
+
 ## B7: osjetljivost i uvjetovanost
 
 experiments/sensitivity.py: ovisnost o broju čvorova i početnim polovima prema ADR-0008

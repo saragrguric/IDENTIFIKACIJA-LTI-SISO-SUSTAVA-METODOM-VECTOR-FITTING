@@ -318,8 +318,9 @@ def report(records: list[dict], rows: list[dict], groups: dict, skipped: list[st
                            if row["experiment"] == experiment
                            and not row["procedure"].endswith("_wide")})
         for n, start in settings:
-            print(f"-- N = {n}, start {start} Hz (*_wide: {wide} Hz); cell: d/g for 5 %, 1 %, "
-                  "0.1 % (- none among the orders tested)")
+            note = f" (*_wide: {wide} Hz)" if any(p.endswith("_wide") for p in procedures) else ""
+            print(f"-- N = {n}, start {start} Hz{note}; cell: d/g for 5 %, 1 %, 0.1 % "
+                  "(- none among the orders tested)")
             for measure in MEASURES:
                 print(f"   {measure}")
                 print(f"   {'group':<16}" + "".join(f"{p:>26}" for p in procedures))

@@ -29,6 +29,7 @@ tests/                              numeričke provjere i provjere podataka (pyt
   test_vf_checks.py                  zapis svih slučajeva sintetičke provjere A4
   test_convergence.py                pravilo zaustavljanja, ocjene (4.4) i q ≤ η, zapis A7
   test_z1_blood.py                   Debyejevi članovi iz polova i zapis prolaza Z1
+  test_min_order.py                  skupine, presude iz §6, najmanji red, brojevi slučajeva, nastavak
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
@@ -38,6 +39,7 @@ experiments/
   vf_checks.py                      sintetičke provjere pune VF petlje (A4), ne tkiva
   convergence.py                    ponašanje VF iteracija na razvojnim skupinama Z2 (A7)
   z1_blood.py                       prolaz Z1: od tablice do VF modela krvi i pogrešaka
+  min_order.py                      glavni eksperiment B6: najmanji red po skupini, postupku i razini
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
@@ -45,6 +47,7 @@ docs/
     a3-problem-sk.md                 model tkiva, racionalni problem, linearizacija i SK; primjer r=1
     a4-implementacija.md             VF petlja, povijest, razlozi zaustavljanja i sintetičke provjere
     a7-konvergencija.md              razvojno pokretanje A7: zaustavljanje, rang, ocjene i nalazi
+    b6-najmanji-red.md               pokretač B6, tumačenja plana i razvojni rezultati
     a5-polovi-reziduali.md           polovi, reziduali, realnost, refleksija i zaustavljanje
     b2-h2-kvadratura.md              H2 greška, kvadratura, QuadVF i prilagodba pojasu
   plan/
@@ -144,7 +147,8 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
 eksperimenata nalaze se u `experiments/`; prve su `experiments/data_checks.py` (A2),
 `experiments/quadrature_checks.py` (B3), `experiments/vf_checks.py` (A4, sintetički sustavi) i
-`experiments/convergence.py` (A7, razvojne skupine Z2) i `experiments/z1_blood.py` (Z1). Cjelovita
+`experiments/convergence.py` (A7, razvojne skupine Z2), `experiments/z1_blood.py` (Z1) i
+`experiments/min_order.py` (B6). Cjelovita
 preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
 izričito obrazloženje.
 
