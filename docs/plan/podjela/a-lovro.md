@@ -167,6 +167,10 @@ kriteriji (4.3)–(4.5) i osjetljivost na početne polove. Prikaži i neuspjehe.
 Razvojne skupine i postavke prihvaćene su 2026-11-25 u
 [ADR-0008](../adr/0008-accept-z2-experiment-plan.md).
 
+**Stanje 2026-11-25:** pokretač i prvo razvojno pokretanje opisani su u
+[zapisu A7](../../izvodi/a7-konvergencija.md). Preostaju odluka tima o primarnom rasponu
+početnih polova, slika putanja za seminar i Sarin pregled.
+
 ## A8 i A10: seminar i slajdovi niti A
 
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
