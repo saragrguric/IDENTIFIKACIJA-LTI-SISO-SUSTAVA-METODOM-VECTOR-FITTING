@@ -1,6 +1,12 @@
 # Z2: konkretan prijedlog plana eksperimenata
 
-**Stanje: predloženo, 2026-11-23.** Ovo nije zapis održanog sastanka niti prihvaćena
+**Stanje: prihvaćeno bez izmjena 2026-11-25 ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)).**
+Prema Lovrinoj izjavi Sara i Lovro su na sastanku Z2 uživo prihvatili sve preporuke iz ovog
+prijedloga. Tekst ispod ostaje kakav je pripremljen 2026-11-23, pa njegove napomene o
+„prijedlogu” i „potvrdi” opisuju stanje prije sastanka. Plan se zaključava nakon razvojnih
+kriterija iz §7.
+
+**Izvorno stanje: predloženo, 2026-11-23.** Ovo nije zapis održanog sastanka niti prihvaćena
 specifikacija. Nositeljica Z2 je Sara, sudjeluju oboje. Lovro priprema početni prijedlog
 prema [podjeli rada](PODJELA.md#z2-plan-eksperimenata-prije-završnih-pokretanja).
 Završni dogovor slijedi nakon probnog B5; puna petlja A4 još čeka B1. Ovaj dokument ne

@@ -19,12 +19,14 @@ permitivnosti ljudskih tkiva uz zadanu točnost i štede li VF i QuadVF polove. 
 na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što je Sara potvrdila na sastanku Z0.
 Python okruženje odabrano je u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md), a razine točnosti
-u dodatku ADR-0004. Konačni pojas, postavke metode i rok još nisu odabrani.
+u dodatku ADR-0004. Plan eksperimenata (pojas 10 MHz–10 GHz, postavke metode, redovi i
+vrednovanje) prihvaćen je u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md); rok još
+nije poznat.
 Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); VF,
 QuadVF i eksperimentalni rezultati još ne postoje.
 Samostalne operacije za baricentrični LS korak, premještanje i refleksiju polova te završne
-reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Puna VF petlja i
-postavke eksperimenata još čekaju B1 i Z2.
+reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Puna VF petlja
+još čeka B1.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),

@@ -97,6 +97,10 @@ Nositeljica si ti. Prije završnih pokretanja zapisuju se hipoteze, pojas, razin
 razvojni podskup tkiva i podskup za detaljnu analizu. $L$ i broj čvorova biraju se samo na
 razvojnom podskupu.
 
+**Stanje 2026-11-25:** plan je prihvaćen bez izmjena
+([ADR-0008](../adr/0008-accept-z2-experiment-plan.md)). Primarni QuadVF nema parametar $L$;
+B5 mjeri trošak i provjerava razvojne kriterije prije zaključavanja plana.
+
 ## B6: glavni eksperiment
 
 experiments/min_order.py: najmanji $r$ za svako tkivo, metodu i razinu točnosti, u objema
@@ -104,7 +108,8 @@ mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
 ## B7: osjetljivost i uvjetovanost
 
-experiments/sensitivity.py: ovisnost o $L$ i broju čvorova, brojevi uvjetovanosti matrica
+experiments/sensitivity.py: ovisnost o broju čvorova i početnim polovima prema ADR-0008
+(ranije planirani $L$ nije primjenjiv), brojevi uvjetovanosti matrica
 najmanjih kvadrata (frekvencije su reda $10^7$–$10^{10}$ rad/s), utjecaj skaliranja i redanja
 redaka (L1, §4.3).
 

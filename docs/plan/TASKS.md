@@ -12,7 +12,7 @@ zajednički.
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Pripremljen konkretan prijedlog Z2; konačni dogovor i dalje otvoren, nakon B5 |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
@@ -20,6 +20,18 @@ zajednički.
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## Z2: prihvat plana, 2026-11-25
+
+Prema Lovrinoj izjavi Sara i Lovro su 2026-11-25 uživo na sastanku Z2 prihvatili svih 13
+preporuka iz [prijedloga](Z2_PRIJEDLOG.md) bez izmjena. Odluka je zapisana u
+[ADR-0008](adr/0008-accept-z2-experiment-plan.md), a metodologija, projekt, podjela rada,
+osobni planovi, README i `AGENTS.md` usklađeni su s njom. Prijedlog preporuke ne numerira;
+ADR sažima prihvaćeni tekst po odjeljcima.
+
+Prema prihvaćenom §7 plan se zaključava tek nakon razvojnih kriterija B5. Za provedbu
+preostaju usklađivanje kriterija pomaka u A4 s §5, statusi `poles_and_denominator_settled` i
+`ill_conditioned` te kontrolna mreža iz §6. Zapis ne potvrđuje Sarin pregled PR-a ni rezultate.
 
 ## Z2: priprema prijedloga, 2026-11-23
 

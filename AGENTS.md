@@ -29,8 +29,9 @@ VF i QuadVF aproksimiraju Gabrielov Cole–Coleov model permitivnosti ljudskih t
 članovima (realnim polovima), a pitanje je koliko je polova najmanje potrebno za zadanu točnost.
 Sara je tu odluku potvrdila na sastanku Z0 2026-11-09. Razine točnosti zapisane su u dodatku
 ADR-0004, a Python okruženje u
-[ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Pojas je
-privremen (10 MHz–10 GHz). Čvorovi i težine, red, početni polovi i rok **nisu odlučeni**.
+[ADR-0006](docs/plan/adr/0006-choose-python-environment.md). Plan eksperimenata Z2 prihvaćen je
+2026-11-25 u [ADR-0008](docs/plan/adr/0008-accept-z2-experiment-plan.md): pojas 10 MHz–10 GHz,
+čvorovi i težine, redovi 1–32, početni polovi, zaustavljanje i vrednovanje. Rok **nije poznat**.
 Primjer ili prijedlog metode ne pretvaraj u prihvaćenu odluku. Repozitorij sadrži tijek rada, planove, okruženje i model tkiva (`vfdebye.gabriel`), još bez
 implementacije metode.
 
