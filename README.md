@@ -20,11 +20,12 @@ na dvije niti prema [podjeli rada](docs/plan/PODJELA.md), što je Sara potvrdila
 Python okruženje odabrano je u
 [ADR-0006](docs/plan/adr/0006-choose-python-environment.md), a razine točnosti
 u dodatku ADR-0004. Konačni pojas, postavke metode i rok još nisu odabrani.
-Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); VF,
-QuadVF i eksperimentalni rezultati još ne postoje.
+Postoje okruženje i Gabrielov model tkiva (`vfdebye.gabriel`, [podaci](data/README.md)); rezultati
+VF-a i QuadVF-a na tkivima još ne postoje.
 Samostalne operacije za baricentrični LS korak, premještanje i refleksiju polova te završne
-reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Puna VF petlja i
-postavke eksperimenata još čekaju B1 i Z2.
+reziduale pripremljene su uz [izvod A5](docs/izvodi/a5-polovi-reziduali.md). Nacrt pune VF
+petlje opisan je u [A4](docs/izvodi/a4-implementacija.md) i provjeren samo na sintetičkim
+sustavima; usporedba s B1 i postavke eksperimenata (Z2) još preostaju.
 
 Predajemo pisani seminar, prezentaciju, kod i ponovljive rezultate. Seminar, prezentacija i
 projektna dokumentacija pišu se na hrvatskom. [Opseg projekta](docs/plan/PROJECT.md),

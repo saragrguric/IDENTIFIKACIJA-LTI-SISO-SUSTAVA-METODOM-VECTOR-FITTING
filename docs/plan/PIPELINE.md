@@ -22,20 +22,24 @@ src/
     quadrature.py                   čvorovi i težine kvadrature (pojas, (3.4)) i norma iz vrijednosti
     metrics.py                      dvije mjere greške i najmanji red za zadanu točnost
     baseline.py                     referentna metoda: fiksni log. polovi i LS reziduali
-    vf.py                           model, uparivanje, kruženje; LS korak, premještanje i refleksija
+    vf.py                           model, uparivanje, kruženje; LS korak, premještanje, refleksija i petlja vector_fit
 tests/                              numeričke provjere i provjere podataka (pytest)
   test_vf_steps.py                   analitički primjeri za operacije A5 i nevaljane ulaze
+  test_vector_fit.py                 puna VF petlja: poznati polovi i izričiti neuspjesi
+  test_vf_checks.py                  zapis svih slučajeva sintetičke provjere A4
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
   fetch_gabriel.py                  preuzimanje tablice u data/raw i data/processed (izvan Gita)
 experiments/
   data_checks.py                    pregled parametara tkiva u odnosu na pojas
   quadrature_checks.py              brojke izvoda B2, uključujući omjer pojasne i pune norme H
+  vf_checks.py                      sintetičke provjere pune VF petlje (A4), ne tkiva
 docs/
   INDEX.md                          indeks dokumentacije
   CHANGE_PROTOCOL.md                zadaci, pregled i povezana ažuriranja dokumentacije
   izvodi/
     a3-problem-sk.md                 model tkiva, racionalni problem, linearizacija i SK; primjer r=1
+    a4-implementacija.md             VF petlja, povijest, razlozi zaustavljanja i sintetičke provjere
     a5-polovi-reziduali.md           polovi, reziduali, realnost, refleksija i zaustavljanje
     b2-h2-kvadratura.md              H2 greška, kvadratura, QuadVF i prilagodba pojasu
   plan/
@@ -131,8 +135,8 @@ Prema [ADR-0006](adr/0006-choose-python-environment.md): Python 3.12 (`.python-v
 
 `tools/check_project.py` pokreće iste provjere s `uv run --locked`, pa zastarjeli `uv.lock` ruši
 provjeru umjesto da se prešutno ažurira. Nedostajući uv također je pogreška. Ulazne točke
-eksperimenata nalaze se u `experiments/`; prve su `experiments/data_checks.py` (A2) i
-`experiments/quadrature_checks.py` (B3). Cjelovita
+eksperimenata nalaze se u `experiments/`; prve su `experiments/data_checks.py` (A2),
+`experiments/quadrature_checks.py` (B3) i `experiments/vf_checks.py` (A4, sintetički sustavi). Cjelovita
 preuzimanja podataka i dugačke serije eksperimenata držite izvan zadanog PR zadatka, osim uz
 izričito obrazloženje.
 

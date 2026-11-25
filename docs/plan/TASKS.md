@@ -13,13 +13,29 @@ zajednički.
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji i ispravljen je nakon pregleda; A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Djelomično: metode, mjere i razine točnosti u ADR-0004; ostatak u Z2 |
-| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje i samostalni LS korak, premještanje i refleksija polova te završni reziduali; petlja VF-a A4 i dalje čeka B1 |
+| T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; nacrt pune petlje A4 provjeren je na sintetičkim sustavima, a usporedba s B1 i prihvat preostaju |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Otvoreno |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta utvrđuje nastavnik i još nije poznat. Ovo je redoslijed ovisnosti, a ne vremenski
 raspored ili podjela pojedinih područja među članovima.
+
+## A4: nacrt pune petlje, 2026-11-25
+
+Na grani `lovro/a4-vf-petlja` pripremljena je petlja `vfdebye.vf.vector_fit` prema
+zajedničkom sučelju, opisana u [A4](../izvodi/a4-implementacija.md). Kontrole zaustavljanja,
+refleksije i kruženja zadaje pozivatelj; postavke Z2 nisu odabrane. Povijest čuva svaki LS
+korak te sirove i upotrijebljene polove. Gubitak ranga, nevaljana nova baza, numerička
+pogreška, kruženje i iscrpljene iteracije vraćaju se izričito. `experiments/vf_checks.py`
+provjerava tri sintetička sustava poznatih polova uz zapis podrijetla.
+
+Ovo je nacrt prije usporedbe sa Sarinim B1: B1 nije preuzet, A7 i eksperimenti na tkivima
+nisu pokrenuti, a Sarin pregled i zajednički prolaz nisu provedeni.
+
+Provjere: 38 novih numeričkih slučajeva za petlju i pokretač; ukupno 280 numeričkih testova
+uz lokalnu Gabrielovu tablicu, 49 testova alata, Ruff, provjera dokumentacije i
+`python3 tools/check_before_stop.py` prolaze. Nova ovisnost nije dodana.
 
 ## A5: izvod i samostalne numeričke operacije, 2026-11-23
 

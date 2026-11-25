@@ -115,6 +115,10 @@ stabilnosti), `matching_distance` (uparivanje skupova polova, (4.3)) i `detect_p
 provjerama ulaza i LS dijagnostikom. Puna petlja i odluke o zaustavljanju nisu implementirane;
 ovisnost A4 o B1 ostaje.
 
+**Stanje 2026-11-25:** nacrt pune petlje `vector_fit` objavljen je kao draft PR s grane
+`lovro/a4-vf-petlja` i opisan u [A4](../../izvodi/a4-implementacija.md). Provjeren je samo na
+sintetičkim sustavima poznatih polova; usporedba s B1 i Sarin pregled preostaju.
+
 1. Pregledaj Sarin probni kod iz B1 i odluči što od njega preuzimaš.
 2. SK iteracija u baricentričnom obliku s težinama, premještanje polova (2.9)–(2.12), završna
    identifikacija reziduala, zrcaljenje nestabilnih polova (L1, §4.1).
