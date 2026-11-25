@@ -17,6 +17,10 @@ $L$ iz ranijih odjeljaka ovog plana nije primjenjiv na primarnu usporedbu. Plan 
 nakon razvojnih kriterija iz B5; dotad se doradbe rade samo na razvojnom skupu i bilježe.
 Nijedna postavka još nije primijenjena u završnom eksperimentu.
 
+Postojeći izvodi A3/A5 i most prema B2 preneseni su u prvi teorijski nacrt A8 za Overleaf,
+izvan repozitorija. [Zapis predaje A8](A8_NACRT.md) navodi sadržaj i otvorene provjere.
+Nacrt ne potvrđuje odluke Z2, rezultate, Sarin pregled ni zajedničko razumijevanje.
+
 ## 1. Oznake i model
 
 Razrađeni izvod odjeljaka 1–2 nalazi se u [izvodu A3](../izvodi/a3-problem-sk.md): model

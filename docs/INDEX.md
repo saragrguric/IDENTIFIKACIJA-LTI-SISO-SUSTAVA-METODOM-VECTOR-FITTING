@@ -26,6 +26,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Prijedlog za Z0](plan/Z0_PRIJEDLOG.md): prijedlozi odluka za prvi zajednički sastanak i njihov ishod.
 - [Vodič Z1](plan/Z1_PROLAZ.md): zajednički prolaz od tablice do VF modela krvi, pitanja i prazan zapis.
 - [Plan Z2](plan/Z2_PRIJEDLOG.md): postavke, razvojne skupine, usporedbe i pravila vrednovanja; prijedlog prihvaćen bez izmjena 2026-11-25 (ADR-0008).
+- [Predaja nacrta A8](plan/A8_NACRT.md): sadržaj prvog teorijskog nacrta za Overleaf, ovisnosti i ograničenja provjere.
 
 ## Odluke
 

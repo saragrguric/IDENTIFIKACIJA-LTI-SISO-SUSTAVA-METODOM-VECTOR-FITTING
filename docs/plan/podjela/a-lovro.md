@@ -174,6 +174,11 @@ početnih polova, slika putanja za seminar i Sarin pregled.
 
 ## A8 i A10: seminar i slajdovi niti A
 
+**Stanje 2026-11-23:** pripremljen je prvi teorijski LaTeX nacrt izvan repozitorija, za
+Overleaf; sadržaj, provjera i primopredaja opisani su u [zapisu A8](../A8_NACRT.md).
+Rezultati A7, Sarin pregled, zajednički prolaz i završno usklađivanje ostaju otvoreni.
+Kompilaciju i izgled treba ponovno provjeriti kad ugrađeni kompajler može dohvatiti paket.
+
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 

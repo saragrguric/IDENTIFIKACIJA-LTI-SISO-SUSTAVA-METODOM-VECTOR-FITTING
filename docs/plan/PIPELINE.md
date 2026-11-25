@@ -56,6 +56,7 @@ docs/
     Z0_PRIJEDLOG.md                 prijedlozi odluka za sastanak Z0
     Z2_PRIJEDLOG.md                 plan eksperimenata Z2, prihvaćen u ADR-0008
     Z1_PROLAZ.md                    vodič i zapis za zajednički prolaz Z1
+    A8_NACRT.md                     predaja teorijskog nacrta za Overleaf izvan repozitorija
     podjela/                        osobni planovi niti A i B
     METHODOLOGY.md                  matematički i eksperimentalni plan
     PIPELINE.md                     ova datoteka

@@ -15,7 +15,7 @@ zajednički.
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojno pokretanje A7 provedeno 2026-11-25; B5–B7 otvoreni |
-| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
+| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Pripremljen teorijski nacrt A8 za Overleaf; rezultati, pregled i završno usklađivanje otvoreni |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta je 2026-12-01 (prema Lovrinoj izjavi); prijedlog rasporeda je u
@@ -131,6 +131,18 @@ Provjere: identitet CSV-a, članstvo skupina i zbrojevi slučajeva provjereni su
 `python3 tools/check_before_stop.py` prolazi: 242 numerička testa uz lokalnu tablicu,
 49 testova alata, Ruff i provjera dokumentacije. `git diff --check` nema nalaza.
 Numerička implementacija nije mijenjana; novi testovi za sam prijedlog nisu dodani.
+
+## A8: prvi teorijski nacrt, 2026-11-23
+
+Na grani `lovro/a8-nacrt` zabilježena je [predaja nacrta A8](A8_NACRT.md). Samostalan
+LaTeX izvor izvan repozitorija sadrži poglavlja o modelu i podacima, VF/SK izvodu,
+premještanju polova, realnosti, refleksiji i konvergenciji te vezu s kvadraturom i mjerama.
+Koristi postojeće izvode A3/A5/B2 i ne uvodi nove znanstvene izvore ni odluke Z2.
+
+Kompilacija ugrađenim editorom zapela je na nedostupnom vanjskom TeX paketu; PDF i izgled
+nisu potvrđeni. Nacrt nije prenesen u Overleaf. A8 nije dovršen: preostaju A4/A7 i rezultati,
+Sarin pregled B9, zajednički prolaz i usklađivanje s niti B u Z5. Izmišljeni eksperimenti,
+odobrenja ni potvrde razumijevanja nisu dodani.
 
 ## A5: izvod i samostalne numeričke operacije, 2026-11-23
 
