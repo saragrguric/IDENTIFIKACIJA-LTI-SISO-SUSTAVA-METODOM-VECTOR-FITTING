@@ -108,8 +108,8 @@ mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
 **Stanje 2026-11-25:** pokretač i razvojni pokusi opisani su u
 [zapisu B6](../../izvodi/b6-najmanji-red.md); napisao ih je AI alat na Lovrin zahtjev, zbog
-roka 2026-12-01. Plan je zaključan po Lovrinoj uputi, a završni pokus je pokrenut; preostaje
-tvoj pregled tumačenja iz odjeljka 2 i rezultata.
+roka 2026-12-01. Plan je zaključan po Lovrinoj uputi, a završni pokus je proveden (odjeljak 5
+zapisa B6); preostaje tvoj pregled tumačenja iz odjeljka 2 i rezultata.
 
 ## B7: osjetljivost i uvjetovanost
 

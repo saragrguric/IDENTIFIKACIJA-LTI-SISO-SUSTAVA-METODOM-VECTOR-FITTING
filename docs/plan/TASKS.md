@@ -14,7 +14,7 @@ zajednički.
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008), raspon polova promijenjen nakon A7 i plan zaključan istog dana |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
-| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojna pokretanja A7 i B6 provedena 2026-11-25; završni pokus B6 čeka zaključavanje plana Z2 |
+| T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojna pokretanja A7 i B6 te završni pokus B6 provedeni 2026-11-25; slike, tumačenje i Sarin pregled preostaju |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Otvoreno |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
@@ -29,8 +29,12 @@ nakon A7; opis, tumačenja i rezultati su u [zapisu B6](../izvodi/b6-najmanji-re
 Razvojno pokretanje `20261125T094340378378Z-min_order` obuhvaća 1280 slučajeva i traje 35 s.
 Nema nerazriješenih procjena ni graničnih slučajeva. H1 je podržan u svih 48 razvojnih
 usporedbi, a QuadVF medijalno treba 1–2 pola manje od `vf_log`. Razvojni kriteriji iz §7
-su ispunjeni. Završni pokus `final_base` nije pokrenut jer zaključavanje plana odlučuje tim.
-Pokretač je napisao AI alat na Lovrin zahtjev; nositeljica B6 Sara ga još nije pregledala.
+su ispunjeni. Na Lovrinu uputu plan je zaključan (dodatak ADR-0008) i pokrenut je završni pokus
+`20261125T094751901934Z-min_order`: 6912 slučajeva, 36 skupina, bez nerazriješenih procjena.
+Uz 1 % najveće relativne pogreške `vf_log` treba medijalno 7, a `quadvf_band` 6 Debyejevih
+polova. Fiksni polovi nemaju nijedan Debyejev model, a u općoj tablici i sa širim rasponom
+trebaju medijalno 11. Pokretač je napisao AI alat na Lovrin zahtjev; nositeljica B6 Sara
+još nije pregledala ni njega ni rezultate.
 
 Provjere: 9 novih testova; ukupno 318 numeričkih testova uz lokalnu Gabrielovu tablicu,
 49 testova alata, Ruff, provjera dokumentacije i `python3 tools/check_before_stop.py`

@@ -2,9 +2,10 @@
 
 **Stanje 2026-11-25:** `experiments/min_order.py` provodi plan Z2 s dodatkom nakon A7
 ([ADR-0008](../plan/adr/0008-accept-z2-experiment-plan.md)). Razvojni pokusi su pokrenuti
-(`20261125T094340378378Z-min_order`, revizija `4a16801`, čisto stablo). Završni pokus
-`final_base` nije pokrenut: čeka da tim zaključa plan. Nositeljica B6 je Sara; pokretač je
-napisao AI alat na Lovrin zahtjev, a Sara ga još nije pregledala.
+(`20261125T094340378378Z-min_order`, revizija `4a16801`, čisto stablo). Nakon zaključavanja
+plana pokrenut je i završni pokus (`20261125T094751901934Z-min_order`, revizija `c63caea`,
+čisto stablo; odjeljak 5). Nositeljica B6 je Sara; pokretač je napisao AI alat na Lovrin
+zahtjev, a Sara još nije pregledala ni njega ni rezultate.
 
 ## 1. Što pokretač radi
 
@@ -88,3 +89,59 @@ uv run python experiments/min_order.py --experiments final_base
 ```
 
 Nakon zaključavanja postavke se više ne mijenjaju prema završnim pogreškama.
+
+## 5. Završni rezultati
+
+Pokretanje `20261125T094751901934Z-min_order` obuhvaća 36 završnih skupina (47 naziva) i
+6912 slučajeva te traje 135 s. Nema nerazriješenih procjena ni graničnih slučajeva. Brojevi
+vrijede za Gabrielov model na pojasu 10 MHz–10 GHz, a ne za nova mjerenja tkiva. Redovi su
+najmanji *pronađeni*, ne dokazano najmanji mogući.
+
+**Najmanji Debyejev red** (najmanji / medijan / najveći preko 36 skupina):
+
+| Postupak i mjera | 5 % | 1 % | 0,1 % |
+|---|---|---|---|
+| `vf_log`, najveća relativna pogreška | 1 / 5 / 6 | 1 / 7 / 8 | 2 / 10 / 10 |
+| `quadvf_band`, najveća relativna pogreška | 1 / 4 / 5 | 1 / 6 / 6 | 2 / 8 / 9 |
+| `vf_log`, pojasna pogreška | 1 / 4 / 5 | 1 / 6 / 7 | 2 / 8,5 / 9 |
+| `quadvf_band`, pojasna pogreška | 1 / 3 / 4 | 1 / 5 / 6 | 2 / 7 / 8 |
+
+Svaka skupina ima prolaz za oba VF postupka na svim razinama. Nijedan postupak s fiksnim
+polovima, ni u jednom rasponu, ne daje Debyejev model ni u jednoj skupini.
+
+**Opća tablica, fiksni polovi** (najveća relativna pogreška; u zagradi broj skupina bez prolaza):
+
+| Postupak | 5 % | 1 % | 0,1 % |
+|---|---|---|---|
+| `fixed_log` | 15 / 18,5 / 23 | 25 / 28 / 32 (9) | nijedan (36) |
+| `fixed_band` | 15 / 19,5 / 25 | 23 / 28 / 32 (15) | nijedan (36) |
+| `fixed_log_wide` | 8 / 10 / 11 | 10 / 11 / 12 (7) | nijedan (36) |
+| `fixed_band_wide` | 8 / 9 / 10 | 10 / 11 / 12 (4) | nijedan (36) |
+
+Za VF postupke opća tablica daje iste redove kao Debyejeva.
+
+**H1** je podržan u svih 48 usporedbi. U Debyejevoj tablici svih 36 skupina su jednostrani
+prolazi VF-a, jer fiksni polovi nemaju nijedan Debyejev model. Taj dio zato govori o
+predznaku reziduala fiksnih polova, a ne samo o broju polova. Usporedbu redova daje opća
+tablica prema jačoj referentnoj metodi:
+- uz 5 % VF ima manji red u svih 36 skupina, za obje mjere;
+- uz 1 % i najveću relativnu pogrešku manji red ima u 29 (`vf_log`) odnosno 32 (`quadvf_band`)
+  skupine, a u ostalima prolazi samo VF;
+- uz 1 % i pojasnu pogrešku manji red ima u 34 odnosno 35 skupina;
+- uz 0,1 % prolazi samo VF.
+
+**H2:** u svih 36 skupina prolaze oba postupka. Medijan r(`quadvf_band`) − r(`vf_log`) je −2
+za najveću relativnu pogrešku uz 5 % i 1 % te −1 uz 0,1 %. Za pojasnu pogrešku iznosi −1 na
+sve tri razine. To je opažanje na ovom modelu, a ne opći teorem o QuadVF-u.
+
+**H3, istraživački:** najveći aktivni α i najmanji Debyejev red `vf_log` za 1 % (najveća
+relativna pogreška). Uz α ≤ 0,1 redovi su 1–7, uz α = 0,2 su 4–8, a uz α ≥ 0,25 su 8. Trend
+raste, ali nije strog: uz α = 0,15 red je 8, a uz α = 0,18 red je 7. Vremena τ, jakosti Δε i
+položaj prema pojasu nisu držani stalnima, pa ovo nije uzročni zaključak.
+
+**Ograničenja.**
+- Najveća pogreška na mreži nije potvrđena kontinuirana H∞ pogreška, a pojasna norma nije puna
+  H2 norma.
+- Razvojne skupine bile su viđene ranije (B3), ali završne skupine nisu korištene za
+  podešavanje.
+- Rezultat ne govori o točnosti prema novim mjerenjima tkiva.
