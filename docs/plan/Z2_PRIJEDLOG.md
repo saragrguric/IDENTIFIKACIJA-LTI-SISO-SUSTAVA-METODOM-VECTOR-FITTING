@@ -3,8 +3,8 @@
 **Stanje: prihvaćeno bez izmjena 2026-11-25 ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)).**
 Prema Lovrinoj izjavi Sara i Lovro su na sastanku Z2 uživo prihvatili sve preporuke iz ovog
 prijedloga. Tekst ispod ostaje kakav je pripremljen 2026-11-23, pa njegove napomene o
-„prijedlogu” i „potvrdi” opisuju stanje prije sastanka. Plan se zaključava nakon razvojnih
-kriterija iz §7. Raspon početnih i fiksnih polova iz §3 i §7 promijenjen je nakon A7
+„prijedlogu” i „potvrdi” opisuju stanje prije sastanka. Plan je zaključan 2026-11-25 nakon
+razvojnih kriterija iz §7 (dodatak ADR-0008). Raspon početnih i fiksnih polova iz §3 i §7 promijenjen je nakon A7
 ([dodatak ADR-0008](adr/0008-accept-z2-experiment-plan.md#dodatak-2026-11-25-raspon-početnih-i-fiksnih-polova-nakon-a7)).
 
 **Izvorno stanje: predloženo, 2026-11-23.** Ovo nije zapis održanog sastanka niti prihvaćena

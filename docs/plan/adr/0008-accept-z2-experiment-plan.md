@@ -132,3 +132,15 @@ skupina, svi r od 1 do 32 u sva tri raspona):
 Odbačeno: zadržati 1 kHz–100 GHz (VF bi za r ≥ 9 imao samo neuspjehe); različit primarni
 raspon po postupku (gubi se usporedba iz istog početka); nastavak iteracije unatoč gubitku
 ranga (promjena pravila §5 bez izvoda).
+
+## Dodatak 2026-11-25: zaključavanje plana
+
+Lovro je 2026-11-25 uputio da se plan zaključa i pokrene završni pokus. Sarina potvrda za ovaj
+korak nije zabilježena. Razvojni kriteriji iz §7 ispunjeni su prema razvojnom pokretanju
+`20261125T094340378378Z-min_order` ([zapis B6](../../izvodi/b6-najmanji-red.md), §4).
+
+Zaključani su ovaj zapis s oba dodatka, pokretač `experiments/min_order.py` na reviziji na
+kojoj se pokreće završni pokus i tumačenja iz zapisa B6, §2: uvjetovanost za sve rješavane LS
+matrice, oba statusa ustaljenja, brojanje jednostranih prolaza u H1 i medijan razlike u H2.
+Redovi do 64 se ne dodaju. Promjena nakon ovog dodatka dopunski je eksperiment s vlastitom
+oznakom i ne zamjenjuje završni pokus.

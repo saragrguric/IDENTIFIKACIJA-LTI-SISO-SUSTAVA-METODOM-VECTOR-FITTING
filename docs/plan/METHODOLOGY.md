@@ -13,9 +13,9 @@ Konkretne vrijednosti nalaze se u [prihvaćenom planu Z2](Z2_PRIJEDLOG.md): poja
 logaritamski početni polovi na 10 MHz–10 GHz (dodatak ADR-0008 nakon A7; fiksni polovi i na
 1 kHz–100 GHz kao dodatna referentna metoda), četiri usporedbe, zaustavljanje i kontrolno
 vrednovanje. QuadVF se prilagođava pojasu bez parametra $L$ i rubnih redaka iz (3.4), pa raspon
-$L$ iz ranijih odjeljaka ovog plana nije primjenjiv na primarnu usporedbu. Plan se zaključava
-nakon razvojnih kriterija iz B5; dotad se doradbe rade samo na razvojnom skupu i bilježe.
-Nijedna postavka još nije primijenjena u završnom eksperimentu.
+$L$ iz ranijih odjeljaka ovog plana nije primjenjiv na primarnu usporedbu. Plan je zaključan
+2026-11-25 nakon razvojnih kriterija (dodatak ADR-0008), zajedno s tumačenjima iz
+[zapisa B6](../izvodi/b6-najmanji-red.md), §2.
 
 ## 1. Oznake i model
 

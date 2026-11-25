@@ -156,8 +156,8 @@ brojkama, usporedbama, podjelom skupina i proračunom.
 sve preporuke prijedloga bez izmjena ([ADR-0008](adr/0008-accept-z2-experiment-plan.md)).
 Time su odlučene i točke ispod: hipoteze, pojas, skupine, broj čvorova, početni polovi,
 zaustavljanje, proračun, definicija $H$ bez izdvajanja članova s $\alpha_n=0$ i jedinica
-pokretanja (roditeljski zapis i zapis po slučaju). Raspon za $L$ nije primjenjiv. Plan se
-zaključava nakon razvojnih kriterija iz B5.
+pokretanja (roditeljski zapis i zapis po slučaju). Raspon za $L$ nije primjenjiv. Raspon
+početnih polova promijenjen je nakon A7, a plan je zaključan 2026-11-25 (dodaci ADR-0008).
 
 - Hipoteze se zapisuju prije završnih rezultata, npr.:
   - VF treba manje polova od fiksnih logaritamskih polova za istu točnost kod većine tkiva;

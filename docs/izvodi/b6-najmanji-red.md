@@ -80,7 +80,8 @@ Prema §7 plan se zaključava kad su ispunjeni ovi kriteriji:
 | Podrijetlo omogućuje ponavljanje | Čista revizija, kontrolni zbroj ulaza i identitet postavki u zapisu |
 | Trošak izmjeren | 35 s za 1280 razvojnih slučajeva |
 
-Kriteriji su ispunjeni, ali zaključavanje plana odluka je tima. Nakon toga se pokreće:
+Kriteriji su ispunjeni. Lovro je 2026-11-25 uputio da se plan zaključa (dodatak ADR-0008),
+pa se završni pokus pokreće naredbom:
 
 ```bash
 uv run python experiments/min_order.py --experiments final_base
