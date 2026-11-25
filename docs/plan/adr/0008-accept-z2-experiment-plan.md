@@ -1,6 +1,7 @@
 # ADR-0008: Prihvatiti prijedlog plana eksperimenata Z2 bez izmjena
 
-**Datum:** 2026-11-25 · **Status:** prihvaćeno (Lovro i Sara prema Lovrinoj izjavi, 2026-11-25)
+**Datum:** 2026-11-25 · **Status:** prihvaćeno (Lovro i Sara prema Lovrinoj izjavi, 2026-11-25; Sara
+potvrdila isti dan)
 
 ## Kontekst
 
@@ -132,3 +133,9 @@ skupina, svi r od 1 do 32 u sva tri raspona):
 Odbačeno: zadržati 1 kHz–100 GHz (VF bi za r ≥ 9 imao samo neuspjehe); različit primarni
 raspon po postupku (gubi se usporedba iz istog početka); nastavak iteracije unatoč gubitku
 ranga (promjena pravila §5 bez izvoda).
+
+## Dodatak 2026-11-25: Sarina potvrda
+
+Sara je 2026-11-25 potvrdila da su ona i Lovro na sastanku Z2 prihvatili prijedlog bez izmjena i
+da su odluku o rasponu početnih polova prepustili AI alatu, kako je Lovro prenio. Potvrda se
+odnosi na odluke; ne bilježi zajednički prolaz ni potvrdu razumijevanja.
