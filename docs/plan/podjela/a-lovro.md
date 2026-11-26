@@ -201,6 +201,19 @@ lokalnim pdflatexom bez grešaka i preljeva redaka.
 Tekst nije prenesen u Overleaf i nije usklađen s poglavljima niti B. Sarin pregled i zajednički
 prolaz nisu provedeni. Rezultate najmanjeg reda (B6) poglavlja niti A ne navode.
 
+**Stanje 2026-11-26:** datoteke iz 2026-11-25 nisu sačuvane na Lovrinu računalu, pa su oba
+dokumenta napisana ponovno, sa sadržajem istim kao gore. Spremljene su izvan repozitorija u
+trajnu lokalnu mapu zajedno sa slikama `fig_putanja` i `fig_raspon` iz istog pokretanja:
+
+- **nit-a-poglavlja.tex**, dodatno uz gore navedeno: tablica statusa zaustavljanja, tablica
+  Debyejevih članova krvi uz r = 7 i pitanja za zajednički prolaz;
+  SHA-256 `f389c24b6e73de78af147c4b6ab1d8ce74add1d48c5ba804d6e5577e9cd9079a`;
+- **nit-a-slajdovi.tex** (A10, 13 slajdova, beamer);
+  SHA-256 `4afddb30ac513769dc42b1260d7a858eb20768fa1aa576d60b1c47de3ad6f948`.
+
+Na računalu nema LaTeX distribucije, pa nova inačica nije kompilirana. Provjereni su samo
+parovi okruženja, zagrade, oznake i citati. Kompilaciju i izgled treba provjeriti u Overleafu.
+
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
