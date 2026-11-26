@@ -19,6 +19,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Implementacija A4](izvodi/a4-implementacija.md): nacrt pune VF petlje, povijest iteracija, razlozi zaustavljanja i sintetičke provjere; prije usporedbe s B1.
 - [Osjetljivost i uvjetovanost B7](izvodi/b7-osjetljivost.md): utjecaj N i početnih polova, brojevi uvjetovanosti LS matrica.
 - [Glavni eksperiment B6](izvodi/b6-najmanji-red.md): najmanji pronađeni broj Debyejevih članova na 36 završnih skupina i hipoteze H1–H3.
+- [Reprodukcija niti B (Z4)](izvodi/z4-reprodukcija-b.md): B5–B7 iz čistog klona i zaključanog okruženja; tablice se podudaraju, statusi petlje ovise o računalu.
 - [Razvojni pokusi B5](izvodi/b5-razvoj.md): razvojni kriteriji plana Z2, trošak, osjetljivost i usporedba s probnim pokusom.
 - [Razvojno pokretanje A7](izvodi/a7-konvergencija.md): ponašanje VF iteracija na razvojnim skupinama Z2, gubitak ranga uz primarni raspon polova i prijedlog za tim.
 - [Izvod B2](izvodi/b2-h2-kvadratura.md): $\mathcal{H}_2$ greška, kvadratura, QuadVF i naša kvadratura na pojasu.
