@@ -129,10 +129,15 @@ def conditioning(cases: list[dict]) -> dict:
     Also counts, per procedure, the finite values above 1e12 and the infinite ones (lost rank).
     """
     groups: dict[tuple, list[float]] = defaultdict(list)
+    orders: dict[tuple, list[float]] = defaultdict(list)
     above: Counter = Counter()
     infinite: Counter = Counter()
+    missing: Counter = Counter()
     for c in cases:
         if not c["experiment"].endswith("_base"):
+            continue
+        if c.get("candidate") is None:
+            missing[c["procedure"]] += 1
             continue
         cond = condition_number(c["candidate"]["max_condition"])
         if not math.isfinite(cond):
@@ -140,9 +145,11 @@ def conditioning(cases: list[dict]) -> dict:
             continue
         band = next(b for b in ORDER_BANDS if b[0] <= c["r"] <= b[1])
         groups[(c["procedure"], band)].append(cond)
+        orders[(c["procedure"], c["r"])].append(cond)
         above[c["procedure"]] += cond > ILL_CONDITIONED
     return {"bands": {k: (statistics.median(v), max(v), len(v)) for k, v in groups.items()},
-            "above": dict(above), "infinite": dict(infinite)}
+            "orders": {k: (statistics.median(v), max(v), len(v)) for k, v in orders.items()},
+            "above": dict(above), "infinite": dict(infinite), "missing": dict(missing)}
 
 
 def selected_conditioning(cases: list[dict], rows: list[dict]) -> dict:
@@ -175,8 +182,9 @@ def report(dev: list[dict], final: list[dict], final_rows: list[dict]) -> None:
     print("\n3. Conditioning of the LS matrices (largest per case; median/largest finite)")
     for name, cases in (("dev", dev), ("final", final)):
         result = conditioning(cases)
-        print(f"  {name}: finite above {ILL_CONDITIONED:.0e} / infinite (lost rank): "
+        print(f"  {name}: finite above {ILL_CONDITIONED:.0e} / infinite / no candidate: "
               + ", ".join(f"{p} {result['above'].get(p, 0)}/{result['infinite'].get(p, 0)}"
+                          f"/{result['missing'].get(p, 0)}"
                           for p in PROCEDURES))
         for proc in PROCEDURES:
             cells = []
@@ -184,6 +192,10 @@ def report(dev: list[dict], final: list[dict], final_rows: list[dict]) -> None:
                 med, top, _ = result["bands"].get((proc, band), (math.nan, math.nan, 0))
                 cells.append(f"r {band[0]}-{band[1]}: {med:.1e}/{top:.1e}")
             print(f"    {proc:15s} " + "  ".join(cells))
+        print("  Fixed poles in the wide range, by order (median/largest finite; count):")
+        for (proc, r), (med, top, n) in sorted(result["orders"].items()):
+            if proc.endswith("_wide"):
+                print(f"    {proc:15s} r {r:2d}: {med:.1e}/{top:.1e} ({n})")
     print("\n  Selected Debye models (final_base), median/largest condition number:")
     for (proc, measure, level), (med, top, n) in sorted(
             selected_conditioning(final, final_rows).items()):

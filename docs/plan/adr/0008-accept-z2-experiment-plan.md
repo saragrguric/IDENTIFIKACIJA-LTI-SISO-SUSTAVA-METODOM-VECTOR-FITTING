@@ -147,3 +147,28 @@ Sara je zaključavanje odobrila 2026-11-25 na temelju pregleda razvojnih kriteri
 proveo AI alat u njezinoj sesiji. Zapis ne bilježi potvrdu razumijevanja. Završni pokus s grane
 `lovro/b6-min-order` (PR #25) ranije je pokrenut i viđen; ovaj dodatak to ne mijenja, a
 postavke nisu mijenjane ni prema njemu.
+
+## Dodatak 2026-11-25: Sarina potvrda
+
+Sara je 2026-11-25 potvrdila da su ona i Lovro na sastanku Z2 prihvatili prijedlog bez izmjena i
+da su odluku o rasponu početnih polova prepustili AI alatu, kako je Lovro prenio. Potvrda se
+odnosi na odluke; ne bilježi zajednički prolaz ni potvrdu razumijevanja (PR #26).
+
+## Dodatak 2026-11-25: opseg B5/B7 i dorade nakon pregleda
+
+Lovro je nakon izvještaja o PR-ovima #26–#30 zatražio provedbu navedenih dorada i odluka.
+Time prihvaća sljedeći smanjeni opseg; Sarina potvrda ove dopune nije zabilježena:
+
+- B5 uspoređuje rezultate s brojkama probnog pokusa u zapisu B5, §5. Ne uvodi se zaseban
+  pokretač probnog pokusa u `experiments/`; izvorni probni kod nije u repozitoriju. To nije potpuna
+  reprodukcija probnog pokusa sa svim njegovim inačicama.
+- B7 sažima već zabilježene pokuse osjetljivosti na N i početne polove te uvjetovanost.
+  Novi pokusi skaliranja i redanja redaka iz L1, §4.3, izostavljaju se zbog roka. To je ova
+  nova odluka o opsegu, a ne primjena ranijeg redoslijeda rezanja iz Z0.
+- U razvojnim skupinama B5 oba VF postupka zadane pragove dosežu do reda 10. Pri ovoj dopuni
+  obrazloženja zaključavanja ne proširujemo redove do 64. Fiksni polovi bez prolaza ostaju
+  prikazani kao neuspjeh među redovima 1–32, bez tvrdnje da viši red ne bi pomogao.
+
+Postavke zaključanog završnog pokusa ostaju iste. Izostavljeni pokusi ne daju dokaz o uzroku
+loše uvjetovanosti ni o tome bi li skaliranje poboljšalo VF. B7 ograničava zaključke o N na
+ispitane redove 4, 8, 16 i 32. Zapis ne potvrđuje ljudski pregled PR-ova ni razumijevanje.

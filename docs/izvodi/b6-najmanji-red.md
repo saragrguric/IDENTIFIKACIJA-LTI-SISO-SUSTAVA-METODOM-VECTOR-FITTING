@@ -19,6 +19,11 @@ Statusi: fiksni polovi 4608 (svi riješeni); `vf_log` 628 ustaljenih (131 i s na
 `rank_deficient`, 4 `cycle`. Gubitak ranga javlja se samo kod redova iznad najvećeg reda potrebnog za 0,1 % u istoj skupini;
 takvi slučajevi ostaju u zapisu kao neuspjesi.
 
+Pri ponavljanju brojevi statusa mogu ovisiti o računalu i numeričkim bibliotekama: prethodni
+lokalni pregled PR-a #28 dao je 626 ustaljenih / 9 kruženja za `vf_log` i 684 / 7 za
+`quadvf_band`, uz iste tablice najmanjih redova. Razlike su bile kod r ≥ 13. U reprodukciji
+treba usporediti sve tablice i zabilježiti statuse odvojeno, bez prešućivanja razlika.
+
 ## 2. Glavni rezultat: Debyejevi modeli
 
 Najmanji pronađeni broj Debyejevih članova (realni negativni polovi, strogo pozitivni reziduali)
@@ -55,11 +60,15 @@ VF postupci u općoj tablici imaju iste redove kao u Debyejevoj (§2).
 - **H1 (VF treba manje polova od fiksnih polova): podržana.** U Debyejevoj tablici samo VF
   prolazi, pa su sve usporedbe jednostrane (36 od 36 skupina, sve razine, obje mjere i oba
   raspona fiksnih polova). U općoj tablici uz 5 % VF ima manji red u svih 36 skupina, i prema
-  širem rasponu; uz 1 % manji red ili jedini prolaz u svih 36; uz 0,1 % prolazi samo VF.
-- **H2 (QuadVF treba manje polova od VF-a): podržana.** U Debyejevoj tablici `quadvf_band` ima
-  manji red od `vf_log` u 32–34 od 36 skupina, ovisno o mjeri i razini, a jednak u ostalima;
-  ni u jednoj skupini nije veći. Medijan razlike je −2 (najveća relativna pogreška, 5 % i
-  1 %) ili −1 (ostalo).
+  širem rasponu; uz 1 % manji red ili jedini prolaz u svih 36. Uz 0,1 % najveće relativne
+  pogreške prolazi samo VF. Za pojasnu mjeru fiksni polovi na pojasu prolaze u četiri skupine
+  s redovima 29–32, a VF i tada treba manji red.
+- **H2 (manja medijalna razlika redova za pojasnu mjeru): podržana.** Kako je unaprijed
+  formulirano u Z2, §1, uspoređuje se pojasna mjera: medijan razlike
+  r(`quadvf_band`) − r(`vf_log`) je −1 na svim razinama. QuadVF ima manji red u 32–33 od 36
+  skupina, jednak u ostalima, a nigdje veći. Dodatno opažanje za najveću relativnu pogrešku:
+  medijan razlike je −2 za 5 % i 1 %, a −1 za 0,1 %; manji red u 32–34 skupine. Taj ishod
+  za relativnu pogrešku nije bio pretpostavljen u H2.
 - **H3 (red raste s najvećim aktivnim α): istraživačka, slab trend.** Tkiva s većim α češće
   trebaju 8 umjesto 7 članova za 1 %, ali trend nije strog i ne pokazuje uzročnost.
 

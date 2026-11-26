@@ -35,7 +35,9 @@ redovima koji određuju rezultat B6 (do 10) nijedna presuda se ne mijenja. Postu
 čvorovima Gauss–Legendre gotovo ne ovise o N (omjer 1,00). Logaritamski čvorovi s jednakim
 težinama mijenjaju pogrešku do 38 %, ali bez promjene presude.
 
-**Zaključak:** izbor $N=240$ ne mijenja zaključke B6.
+**Zaključak:** na ispitanim redovima 4 i 8 nema promjene presude pri promjeni N. Od redova
+1–10 koje bira B6 ovdje su ispitani samo 4 i 8; osjetljivost ostalih odabranih redova nije
+provjerena. Ovaj pokus zato ne potvrđuje neovisnost svih zaključaka B6 o N.
 
 ## 3. Početni polovi
 
@@ -47,7 +49,8 @@ Iste skupine i redovi, $N=240$. Broj slučajeva po statusu (od 20):
 | `quadvf_band` | 15 / 5 ($r=32$) | 10 / 10 (od $r=16$) | 5 / 15 (od $r=8$) |
 
 Debyejevih modela s VF-om: 13 i 15 (primarni), 7 i 7 (1 kHz–100 GHz), 5 i 5 (1 Hz–1 THz).
-Fiksni polovi daju modele uz svaki raspon, ali ne Debyejeve, osim jednog slučaja bez prolaza.
+Fiksni polovi daju opće modele uz svaki raspon. Jedan slučaj `fixed_band` u primarnom rasponu
+ima Debyejevo svojstvo, ali ne prolazi nijednu razinu točnosti; ostali nisu Debyejevi.
 
 **Zaključak:** rezultat ovisi o početnom rasponu. Uz šire raspone VF gubi rang već u prvom
 koraku, pa redovi potrebni za 1 % i 0,1 % nisu dostupni. To je razlog odluke o primarnom
@@ -81,14 +84,17 @@ Za pojasnu mjeru vrijednosti su manje.
   toga do $10^{16}$. Redovi 8–12 koje tablica općih modela u B6 bira za te postupke ostaju
   ispod praga, ali se reziduali kod $r=11$–12 dobivaju iz matrice s brojem uvjetovanosti
   $10^{10}$–$10^{11}$.
-- VF matrice su lošije uvjetovane od matrica fiksnih polova istog reda jer stupci
-  $\operatorname{diag}(h)\,C$ imaju drukčiju skalu od $C$. Gubitak ranga javlja se tek iznad
-  redova potrebnih za 0,1 % (B6, §1).
+- Zabilježene VF matrice imaju veće brojeve uvjetovanosti od matrica fiksnih polova istog
+  reda. Uspoređuju se različite matrice: najveća vrijednost kroz VF iteracije i završni LS,
+  nasuprot samo završnoj matrici $C$ fiksnih polova. Različita skala stupaca
+  $\operatorname{diag}(h)\,C$ mogući je uzrok, ali to ovdje nije provjereno pokusom
+  skaliranja. Gubitak ranga javlja se tek iznad redova potrebnih za 0,1 % (B6, §1).
 - QuadVF ima oko red veličine manju uvjetovanost od `vf_log` na istom redu. To je opažanje na
   ovim podacima, a ne dokazano svojstvo.
 
 ## 5. Što nije napravljeno
 
-Skaliranje i redanje redaka LS matrice (L1, §4.3) nisu ispitani. Zbog roka je taj dio B7
-izostavljen prema redoslijedu rezanja iz plana. Nijedan model odabran u tablicama B6 (Debyejeva i
+Skaliranje i redanje redaka LS matrice (L1, §4.3) nisu ispitani. Lovro je nakon pregleda PR-a
+#29 prihvatio izostavljanje zbog roka (dodatak ADR-0008); Sarina potvrda te dopune nije
+zabilježena. To nije dio ranijeg redoslijeda rezanja iz Z0. Nijedan model odabran u tablicama B6 (Debyejeva i
 opća, svi postupci) nije označen kao `ill_conditioned`, pa uvjetovanost ne mijenja te tablice.

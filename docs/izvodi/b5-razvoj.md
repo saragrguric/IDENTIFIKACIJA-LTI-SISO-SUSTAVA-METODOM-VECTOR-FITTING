@@ -89,7 +89,13 @@ Fiksni polovi u probnom pokusu nisu bili ograničeni na pojas; s pojasom kao ras
 mnogo više polova, a sa širim rasponom 1 kHz–100 GHz broj je blizak probnom. QuadVF iz B5 nema
 parametar $L$ (B2, §6), pa se ne uspoređuje izravno s varijantama $L=1$ i $L=3$.
 
+Ovo je usporedba objavljenih brojki, a ne ponovljeno izvođenje izvornog probnog koda sa svim
+njegovim inačicama. Lovro je prihvatio taj smanjeni opseg u dodatku ADR-0008 nakon pregleda
+PR-a #27; Sarina potvrda te dopune nije zabilježena.
+
 ## 6. Zaključak
 
 Svih pet razvojnih kriterija je ispunjeno, pa se plan Z2 može zaključati bez izmjena
 (dodatak ADR-0008). Osjetljivost na početni raspon prikazuje se uz rezultate B6.
+Najveći potreban red VF postupaka na razvojnim skupinama je 10, pa se redovi do 64 ne dodaju;
+fiksni polovi bez prolaza ostaju ograničenje usporedbe na redovima 1–32.

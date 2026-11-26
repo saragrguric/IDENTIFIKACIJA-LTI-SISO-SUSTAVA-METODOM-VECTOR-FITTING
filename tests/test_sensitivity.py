@@ -57,3 +57,23 @@ def test_conditioning_separates_infinite_and_large_values():
     out = sv.conditioning(cases)
     assert out["bands"][("vf_log", (1, 4))] == (20.0, 30.0, 2)
     assert out["above"]["vf_log"] == 1 and out["infinite"]["vf_log"] == 1
+
+
+def test_conditioning_reports_each_order_and_cases_without_candidate(capsys):
+    cases = [case("final_base", "fixed_log_wide", 8, cond=10.0),
+             case("final_base", "fixed_log_wide", 8, cond=30.0, group="Fat"),
+             case("final_base", "fixed_log_wide", 12, cond=4e11),
+             case("final_base", "fixed_log_wide", 13, cond=2e12),
+             case("dev_start", "fixed_log_wide", 8, cond=1e15)]
+    failed = case("final_base", "vf_log", 4, status="numerical_failure", debye=False)
+    failed["candidate"] = None
+    cases.append(failed)
+    out = sv.conditioning(cases)
+    assert out["orders"][("fixed_log_wide", 8)] == (20.0, 30.0, 2)
+    assert out["orders"][("fixed_log_wide", 12)] == (4e11, 4e11, 1)
+    assert out["missing"] == {"vf_log": 1}
+    assert out["infinite"] == {}
+    sv.report([], cases, [])
+    printed = capsys.readouterr().out
+    assert "r  8: 2.0e+01/3.0e+01 (2)" in printed
+    assert "vf_log 0/0/1" in printed

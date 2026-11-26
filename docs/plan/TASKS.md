@@ -12,7 +12,7 @@ zajednički.
 | T0 | Utvrditi kontekst projekta i prilagoditi tijek rada u repozitoriju | Korisnikove odluke o opsegu | Provedeno; Lovro je odobrio objavu i spajanje PR-a #1 bez Sarina pregleda, a Sarin naknadni pregled i povjerenje hookovima na svakom računalu preostaju |
 | T1 | Razviti zajedničko matematičko razumijevanje na temelju rada Drmača, Gugercina i Beattieja | Kontekst T0 | Izvod B2 postoji, ispravljen je nakon pregleda i Lovro ga je neovisno provjerio (A9); A3 i A5 pripremljeni su za B9, a zajednički prolazi preostaju |
 | T2 | Odabrati konkretan LTI SISO sustav i skup podataka frekvencijskog odziva | Kontekst T0 | Dovršeno 2026-11-07 (ADR-0004) |
-| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan se zaključava nakon razvojnih kriterija B5 |
+| T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan zaključan nakon razvojnih kriterija B5 (dodatak ADR-0008), opseg B5/B7 smanjen (dodatak ADR-0008) |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojno pokretanje A7 i razvojni pokusi B5 provedeni 2026-11-25; razvojni kriteriji ispunjeni, plan zaključan; završni pokus B6 proveden (zapis B6); B7 u smanjenom opsegu (zapis B7) |
 | T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Pripremljen teorijski nacrt A8 za Overleaf; rezultati, pregled i završno usklađivanje otvoreni |
@@ -26,8 +26,8 @@ raspored ili podjela pojedinih područja među članovima.
 
 Lovro je odlučio da **B5, B6, B7 i B8 ostaju Sari**, radi ravnomjerne raspodjele posla. To su
 reprodukcija probnog pokusa (umjesto experiments/pilot.py usporedba u zapisu B5), glavni eksperiment
-(experiments/min_order.py), osjetljivost i uvjetovanost (experiments/sensitivity.py,
-uključujući skaliranje i redanje redaka iz L1, §4.3) te poglavlja seminara o $\mathcal{H}_2$
+(experiments/min_order.py), osjetljivost i uvjetovanost (experiments/sensitivity.py;
+skaliranje i redanje redaka iz L1, §4.3, izostavljeno je prema dodatku ADR-0008) te poglavlja seminara o $\mathcal{H}_2$
 normi, kvadraturi, QuadVF-u, planu eksperimenata, rezultatima i raspravi. Sara smije koristiti
 AI alat. AI alati u Lovrinoj sesiji ne rade te zadatke bez izričite upute.
 
