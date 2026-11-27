@@ -17,6 +17,7 @@ Pravila: [AGENTS.md](../AGENTS.md). Uvod u projekt: [README.md](../README.md).
 - [Izvod A3](izvodi/a3-problem-sk.md): model tkiva, racionalni problem, Levyjeva linearizacija, SK i oba prikaza LS matrice, s primjerom reda jedan.
 - [Izvod A5](izvodi/a5-polovi-reziduali.md): premještanje polova, realna parametrizacija LS-a, reziduali, zrcaljenje i granice kriterija zaustavljanja; veza s kodom.
 - [Implementacija A4](izvodi/a4-implementacija.md): nacrt pune VF petlje, povijest iteracija, razlozi zaustavljanja i sintetičke provjere; prije usporedbe s B1.
+- [Osjetljivost i uvjetovanost B7](izvodi/b7-osjetljivost.md): utjecaj N i početnih polova, brojevi uvjetovanosti LS matrica.
 - [Glavni eksperiment B6](izvodi/b6-najmanji-red.md): najmanji pronađeni broj Debyejevih članova na 36 završnih skupina i hipoteze H1–H3.
 - [Razvojni pokusi B5](izvodi/b5-razvoj.md): razvojni kriteriji plana Z2, trošak, osjetljivost i usporedba s probnim pokusom.
 - [Razvojno pokretanje A7](izvodi/a7-konvergencija.md): ponašanje VF iteracija na razvojnim skupinama Z2, gubitak ranga uz primarni raspon polova i prijedlog za tim.

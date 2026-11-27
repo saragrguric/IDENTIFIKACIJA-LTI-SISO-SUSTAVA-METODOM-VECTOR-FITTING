@@ -30,6 +30,7 @@ tests/                              numeričke provjere i provjere podataka (pyt
   test_convergence.py                pravilo zaustavljanja, ocjene (4.4) i q ≤ η, zapis A7
   test_z1_blood.py                   Debyejevi članovi iz polova i zapis prolaza Z1
   test_min_order.py                  skupine, presude, najmanji red i nastavak pokretanja B5/B6
+  test_sensitivity.py                sažeci osjetljivosti i uvjetovanosti na ručno složenim zapisima (B7)
   test_figures_a7.py                 slike niti A iz malog zabilježenog pokretanja
 data/
   README.md                         izvor, licenca, preuzimanje i kontrolni zbroj tablice
@@ -41,6 +42,7 @@ experiments/
   convergence.py                    ponašanje VF iteracija na razvojnim skupinama Z2 (A7)
   z1_blood.py                       prolaz Z1: od tablice do VF modela krvi i pogrešaka
   min_order.py                      najmanji red po skupini, postupku, mjeri i razini (B5, B6)
+  sensitivity.py                    N, početni polovi i uvjetovanost iz zapisa min_order (B7)
   figures_a7.py                     slike niti A (putanje iteracija, početni raspon) iz A7
 docs/
   INDEX.md                          indeks dokumentacije
