@@ -138,3 +138,18 @@ ranga (promjena pravila §5 bez izvoda).
 Sara je 2026-11-25 potvrdila da su ona i Lovro na sastanku Z2 prihvatili prijedlog bez izmjena i
 da su odluku o rasponu početnih polova prepustili AI alatu, kako je Lovro prenio. Potvrda se
 odnosi na odluke; ne bilježi zajednički prolaz ni potvrdu razumijevanja.
+
+## Dodatak 2026-11-25: zaključavanje plana nakon B5
+
+Razvojni pokusi B5 (pokretanje `20261125T144135977334Z-min_order`, revizija `8324725`, čisto
+stablo; [zapis B5](../../izvodi/b5-razvoj.md)) ispunjavaju svih pet razvojnih kriterija iz §7:
+analitički testovi prolaze, nema skrivenih intervencija, nema nerazriješenih procjena ni
+graničnih ćelija, podrijetlo omogućuje ponavljanje, a trošak je izmjeren (1280 slučajeva, 12 s).
+
+**Odluka.** Plan se zaključava bez izmjena, s postavkama ovog zapisa i dodatka nakon A7.
+Završni pokus `final_base` pokreće se tek nakon ovog dodatka i ne služi podešavanju.
+
+Sara je zaključavanje odobrila 2026-11-25 na temelju pregleda razvojnih kriterija koji je
+proveo AI alat u njezinoj sesiji. Zapis ne bilježi potvrdu razumijevanja. Završni pokus s grane
+`lovro/b6-min-order` (PR #25) ranije je pokrenut i viđen; ovaj dodatak to ne mijenja, a
+postavke nisu mijenjane ni prema njemu.

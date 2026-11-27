@@ -91,7 +91,10 @@ experiments/pilot.py ponavlja probni pokus (krv i mišić, VF s logaritamskim i 
 čvorovima, relativne težine, QuadVF, fiksni polovi) iz repozitorija, uz zapis podrijetla.
 Razlike u odnosu na brojeve iz tvog dokumenta zapiši i objasni.
 
-**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka); nije započeto.
+**Stanje 2026-11-25:** razvojni pokusi provedeni pokretačem `experiments/min_order.py`
+(preuzet s grane `lovro/b6-min-order`); svih pet razvojnih kriterija iz Z2, §7 ispunjeno.
+Usporedba s probnim pokusom je u zapisu umjesto zasebnog pokretača, jer probni kod nije u
+repozitoriju (odluka 2026-11-10). Zapis: [B5](../../izvodi/b5-razvoj.md).
 
 ## Z2: plan eksperimenata
 
@@ -108,10 +111,8 @@ B5 mjeri trošak i provjerava razvojne kriterije prije zaključavanja plana.
 experiments/min_order.py: najmanji $r$ za svako tkivo, metodu i razinu točnosti, u objema
 mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
-**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka). AI alat u Lovrinoj sesiji napravio je
-jednu inačicu bez izričite upute (zatvoreni PR #25). Nije spojena; možeš je pogledati ili
-zanemariti. Njezin završni pokus je već viđen, pa postavke iz ADR-0008 ne mijenjaj prema
-završnim rezultatima ([zadaci](../TASKS.md)).
+**Stanje 2026-11-25:** završni pokus `final_base` proveden na zaključanom planu (pokretanje
+`20261125T150024274524Z-min_order`); rezultati i hipoteze u [zapisu B6](../../izvodi/b6-najmanji-red.md).
 
 ## B7: osjetljivost i uvjetovanost
 

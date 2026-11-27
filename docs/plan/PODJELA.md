@@ -57,7 +57,7 @@ tests/             test_<modul>.py uz svaki modul
 experiments/
   data_checks.py   A  jedinice, kontrolne vrijednosti, pregled parametara α i τ
   convergence.py   A  ponašanje iteracija i kriteriji zaustavljanja
-  pilot.py         B  reprodukcija probnog pokusa (krv i mišić)
+  pilot.py         B  otpalo: usporedba s probnim pokusom je u zapisu B5
   min_order.py     B  najmanji r po tkivu, metodi i točnosti
   sensitivity.py   B  osjetljivost na broj čvorova i početne polove, uvjetovanost
 data/              README s izvorom, uputama za preuzimanje i kontrolnim zbrojem; tablica izvan Gita
