@@ -111,10 +111,8 @@ B5 mjeri trošak i provjerava razvojne kriterije prije zaključavanja plana.
 experiments/min_order.py: najmanji $r$ za svako tkivo, metodu i razinu točnosti, u objema
 mjerama pogreške. Sva tkiva ulaze u zbirnu tablicu, uključujući neuspjehe.
 
-**Stanje 2026-11-25:** ostaje tebi (Lovrina odluka). AI alat u Lovrinoj sesiji napravio je
-jednu inačicu bez izričite upute (zatvoreni PR #25). Nije spojena; možeš je pogledati ili
-zanemariti. Njezin završni pokus je već viđen, pa postavke iz ADR-0008 ne mijenjaj prema
-završnim rezultatima ([zadaci](../TASKS.md)).
+**Stanje 2026-11-25:** završni pokus `final_base` proveden na zaključanom planu (pokretanje
+`20261125T150024274524Z-min_order`); rezultati i hipoteze u [zapisu B6](../../izvodi/b6-najmanji-red.md).
 
 ## B7: osjetljivost i uvjetovanost
 
