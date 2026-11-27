@@ -179,6 +179,41 @@ Overleaf; sadržaj, provjera i primopredaja opisani su u [zapisu A8](../A8_NACRT
 Rezultati A7, Sarin pregled, zajednički prolaz i završno usklađivanje ostaju otvoreni.
 Kompilaciju i izgled treba ponovno provjeriti kad ugrađeni kompajler može dohvatiti paket.
 
+**Stanje 2026-11-25:** prvi nacrt iz 2026-11-23 nije dostupan na Lovrinu računalu, pa su
+poglavlja niti A napisana ponovno, izvan repozitorija, kao dvije samostalne LaTeX datoteke za
+Overleaf:
+
+- **nit-a-poglavlja.tex** (10 stranica): problem i podaci, predmet aproksimacije, Levy i SK,
+  polinomni i baricentrični prikaz s primjerom reda jedan, premještanje polova (lema o
+  determinanti i predznak), apsorpcija težine, realnost, završni reziduali, zrcaljenje,
+  algoritam i statusi te konvergencija s opažanjima A7 i primjerom krvi uz r = 7;
+  SHA-256 `21607d645765e34f28e072bb553e5e226d09fe1d04b221da42d2ef57f3d7a05e`;
+- **nit-a-slajdovi.tex** (A10, 13 slajdova, beamer): ista poglavlja;
+  SHA-256 `53fd7f1e8cb8784ad4febd538e1c74a838344941046156f6c4371a984abadaf7`.
+
+Slike `fig_putanja` i `fig_raspon` dolaze iz pokretanja
+`20261125T162207467610Z-figures_a7`, koje čita lokalno ponovljeno A7 pokretanje
+`20261125T161800716035Z-convergence` (revizija `4d744d1`, čisto stablo, sva tri raspona za
+svaki r). Primjer krvi je iz `20261125T161808718583Z-z1_blood`. Ostale brojke A7 navode
+pokretanja iz [zapisa A7](../../izvodi/a7-konvergencija.md). Oba dokumenta kompiliraju se
+lokalnim pdflatexom bez grešaka i preljeva redaka.
+
+Tekst nije prenesen u Overleaf i nije usklađen s poglavljima niti B. Sarin pregled i zajednički
+prolaz nisu provedeni. Rezultate najmanjeg reda (B6) poglavlja niti A ne navode.
+
+**Stanje 2026-11-26:** datoteke iz 2026-11-25 nisu sačuvane na Lovrinu računalu, pa su oba
+dokumenta napisana ponovno, sa sadržajem istim kao gore. Spremljene su izvan repozitorija u
+trajnu lokalnu mapu zajedno sa slikama `fig_putanja` i `fig_raspon` iz istog pokretanja:
+
+- **nit-a-poglavlja.tex**, dodatno uz gore navedeno: tablica statusa zaustavljanja, tablica
+  Debyejevih članova krvi uz r = 7 i pitanja za zajednički prolaz;
+  SHA-256 `f389c24b6e73de78af147c4b6ab1d8ce74add1d48c5ba804d6e5577e9cd9079a`;
+- **nit-a-slajdovi.tex** (A10, 13 slajdova, beamer);
+  SHA-256 `4afddb30ac513769dc42b1260d7a858eb20768fa1aa576d60b1c47de3ad6f948`.
+
+Na računalu nema LaTeX distribucije, pa nova inačica nije kompilirana. Provjereni su samo
+parovi okruženja, zagrade, oznake i citati. Kompilaciju i izgled treba provjeriti u Overleafu.
+
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
