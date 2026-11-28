@@ -215,34 +215,39 @@ Na računalu nema LaTeX distribucije, pa nova inačica nije kompilirana. Provjer
 parovi okruženja, zagrade, oznake i citati. Kompilaciju i izgled treba provjeriti u Overleafu.
 
 **Stanje 2026-11-28:** u PDF-u zajedničkog Overleaf rukopisa od 2026-11-28 nalaze se poglavlja
-2 (problem i podaci), 3 (racionalna aproksimacija i SK) i 6 (konvergencija). Odjeljci 5.2
-(vector fitting, premještanje polova) i 8.1 (iteracije) bili su prazni, slika nije bilo, a
-tridesetak referenci prikazivalo se kao „??”. Za oba odjeljka pripremljen je LaTeX izvan
-repozitorija, u oznakama rukopisa (korak m, čvor k), zajedno s popisom ključeva i postojećih
-„??” s predloženim ciljem:
+2 (problem i podaci), 3 (racionalna aproksimacija i SK) i 6 (konvergencija) te 5.4
+(implementacija). Odjeljci 5.2 (vector fitting, premještanje polova) i 8.1 (iteracije) bili su
+prazni, slika nije bilo, a tridesetak referenci prikazivalo se kao „??”.
 
-- **005_SK_iter/vector-fitting.tex** (odjeljak 5.2): premještanje kao spektar Λ − φeᵀ,
-  predznak, veza sa SK korakom, realnost, zrcaljenje, završni reziduali i algoritam; u
-  zaglavlju je i popis postojećih „??”; SHA-256
-  `7c26eaf8e51e9fae0cf21a41787ecf666c99cb4c5a588b5f15ed7c6a1be403b3`;
-- **008_konvergencija/iteracije.tex** (zadnji odjeljak poglavlja Konvergencija, „Ponašanje
-  iteracija na razvojnim skupinama”): brojke iz
+Iz izvora Overleaf projekta preuzetog 2026-11-28 popravljene su samo datoteke niti A. U
+Overleaf projektu oba su odjeljka unaprijed predviđena kao Lovrina: 007_metode/vf.tex i
+010_rezultati/1-iteracije.tex („Lovro 8.1” u 010_rezultati/spojeno.tex). Tekst je zato
+unesen u njih, pa se glavni dokument i Sarine datoteke ne mijenjaju:
+
+- **007_metode/vf.tex** (5.2): premještanje kao spektar Λ − φeᵀ, predznak, veza sa SK
+  korakom, realnost, zrcaljenje, završni reziduali i algoritam; uvod se nastavlja na Sarin
+  odlomak „Ograničenja” u 5.1; SHA-256
+  `743025a76be19242868d8f0dc8e78277a2ad24887d853585a7c153f2381d4f2c`;
+- **010_rezultati/1-iteracije.tex** (8.1): brojke iz
   [zapisa A7, §7](../../izvodi/a7-konvergencija.md), slike i tablica Debyejevih članova krvi
-  uz r = 7; SHA-256 `a09cd058dcdf640b0673429ef7aabc588318a2926e9c5f71860a627680bfaf99`;
-- **008_konvergencija/fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
-  `20261128T144806878825Z-figures_a7`.
+  uz r = 7; SHA-256 `79cc2b56e55f0ac61af3855d96886f76e803222a6af17359ee20557dcb9a982a`;
+- **010_rezultati/fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
+  `20261128T151040646704Z-figures_a7` (slova za tekst od 12 pt).
 
-Putanje su one iz Overleaf projekta. Odjeljak o iteracijama premješten je iz poglavlja
-Rezultati (prazni 8.1) u poglavlje o konvergenciji, koje je u niti A, kako ga je Lovro
-2026-11-28 smjestio u Overleafu. Datoteke se uključuju naredbom `\input` (ne `\include`, koja
-počinje novu stranicu): vector fitting u poglavlju Metode umjesto praznog 5.2, a iteracije na
-kraju poglavlja Konvergencija; prazan 8.1 briše se. Ta je raspodjela provjerena prijevodom
-probnog projekta s istim glavnim dokumentom i mapama.
+Reference u poglavljima 2, 3, 5.4 i 6 preusmjerene su na ključeve rukopisa (npr.
+`odj:postavke` → `sec:plan-postavke`, `eq:fiksni_ls` → `eq:fiksni-ls`). Poglavljima niti A
+dodane su oznake koje koriste uvod i Sarina poglavlja (`sec:problem`, `sec:sk`,
+`sec:konvergencija`, `eq:cole-kvadrat`). Iz Overleafa se uklanjaju udvojene ili neuključene
+datoteke niti A: 005_SK_iter/vector-fitting.tex, 007_metode/vector_fitting.tex,
+008_konvergencija/iteracije.tex sa slikama i 010_rezultati/iteracije.tex.
 
-Izvor je preveden lokalnim pdflatexom u probnom omotaču s lažnim oznakama za ključeve
-rukopisa, bez grešaka i preljeva. Ključevi rukopisa nisu provjereni u Overleafu, a tekst
-nije unesen u Overleaf. Sarin pregled i zajednički prolaz nisu provedeni, a slajdovi A10
-nisu dio tog PDF-a.
+Cijeli projekt preveden je lokalnim pdflatexom (TeX Live 2023), u 42 stranice. Broj
+nedefiniranih referenci pao je s 34 na jednu, Sarinu `sec:reproducibilnost`. Preostali
+preljevi i dvostruka oznaka `eq:kvadratura-os` nalaze se u Sarinim datotekama. Kao
+neobavezni popravci zajedničkih datoteka pripremljeni su literatura/literatura.tex, u kojoj
+je `\end{thebibliography}` stajao iza prve stavke pa se Gabriel citirao kao [0], i ispravak
+„Debeyeva” u naslovu. Tekst još nije unesen u Overleaf, a izgled u Overleafu nije provjeren.
+Sarin pregled i zajednički prolaz nisu provedeni, a slajdovi A10 nisu dio tog PDF-a.
 
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
