@@ -145,3 +145,48 @@ Prijedlozi opisa:
 2. **fig_raspon:** broj razvojnih skupina (od pet) u kojima se VF petlja ustali, za tri
    raspona početnih polova. Uz šire raspone petlja se prestaje ustaljivati od r = 6–9, zbog
    gubitka ranga već u prvom koraku (opažanje 1).
+
+**Dopuna 2026-11-28:** oznake na slici fig_putanja usklađene su s poglavljem o konvergenciji
+u seminaru: korak je m, a čvor k, pa naslovi glase δm i qm = max_k |d̃⁽ᵐ⁾(s_k) − 1|, a os
+„korak m”. Prikazane vrijednosti nisu promijenjene. Pokretanje
+`20261128T144806878825Z-figures_a7` čita isto pokretanje
+`20261125T090048328276Z-convergence`; figures_a7.txt jednak je onome iz
+`20261125T102501836176Z-figures_a7`. Promjena oznaka nije bila potvrđena u trenutku
+pokretanja, pa je zapisana u uncommitted.diff tog pokretanja (revizija `df455cd`, grana
+`lovro/a7-slike-oznake`). Za seminar vrijede slike iz novog pokretanja; staro pokretanje
+ostaje zapisano.
+
+Istog dana slova na objema slikama povećana su za tekst seminara od 12 pt, a legenda slike
+fig_raspon više se ne preklapa s natpisom. Vrijednosti su iste. Za seminar vrijedi pokretanje
+`20261128T151040646704Z-figures_a7` (revizija s commitom legende, čisto stablo). Pokretanje
+`20261128T151014015256Z-figures_a7` napravljeno je prije ispravka legende i zamijenjeno je.
+
+## 7. Brojke za odjeljak 8.1 seminara
+
+Odjeljak „Iteracije” (8.1) u seminaru koristi raspon iz plana (10 MHz–10 GHz) iz pokretanja
+`20261125T090048328276Z-convergence`. Brojke su prebrojane iz njegova convergence.json, iz
+polja `accepted` (status, broj koraka, `q_at_stop`, svojstva kandidata) i `trajectory`
+(`tail_median_delta`, `consistent_with_accepted`, `max_bound_44_excess_in_rounding_units`,
+`max_q_over_eta`). Odnose se samo na pet razvojnih skupina.
+
+- Od 320 slučajeva (dva postupka, 32 reda, pet skupina) 188 se ustali: 89 za `vf_log` i 99 za
+  `quadvf_band`. Ustaljenje nastupa nakon 7–57 koraka, uz medijan 21,5. Ostali su
+  `rank_deficient` (127, svi u prvom koraku, od r = 18) i `cycle` (5). Status
+  `max_iterations` se ne pojavljuje.
+- Svih 188 ustaljenih kandidata ima puni rang, uvjetovanost najviše 10¹² i Debyejev oblik,
+  bez kompleksnih polova.
+- Ustaljeni slučajevi s r ≥ 4 pri zaustavljanju imaju q između 7,3·10⁻⁹ i 3,5·10⁻⁷. Njih 157
+  od 158 dobiva `poles_settled`.
+- Najveći medijan zadnjih 20 vrijednosti δ u putanji iznosi 2,6·10⁻¹² za r = 7, 7,4·10⁻¹¹ za
+  r = 10 i 6,1·10⁻⁹ za r = 16. Od r = 17 je 1,1·10⁻⁸–1,3·10⁻⁸, dakle na pragu.
+- Kruženja: Muscle `vf_log` r = 16 (period 2), Fat `vf_log` r = 19 (2), Fat `quadvf_band`
+  r = 21 (2), Skin wet `vf_log` r = 18 (3) i Skin wet `quadvf_band` r = 20 (2).
+- Naknadno pravilo na putanji daje isti broj koraka kao prihvaćeni poziv u 315 od 320
+  slučajeva; razlikuje se samo u pet kruženja.
+- U svih 960 slučajeva pokretanja višak iznad ocjene (4.4) najviše je 0,58 · eps · max abs(λ),
+  a q/η najviše 1 + 4·10⁻¹⁶.
+- Uz raspone 1 kHz–100 GHz i 1 Hz–1 THz svi neustaljeni slučajevi su `rank_deficient` u
+  prvom koraku (241 i 266 od 320).
+
+Primjer krvi uz r = 7 u istom odjeljku dolazi iz `20261125T091152576258Z-z1_blood`, kao i u
+[vodiču Z1](../plan/Z1_PROLAZ.md).

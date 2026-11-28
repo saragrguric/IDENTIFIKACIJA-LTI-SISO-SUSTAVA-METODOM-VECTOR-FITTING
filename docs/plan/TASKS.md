@@ -15,7 +15,7 @@ zajednički.
 | T3 | Dogovoriti inačicu metode, uzorkovanje, red i plan eksperimenata | T1, T2 | Prijedlog Z2 prihvaćen bez izmjena 2026-11-25 (ADR-0008); plan zaključan nakon razvojnih kriterija B5 (dodatak ADR-0008), opseg B5/B7 smanjen (dodatak ADR-0008) |
 | T4 | Implementirati i provjeriti dogovorenu inačicu VF-a u Pythonu | T3 | Postoje samostalni LS korak, premještanje i refleksija polova te završni reziduali; puna petlja A4 provjerena je na sintetičkim sustavima i razvojnim skupinama (A7), a ne čeka usporedbu s B1 (odluka 2026-11-25); preostaje Sarin pregled |
 | T5 | Provesti eksperimente koji omogućuju reprodukciju rezultata i protumačiti ih | T4, priprema podataka | Razvojno pokretanje A7 i razvojni pokusi B5 provedeni 2026-11-25; razvojni kriteriji ispunjeni, plan zaključan; završni pokus B6 proveden (zapis B6); B7 u smanjenom opsegu (zapis B7) |
-| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Pripremljen teorijski nacrt A8 za Overleaf; rezultati, pregled i završno usklađivanje otvoreni |
+| T6 | Sastaviti pisani seminar i prezentaciju | Od T1 nadalje; konačni rezultati iz T5 | Rukopis je u Overleafu (PDF od 2026-11-28); za prazne odjeljke niti A (5.2 i 8.1) i reference u poglavljima niti A pripremljene su datoteke za Overleaf, izvan repozitorija ([plan A](podjela/a-lovro.md)); 5.3, rasprava, zaključak, reference i citati, pregled i završno usklađivanje otvoreni |
 | T7 | Reproducirati konačne rezultate i zajedno uvježbati cjelovito objašnjenje | T5, T6 | Otvoreno |
 
 Rok projekta je 2026-12-01 (prema Lovrinoj izjavi); prijedlog rasporeda je u

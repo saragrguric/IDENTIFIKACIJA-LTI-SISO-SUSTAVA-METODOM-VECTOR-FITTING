@@ -214,6 +214,41 @@ trajnu lokalnu mapu zajedno sa slikama `fig_putanja` i `fig_raspon` iz istog pok
 Na računalu nema LaTeX distribucije, pa nova inačica nije kompilirana. Provjereni su samo
 parovi okruženja, zagrade, oznake i citati. Kompilaciju i izgled treba provjeriti u Overleafu.
 
+**Stanje 2026-11-28:** u PDF-u zajedničkog Overleaf rukopisa od 2026-11-28 nalaze se poglavlja
+2 (problem i podaci), 3 (racionalna aproksimacija i SK) i 6 (konvergencija) te 5.4
+(implementacija). Odjeljci 5.2 (vector fitting, premještanje polova) i 8.1 (iteracije) bili su
+prazni, slika nije bilo, a tridesetak referenci prikazivalo se kao „??”.
+
+Iz izvora Overleaf projekta preuzetog 2026-11-28 popravljene su samo datoteke niti A. U
+Overleaf projektu oba su odjeljka unaprijed predviđena kao Lovrina: 007_metode/vf.tex i
+010_rezultati/1-iteracije.tex („Lovro 8.1” u 010_rezultati/spojeno.tex). Tekst je zato
+unesen u njih, pa se glavni dokument i Sarine datoteke ne mijenjaju:
+
+- **007_metode/vf.tex** (5.2): premještanje kao spektar Λ − φeᵀ, predznak, veza sa SK
+  korakom, realnost, zrcaljenje, završni reziduali i algoritam; uvod se nastavlja na Sarin
+  odlomak „Ograničenja” u 5.1; SHA-256
+  `743025a76be19242868d8f0dc8e78277a2ad24887d853585a7c153f2381d4f2c`;
+- **010_rezultati/1-iteracije.tex** (8.1): brojke iz
+  [zapisa A7, §7](../../izvodi/a7-konvergencija.md), slike i tablica Debyejevih članova krvi
+  uz r = 7; SHA-256 `79cc2b56e55f0ac61af3855d96886f76e803222a6af17359ee20557dcb9a982a`;
+- **010_rezultati/fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
+  `20261128T151040646704Z-figures_a7` (slova za tekst od 12 pt).
+
+Reference u poglavljima 2, 3, 5.4 i 6 preusmjerene su na ključeve rukopisa (npr.
+`odj:postavke` → `sec:plan-postavke`, `eq:fiksni_ls` → `eq:fiksni-ls`). Poglavljima niti A
+dodane su oznake koje koriste uvod i Sarina poglavlja (`sec:problem`, `sec:sk`,
+`sec:konvergencija`, `eq:cole-kvadrat`). Iz Overleafa se uklanjaju udvojene ili neuključene
+datoteke niti A: 005_SK_iter/vector-fitting.tex, 007_metode/vector_fitting.tex,
+008_konvergencija/iteracije.tex sa slikama i 010_rezultati/iteracije.tex.
+
+Cijeli projekt preveden je lokalnim pdflatexom (TeX Live 2023), u 42 stranice. Broj
+nedefiniranih referenci pao je s 34 na jednu, Sarinu `sec:reproducibilnost`. Preostali
+preljevi i dvostruka oznaka `eq:kvadratura-os` nalaze se u Sarinim datotekama. Kao
+neobavezni popravci zajedničkih datoteka pripremljeni su literatura/literatura.tex, u kojoj
+je `\end{thebibliography}` stajao iza prve stavke pa se Gabriel citirao kao [0], i ispravak
+„Debeyeva” u naslovu. Tekst još nije unesen u Overleaf, a izgled u Overleafu nije provjeren.
+Sarin pregled i zajednički prolaz nisu provedeni, a slajdovi A10 nisu dio tog PDF-a.
+
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
