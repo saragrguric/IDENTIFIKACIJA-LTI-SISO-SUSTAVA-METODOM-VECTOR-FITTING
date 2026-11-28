@@ -221,17 +221,23 @@ tridesetak referenci prikazivalo se kao „??”. Za oba odjeljka pripremljen je
 repozitorija, u oznakama rukopisa (korak m, čvor k), zajedno s popisom ključeva i postojećih
 „??” s predloženim ciljem:
 
-- **nit-a-5.2-vector-fitting.tex**: premještanje kao spektar Λ − φeᵀ, predznak, veza sa SK
-  korakom, realnost, zrcaljenje, završni reziduali i algoritam; u zaglavlju je i popis
-  postojećih „??”; SHA-256
-  `87ece0e16c71bac584cb60eb5d74f139402a7d4c3174025e5a4b2c607838c28b`;
-- **nit-a-8.1-iteracije.tex**: brojke iz [zapisa A7, §7](../../izvodi/a7-konvergencija.md),
-  slike i tablica Debyejevih članova krvi uz r = 7; SHA-256
-  `c6e5cb55ca80a2310d78f0e1bf257a832898f5337678075c8805fc97db1f24b2`;
-- **fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
+- **005_SK_iter/vector-fitting.tex** (odjeljak 5.2): premještanje kao spektar Λ − φeᵀ,
+  predznak, veza sa SK korakom, realnost, zrcaljenje, završni reziduali i algoritam; u
+  zaglavlju je i popis postojećih „??”; SHA-256
+  `7c26eaf8e51e9fae0cf21a41787ecf666c99cb4c5a588b5f15ed7c6a1be403b3`;
+- **008_konvergencija/iteracije.tex** (zadnji odjeljak poglavlja Konvergencija, „Ponašanje
+  iteracija na razvojnim skupinama”): brojke iz
+  [zapisa A7, §7](../../izvodi/a7-konvergencija.md), slike i tablica Debyejevih članova krvi
+  uz r = 7; SHA-256 `a09cd058dcdf640b0673429ef7aabc588318a2926e9c5f71860a627680bfaf99`;
+- **008_konvergencija/fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
   `20261128T144806878825Z-figures_a7`.
 
-Datoteke se uključuju naredbom `\input` umjesto praznih odjeljaka 5.2 i 8.1.
+Putanje su one iz Overleaf projekta. Odjeljak o iteracijama premješten je iz poglavlja
+Rezultati (prazni 8.1) u poglavlje o konvergenciji, koje je u niti A, kako ga je Lovro
+2026-11-28 smjestio u Overleafu. Datoteke se uključuju naredbom `\input` (ne `\include`, koja
+počinje novu stranicu): vector fitting u poglavlju Metode umjesto praznog 5.2, a iteracije na
+kraju poglavlja Konvergencija; prazan 8.1 briše se. Ta je raspodjela provjerena prijevodom
+probnog projekta s istim glavnim dokumentom i mapama.
 
 Izvor je preveden lokalnim pdflatexom u probnom omotaču s lažnim oznakama za ključeve
 rukopisa, bez grešaka i preljeva. Ključevi rukopisa nisu provjereni u Overleafu, a tekst

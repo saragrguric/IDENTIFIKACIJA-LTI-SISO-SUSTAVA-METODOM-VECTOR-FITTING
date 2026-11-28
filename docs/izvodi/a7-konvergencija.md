@@ -156,9 +156,10 @@ pokretanja, pa je zapisana u uncommitted.diff tog pokretanja (revizija `df455cd`
 `lovro/a7-slike-oznake`). Za seminar vrijede slike iz novog pokretanja; staro pokretanje
 ostaje zapisano.
 
-## 7. Brojke za odjeljak 8.1 seminara
+## 7. Brojke za odjeljak seminara o iteracijama
 
-Odjeljak „Iteracije” u seminaru koristi raspon iz plana (10 MHz–10 GHz) iz pokretanja
+Odjeljak „Ponašanje iteracija na razvojnim skupinama”, na kraju poglavlja Konvergencija u
+seminaru, koristi raspon iz plana (10 MHz–10 GHz) iz pokretanja
 `20261125T090048328276Z-convergence`. Brojke su prebrojane iz njegova convergence.json, iz
 polja `accepted` (status, broj koraka, `q_at_stop`, svojstva kandidata) i `trajectory`
 (`tail_median_delta`, `consistent_with_accepted`, `max_bound_44_excess_in_rounding_units`,
