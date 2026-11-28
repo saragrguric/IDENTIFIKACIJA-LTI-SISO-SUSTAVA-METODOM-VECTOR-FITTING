@@ -117,10 +117,10 @@ def figure_start(rows: list[dict], directory: Path, table: io.StringIO) -> list[
         ax.set_yticks(range(groups + 1))
     axes[0].set_ylabel(f"ustaljenih skupina (od {groups})")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False,
-               bbox_to_anchor=(0.5, 1.0))
-    fig.text(0.01, 0.97, "početni polovi:", fontsize=9, color=TEXT_2, va="top")
-    fig.tight_layout(rect=(0, 0, 1, 0.88))
+    legend = fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False,
+                        bbox_to_anchor=(0.5, 1.0), title="početni polovi", title_fontsize=9)
+    legend.get_title().set_color(TEXT_2)
+    fig.tight_layout(rect=(0, 0, 1, 0.80))
     return save(fig, directory, "fig_raspon")
 
 
