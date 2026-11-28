@@ -214,6 +214,25 @@ trajnu lokalnu mapu zajedno sa slikama `fig_putanja` i `fig_raspon` iz istog pok
 Na računalu nema LaTeX distribucije, pa nova inačica nije kompilirana. Provjereni su samo
 parovi okruženja, zagrade, oznake i citati. Kompilaciju i izgled treba provjeriti u Overleafu.
 
+**Stanje 2026-11-28:** u PDF-u zajedničkog Overleaf rukopisa od 2026-11-28 nalaze se poglavlja
+2 (problem i podaci), 3 (racionalna aproksimacija i SK) i 6 (konvergencija). Odjeljci 5.2
+(vector fitting, premještanje polova) i 8.1 (iteracije) bili su prazni, slika nije bilo, a
+tridesetak referenci prikazivalo se kao „??”. Za oba odjeljka pripremljen je LaTeX izvan
+repozitorija, u oznakama rukopisa (korak m, čvor k), zajedno s popisom ključeva i postojećih
+„??” s predloženim ciljem:
+
+- **nit-a-5.2-8.1.tex**: 5.2 s premještanjem kao spektrom Λ − φeᵀ, predznakom, vezom sa SK
+  korakom, realnošću, zrcaljenjem, završnim rezidualima i algoritmom; 8.1 s brojkama iz
+  [zapisa A7, §7](../../izvodi/a7-konvergencija.md), slikama i tablicom Debyejevih članova
+  krvi uz r = 7; SHA-256 `6c2be5f604bdd13af7749f8fc2fa566087877dff09212be70d8d18f58bcbb055`;
+- **fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
+  `20261128T144806878825Z-figures_a7`.
+
+Izvor je preveden lokalnim pdflatexom u probnom omotaču s lažnim oznakama za ključeve
+rukopisa, bez grešaka i preljeva. Ključevi rukopisa nisu provjereni u Overleafu, a tekst
+nije unesen u Overleaf. Sarin pregled i zajednički prolaz nisu provedeni, a slajdovi A10
+nisu dio tog PDF-a.
+
 Poglavlja: problem i podaci, model tkiva, izvod VF-a, premještanje polova, konvergencija. Svaki
 broj i slika imaju identifikator pokretanja. Slajdovi prate ista poglavlja.
 
