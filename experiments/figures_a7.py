@@ -6,8 +6,9 @@ Run from the repository root, naming the recorded convergence run:
 
 Figures (PDF for the seminar, PNG for a quick look), with Croatian labels:
 
-1. fig_putanja: delta_k and q_k along the trajectory of vf_log for Blood at r = 4, 7 and 10,
-   initial poles on the band 10 MHz-10 GHz;
+1. fig_putanja: delta_m and q_m along the trajectory of vf_log for Blood at r = 4, 7 and 10,
+   initial poles on the band 10 MHz-10 GHz. Labels follow the seminar: m is the VF step and
+   k the node, as in delta_m and q_m = max_k |d~^(m)(s_k) - 1| of the convergence chapter;
 2. fig_raspon: number of development groups whose VF loop settles, per start range and r.
 
 The run must contain all three start ranges for every order, as the A7 run
@@ -73,16 +74,17 @@ def figure_trajectory(npz: Path, directory: Path, table: io.StringIO) -> list[st
             key = f"Blood|vf_log|1e+07-1e+10|{r}"
             for ax, name in zip(axes, ("delta", "q"), strict=True):
                 values = data[f"{key}|{name}"][:STEPS]
-                k = np.arange(1, values.size + 1)
-                ax.plot(k, np.where(values > 0, values, np.nan), color=colour,
+                m = np.arange(1, values.size + 1)
+                ax.plot(m, np.where(values > 0, values, np.nan), color=colour,
                         label=f"r = {r}")
                 table.write(f"r={r} {name}: " + " ".join(f"{v:.2e}" for v in values) + "\n")
-    titles = (r"$\delta_k$ (relativni pomak polova)", r"$q_k=\max_i\,|\tilde d(\xi_i)-1|$")
+    titles = (r"$\delta_m$ (relativni pomak polova)",
+              r"$q_m=\max_k\,|\tilde d^{(m)}(s_k)-1|$")
     for ax, label in zip(axes, titles, strict=True):
         ax.axhline(1e-8, color=TEXT_2, linewidth=0.5)
         ax.text(STEPS, 1e-8, " prag 10⁻⁸", va="bottom", ha="right", fontsize=7, color=TEXT_2)
         ax.set_title(label, loc="left")
-        ax.set_xlabel("korak k")
+        ax.set_xlabel("korak m")
         ax.set_xlim(0, STEPS)
     axes[0].legend(frameon=False, loc="upper right")
     fig.tight_layout()
