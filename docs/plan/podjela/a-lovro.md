@@ -221,12 +221,17 @@ tridesetak referenci prikazivalo se kao „??”. Za oba odjeljka pripremljen je
 repozitorija, u oznakama rukopisa (korak m, čvor k), zajedno s popisom ključeva i postojećih
 „??” s predloženim ciljem:
 
-- **nit-a-5.2-8.1.tex**: 5.2 s premještanjem kao spektrom Λ − φeᵀ, predznakom, vezom sa SK
-  korakom, realnošću, zrcaljenjem, završnim rezidualima i algoritmom; 8.1 s brojkama iz
-  [zapisa A7, §7](../../izvodi/a7-konvergencija.md), slikama i tablicom Debyejevih članova
-  krvi uz r = 7; SHA-256 `6c2be5f604bdd13af7749f8fc2fa566087877dff09212be70d8d18f58bcbb055`;
+- **nit-a-5.2-vector-fitting.tex**: premještanje kao spektar Λ − φeᵀ, predznak, veza sa SK
+  korakom, realnost, zrcaljenje, završni reziduali i algoritam; u zaglavlju je i popis
+  postojećih „??”; SHA-256
+  `87ece0e16c71bac584cb60eb5d74f139402a7d4c3174025e5a4b2c607838c28b`;
+- **nit-a-8.1-iteracije.tex**: brojke iz [zapisa A7, §7](../../izvodi/a7-konvergencija.md),
+  slike i tablica Debyejevih članova krvi uz r = 7; SHA-256
+  `c6e5cb55ca80a2310d78f0e1bf257a832898f5337678075c8805fc97db1f24b2`;
 - **fig_putanja.pdf** i **fig_raspon.pdf** iz pokretanja
   `20261128T144806878825Z-figures_a7`.
+
+Datoteke se uključuju naredbom `\input` umjesto praznih odjeljaka 5.2 i 8.1.
 
 Izvor je preveden lokalnim pdflatexom u probnom omotaču s lažnim oznakama za ključeve
 rukopisa, bez grešaka i preljeva. Ključevi rukopisa nisu provjereni u Overleafu, a tekst
