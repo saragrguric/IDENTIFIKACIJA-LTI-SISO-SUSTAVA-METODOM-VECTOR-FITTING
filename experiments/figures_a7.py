@@ -15,6 +15,8 @@ The run must contain all three start ranges for every order, as the A7 run
 20261125T090048328276Z-convergence does. Colours are the blue ordinal steps 250/450/650 of the
 dataviz reference palette, validated for a white surface; all plotted values are also written
 to figures_a7.txt. Everything is recorded with vfdebye.provenance in results/runs/<run_id>/.
+Sizes target the 12 pt seminar with a 15 cm text width: figures are 5.9 in wide, so at
+full text width (includegraphics width=textwidth) labels are about 10 pt and ticks about 9 pt.
 """
 from __future__ import annotations
 
@@ -44,8 +46,8 @@ STEPS = 100
 
 def style() -> None:
     plt.rcParams.update({
-        "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8, "legend.fontsize": 7.5,
-        "xtick.labelsize": 7, "ytick.labelsize": 7, "axes.edgecolor": GRID,
+        "font.size": 10, "axes.titlesize": 10, "axes.labelsize": 10, "legend.fontsize": 9,
+        "xtick.labelsize": 9, "ytick.labelsize": 9, "axes.edgecolor": GRID,
         "axes.labelcolor": TEXT_2, "xtick.color": TEXT_2, "ytick.color": TEXT_2,
         "axes.titlecolor": TEXT, "text.color": TEXT, "axes.grid": True, "grid.color": GRID,
         "grid.linewidth": 0.5, "axes.linewidth": 0.5, "axes.spines.top": False,
@@ -63,7 +65,7 @@ def save(fig, directory: Path, name: str) -> list[str]:
 
 
 def figure_trajectory(npz: Path, directory: Path, table: io.StringIO) -> list[str]:
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.5), sharex=True)
+    fig, axes = plt.subplots(1, 2, figsize=(5.9, 2.7), sharex=True)
     for ax in axes:  # fixed before plotting, so an all-zero synthetic series cannot collapse it
         ax.set_yscale("log")
         ax.set_ylim(1e-16, 1e2)
@@ -82,7 +84,7 @@ def figure_trajectory(npz: Path, directory: Path, table: io.StringIO) -> list[st
               r"$q_m=\max_k\,|\tilde d^{(m)}(s_k)-1|$")
     for ax, label in zip(axes, titles, strict=True):
         ax.axhline(1e-8, color=TEXT_2, linewidth=0.5)
-        ax.text(STEPS, 1e-8, " prag 10⁻⁸", va="bottom", ha="right", fontsize=7, color=TEXT_2)
+        ax.text(STEPS, 1e-8, " prag 10⁻⁸", va="bottom", ha="right", fontsize=9, color=TEXT_2)
         ax.set_title(label, loc="left")
         ax.set_xlabel("korak m")
         ax.set_xlim(0, STEPS)
@@ -96,7 +98,7 @@ def start_key(row: dict) -> str:
 
 
 def figure_start(rows: list[dict], directory: Path, table: io.StringIO) -> list[str]:
-    fig, axes = plt.subplots(1, 2, figsize=(6.4, 2.4), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(5.9, 2.8), sharey=True)
     groups = len({row["group"] for row in rows})
     table.write(f"\nfig_raspon: broj razvojnih skupina s ustaljenom petljom (od {groups})\n")
     for ax, (method, method_label) in zip(axes, METHODS, strict=True):
@@ -117,7 +119,7 @@ def figure_start(rows: list[dict], directory: Path, table: io.StringIO) -> list[
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False,
                bbox_to_anchor=(0.5, 1.0))
-    fig.text(0.01, 0.97, "početni polovi:", fontsize=7.5, color=TEXT_2, va="top")
+    fig.text(0.01, 0.97, "početni polovi:", fontsize=9, color=TEXT_2, va="top")
     fig.tight_layout(rect=(0, 0, 1, 0.88))
     return save(fig, directory, "fig_raspon")
 
